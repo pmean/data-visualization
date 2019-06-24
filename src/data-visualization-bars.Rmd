@@ -1,0 +1,38 @@
+---
+title: "Data visualization -- bars"
+author: "Steve Simon"
+date: "6/23/2019"
+output: powerpoint_presentation
+---
+
+```{r setup, echo=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(ggplot2)
+library(magrittr)
+```
+
+### To prepare for this section
+
+((Find a data set))
+
+### More theory -- the psychology of perception
+
+### Aesthetics for bars
+
+### Summary
++ "A mapping of data to the visual aesthetics of geometries/marks" 
+  + Bars are a type of geometry/mark
+  + Aesthetics for bars include location, size, color
+  + Stack versus dodge
++ Basic tips
+  + Place comparators close
+
+### Group exercise
+
++ Review the following visualization in your group.
+  + Summarize what aesthetics (location, size, shape, color) appear in the graph
+  + What variables map to each aesthetic?
+  + What is the story that this graph is telling you?
+  + Was there anything confusing?
+  + Was there anything you might change?
+

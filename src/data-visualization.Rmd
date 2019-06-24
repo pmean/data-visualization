@@ -56,134 +56,12 @@ There's also a comfort level here. Tableau develops its visualizations using a g
 One more consideration. Some of you in this class are "ringers." You already know visualization better than I do because you've been doing it for longer, with bigger and more complex data sets. You're just here to see if I know one or two things that you don't already know. If you're a ringer, take the challenge of learning a new software system. It will keep you from getting too bored when I talk about all these things that you already know better than I do.
 
 </div>
-  + What fits yo
-  
-
-### No animations, interactivity, three dimensional effects, virtual reality
-
-![Three dimensional surface with two peaks in the far back](../images/hedging-prior-surface.png)
-
-<div class="notes">
-
-There are times when you do need three dimensions or animation. Here's a plot I drew for a talk back in 2015. Notice a hump in one dimension that shrinks until it is replaced by two "bunny ears" in the back. Bunny ears is a cultural reference to a practice where you sneak up behind someone with two fingers upraised with the hope that those fingers will appear above the person's head when the photo is taken, giving the person bunny ears. Anyway, those bunny ears were important and I couldn't think of a good way to emphasize this other than a three dimensional surface. But normally, I shy away from the third dimension.
-
-I want this workshop to cover static two dimensional images. That means no z-axis for those of you with a mathematical bent, only an x-axis and a y-axis.
-
-It also means no animation. Animation is a third dimension of time. While I have used animation from time to time, I tend to shy away from it, for reasons I'll explain in a minute.
-
-</div>
-
-### Stuck in a two-dimensional world
-
-![Flatland book cover](../images/flatland-book-cover.png)
-
-<div class="notes">
-
-I read this book when I was ten years old, and I loved it. It's terribly mysoginistic, unfortunately, but back then I didn't know any better. All my work is going to be in Flatland.
-
-Everything is going to be two dimensions. No z-axis, only x and y axes. I also am not going to talk about animation. This is a different third dimension, a dimension of time.
-
-</div>
-
-### Static two dimensional images - no distortions
-
-![Penrose stairs - an optical illusion](../images/penrose-stairs.png)
-
-<div class="notes">
-
-Anytime you try to display a three dimensional object on a flat surface like a piece of paper or a projection screen, you get distortions. This image, the Penrose stairs, developed by Lionel and Roger Penrose in 1958, and an inspiration for much more imaginative drawings by M.C. Esher, shows how a clever person can use these distortions to create impossible objects that look deceptively real. If you are displaying three dimensional surfaces, you are constantly having to look at it from a variety of angles. What is hidden in one perspective becomes visible in a different perspective. What is easily subtle and easily overlooked in one perspective becomes a dominant feature in a different perspective.
-
-</div>
-
-### Static two dimensional images - fewer complications
-
-    + Three dimensional plots are tricky. According to the Wikipedia entry on azimuth, 'In mathematics, the azimuth angle of a point in cylindrical coordinates or spherical coordinates is the anticlockwise angle between the positive x-axis and the projection of the vector onto the xy-plane.' The value of theta is defined as the azimuthal angle according to the help file of persp3D. So, assuming a colatitude (phi) of 0, the default of value of 0 for theta means that you are staring straight down the X-axis, and the value of 90 means that you are staring straight down the Y-axis."
-  
-<div class="notes">
-
-Here is a note I wrote to myseslf when I was drawing the three dimensional surface with "bunny ears." I am look at this note three years later and shaking my head in amazement that I was even trying to understand this stuff back then.
-
-</div>
-
-*** Static two dimesional images - no distractions
-
-![Illustration of the infamous blink tag](../images/blink_tag.gif)
-
-<div class="notes">
-
-I found this image on Wikipedia. It illustrates a cheap gimmick that was popular in the infancy of the World Wide Web. People back then would code their web pages directly and typed in the various html tages by hand. The one thing that everyone got really annoyed with really quickly was the blink tag. It would flash on and off repeatedly. Researchers who did usability tests on web pages back then found that end users who encountered a page with the blink tag would quicky hit the back button, if they could. If they needed something on the page desperately enough, they would cover the blinking text with one hand while trying to read the other parts of the web page.
-
-No one uses blink tags today, but sometimes animations can produce a distracting effect. Your eye is instantly drawn towards the animation. If you try to focus on a different location, the animation draws your eye back to it repeatedly. It is next to impossible to read any static text on a page with animation.
-
-</div>
-
-### Static two dimensional images - focus on what's important
-
-+ Master two dimensions first
-+ Find substitutes for the third dimension
-  + Panels
-  + Heat maps
-  + Contour plots
-
-<div class="notes">
-
-I like the idea of confining myself to two dimensions. You won't be able to master the complexities of a third dimension until you first understand how to display things well in two dimensions.
-
-It's also worth the effort to try to capture the information in the third dimension using alternatives that are easily produced in a static two-dimiensional world.
-
-</div>
-
-### Contour plot
-
-![Illustration of a contour plot above a three dimensional surface](../images/contour-plot.png)
-
-<div class="notes">
-
-Here's an example of how you might convert a three dimensional surface into a contour plot.
-
-Note to myself: This may not be the best image to use. I have some alternatives on different slides. Or I might draw an image from scratch.
-
-</div>
-
-### Contour plot
-
-![Illustration of a contour plots surrounding a three dimensional surface](../images/contour-plot-alternate1.png)
-
-### Contour plot
-
-![Illustration of a contour plot above a three dimensional surface](../images/contour-plot-alternate2.png)
-
-### Ternary plot
-
-![Ternary plot of proportions (developer, designer, journalist)](../images/ternary-diagram.png)
-
-<div class="notes">
-
-+ Note to myself: It might be nice to place a simple example of a ternary plot here. It might also fit in better later on.
-
-</div>
-
-### Interactivity
-
-+ Examples
-  + Sliders
-  + Hover
-+ Excellent for exploratory graphics
-+ Not within the scope of this talk
-
-<div class="notes">
-
-Note to myself: I might try to find a website or two that has interactivity, just to show what you can accomplish with sliders and hovering. But it is not something that I plan to cover in this course. Potentially, it could be a separate two hour module, but I suspect that a lot of this will be covered in the workshop on dashboards.
-
-</div>
 
 ### Theoretical foundation of data visualization
 + Why is theory important?
   + "An unexamined [visualization] is not worth [drawing]." Socrates
   + "The man who has no tincture of [theory] goes through life imprisoned in the prejudices derived from common sense, from the habitual beliefs of his age or his nation, and from convictions which have grown up in his mind without the co-operation or consent of his deliberate reason." Bertrand Russell
-  + "Never trust [a visualization program] that can think for itself if you can't see where it keeps its brain" Arthur Weasley, in Harry Potter and the Chamber of Secrets.
-  + "Give a man a [a single type of visualization] and you feed him for a day; teach a man [how to develop all types of visualizations] and you feed him for a lifetime." Maimonides
-  
+
 <div class="notes">
 
 I'm a big fan of theory, but I understand that not everyone else is. I found some quotes to support my perspective, although I had to make a few minor corrections.
@@ -191,6 +69,15 @@ I'm a big fan of theory, but I understand that not everyone else is. I found som
 Like Socrates, I am always curious what is "under the hood." If a visualization works, why wouldn't you want to dig down and figure out why it works?
 
 It's more than that, though. Bertrand Russell warns you about the dangers of not having an underlying theoretical framework. Without it, your visualizations will be limited by your own prejudices and convictions that were derived without careful thought or reason.
+
+</div>
+
+### Theoretical foundation of data visualization
++ Why is theory important?
+  + "Never trust [a visualization program] that can think for itself if you can't see where it keeps its brain" Arthur Weasley, in Harry Potter and the Chamber of Secrets.
+  + "Give a man a [a single type of visualization] and you feed him for a day; teach a man [how to develop all types of visualizations] and you feed him for a lifetime." Maimonides
+  
+<div class="notes">
 
 I also distrust software that makes certain choices for you. It got Ginny Weasley into lots of trouble in J.K. Rowling's Harry Potter and the Chamber of Secrets. I call it the fault of default principle. To be fair, the people who write these visualization software programs are a lot smarter than I am and their choices are on the mark way more often than mine might be. But you have to think carefully about your visualizations and understand where they are coming from. Redraw them as often as you rewrite your text.
 
@@ -393,7 +280,8 @@ Not every geometry/mark will have every possible aesthetic. Some of these aesthe
 ### Aesthetics for points - location (1 of 2)
 
 ```{r point-aesthetics-x}
-x <- c(212, 928) # earlier, I used 860
+x <- c(212, 103) # earlier, I used 860, 928
+# x <- 1:1057
 x_range <- range(saratoga_houses$Age)
 y_range <- range(saratoga_houses$Price)
 g <- ggplot(saratoga_houses[x, ], aes(x=Age, y=Price)) + 
@@ -405,18 +293,110 @@ g + geom_text(aes(label=Age))
 ### Aesthetics for points - location (2 of 2)
 
 ```{r point-aesthetics-y}
-g + geom_point() + geom_text(aes(label=Price))
+g + geom_text(aes(label=Price))
+```
+
+### On your own
+
++ Revise the plot so that the location of the points represents x=Bedrooms and Y=Price.
+
+### Wait before showing
+
+Here's the Python code.
+
+```{}
+((To be added later))
+```
+
+Here's the R code.
+
+```{}
+ggplot(saratoga_houses, aes(x=Bedrooms, y=Price)) + 
+  geom_point())
+```
+
+Here are the steps in Tableau.
+
+((To be added later))
+
+### What your visualization might look like.
+
+```{r bedrooms-and-living-space}
+ggplot(saratoga_houses, aes(x=Bedrooms, y=Price)) + 
+  geom_point()
 ```
 
 ### Aesthetics for points - shape
 
 ```{r point-aesthetics-shape}
+g + 
+  geom_point(aes(shape=factor(Bedrooms)))
+```
+
+### On your own
+
++ Draw a plot where the location is x=Age and y=Price and the symbol represents the number of bedrooms.
+
+### Wait before showing
+
+Here's the Python code.
+
+```{}
+((To be added later))
+```
+
+Here's the R code.
+
+```{}
+ggplot(saratoga_houses, aes(x=Age, y=Price)) + 
+  geom_point(aes(shape=factor(Bedrooms)))
+```
+
+Here are the steps in Tableau.
+
+((To be added later))
+
+### What your visualization might look like.
+
+```{r shapes-bedrooms}
+ggplot(saratoga_houses, aes(x=Age, y=Price)) + 
+  geom_point(aes(shape=factor(Bedrooms)))
 ```
 
 ### Aesthetics for points - size
 
 ```{r point-aesthetics-size}
 g + 
+  geom_point(aes(size=Living.Area))
+```
+
+### On your own
+
++ Draw a plot where the location is x=Age and y=Price and the size represents the number of bedrooms.
+
+### Wait before showing
+
+Here's the Python code.
+
+```{}
+((To be added later))
+```
+
+Here's the R code.
+
+```{}
+ggplot(saratoga_houses, aes(x=Age, y=Price)) + 
+  geom_point(aes(size=Bedrooms))
+```
+
+Here are the steps in Tableau.
+
+((To be added later))
+
+### What your visualization might look like.
+
+```{r size-bedrooms}
+ggplot(saratoga_houses, aes(x=Age, y=Price)) + 
   geom_point(aes(size=Bedrooms))
 ```
 
@@ -443,3 +423,122 @@ Size is on a continuum. Normally, you think of size as a single dimension, area,
 ### The psychology of perception
 
 ### Maps and projections
+
+### No animations, interactivity, three dimensional effects, virtual reality
+
+![Three dimensional surface with two peaks in the far back](../images/hedging-prior-surface.png)
+
+<div class="notes">
+
+There are times when you do need three dimensions or animation. Here's a plot I drew for a talk back in 2015. Notice a hump in one dimension that shrinks until it is replaced by two "bunny ears" in the back. Bunny ears is a cultural reference to a practice where you sneak up behind someone with two fingers upraised with the hope that those fingers will appear above the person's head when the photo is taken, giving the person bunny ears. Anyway, those bunny ears were important and I couldn't think of a good way to emphasize this other than a three dimensional surface. But normally, I shy away from the third dimension.
+
+I want this workshop to cover static two dimensional images. That means no z-axis for those of you with a mathematical bent, only an x-axis and a y-axis.
+
+It also means no animation. Animation is a third dimension of time. While I have used animation from time to time, I tend to shy away from it, for reasons I'll explain in a minute.
+
+</div>
+
+### Stuck in a two-dimensional world
+
+![Flatland book cover](../images/flatland-book-cover.png)
+
+<div class="notes">
+
+I read this book when I was ten years old, and I loved it. It's terribly mysoginistic, unfortunately, but back then I didn't know any better. All my work is going to be in Flatland.
+
+Everything is going to be two dimensions. No z-axis, only x and y axes. I also am not going to talk about animation. This is a different third dimension, a dimension of time.
+
+</div>
+
+### Static two dimensional images - no distortions
+
+![Penrose stairs - an optical illusion](../images/penrose-stairs.png)
+
+<div class="notes">
+
+Anytime you try to display a three dimensional object on a flat surface like a piece of paper or a projection screen, you get distortions. This image, the Penrose stairs, developed by Lionel and Roger Penrose in 1958, and an inspiration for much more imaginative drawings by M.C. Esher, shows how a clever person can use these distortions to create impossible objects that look deceptively real. If you are displaying three dimensional surfaces, you are constantly having to look at it from a variety of angles. What is hidden in one perspective becomes visible in a different perspective. What is easily subtle and easily overlooked in one perspective becomes a dominant feature in a different perspective.
+
+</div>
+
+### Static two dimensional images - fewer complications
+
+    + Three dimensional plots are tricky. According to the Wikipedia entry on azimuth, 'In mathematics, the azimuth angle of a point in cylindrical coordinates or spherical coordinates is the anticlockwise angle between the positive x-axis and the projection of the vector onto the xy-plane.' The value of theta is defined as the azimuthal angle according to the help file of persp3D. So, assuming a colatitude (phi) of 0, the default of value of 0 for theta means that you are staring straight down the X-axis, and the value of 90 means that you are staring straight down the Y-axis."
+  
+<div class="notes">
+
+Here is a note I wrote to myseslf when I was drawing the three dimensional surface with "bunny ears." I am look at this note three years later and shaking my head in amazement that I was even trying to understand this stuff back then.
+
+</div>
+
+*** Static two dimesional images - no distractions
+
+![Illustration of the infamous blink tag](../images/blink_tag.gif)
+
+<div class="notes">
+
+I found this image on Wikipedia. It illustrates a cheap gimmick that was popular in the infancy of the World Wide Web. People back then would code their web pages directly and typed in the various html tages by hand. The one thing that everyone got really annoyed with really quickly was the blink tag. It would flash on and off repeatedly. Researchers who did usability tests on web pages back then found that end users who encountered a page with the blink tag would quicky hit the back button, if they could. If they needed something on the page desperately enough, they would cover the blinking text with one hand while trying to read the other parts of the web page.
+
+No one uses blink tags today, but sometimes animations can produce a distracting effect. Your eye is instantly drawn towards the animation. If you try to focus on a different location, the animation draws your eye back to it repeatedly. It is next to impossible to read any static text on a page with animation.
+
+</div>
+
+### Static two dimensional images - focus on what's important
+
++ Master two dimensions first
++ Find substitutes for the third dimension
+  + Panels
+  + Heat maps
+  + Contour plots
+
+<div class="notes">
+
+I like the idea of confining myself to two dimensions. You won't be able to master the complexities of a third dimension until you first understand how to display things well in two dimensions.
+
+It's also worth the effort to try to capture the information in the third dimension using alternatives that are easily produced in a static two-dimiensional world.
+
+</div>
+
+### Contour plot
+
+![Illustration of a contour plot above a three dimensional surface](../images/contour-plot.png)
+
+<div class="notes">
+
+Here's an example of how you might convert a three dimensional surface into a contour plot.
+
+Note to myself: This may not be the best image to use. I have some alternatives on different slides. Or I might draw an image from scratch.
+
+</div>
+
+### Contour plot
+
+![Illustration of a contour plots surrounding a three dimensional surface](../images/contour-plot-alternate1.png)
+
+### Contour plot
+
+![Illustration of a contour plot above a three dimensional surface](../images/contour-plot-alternate2.png)
+
+### Ternary plot
+
+![Ternary plot of proportions (developer, designer, journalist)](../images/ternary-diagram.png)
+
+<div class="notes">
+
++ Note to myself: It might be nice to place a simple example of a ternary plot here. It might also fit in better later on.
+
+</div>
+
+### Interactivity
+
++ Examples
+  + Sliders
+  + Hover
++ Excellent for exploratory graphics
++ Not within the scope of this talk
+
+<div class="notes">
+
+Note to myself: I might try to find a website or two that has interactivity, just to show what you can accomplish with sliders and hovering. But it is not something that I plan to cover in this course. Potentially, it could be a separate two hour module, but I suspect that a lot of this will be covered in the workshop on dashboards.
+
+</div>
+

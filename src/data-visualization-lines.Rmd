@@ -1,0 +1,30 @@
+---
+title: "Data visualization -- lines"
+author: "Steve Simon"
+date: "6/23/2019"
+output: powerpoint_presentation
+---
+
+```{r setup, echo=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(ggplot2)
+library(magrittr)
+```
+
+### To prepare for this section
+
+((Download the Titanic data set))
+
+### More theory -- The gestalt of graphics
+
+### Aesthetics for lines
+
+### Group exercise
+
++ Review the following visualization in your group.
+  + Summarize what aesthetics (location, size, shape, color) appear in the graph
+  + What variables map to each aesthetic?
+  + What is the story that this graph is telling you?
+  + Was there anything confusing?
+  + Was there anything you might change?
+
