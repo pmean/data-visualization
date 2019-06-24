@@ -1,5 +1,5 @@
 ---
-title: "Data visualization -- lines"
+title: "Data visualization - 03 - lines"
 author: "Steve Simon"
 date: "6/23/2019"
 output: powerpoint_presentation
@@ -10,6 +10,11 @@ knitr::opts_chunk$set(echo = FALSE)
 library(ggplot2)
 library(magrittr)
 ```
+
+### Notes about this talk
++ This slide should not to be included in the final presentation
++ 01-points MUST come before
++ 02-bars could come before or after
 
 ### To prepare for this section
 

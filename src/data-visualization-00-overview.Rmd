@@ -1,10 +1,37 @@
 ---
-title: "Data visualization -- overview"
+title: "Data visualization - 00 - overview"
 author: "Steve Simon"
 date: "6/23/2019"
 output: powerpoint_presentation
 ---
 
+### Notes about this talk (1 of 3)
++ These slides should not to be included in the final presentation
++ Very brief overview
+  + Before any other presentations
+  + Put any generic announcements here
+
+### Notes about this talk (2 of 3)
++ General order of all talks
+  + 00 - overview
+  + 01 - points
+  + 02 - bars
+  + 03 - lines
+  + 04 - exotica
+  + 05 - maps
++ Order not fixed
+  + 02 and 03 might be swapped
+  + 04 and 05 might be swapped
+  + 04 and 05 both optional
+  
+### Notes about this talk (3 of 3)
++ Theory is spread out over several talks
+  + 01 - points (grammar of graphics)
+  + 02 - bars (psychology of perception)
+  + 03 - lines (gestalt of graphics)
+  + 04 - exotica (myth of the objective graph)
+  + 05 - maps (projection systems)
++ I am open to alternative organizational structures
 ```{r setup, echo=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 library(ggplot2)

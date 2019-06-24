@@ -1,5 +1,5 @@
 ---
-title: "Data visualization -- points"
+title: "Data visualization - 01 - points"
 author: "Steve Simon"
 date: "6/21/2019"
 output: powerpoint_presentation
@@ -10,6 +10,11 @@ knitr::opts_chunk$set(echo = FALSE)
 library(ggplot2)
 library(magrittr)
 ```
+
+### Notes about this talk
++ This slide should not to be included in the final presentation
++ Present 00-overview first
++ After this talk, either 02-bars or 03-lines
 
 ### To prepare for this section
 + Download and install Python, R, and Tableau

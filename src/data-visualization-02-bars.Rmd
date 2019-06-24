@@ -1,0 +1,89 @@
+---
+title: "Data visualization - 02 - bars"
+author: "Steve Simon"
+date: "6/23/2019"
+output: powerpoint_presentation
+---
+
+```{r setup, echo=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(dplyr)
+library(ggplot2)
+library(magrittr)
+```
+
+### Notes about this talk
++ This slide should not to be included in the final presentation
++ 01-points MUST come before
++ 03-lines could come before or after
+
+### To prepare for this section
+
+((Find a data set))
+
+### More theory -- the psychology of perception
+
+### A framework for graph perception
+
+![Part of first page from Simkin and Hastie journal article](../images/graph-perception.png)
+
+<div class="notes">
+
+Much of the work on the psychology of perception that I will be discussing next is drawn from this 1987 article by Simkin and Hastie.
+
+</div>
+
+
+
+### Bar chart
+
+```{r bar-chart}
+marital_status <- data.frame(
+  class=c("Divorced/Separated", "Married", "Single/Never married", "Widowed"),
+  n=c(49, 124, 55, 22),
+  prop=c(19.6, 49.6, 22.0, 8.8)
+)
+ggplot(marital_status, aes(x=class, y=prop)) +
+  geom_col()
+```
+
+### Pie chart
+
+```{r pie-chart}
+count.data <- data.frame(
+  value = c("1st", "2nd", "3rd", "Crew"),
+  n = c(325, 285, 706, 885),
+  prop = c(14.8, 12.9, 32.1, 40.2)
+)
+# Add label position
+marital_status <- marital_status %>%
+  arrange(desc(class)) %>%
+  mutate(lab.ypos = cumsum(prop) - 0.5*prop)
+mycols <- c("#0073C2FF", "#EFC000FF", "#868686FF", "#CD534CFF")
+ggplot(marital_status, aes(x = "", y = prop, fill = class)) +
+  geom_bar(width = 1, stat = "identity", color = "white") +
+  coord_polar("y", start = 0)+
+  geom_text(aes(y = lab.ypos, label = prop), color = "white")+
+  scale_fill_manual(values = mycols) +
+  theme_void()
+```
+
+### Aesthetics for bars
+
+### Summary
++ "A mapping of data to the visual aesthetics of geometries/marks" 
+  + Bars are a type of geometry/mark
+  + Aesthetics for bars include location, size, color
+  + Stack versus dodge
++ Basic tips
+  + Place comparators close
+
+### Group exercise
+
++ Review the following visualization in your group.
+  + Summarize what aesthetics (location, size, shape, color) appear in the graph
+  + What variables map to each aesthetic?
+  + What is the story that this graph is telling you?
+  + Was there anything confusing?
+  + Was there anything you might change?
+
