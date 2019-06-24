@@ -17,7 +17,7 @@ suppressMessages(suppressWarnings(library(magrittr)))
 + After this talk, either 02-bars or 03-lines
 
 ### To prepare for this section
-+ Download and install Python, R, and Tableau
++ Download and install Python, R, or Tableau
   + For R, also install the ggplot2 library
 + Go to the DASL website and review the "Housing Prices" data set
 + Import this data into Python, R, or Tableau
@@ -110,7 +110,7 @@ ggplot(saratoga_houses, aes(x=Age, y=Price)) +
 
 <div class="notes">
 
-This is one of four graphs. It was published in
+This is one of two graphs. It was published in
 
 Popvich, N., Fountain, H., & Pearce, A. (2017, September 22). We Charted Arctic Sea Ice for Nearly Every Day Since 1979. You’ll See a Trend. - The New York Times. The New York Times. Retrieved from https://www.nytimes.com/interactive/2017/09/22/climate/arctic-sea-ice-shrinking-trend-watch.html
 
@@ -238,9 +238,9 @@ It will help to see some examples.
 
 <div class="notes">
 
-Think of geometries/marks are ink placed on a sheet of paper. They could represent points, lines, or bars, among other things. 
+Think of geometries/marks are ink placed on a sheet of paper. They could represent points, lines, bars, or text, among other things. 
 
-There are five (more or less) major visual properties of points, lines, and bars.
+There are four (more or less) major visual properties of points, lines, bars, and text.
 
 The aesthetics fall into five major classes: position, shape, size, color, and text.
 
@@ -268,7 +268,7 @@ g + geom_text(aes(label=Age))
 ### Aesthetics for points - location (2 of 2)
 
 ```{r point-aesthetics-y}
-g + geom_text(aes(label=Price))
+g + geom_text(aes(label=format(Price, big.mark=",")))
 ```
 
 ### On your own
@@ -417,9 +417,12 @@ ggplot(saratoga_houses, aes(x=Age, y=Price)) +
 + Review the following visualization in your group.
   + Summarize what aesthetics (location, size, shape, color) appear in the graph
   + What variables map to each aesthetic?
-  + What is the story that this graph is telling you?
-  + Was there anything confusing?
-  + Was there anything you might change?
+
+<div class="notes">
+
+I want you to review the visualizations that you discussed earlier. With you partner review the visualization again. Talk about the aesthetics and what variables map to each aesthetic.
+
+</div>
 
 ### Panels
 
