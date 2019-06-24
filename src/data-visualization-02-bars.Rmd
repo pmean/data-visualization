@@ -7,9 +7,10 @@ output: powerpoint_presentation
 
 ```{r setup, echo=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
-library(dplyr)
-library(ggplot2)
-library(magrittr)
+suppressMessages(suppressWarnings(library(dplyr)))
+suppressMessages(suppressWarnings(library(ggplot2)))
+suppressMessages(suppressWarnings(library(magrittr)))
+suppressMessages(suppressWarnings(library(readr)))
 ```
 
 ### Notes about this talk
@@ -19,7 +20,27 @@ library(magrittr)
 
 ### To prepare for this section
 
-((Find a data set))
+![Kaggle datasets webpage](../images/02/kaggle-scotus-data.png)
+
+```{r clean, eval=FALSE}
+scotus <- read_csv("../data/opinions_since_1970.csv")
+scotus %<>% filter(grepl("^justice ", author_name)) %>% select(-14)
+write.csv(scotus, file="../data/scotus_opinions.csv", row.names=FALSE)
+```
+
+### To prepare for this section
+
+Download the scotus_opinions.csv data set, or go to the original source, the Kaggle datasets repository.
+
+Import the data and create a bar chart showing the frequency of opinions written by year_filed. Note that there are a few typos and a few rows that do not belong. You can remove these, but they will not affect any of the analyses we are considering.
+
+### This is what your bar chart should look like
+
+```{r scotus-bar, message=FALSE}
+scotus <- read_csv(file="../data/scotus_opinions.csv")
+ggplot(scotus, aes(year_filed)) +
+  geom_bar()
+```
 
 ### Group exercise (1 of 2)
 
@@ -226,7 +247,28 @@ This graph shows sales trends over a twelve month span. If you want to assess wh
 
 </div>
 
+### Area
+
+### Density/saturation/hue
+
+### A quick tutorial on colors
+
 ### Aesthetics for bars
++ Review
+  + Location
+  + Size
+  + Color
+  + NOT shape!!!
+  
+### Stack versus dodge
+
+### Summarizations
++ One number summary (mean or percentage)
++ Two number summary (error bars)
++ Five number summary (boxplots)
++ All the data
+  + Jittering
+  + Opacity
 
 ### Summary
 + "A mapping of data to the visual aesthetics of geometries/marks" 
@@ -235,6 +277,7 @@ This graph shows sales trends over a twelve month span. If you want to assess wh
   + Stack versus dodge
 + Basic tips
   + Place comparators close
+  + Use axis ticks, light grid lines
 
 ### Group exercise
 
