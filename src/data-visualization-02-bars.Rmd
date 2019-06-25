@@ -23,22 +23,51 @@ suppressMessages(suppressWarnings(library(readr)))
 ![Kaggle datasets webpage](../images/02/kaggle-scotus-data.png)
 
 ```{r clean, eval=FALSE}
-scotus <- read_csv("../data/opinions_since_1970.csv")
-scotus %<>% filter(grepl("^justice ", author_name)) %>% select(-14)
-write.csv(scotus, file="../data/scotus_opinions.csv", row.names=FALSE)
+scotus_full <- read_csv("../data/opinions_since_1970.csv")
+scotus_full %>% select(-c(7, 8, 14)) %>% data.frame -> scotus
+scotus$author_name <- 
+  sub("justice [[author]]ginsburg[[/author]]", 
+      "justice ginsburg", scotus$author_name, fixed=TRUE)
+scotus$author_name <- sub("justice black;", "justice black", scotus$author_name)
+scotus$author_name <- sub("justice bruger", "justice burger", scotus$author_name)
+scotus$author_name <- sub("justice connor", "justice o'connor", scotus$author_name)
+scotus$author_name <- sub("justice o2122", "justice o'connor", scotus$author_name)
+scotus$author_name <- sub("justice waite", "justice white", scotus$author_name)
+table(scotus$author_name, scotus$year_filed)
+scotus %>%
+  data.frame(stingsAsFactors=FALSE) %>%
+  filter(category != "per_curiam") %>%
+  select(-scdb_decision_direction) %>%
+  select(-scdb_votes_majority) %>%
+  select(-scdb_votes_minority) %>%
+  write.csv(file="../data/scotus_opinions.csv", row.names=FALSE)
+scotus %>%
+  data.frame(stingsAsFactors=FALSE) %>%
+  filter(category=="majority") %>%
+  select(-author_name) %>%
+  select(-category) %>%
+  select(-per_curiam) %>%
+  write.csv(file="../data/scotus_cases.csv", row.names=FALSE)
+```
+
+```{r read}
+opinions <- read.csv("../data/scotus_opinions.csv", stringsAsFactors=FALSE)           
+sc_cases <- read.csv("../data/scotus_cases.csv", stringsAsFactors=FALSE) 
+fn <- "https://dasl.datadescription.com/download/data/3484"
+titanic <- read_tsv(fn)
 ```
 
 ### To prepare for this section
 
-Download the scotus_opinions.csv data set, or go to the original source, the Kaggle datasets repository.
+Download the scotus_cases.csv data set, or go to the original source, the Kaggle datasets repository.
 
 Import the data and create a bar chart showing the frequency of opinions written by year_filed. Note that there are a few typos and a few rows that do not belong. You can remove these, but they will not affect any of the analyses we are considering.
 
 ### This is what your bar chart should look like
 
 ```{r scotus-bar, message=FALSE}
-scotus <- read_csv(file="../data/scotus_opinions.csv")
-ggplot(scotus, aes(year_filed)) +
+sc_cases <- read.csv(file="../data/scotus_cases.csv")
+ggplot(sc_cases, aes(year_filed)) +
   geom_bar()
 ```
 
@@ -253,6 +282,23 @@ This graph shows sales trends over a twelve month span. If you want to assess wh
 
 ### A quick tutorial on colors
 
+### Bars
++ Fewer in numbers than points
++ Usually a summary statistic
+  + Count
+  + Percent
+  + Average
+  + Total
++ A bar chart is NOT a histogram
+  
+<div class="notes">
+
+Bar charts are different than point charts. There are usually only a few bars. These bars usually represent a summary statistic, like a count, percent, average, or total.
+
+There is a technical distinction between a bar chart and a histogram. Histograms are a great diagnostic tool, but usually ends up on the cutting room floor. So I won't be talking about it much, if at all, in this workshop.
+
+</div>
+
 ### Aesthetics for bars
 + Review
   + Location
@@ -260,7 +306,226 @@ This graph shows sales trends over a twelve month span. If you want to assess wh
   + Color
   + NOT shape!!!
   
+<div class="notes">
+
+Recall that aesthetics are visual attributes associated with a geometry/mark. You can map variables to the location, size, and/or color of bars, but you cannot assign a variable to the shape of a bar.
+
+</div>
+
+### Location (1 of 2)
+
+```{r location-horizontal}
+ggplot(titanic, aes(Class)) +
+  geom_bar()
+```
+
+### Location (2 of 2)
+
+```{r location-vertical}
+ggplot(titanic, aes(Class)) +
+  geom_bar() +
+  coord_flip()
+```
+
+### On your own
++ Draw a horizontal and vertical bar chart showing the number of people in each gender (use the Sex variable).
+
+
+### Thoughts on location
++ Axis labels often fit better on vertical location
++ Cannot vary both X and Y
+
+<div class="notes">
+
+The default for most visualization software is vertical bars, but you should give thoughtful consideration to horizontal bars. The labels often fit better when the bars are horizontal. You also often have more room left to right than you do up and down in a graph, so the bars can stretch out more, allowing you to more easily discern small and subtle differences.
+
+Remember the fault of default principle. Always try different ways of displaying your data. It costs nothing other than a few electrons to display a horizontal alternative to the typical vertical bar chart format, so why not indulge yourself?
+
+</div>
+
+### Size
+
++ Length varies, width doesn't
+  + Exception, mosaic plots
+  + Think about gaps between bars
+  
+### Don't make gaps equal to widths
+
+![Alternate white and black lines showing a Moire effect](../images/02/alternate-white-and-black.png)
+
+<div class="notes">
+
+If the space between the bars is equal to the width of the bars themselves, you get an unsettling vibratory effect. This is because your eye is constantly shifting perspective. Sometimes it perceives the black as the foreground and the white as the background. Sometimes it perceives the white as the foreground and the black as the background.
+
+</div>
+
+### Optical illusion
+
+![Optical illusion showing two bars becoming three](../images/02/optical-illusion-bars.png)
+
+<div class="width">
+
+If the widths are the same and the bars are empty, then you can get a differnt problem. You might get confused as to what is the bar and what is the gap, as in this optical illusion.
+
+As a general rule, the gap between bars should be about 10 to 20 percent of the width of the bars. Most visualization software has sensible defaults, but beware when you have a very large number of bars. There's always a bit of rounding when you place pixels on a screen or on a page. Your software is trying to fill the available plotting area, so it may have to squeeze or stretch one gap or another. This unevenness can become noticeable when the gaps are only a few pixels wide.
+
+((Show an example of this using the scotus data))
+
+<div>
+
+### Color
+
+```{r bar-color}
+ggplot(titanic, aes(x=Class, fill=Class)) +
+  geom_bar() +
+  scale_fill_manual(values=c("darkgrey", "darkgrey", "red", "darkgrey"))
+  
+```
+
+### On your own
++ Make the first class bar red to show Leonardo di Caprio's perspective on the Titanic.
+
+### Color
++ Use for emphasis in simple bar charts
++ Very important for stacked or side-by-side bar charts
+
+<div class="notes">
+
+For simple bar charts like all the ones we've seen so far, color is not really needed. You already can distinguish between the passenger classes using the location. If you do use color in a simple bar chart, it is often to emphasize a point. In the previous bar chart, I used red for third class, because Kate Winslet, a rich first class passenger, found true love in third class, with the adorable Leonardo di Caprio.
+
+Color becomes very important in just a minute when we add another layer of complexity.
+
+</div>
+
 ### Stack versus dodge
++ Summarize by two categories
++ Facet
+  + Separate plots
++ Dodge
+  + Side by side
++ Stack
+  + One on top, one on bottom
+
+<div class="notes">
+
+Bar charts that represent a summary across a single categorical variable are fairly simple and easy to handle. But when you want to summarize by two categories simultaneously, things get interesting. Interesting in a good way.
+
+</div>
+
+### Titanic passenger count by gender
+
+```{r count-by-gender}
+ggplot(titanic, aes(x=Sex)) +
+  geom_bar()
+```
+
+### Titanic passenger count by passenger class
+
+```{r count-by-passenger-class}
+ggplot(titanic, aes(x=Class)) +
+  geom_bar()
+```
+
+### Titanic facet
+
+```{r count-by-facet}
+titanic %>%
+  ggplot(aes(x=Class, fill=Sex)) +
+    geom_bar() + 
+    facet_grid(cols=vars(Sex))
+```
+
+### Titanic dodge
+
+```{r count-by-dodge}
+titanic %>%
+  ggplot(aes(x=Class, fill=Sex)) +
+    geom_bar(position="dodge")
+```
+
+### Titanic stack
+
+```{r count-by-stack}
+titanic %>%
+  ggplot(aes(x=Class, fill=Sex)) +
+    geom_bar(position="stack")
+```
+
+### On your own
++ Draw a bar chart showing counts involving both mortality and gender. Use a panel, then stacking, then dodging. Which do you like best?
+
+<div class="notes">
+
+Mortality on the Titanic reflects the fact that this was an era when people really did believe in the concept of "women and children first." Someone like me, I'd be shoving the little kids aside so I could get on one of the lifeboats.
+
+Anyway, examine how mortality is related to gender. It's a spoiler alert, but on the Titanic, Kate survives, but Leonardo, I am so sad to say this, didn't make it.
+
+</div>
+
+### Wait a bit before showing the code
++ Did you make the panel/stack/dodge Survived or did you make it Sex? Here's some code, but yours might be different.
+
+((Show Python code))
+
+R code
+```{}
+titanic %>%
+  ggplot(aes(x=Sex, fill=Survived)) +
+    geom_bar() +
+    facet_grid(cols=vars(Survived))
+```
+
+((Show Tableau))
+
+### Panel, one approach
+
+```{r mortality-by-panel}
+titanic %>%
+  ggplot(aes(x=Sex, fill=Survived)) +
+    geom_bar() +
+    facet_grid(cols=vars(Survived))
+```
+
+### Panel, alternate approach
+
+```{r mortality-by-panel-alt}
+titanic %>%
+  ggplot(aes(x=Survived, fill=Sex)) +
+    geom_bar(position="stack") +
+    facet_grid(cols=vars(Sex))
+```
+
+### Stack, one approach
+
+```{r mortality-by-stack}
+titanic %>%
+  ggplot(aes(x=Sex, fill=Survived)) +
+    geom_bar(position="stack")
+```
+
+### Stack, alternate approach
+
+```{r mortality-by-stack-alt}
+titanic %>%
+  ggplot(aes(x=Survived, fill=Sex)) +
+    geom_bar(position="stack")
+```
+
+### Dodge, one approach
+
+```{r mortality-by-dodge}
+titanic %>%
+  ggplot(aes(x=Sex, fill=Survived)) +
+    geom_bar(position="dodge")
+```
+
+### Dodge, alternate approach
+
+```{r mortality-by-dodge-alt}
+titanic %>%
+  ggplot(aes(x=Survived, fill=Sex)) +
+    geom_bar(position="dodge")
+```
 
 ### Summarizations
 + One number summary (mean or percentage)
@@ -269,6 +534,40 @@ This graph shows sales trends over a twelve month span. If you want to assess wh
 + All the data
   + Jittering
   + Opacity
+  
+<div class="notes">
+
+((note to myself: maybe this goes better in the talk about lines.))
+
+</div>
+  
+### Switching from count to percent
+
+((Show the code in Python, R, and Tableau. Explain why you might want counts versus percents.))
+
+### Example with means
+
+((Need to find the right data set to illustrate this. Maybe the Saratoga house prices?))
+
+### Example with totals
+
+((Same data. What means tell you versus totals.))
+
+### Boxplots example
+
+((Include an explanation of what a boxplot is))
+
+### Jittering example
+
+((Include an explanation on when it doesn't work.))
+
+### Opacity example
+
+((Note the computational expense.))
+
+### On your own
+
+((Find a totally different data set and get the students to draw four different visualizations. Have them divide into groups that like the same visualization software and have each person do a different visualization.))
 
 ### Summary
 + "A mapping of data to the visual aesthetics of geometries/marks" 
