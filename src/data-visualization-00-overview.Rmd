@@ -17,7 +17,7 @@ output: powerpoint_presentation
   + 01 - points
   + 02 - bars
   + 03 - lines
-  + 04 - exotica
+  + 04 - surfaces
   + 05 - maps
 + Order not fixed
   + 02 and 03 might be swapped
@@ -29,14 +29,9 @@ output: powerpoint_presentation
   + 01 - points (grammar of graphics)
   + 02 - bars (psychology of perception)
   + 03 - lines (gestalt of graphics)
-  + 04 - exotica (myth of the objective graph)
+  + 04 - surfaces (myth of the objective graph)
   + 05 - maps (projection systems)
 + I am open to alternative organizational structures
-```{r setup, echo=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
-library(ggplot2)
-library(magrittr)
-```
 
 ### Two short anecdotes
 

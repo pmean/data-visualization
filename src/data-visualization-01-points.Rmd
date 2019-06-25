@@ -418,6 +418,8 @@ ggplot(saratoga_houses, aes(x=Age, y=Price)) +
   + Summarize what aesthetics (location, size, shape, color) appear in the graph
   + What variables map to each aesthetic?
 
+((Provide visualization. Maybe use the visualization from the earlier exercise?))
+
 <div class="notes">
 
 I want you to review the visualizations that you discussed earlier. With you partner review the visualization again. Talk about the aesthetics and what variables map to each aesthetic.

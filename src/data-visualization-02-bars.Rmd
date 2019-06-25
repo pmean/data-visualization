@@ -22,6 +22,12 @@ suppressMessages(suppressWarnings(library(readr)))
 
 ![Kaggle datasets webpage](../images/02/kaggle-scotus-data.png)
 
+### To prepare for this section
+
+Download the scotus_cases.csv data set, or go to the original source, the Kaggle datasets repository.
+
+Import the data and create a bar chart showing the frequency of opinions written by year_filed. Note that there are a few typos and a few rows that do not belong. You can remove these, but they will not affect any of the analyses we are considering.
+
 ```{r clean, eval=FALSE}
 scotus_full <- read_csv("../data/opinions_since_1970.csv")
 scotus_full %>% select(-c(7, 8, 14)) %>% data.frame -> scotus
@@ -54,14 +60,20 @@ scotus %>%
 opinions <- read.csv("../data/scotus_opinions.csv", stringsAsFactors=FALSE)           
 sc_cases <- read.csv("../data/scotus_cases.csv", stringsAsFactors=FALSE) 
 fn <- "https://dasl.datadescription.com/download/data/3484"
-titanic <- read_tsv(fn)
+titanic <- read_tsv(fn, col_types=cols())
 ```
 
-### To prepare for this section
+### Python code to get started
 
-Download the scotus_cases.csv data set, or go to the original source, the Kaggle datasets repository.
+((Add later))
 
-Import the data and create a bar chart showing the frequency of opinions written by year_filed. Note that there are a few typos and a few rows that do not belong. You can remove these, but they will not affect any of the analyses we are considering.
+### R code to get started
+
+((Add later))
+
+### Tableau steps to get started
+
+((Add later))
 
 ### This is what your bar chart should look like
 
@@ -312,6 +324,10 @@ Recall that aesthetics are visual attributes associated with a geometry/mark. Yo
 
 </div>
 
+### Notes about this talk
++ Do not include this slide in the final presentation
++ If I do a flipped classroom, here would be a good place to split with most of the material before this slide being in lectures to be viewed before the class. Then the classrom lecture would start from about here (after a very quick review) and focus on the "On your own" exercises.
+
 ### Location (1 of 2)
 
 ```{r location-horizontal}
@@ -330,6 +346,17 @@ ggplot(titanic, aes(Class)) +
 ### On your own
 + Draw a horizontal and vertical bar chart showing the number of people in each gender (use the Sex variable).
 
+### Wait before showing
+
+((Python code))
+
+((R code))
+
+((Tableau steps))
+
+### What your visualization might look like
+
+((Show visualization))
 
 ### Thoughts on location
 + Axis labels often fit better on vertical location
@@ -356,6 +383,8 @@ Remember the fault of default principle. Always try different ways of displaying
 <div class="notes">
 
 If the space between the bars is equal to the width of the bars themselves, you get an unsettling vibratory effect. This is because your eye is constantly shifting perspective. Sometimes it perceives the black as the foreground and the white as the background. Sometimes it perceives the white as the foreground and the black as the background.
+
+"I'm ten years old, my life's half over. And I don't even know if I'm black with white stripes or white with black stripes." Marty the Zebra in the movie Madagascar.
 
 </div>
 
@@ -385,6 +414,18 @@ ggplot(titanic, aes(x=Class, fill=Class)) +
 ### On your own
 + Make the first class bar red to show Leonardo di Caprio's perspective on the Titanic.
 
+### Wait before showing
+
+((Python code))
+
+((R code))
+
+((Tableau steps))
+
+### What your visualization might look like
+
+((Show visualization))
+
 ### Color
 + Use for emphasis in simple bar charts
 + Very important for stacked or side-by-side bar charts
@@ -396,6 +437,21 @@ For simple bar charts like all the ones we've seen so far, color is not really n
 Color becomes very important in just a minute when we add another layer of complexity.
 
 </div>
+
+### On your own
++ Revise this visualization so the first class bar is red.
+
+### Wait before showing
+
+((Python code))
+
+((R code))
+
+((Tableau steps))
+
+### What your visualization might look like
+
+((Show visualization))
 
 ### Stack versus dodge
 + Summarize by two categories
@@ -527,6 +583,13 @@ titanic %>%
     geom_bar(position="dodge")
 ```
 
+### Group exercise
++ Review the following visualization in your group
+  + Summarize what aesthetics appear in the graph
+  + What variables map to each aesthetic?
+  
+((Provide visualization. Maybe use the visualization from the earlier exercise?))
+
 ### Summarizations
 + One number summary (mean or percentage)
 + Two number summary (error bars)
@@ -578,12 +641,7 @@ titanic %>%
   + Place comparators close
   + Use axis ticks, light grid lines
 
-### Group exercise
+### On your own
 
-+ Review the following visualization in your group.
-  + Summarize what aesthetics (location, size, shape, color) appear in the graph
-  + What variables map to each aesthetic?
-  + What is the story that this graph is telling you?
-  + Was there anything confusing?
-  + Was there anything you might change?
+((Find a totally different data set and get the students to draw four different visualizations. Have them divide into groups that like the same visualization software and have each person do a different visualization.))
 

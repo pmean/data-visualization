@@ -1,5 +1,5 @@
 ---
-title: "Data visualization -- exotica"
+title: "Data visualization -- surfaces"
 author: "Steve Simon"
 date: "6/23/2019"
 output: powerpoint_presentation
@@ -7,19 +7,25 @@ output: powerpoint_presentation
 
 ```{r setup, echo=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
-library(ggplot2)
-library(magrittr)
+suppressMessages(suppressWarnings(library(ggplot2)))
+suppressMessages(suppressWarnings(library(magrittr)))
 ```
 
 ### To prepare for this section
 
-((Find a data set))
+((Just like the other sections. Find a data set. Give instructions on how to import the data into Python, R, or Tableau. Ask them to produce a VERY simple visualization.))
+
+### Group exercise (1 of 2) and (2 of 2)
+
+((Just like the earlier group exercises, but find newspaper articles with images similar to the ones used in this talk.))
 
 ### The myth of the objective visualization
 
+((Draw on the work of Joel Best among others. Postivistic philosophy and post-positivism))
+
 ### No animations, interactivity, three dimensional effects, virtual reality
 
-![Three dimensional surface with two peaks in the far back](../images/hedging-prior-surface.png)
+![Three dimensional surface with two peaks in the far back](../images/04/hedging-prior-surface.png)
 
 <div class="notes">
 
@@ -33,7 +39,7 @@ It also means no animation. Animation is a third dimension of time. While I have
 
 ### Stuck in a two-dimensional world
 
-![Flatland book cover](../images/flatland-book-cover.png)
+![Flatland book cover](../images/04/flatland-book-cover.png)
 
 <div class="notes">
 
@@ -45,7 +51,7 @@ Everything is going to be two dimensions. No z-axis, only x and y axes. I also a
 
 ### Static two dimensional images - no distortions
 
-![Penrose stairs - an optical illusion](../images/penrose-stairs.png)
+![Penrose stairs - an optical illusion](../images/04/penrose-stairs.png)
 
 <div class="notes">
 
@@ -63,9 +69,9 @@ Here is a note I wrote to myseslf when I was drawing the three dimensional surfa
 
 </div>
 
-*** Static two dimesional images - no distractions
+### Static two dimesional images - no distractions
 
-![Illustration of the infamous blink tag](../images/blink_tag.gif)
+![Illustration of the infamous blink tag](../images/04/blink_tag.gif)
 
 <div class="notes">
 
@@ -93,7 +99,7 @@ It's also worth the effort to try to capture the information in the third dimens
 
 ### Contour plot
 
-![Illustration of a contour plot above a three dimensional surface](../images/contour-plot.png)
+![Illustration of a contour plot above a three dimensional surface](../images/04/contour-plot.png)
 
 <div class="notes">
 
@@ -105,15 +111,15 @@ Note to myself: This may not be the best image to use. I have some alternatives 
 
 ### Contour plot
 
-![Illustration of a contour plots surrounding a three dimensional surface](../images/contour-plot-alternate1.png)
+![Illustration of a contour plots surrounding a three dimensional surface](../images/04/contour-plot-alternate1.png)
 
 ### Contour plot
 
-![Illustration of a contour plot above a three dimensional surface](../images/contour-plot-alternate2.png)
+![Illustration of a contour plot above a three dimensional surface](../images/04/contour-plot-alternate2.png)
 
 ### Ternary plot
 
-![Ternary plot of proportions (developer, designer, journalist)](../images/ternary-diagram.png)
+![Ternary plot of proportions (developer, designer, journalist)](../images/04/ternary-diagram.png)
 
 <div class="notes">
 
@@ -135,12 +141,27 @@ Note to myself: I might try to find a website or two that has interactivity, jus
 
 </div>
 
+### Drawing contour plots
+
+((Like before. Find a simple data set, show them how to draw something basic and then ask them to modify things slightly.))
+
+### Helpful hints
+
+((Add suggestions, but also discourage over-use of these plots.))
+
 ### Group exercise
 
 + Review the following visualization in your group.
   + Summarize what aesthetics (location, size, shape, color) appear in the graph
   + What variables map to each aesthetic?
-  + What is the story that this graph is telling you?
-  + Was there anything confusing?
-  + Was there anything you might change?
+
+### Summary
++ Myth of objectivity
+  + Statistics are a social construct (Joel Best)
+  + Positivism versus post-postivism
++ Contour plots
+
+### On your own
+
+((Find a totally different data set and get the students to draw four different visualizations. Have them divide into groups that like the same visualization software and have each person do a different visualization.))
 
