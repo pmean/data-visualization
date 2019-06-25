@@ -452,7 +452,7 @@ I want you to review the visualizations that you discussed earlier. With you par
 
 ### On your own
 
-((Find a totally different data set and get the students to draw four different visualizations.))
+((Find a totally different data set and get the students to draw four different visualizations. Have them divide into groups that like the same visualization software and have each person do a different visualization.))
 
 ### Summary
 + "A mapping of data to the visual aesthetics of geometries/marks" 
