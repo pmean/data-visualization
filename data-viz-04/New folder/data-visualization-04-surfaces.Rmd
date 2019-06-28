@@ -1,0 +1,167 @@
+---
+title: "Data visualization -- surfaces"
+author: "Steve Simon"
+date: "6/23/2019"
+output: powerpoint_presentation
+---
+
+```{r setup, echo=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+suppressMessages(suppressWarnings(library(ggplot2)))
+suppressMessages(suppressWarnings(library(magrittr)))
+```
+
+### To prepare for this section
+
+((Just like the other sections. Find a data set. Give instructions on how to import the data into Python, R, or Tableau. Ask them to produce a VERY simple visualization.))
+
+### Group exercise (1 of 2) and (2 of 2)
+
+((Just like the earlier group exercises, but find newspaper articles with images similar to the ones used in this talk.))
+
+### The myth of the objective visualization
+
+((Draw on the work of Joel Best among others. Postivistic philosophy and post-positivism))
+
+### No animations, interactivity, three dimensional effects, virtual reality
+
+![Three dimensional surface with two peaks in the far back](../images/04/hedging-prior-surface.png)
+
+<div class="notes">
+
+There are times when you do need three dimensions or animation. Here's a plot I drew for a talk back in 2015. Notice a hump in one dimension that shrinks until it is replaced by two "bunny ears" in the back. Bunny ears is a cultural reference to a practice where you sneak up behind someone with two fingers upraised with the hope that those fingers will appear above the person's head when the photo is taken, giving the person bunny ears. Anyway, those bunny ears were important and I couldn't think of a good way to emphasize this other than a three dimensional surface. But normally, I shy away from the third dimension.
+
+I want this workshop to cover static two dimensional images. That means no z-axis for those of you with a mathematical bent, only an x-axis and a y-axis.
+
+It also means no animation. Animation is a third dimension of time. While I have used animation from time to time, I tend to shy away from it, for reasons I'll explain in a minute.
+
+</div>
+
+### Stuck in a two-dimensional world
+
+![Flatland book cover](../images/04/flatland-book-cover.png)
+
+<div class="notes">
+
+I read this book when I was ten years old, and I loved it. It's terribly mysoginistic, unfortunately, but back then I didn't know any better. All my work is going to be in Flatland.
+
+Everything is going to be two dimensions. No z-axis, only x and y axes. I also am not going to talk about animation. This is a different third dimension, a dimension of time.
+
+</div>
+
+### Static two dimensional images - no distortions
+
+![Penrose stairs - an optical illusion](../images/04/penrose-stairs.png)
+
+<div class="notes">
+
+Anytime you try to display a three dimensional object on a flat surface like a piece of paper or a projection screen, you get distortions. This image, the Penrose stairs, developed by Lionel and Roger Penrose in 1958, and an inspiration for much more imaginative drawings by M.C. Esher, shows how a clever person can use these distortions to create impossible objects that look deceptively real. If you are displaying three dimensional surfaces, you are constantly having to look at it from a variety of angles. What is hidden in one perspective becomes visible in a different perspective. What is easily subtle and easily overlooked in one perspective becomes a dominant feature in a different perspective.
+
+</div>
+
+### Static two dimensional images - fewer complications
+
+    + Three dimensional plots are tricky. According to the Wikipedia entry on azimuth, 'In mathematics, the azimuth angle of a point in cylindrical coordinates or spherical coordinates is the anticlockwise angle between the positive x-axis and the projection of the vector onto the xy-plane.' The value of theta is defined as the azimuthal angle according to the help file of persp3D. So, assuming a colatitude (phi) of 0, the default of value of 0 for theta means that you are staring straight down the X-axis, and the value of 90 means that you are staring straight down the Y-axis."
+  
+<div class="notes">
+
+Here is a note I wrote to myseslf when I was drawing the three dimensional surface with "bunny ears." I am look at this note three years later and shaking my head in amazement that I was even trying to understand this stuff back then.
+
+</div>
+
+### Static two dimesional images - no distractions
+
+![Illustration of the infamous blink tag](../images/04/blink_tag.gif)
+
+<div class="notes">
+
+I found this image on Wikipedia. It illustrates a cheap gimmick that was popular in the infancy of the World Wide Web. People back then would code their web pages directly and typed in the various html tages by hand. The one thing that everyone got really annoyed with really quickly was the blink tag. It would flash on and off repeatedly. Researchers who did usability tests on web pages back then found that end users who encountered a page with the blink tag would quicky hit the back button, if they could. If they needed something on the page desperately enough, they would cover the blinking text with one hand while trying to read the other parts of the web page.
+
+No one uses blink tags today, but sometimes animations can produce a distracting effect. Your eye is instantly drawn towards the animation. If you try to focus on a different location, the animation draws your eye back to it repeatedly. It is next to impossible to read any static text on a page with animation.
+
+</div>
+
+### Static two dimensional images - focus on what's important
+
++ Master two dimensions first
++ Find substitutes for the third dimension
+  + Panels
+  + Heat maps
+  + Contour plots
+
+<div class="notes">
+
+I like the idea of confining myself to two dimensions. You won't be able to master the complexities of a third dimension until you first understand how to display things well in two dimensions.
+
+It's also worth the effort to try to capture the information in the third dimension using alternatives that are easily produced in a static two-dimiensional world.
+
+</div>
+
+### Contour plot
+
+![Illustration of a contour plot above a three dimensional surface](../images/04/contour-plot.png)
+
+<div class="notes">
+
+Here's an example of how you might convert a three dimensional surface into a contour plot.
+
+Note to myself: This may not be the best image to use. I have some alternatives on different slides. Or I might draw an image from scratch.
+
+</div>
+
+### Contour plot
+
+![Illustration of a contour plots surrounding a three dimensional surface](../images/04/contour-plot-alternate1.png)
+
+### Contour plot
+
+![Illustration of a contour plot above a three dimensional surface](../images/04/contour-plot-alternate2.png)
+
+### Ternary plot
+
+![Ternary plot of proportions (developer, designer, journalist)](../images/04/ternary-diagram.png)
+
+<div class="notes">
+
++ Note to myself: It might be nice to place a simple example of a ternary plot here. It might also fit in better later on.
+
+</div>
+
+### Interactivity
+
++ Examples
+  + Sliders
+  + Hover
++ Excellent for exploratory graphics
++ Not within the scope of this talk
+
+<div class="notes">
+
+Note to myself: I might try to find a website or two that has interactivity, just to show what you can accomplish with sliders and hovering. But it is not something that I plan to cover in this course. Potentially, it could be a separate two hour module, but I suspect that a lot of this will be covered in the workshop on dashboards.
+
+</div>
+
+### Drawing contour plots
+
+((Like before. Find a simple data set, show them how to draw something basic and then ask them to modify things slightly.))
+
+### Helpful hints
+
+((Add suggestions, but also discourage over-use of these plots.))
+
+### Group exercise
+
++ Review the following visualization in your group.
+  + Summarize what aesthetics (location, size, shape, color) appear in the graph
+  + What variables map to each aesthetic?
+
+### Summary
++ Myth of objectivity
+  + Statistics are a social construct (Joel Best)
+  + Positivism versus post-postivism
++ Contour plots
+
+### On your own
+
+((Find a totally different data set and get the students to draw four different visualizations. Have them divide into groups that like the same visualization software and have each person do a different visualization.))
+
