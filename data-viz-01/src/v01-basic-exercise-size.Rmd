@@ -1,0 +1,54 @@
+---
+title: "v01 Basic exercise - size"
+author: "Steve Simon"
+output: powerpoint_presentation
+---
+
+```{r setup, echo=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+suppressMessages(suppressWarnings(library(ggplot2)))
+suppressMessages(suppressWarnings(library(magrittr)))
+```
+
+### Basic exercise - size
+
++ Draw a plot where the location is x=Age and y=Price and the size represents the living area.
+
+### Wait before showing
+
+Here's the Python code.
+
+```{}
+((To be added later))
+```
+
+Here's the R code.
+
+```{}
+ggplot(saratoga_houses, aes(x=Age, y=Price)) + 
+  geom_point(aes(size=Living.Area))
+```
+
+### Here are the steps in Tableau.
+
+![Visualizaion using Living.Area as the size](../images/tableau-size-living-area.png)
+
+### What your visualization might look like.
+
+```{r size-living-area}
+fn <- "r-size-living-area"
+png(filename=paste0("../images/", fn, ".png"))
+ggplot(saratoga_houses, aes(x=Age, y=Price)) + 
+  geom_point(aes(size=Living.Area))
+quiet <- dev.off()
+write(pd_text, file=paste0("../images/", fn, ".txt"))
+```
+
+![R graph using size to represent Living.Area](../images/r-size-living-area.png)
+
+<div class="notes">
+
+Here's the R graph. Making some of the points bigger only exacerbates the overprinting problem, so this is definitely not a graph I would recommend.
+
+</div>
+

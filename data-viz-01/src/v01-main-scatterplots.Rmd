@@ -1,7 +1,6 @@
 ---
-title: "Data visualization - 01 - points"
+title: "v01 - Main presentation - scatterplots"
 author: "Steve Simon"
-date: "6/21/2019"
 output: powerpoint_presentation
 ---
 
@@ -75,7 +74,7 @@ One more consideration. Some of you in this class are "ringers." You already kno
 ### To prepare for this section
 + Download and install Python, R, or Tableau
   + For R, also install the ggplot2 library
-  + For Python, load the altair package
+  + For Python, install the altair package
 + Go to the DASL website and review the "Housing Prices" data set
 + Import this data into Python, R, or Tableau
 + Draw a scatterplot with Age on the x-axis and Price on the y-axis.
@@ -143,156 +142,6 @@ Look for inconsistencies, such as some invalid lines at the bottom of the file o
 See if you can read the file into a different program like a spreadsheet and export it in a different format.
 
 </div>
-
-
-### Python code
-
-Here is the Python code that will download the data and create a simple scatterplot.
-
-```{}
-import matplotlib
-import matplotlib.pyplot as plt
-import numpy as np
-
-# Data for plotting
-t = np.arange(0.0, 2.0, 0.01)
-s = 1 + np.sin(2 * np.pi * t)
-
-fig, ax = plt.subplots()
-ax.plot(t, s)
-
-ax.set(xlabel='time (s)', ylabel='voltage (mV)',
-       title='About as simple as it gets, folks')
-ax.grid()
-
-fig.savefig("test.png")
-plt.show()
-```
-
-### Python code
-
-```{}
-import altair as alt
-from vega_datasets import data
-
-source = data.cars()
-
-alt.Chart(source).mark_circle(size=60).encode(
-    x='Horsepower',
-    y='Miles_per_Gallon',
-    color='Origin',
-    tooltip=['Name', 'Origin', 'Horsepower', 'Miles_per_Gallon']
-).interactive()
-```
-
-### R code
-
-Here is the R code that will download the data and create a simple scatterplot.
-
-```{}
-library(ggplot2)
-fn <- "https://dasl.datadescription.com/download/data/3275"
-saratoga_houses <- read.table(fn, header=TRUE, sep="\x09")
-ggplot(saratoga_houses, aes(x=Age, y=Price)) +
-  geom_point()
-```
-
-<div class="notes">
-
-Here's a brief bit of R code that should work.
-
-</div>
-
-### Importing into Tableau
-
-![Screenshot of Tableau software, main screen](../images/tableau-main-screen.png)
-
-<div class="notes">
-
-Before you start with Tableau, download the Saratoga Housing Prices file to your local computer.
-
-Tableau uses a graphical user interface, so there is no "program" to run. Here are the steps you need to take to get the data in and produce a simple scatterplot.
-
-This is what Tableau looks like when you open it up. It may appear slightly differently on your computer system.
-
-Select "Text file" from the left side menu bar or "File | Open" from the main menu.
-
-</div>
-
-### Importing into Tableau
-
-![Screenshot of Tableau software, file open dialog box](../images/tableau-file-open.png)
-
-<div class="notes">
-
-Find the proper location on your computer where you stored the downloaded file and open it.
-
-</div>
-
-### Importing into Tableau
-
-![Screenshot of Tableau software with data imported](../images/tableau-with-saratoga.png)
-
-<div class="notes">
-
-Your screen should look something like this if you imported the data correctly. Click on the sheet1 tab in the lower left corner to open up a blank visualization page.
-
-</div>
-
-### Importing into Tableau
-
-![Screenshot of Tableau software, blank visualization page](../images/tableau-empty-frame.png)
-
-<div class="notes">
-
-Tableau will try to classify your data as measures or dimensions and will also try to decide whether they are categorical (designated by blue tags) or continuous (designated by green tags). Don't worry too much about this now, other than to note that changing the designations that Tableau makes will change how you visualize things.
-
-Drag the variable Age into the Columns field and drag Price into the Rows field
-
-</div>
-
-### Importing into Tableau
-
-![Screenshot of Tableau software after initial drag and drop](../images/tableau-drag-and-drop.png)
-
-<div class="notes">
-
-Tableau makes some educated guesses about what you want. It thinks that you are interested in aggregating age and price and plots a single data point with the sum of all the ages of the houses on the X axis and the sum of all the prices on the Y axis.
-
-This is not what you want, but that's okay. Better a wrong guess that you can correct than no guess at all.
-
-</div>
-
-### Importing into Tableau
-
-![Screenshot of Tableau software changing from measure to dimension](../images/tableau-change-to-dimension.png)
-
-<div class="notes">
-
-Click on the green Sum(Age) and change it from Measure(Sum) to Dimension. Don't freak out when the graph goes all bonkers on you. Click on the green Sum(Price) and do the same thing. Then you'll get a nice basic scatterplot.
-
-</div>
-
-### Importing into Tableau
-
-![Screenshot of Tableau software changing from measure to dimension](../images/tableau-basic-scatterplot.png)
-
-<div class="notes">
-
-Did you get something that looks roughly like this? Pat yourself on the back for a job well done.
-
-</div>
-
-
-### What your scatterplot should look like (R version)
-
-```{r simple-scatterplot}
-fn <- "https://dasl.datadescription.com/download/data/3275"
-saratoga_houses <- read.table(fn, header=TRUE, sep="\x09")
-saratoga_houses$i <- 1:1057
-ggplot(saratoga_houses, aes(x=Age, y=Price)) +
-  geom_point()
-```
 
 ### Group exercise (1 of 2)
 
@@ -426,8 +275,7 @@ Not every geometry/mark will have every possible aesthetic. Some of these aesthe
 ```{r point-aesthetics-x}
 fn <- "point-aesthetics-x"
 png(filename=paste0("../images/", fn, ".png"))
-x <- c(212, 103) # earlier, I used 860, 928
-# x <- 1:1057
+x <- c(212, 103)
 x_range <- range(saratoga_houses$Age)
 y_range <- range(saratoga_houses$Price)
 g <- ggplot(saratoga_houses[x, ], aes(x=Age, y=Price)) + 
@@ -469,53 +317,9 @@ The point in the upper left corner is an expensive house, over a half million do
 
 </div>
 
-### On your own
+### Basic exercise - location
 
 + Revise the plot so that the location of the points represents x=Bedrooms and Y=Price.
-
-### Wait before showing
-
-Here's the Python code.
-
-```{}
-((To be added later))
-```
-
-### Here's the R code
-
-```{}
-ggplot(saratoga_houses, aes(x=Bedrooms, y=Price)) + 
-  geom_point())
-```
-
-### Here's the R graph
-
-```{r bedrooms-and-price}
-fn <- "r-bedrooms-and-price"
-png(filename=paste0("../images/", fn, ".png"))
-ggplot(saratoga_houses, aes(x=Bedrooms, y=Price)) + 
-  geom_point()
-quiet <- dev.off()
-write(pd_text, file=paste0("../images/", fn, ".txt"))
-```
-
-![Illustration of location aesthetics](../images/r-bedrooms-and-price.png)
-
-<div class="notes">
-
-Here is what the plot looks like in R.
-
-</div>
-
-### Here are the steps in Tableau.
-
-![Tableau scatterplot of Bedrooms and Price](../images/tableau-bedrooms-vs-price.png)
-
-<div class="notes">
-
-In Tableau, click on Age in the Columns field and choose the remove option. The graph looks a bit weird with no columns, but ignore it. Drag Bedrooms over to the Columns field. Tableau wants to use a sum, but you want individual data points. So click on SUM(Bedrooms) and change it to a Dimension.
-
-</div>
 
 ### Aesthetics for points - shape
 
@@ -540,53 +344,9 @@ I also want to point out that this may not be the best way to visualize the rela
 
 </div>
 
-### On your own
+### Basic exercise - shape
 
 + Draw a plot of all of the data where the location is x=Age and y=Price and the symbol represents the number of bedrooms.
-
-### Wait before showing
-
-Here's the Python code.
-
-```{}
-((To be added later))
-```
-
-Here's the R code.
-
-```{}
-ggplot(saratoga_houses, aes(x=Age, y=Price)) + 
-  geom_point(aes(shape=factor(Bedrooms)))
-```
-
-### Here's the R graph
-
-```{r shape-bedrooms}
-fn <- "r-shape-bedrooms"
-png(filename=paste0("../images/", fn, ".png"))
-ggplot(saratoga_houses, aes(x=Age, y=Price)) + 
-  geom_point(aes(shape=factor(Bedrooms)))
-quiet <- dev.off()
-write(pd_text, file=paste0("../images/", fn, ".txt"))
-```
-
-![R scatterplot using shapes to represent Bedrooms](../images/r-shape-bedrooms.png)
-
-<div class="notes">
-
-Here is what the R graph looks like. I don't particularly like this graph. It is confusing, especially with all the overprinting.
-
-</div>
-
-### Here are the steps in Tableau.
-
-![Tableau scatterplot using shapes to represent Bedrooms](../images/tableau-shape-bedrooms.png)
-
-<div class="notes">
-
-Here are the steps in Tableau. First revert to the earlier scatterplot where Age is in the Column fields and Price is in the Rows field. Then drag and drop Bedrooms on top of the Shape icon. Change from SUM(Bedrooms) to ATTR(Bedrooms). 
-
-</div>
 
 ### Aesthetics for points - size
 
@@ -607,47 +367,9 @@ You can also use the size of a point to represent a third dimension. Here is a p
 
 </div>
 
-### On your own
+### Basic exercise - size
 
 + Draw a plot where the location is x=Age and y=Price and the size represents the living area.
-
-### Wait before showing
-
-Here's the Python code.
-
-```{}
-((To be added later))
-```
-
-Here's the R code.
-
-```{}
-ggplot(saratoga_houses, aes(x=Age, y=Price)) + 
-  geom_point(aes(size=Living.Area))
-```
-
-### Here are the steps in Tableau.
-
-![Visualizaion using Living.Area as the size](../images/tableau-size-living-area.png)
-
-### What your visualization might look like.
-
-```{r size-living-area}
-fn <- "r-size-living-area"
-png(filename=paste0("../images/", fn, ".png"))
-ggplot(saratoga_houses, aes(x=Age, y=Price)) + 
-  geom_point(aes(size=Living.Area))
-quiet <- dev.off()
-write(pd_text, file=paste0("../images/", fn, ".txt"))
-```
-
-![R graph using size to represent Living.Area](../images/r-size-living-area.png)
-
-<div class="notes">
-
-Here's the R graph. Making some of the points bigger only exacerbates the overprinting problem, so this is definitely not a graph I would recommend.
-
-</div>
 
 ### Aesthetics for points - color (1 of 2)
 
@@ -687,35 +409,9 @@ Notice how the legend has changed.
 
 </div>
 
-### On your own
+### Basic exercise - color
 
 + Draw a plot where the location is x=Age and y=Price and the color represents the number of bathrooms.
-
-### Wait before showing
-
-Here's the Python code.
-
-```{}
-((To be added later))
-```
-
-Here's the R code.
-
-```{}
-ggplot(saratoga_houses, aes(x=Age, y=Price)) + 
-  geom_point(aes(color=factor(Bathrooms)))
-```
-
-Here are the steps in Tableau.
-
-((To be added later))
-
-### What your visualization might look like.
-
-```{r bathroom-colors}
-ggplot(saratoga_houses, aes(x=Age, y=Price)) + 
-  geom_point(aes(color=factor(Bathrooms)))
-```
 
 ### Group exercise
 

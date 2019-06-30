@@ -1,0 +1,60 @@
+---
+title: "v01 Basic exercise - shape"
+author: "Steve Simon"
+output: powerpoint_presentation
+---
+
+```{r setup, echo=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+suppressMessages(suppressWarnings(library(ggplot2)))
+suppressMessages(suppressWarnings(library(magrittr)))
+```
+
+
+### Basic exercise - shape
+
++ Draw a plot of all of the data where the location is x=Age and y=Price and the symbol represents the number of bedrooms.
+
+### Wait before showing
+
+Here's the Python code.
+
+```{}
+((To be added later))
+```
+
+Here's the R code.
+
+```{}
+ggplot(saratoga_houses, aes(x=Age, y=Price)) + 
+  geom_point(aes(shape=factor(Bedrooms)))
+```
+
+### Here's the R graph
+
+```{r shape-bedrooms}
+fn <- "r-shape-bedrooms"
+png(filename=paste0("../images/", fn, ".png"))
+ggplot(saratoga_houses, aes(x=Age, y=Price)) + 
+  geom_point(aes(shape=factor(Bedrooms)))
+quiet <- dev.off()
+write(pd_text, file=paste0("../images/", fn, ".txt"))
+```
+
+![R scatterplot using shapes to represent Bedrooms](../images/r-shape-bedrooms.png)
+
+<div class="notes">
+
+Here is what the R graph looks like. I don't particularly like this graph. It is confusing, especially with all the overprinting.
+
+</div>
+
+### Here are the steps in Tableau.
+
+![Tableau scatterplot using shapes to represent Bedrooms](../images/tableau-shape-bedrooms.png)
+
+<div class="notes">
+
+Here are the steps in Tableau. First revert to the earlier scatterplot where Age is in the Column fields and Price is in the Rows field. Then drag and drop Bedrooms on top of the Shape icon. Change from SUM(Bedrooms) to ATTR(Bedrooms). 
+
+</div>

@@ -1,0 +1,42 @@
+---
+title: "v01 - Main presentation - scatterplots"
+author: "Steve Simon"
+output: powerpoint_presentation
+---
+
+```{r setup, echo=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+suppressMessages(suppressWarnings(library(ggplot2)))
+suppressMessages(suppressWarnings(library(magrittr)))
+```
+
+### Basic exercise - color
+
++ Draw a plot where the location is x=Age and y=Price and the color represents the number of bathrooms.
+
+### Wait before showing
+
+Here's the Python code.
+
+```{}
+((To be added later))
+```
+
+Here's the R code.
+
+```{}
+ggplot(saratoga_houses, aes(x=Age, y=Price)) + 
+  geom_point(aes(color=factor(Bathrooms)))
+```
+
+Here are the steps in Tableau.
+
+((To be added later))
+
+### What your visualization might look like.
+
+```{r bathroom-colors}
+ggplot(saratoga_houses, aes(x=Age, y=Price)) + 
+  geom_point(aes(color=factor(Bathrooms)))
+```
+
