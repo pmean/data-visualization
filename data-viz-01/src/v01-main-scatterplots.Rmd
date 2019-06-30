@@ -270,10 +270,65 @@ Not every geometry/mark will have every possible aesthetic. Some of these aesthe
 
 </div>
 
+### Mapping to aesthetics in R
+
++ aes function
+  + x=
+  + y=
+  + size=
+  + shape=
+  + color=
++ Example
+  + ggplot(*data*, aes(x=Age, y=Price)) +
+  + geom_point(aes(size=Acres, shape=Bedrooms, color=Bathrooms))
+
+<div class=notes>
+
+In R, the mapping is done with the aes (short for aesthetics) function. The location is represented by x= and y= arguments. Size, shape, and color are mapped using the size=, shape=, and color= arguments.
+
+Here's an example. The age and price of the home are mapped to the x and y locations. The acreage of the land maps to the size. The number of bedrooms maps to the shape, and the number of bathrooms maps to the color. 
+
+</div>
+
+### Mapping to aesthetics in Python
+
++ encode function
+  + x=
+  + y=
+  + shape=
+  + size=
+  + color=
++ Example
+  + alt.Chart(cars).mark_point().encode(
+    x='Age', y='Price', size=Acres,
+    shape='Bedrooms', color='Bathrooms')
+    
+<div class="notes">
+
+In Python, the mapping is done with the encode function. The location is represented by x= and y= arguments. Size, shape, and color are mapped using the size=, shape=, and color= arguments.
+
+Here's an example. The age and price of the home are mapped to the x and y locations. The acreage of the land maps to the size. The number of bedrooms maps to the shape, and the number of bathrooms maps to the color.
+
+</div>
+
+### Mapping to aesthetics in Tableau
+
+![Tableau screenshot showing aesthetics mapping](../images/tableau-mapping.png)
+
+<div class="notes">
+
+Tableau accomplishes mapping through a drag and drop interface. Drag a variable to the Columns field and a second variable to the Rows field to specify the x and y locations. Drag a variable on top of the size, shape, and color icons to map those variables appropriately.
+
+This screenshot shows an example where Age is mapped to the x location, Price is mapped to the y location, Acres is mapped to size, Bedrooms is mapped to shape, and Baths is mapped to color.
+
+</div>
+
 ### Aesthetics for points - location (1 of 2)
 
 ```{r point-aesthetics-x}
 fn <- "point-aesthetics-x"
+f <- "https://dasl.datadescription.com/download/data/3275"
+saratoga_houses <- read.table(f, header=TRUE, sep="\x09")
 png(filename=paste0("../images/", fn, ".png"))
 x <- c(212, 103)
 x_range <- range(saratoga_houses$Age)
@@ -419,7 +474,7 @@ Notice how the legend has changed.
   + Summarize what aesthetics (location, size, shape, color) appear in the graph
   + What variables map to each aesthetic?
 
-((Provide visualization. Maybe use the visualization from the earlier exercise?))
++ ((Use the visualizations from the earlier group exercise.))
 
 <div class="notes">
 
@@ -453,9 +508,22 @@ I want you to review the visualizations that you discussed earlier. With you par
 
 ((Explain why))
 
-### On your own
+### Advanced exercise
 
-((Find a totally different data set and get the students to draw four different visualizations. Have them divide into groups that like the same visualization software and have each person do a different visualization.))
++ There is a second data set on sleep in 
+mammals. You can find a brief description of
+this data set at
+  + http://www.statsci.org/data/general/sleep.html
++ You can download the actual data at
+  + http://www.statsci.org/data/general/sleep.txt
+
+### Advanced exercise
+
++ Draw a visualization that illustrates the interrelationships among
+  + bodywt, lifespan, gestation
+  + bodywt, brainwt, and totalsleep
+  + predation, exposure, and totalsleep
+  + bodywt, predation, and lifespan
 
 ### Summary
 + "A mapping of data to the visual aesthetics of geometries/marks" 
