@@ -12,43 +12,46 @@ suppressMessages(suppressWarnings(library(magrittr)))
 
 ### Basic exercise - size
 
++ Use the Saratoga housing data set.
 + Draw a plot where the location is x=Age and y=Price and the size represents the living area.
 
-### Wait before showing
-
-Here's the Python code.
+### Here's the Python code.
 
 ```{}
-((To be added later))
+ch6 = alt.Chart(df).mark_point().encode(
+      x='Age',y='Price', size='Size')
 ```
 
-Here's the R code.
+
+### Here's the result in Python.
+
+![Python scatterplot mapping living area to size](../images/altair-basic-exercise-size.png)
+
+### Here's the R code.
 
 ```{}
 ggplot(saratoga_houses, aes(x=Age, y=Price)) + 
   geom_point(aes(size=Living.Area))
 ```
 
-### Here are the steps in Tableau.
-
-![Visualizaion using Living.Area as the size](../images/tableau-size-living-area.png)
-
-### What your visualization might look like.
+### Here's the result in R.
 
 ```{r size-living-area}
+f <- "https://dasl.datadescription.com/download/data/3275"
+saratoga_houses <- read.table(f, header=TRUE, sep="\x09")
+saratoga_houses$i <- 1:1057
 fn <- "r-size-living-area"
 png(filename=paste0("../images/", fn, ".png"))
 ggplot(saratoga_houses, aes(x=Age, y=Price)) + 
   geom_point(aes(size=Living.Area))
 quiet <- dev.off()
+pd_text <- "This image was produced by Steve Simon and is placed in the public domain. You are welcome to use this image any way you see fit. An acknowledgement would be appreciated, but is not required."
 write(pd_text, file=paste0("../images/", fn, ".txt"))
 ```
 
 ![R graph using size to represent Living.Area](../images/r-size-living-area.png)
 
-<div class="notes">
+### Here's the result in Tableau.
 
-Here's the R graph. Making some of the points bigger only exacerbates the overprinting problem, so this is definitely not a graph I would recommend.
-
-</div>
+![Visualizaion using Living.Area as the size](../images/tableau-size-living-area.png)
 

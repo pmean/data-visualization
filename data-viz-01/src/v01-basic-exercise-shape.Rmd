@@ -13,15 +13,19 @@ suppressMessages(suppressWarnings(library(magrittr)))
 
 ### Basic exercise - shape
 
++ Use the Saratoga housing data set.
 + Draw a plot of all of the data where the location is x=Age and y=Price and the symbol represents the number of bedrooms.
 
-### Wait before showing
-
-Here's the Python code.
+### Here's the Python code.
 
 ```{}
-((To be added later))
+ch5 = alt.Chart(df).mark_point().encode(
+      x='Age',y='Price', shape='Bedrooms:N')
 ```
+
+### Here's the results in Python.
+
+![Python scatterplot mapping bedrooms to shape](../images/altair-basic-exercise-shape.png)
 
 Here's the R code.
 
@@ -30,18 +34,22 @@ ggplot(saratoga_houses, aes(x=Age, y=Price)) +
   geom_point(aes(shape=factor(Bedrooms)))
 ```
 
-### Here's the R graph
+### Here's the results in R
 
 ```{r shape-bedrooms}
+f <- "https://dasl.datadescription.com/download/data/3275"
+saratoga_houses <- read.table(f, header=TRUE, sep="\x09")
+saratoga_houses$i <- 1:1057
 fn <- "r-shape-bedrooms"
 png(filename=paste0("../images/", fn, ".png"))
 ggplot(saratoga_houses, aes(x=Age, y=Price)) + 
   geom_point(aes(shape=factor(Bedrooms)))
 quiet <- dev.off()
+pd_text <- "This image was produced by Steve Simon and is placed in the public domain. You are welcome to use this image any way you see fit. An acknowledgement would be appreciated, but is not required."
 write(pd_text, file=paste0("../images/", fn, ".txt"))
 ```
 
-![R scatterplot using shapes to represent Bedrooms](../images/r-shape-bedrooms.png)
+![R scatterplot mapping bedrooms to shape](../images/r-shape-bedrooms.png)
 
 <div class="notes">
 
@@ -49,7 +57,7 @@ Here is what the R graph looks like. I don't particularly like this graph. It is
 
 </div>
 
-### Here are the steps in Tableau.
+### Here 's the result in Tableau.
 
 ![Tableau scatterplot using shapes to represent Bedrooms](../images/tableau-shape-bedrooms.png)
 

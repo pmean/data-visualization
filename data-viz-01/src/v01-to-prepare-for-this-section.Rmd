@@ -1,5 +1,5 @@
 ---
-title: "Viz-01-01, To prepare for this section"
+title: "V01, To prepare for this section"
 author: "Steve Simon"
 output: powerpoint_presentation
 ---
@@ -111,12 +111,20 @@ Here's a brief bit of R code that should work.
 ### What your scatterplot should look like (R version)
 
 ```{r simple-scatterplot}
-fn <- "https://dasl.datadescription.com/download/data/3275"
-saratoga_houses <- read.table(fn, header=TRUE, sep="\x09")
+fn <- "r-simple-scatterplot"
+f <- "https://dasl.datadescription.com/download/data/3275"
+saratoga_houses <- read.table(f, header=TRUE, sep="\x09")
 saratoga_houses$i <- 1:1057
+png(filename=paste0("../images/", fn, ".png"))
 ggplot(saratoga_houses, aes(x=Age, y=Price)) +
   geom_point()
+quiet <- dev.off()
+pd_text <- "This image was produced by Steve Simon and is placed in the public domain. You are welcome to use this image any way you see fit. An acknowledgement would be appreciated, but is not required."
+write(pd_text, file=paste0("../images/", fn, ".txt"))
 ```
+
+![Basic scatterplot](../images/r-simple-scatterplot.png)
+
 
 ### Importing into Tableau
 

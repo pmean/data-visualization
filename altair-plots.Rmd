@@ -1,0 +1,53 @@
+---
+title: "Untitled"
+author: "Steve Simon"
+date: "6/29/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(reticulate)
+```
+
+```{python read}
+import pandas as pd
+import altair as alt
+fn = "data-viz-01/data/saratoga-house-prices.csv"
+df = pd.read_csv(fn)
+```
+
+```{python basic-scatterplot}
+ch0 = alt.Chart(df).mark_point().encode(
+      x='Age',y='Price')
+ch0.save("data-viz-01/images/altair-basic-scatterplot.html")
+```
+
+```{python location}
+ch4 = alt.Chart(df).mark_point().encode(
+      x='Bedrooms',y='Price')
+ch4.save("data-viz-01/images/altair-basic-exercise-location.html")
+```
+
+```{python global-modify}
+ch1 = alt.Chart(df).mark_point(shape="square", color="green").encode(
+      x='Age',y='Price')
+ch1.save("data-viz-01/images/altair-global-modify.html")
+```
+
+```{python color-baths}
+ch2 = alt.Chart(df).mark_point().encode(
+  x="Age", y="Price", color="Baths")
+ch2.save("data-viz-01/images/altair-color-baths.html")
+```
+
+```{python shape}
+ch5 = alt.Chart(df).mark_point().encode(
+      x='Age',y='Price', shape='Bedrooms:N')
+ch5.save("data-viz-01/images/altair-basic-exercise-shape.html")
+```
+
+```{python size}
+ch6 = alt.Chart(df).mark_point().encode(
+      x='Age',y='Price', size='Size')
+ch6.save("data-viz-01/images/altair-basic-exercise-size.html")
+```

@@ -1,5 +1,5 @@
 ---
-title: "v01 - Main presentation - scatterplots"
+title: "v01 Basic exercise, color"
 author: "Steve Simon"
 output: powerpoint_presentation
 ---
@@ -12,31 +12,45 @@ suppressMessages(suppressWarnings(library(magrittr)))
 
 ### Basic exercise - color
 
++ Use the Saratoga housing data set.
 + Draw a plot where the location is x=Age and y=Price and the color represents the number of bathrooms.
 
-### Wait before showing
-
-Here's the Python code.
+### Here's the Python code.
 
 ```{}
-((To be added later))
+ch2 = alt.Chart(df).mark_point().encode(
+  x="Age", y="Price", color="Baths")
 ```
 
-Here's the R code.
+### Here's the result in Python
+
+![Python scatterplot mapping bathrooms to color](../images/python-basic-exercise-color.png)
+
+### Here's the R code.
 
 ```{}
 ggplot(saratoga_houses, aes(x=Age, y=Price)) + 
   geom_point(aes(color=factor(Bathrooms)))
 ```
 
-Here are the steps in Tableau.
-
-((To be added later))
-
-### What your visualization might look like.
+### Here's the result in R
 
 ```{r bathroom-colors}
+fn <- "r-bathroom-colors"
+f <- "https://dasl.datadescription.com/download/data/3275"
+saratoga_houses <- read.table(f, header=TRUE, sep="\x09")
+saratoga_houses$i <- 1:1057
+png(filename=paste0("../images/", fn, ".png"))
 ggplot(saratoga_houses, aes(x=Age, y=Price)) + 
   geom_point(aes(color=factor(Bathrooms)))
+quiet <- dev.off()
+pd_text <- "This image was produced by Steve Simon and is placed in the public domain. You are welcome to use this image any way you see fit. An acknowledgement would be appreciated, but is not required."
+write(pd_text, file=paste0("../images/", fn, ".txt"))
 ```
+
+![R scatterplot mapping bathrooms to color](../images/r-bathroom-colors.png)
+
+### Here's the result in Tableau.
+
+![Tableau scatterplot mapping Bathrooms to color](../images/tableau-basic-exercise-color.png)
 

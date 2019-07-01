@@ -12,15 +12,21 @@ suppressMessages(suppressWarnings(library(magrittr)))
 
 ### Basic exercise - location
 
++ Use the Saratoga housing data set.
 + Revise the plot so that the location of the points represents x=Bedrooms and Y=Price.
 
-### Wait before showing
+### Here's the Python code
 
 Here's the Python code.
 
 ```{}
-((To be added later))
+ch4 = alt.Chart(df).mark_point().encode(
+      x='Bedrooms',y='Price')
 ```
+
+### Here's the result in Python
+
+![Python scatterplot of bedrooms and price](../images/altair-basic-exercise-location.png)
 
 ### Here's the R code
 
@@ -29,24 +35,22 @@ ggplot(saratoga_houses, aes(x=Bedrooms, y=Price)) +
   geom_point())
 ```
 
-### Here's the R graph
+### Here's the result in R
 
 ```{r bedrooms-and-price}
+f <- "https://dasl.datadescription.com/download/data/3275"
+saratoga_houses <- read.table(f, header=TRUE, sep="\x09")
+saratoga_houses$i <- 1:1057
 fn <- "r-bedrooms-and-price"
 png(filename=paste0("../images/", fn, ".png"))
 ggplot(saratoga_houses, aes(x=Bedrooms, y=Price)) + 
   geom_point()
 quiet <- dev.off()
+pd_text <- "This image was produced by Steve Simon and is placed in the public domain. You are welcome to use this image any way you see fit. An acknowledgement would be appreciated, but is not required."
 write(pd_text, file=paste0("../images/", fn, ".txt"))
 ```
 
 ![Illustration of location aesthetics](../images/r-bedrooms-and-price.png)
-
-<div class="notes">
-
-Here is what the plot looks like in R.
-
-</div>
 
 ### Here are the steps in Tableau.
 

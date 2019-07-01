@@ -188,7 +188,17 @@ Most of the current designers of data visualization software have based their wo
 
 <div class="notes">
 
+I'm going to do one of those bad things that a presenter should never do. I'm going to show you a series of three slides that is intended to create a sense of confusion. I'm doing this because I want you to appreciate how bad things were before Leland Wilkinson came along.
+
+There's a saying that a camel is a horse designed by a committee. Well, this slide and the next two slides represent some very ugly looking camels.
+
 Here's the help function from the program R for the barplot function. This function and the following were developed before Wilkinson's work and show the problem without using his framework.
+
+I don't want you to study this help file closely. I just want to emphasize two points.
+
+First, there are a dizzying number of options, 30 for the barplot. Maybe this is unavoidable. But what follows when you look at the next help function is the real problem.
+
+When you switch from one function to another, from one visualization method to another, the options change. This is bad because it makes it harder for you to learn new graphical display methods. Even after you learn them, you will have a difficult time remembering which options and which defaults go with which graphical displays.
 
 </div>
 
@@ -198,7 +208,9 @@ Here's the help function from the program R for the barplot function. This funct
 
 <div class="notes">
 
-Here's the help function from the program R for the hist function.
+Here's the help function from the program R for the hist function. The default option for the borders of the bars of a barplot differ from the option for the borders of the bars of a histogram. This makes no sense. A histogram is different than a bar chart, but not that much different.
+
+The way that you determine the limits for the x-axis and the y-axis differ. Again, how is a histogram so much different from a barplot that you need different methods for deciding something like this.
 
 </div>
 
@@ -208,7 +220,9 @@ Here's the help function from the program R for the hist function.
 
 <div class="notes">
 
-Here's the help function from the program R for the boxplot function. Notice how each function has a different set of arguments, listed in a different order and with different default options. This is only the beginning of the parade of confusion. There is a pie function for pie charts, a contour function for contour plots, a persp3d function for three dimensional surfaces, a stem function for stem and leaf diagrams, and many others.  
+If that isn't confusing enough, look at the help file for the boxplot.
+
+It's pure chaos. Each function has a different set of arguments, listed in a different order and with different default options. This continues when you look at help for the pie function for pie charts, the contour function for contour plots, the persp3d function for three dimensional surfaces, the stem function for stem and leaf diagrams, and many others.  
 
 Adopting the framework developed in The Grammar of Graphics provides you with one stop shopping. It is a bit daunting at first, because it includes everything and the kitchen sink. But once you get comfortable with it, you will find that each new visualization that you try uses the same syntax, more or less. 
 
@@ -220,7 +234,7 @@ Adopting the framework developed in The Grammar of Graphics provides you with on
 
 <div class="notes">
 
-In this section, I am going to borrow heavily from a short course presented at the 2019 Symposium on Statistics and Data Science. The presenters are nice enough to share their materials on their github site. You can find it easily with a google search of bergen iversion sdss2019 data visualization.
+In this section, I am going to borrow heavily from a short course presented at the 2019 Symposium on Statistics and Data Science. The presenters are nice enough to share their materials on their github site. You can find it easily with a google search of bergen iverson sdss2019 data visualization.
 
 </div>
 
@@ -270,28 +284,43 @@ Not every geometry/mark will have every possible aesthetic. Some of these aesthe
 
 </div>
 
-### Mapping to aesthetics in R
+### Geometries/marks in Python
++ mark_point
++ mark_line
++ mark_bar
++ mark_text
 
-+ aes function
-  + x=
-  + y=
-  + size=
-  + shape=
-  + color=
-+ Example
-  + ggplot(*data*, aes(x=Age, y=Price)) +
-  + geom_point(aes(size=Acres, shape=Bedrooms, color=Bathrooms))
+<div class="notes">
 
-<div class=notes>
+You specify the type of geometry/mark in Python using a range of mark functions.
 
-In R, the mapping is done with the aes (short for aesthetics) function. The location is represented by x= and y= arguments. Size, shape, and color are mapped using the size=, shape=, and color= arguments.
+</div>
 
-Here's an example. The age and price of the home are mapped to the x and y locations. The acreage of the land maps to the size. The number of bedrooms maps to the shape, and the number of bathrooms maps to the color. 
+### Geometries/marks in R
++ geom_point
++ geom_line
++ geom_bar, geom_col
++ geom_text, geom_lab
+
+<div class="notes">
+
+You specify the type of geometry/marks in R using a range of geom functions.
+
+</div>
+
+### Geometries/marks in Tableau
++ Context specific
++ Variable classifications
+  + Dimension, attribute, measure
+  + Blue (categorical) versus green (continuous)
+  
+<div class="notes">
+
+Tableau does not have a formal declartion of the type of geometry/mark. Instead, it chooses the geometry/mark using an educated guess from what the variables look like. It will use bars, for example, if one of the location variables is categorical and lines if one of the location variables is continuous. 
 
 </div>
 
 ### Mapping to aesthetics in Python
-
 + encode function
   + x=
   + y=
@@ -311,6 +340,25 @@ Here's an example. The age and price of the home are mapped to the x and y locat
 
 </div>
 
+### Mapping to aesthetics in R
++ aes function
+  + x=
+  + y=
+  + size=
+  + shape=
+  + color=
++ Example
+  + ggplot(*data*, aes(x=Age, y=Price)) +
+  + geom_point(aes(size=Acres, shape=Bedrooms, color=Bathrooms))
+
+<div class=notes>
+
+In R, the mapping is done with the aes (short for aesthetics) function. The location is represented by x= and y= arguments. Size, shape, and color are mapped using the size=, shape=, and color= arguments.
+
+Here's an example. The age and price of the home are mapped to the x and y locations. The acreage of the land maps to the size. The number of bedrooms maps to the shape, and the number of bathrooms maps to the color. 
+
+</div>
+
 ### Mapping to aesthetics in Tableau
 
 ![Tableau screenshot showing aesthetics mapping](../images/tableau-mapping.png)
@@ -322,6 +370,60 @@ Tableau accomplishes mapping through a drag and drop interface. Drag a variable 
 This screenshot shows an example where Age is mapped to the x location, Price is mapped to the y location, Acres is mapped to size, Bedrooms is mapped to shape, and Baths is mapped to color.
 
 </div>
+
+### Review basic scatterplot
+
++ Python code
+
+```{}
+ch = alt.Chart(df).mark_point().encode(
+    x='Age', y='Price'
+)
+```
+
++ R code
+
+```{}
+ggplot(saratoga_houses, aes(x=Age, y=Price)) +
+  geom_point()
+```
+
++ Tableau
+  + (Drag and drop)
+  
+<div class="notes">
+
+You've already drawn a basic scatterplot in Python, R, or Tableau. All three systems choose a slightly different visualization, but, for the most part, the graphs look fairly nice. You can change some of those default options.
+
+</div>
+
+### Changing default options
+
++ Python code
+
+```{}
+.mark_point(shape="square", color="green").
+```
+
++ R code
+
+```{}
+geom_point(shape="square", color="green")
+```
+
++ Tableau
+  + (Drag and drop)
+  
+<div class="notes">
+
+In Python, you can change the default from blue circles to green squares in the mark_point function. In R, you do this inside the geom_point function. In Tableau, you have to click on the color and shape buttons to change the defaults.
+
+</div>
+
+### Basic exercise - global modifications
++ Use the Saratoga housing data set.
++ Try the suggested changes to the defaults and see what the visualization looks like.
++ Try changing the size of the points.
 
 ### Aesthetics for points - location (1 of 2)
 
@@ -373,7 +475,7 @@ The point in the upper left corner is an expensive house, over a half million do
 </div>
 
 ### Basic exercise - location
-
++ Use the Saratoga housing data set.
 + Revise the plot so that the location of the points represents x=Bedrooms and Y=Price.
 
 ### Aesthetics for points - shape
@@ -382,7 +484,7 @@ The point in the upper left corner is an expensive house, over a half million do
 fn <- "point-aesthetics-shape"
 png(filename=paste0("../images/", fn, ".png"))
 g + 
-  geom_point(aes(shape=factor(Bedrooms)))
+  geom_point(aes(shape=factor(Bedrooms)), size=5)
 quiet <- dev.off()
 write(pd_text, file=paste0("../images/", fn, ".txt"))
 ```
@@ -400,7 +502,7 @@ I also want to point out that this may not be the best way to visualize the rela
 </div>
 
 ### Basic exercise - shape
-
++ Use the Saratoga housing data set.
 + Draw a plot of all of the data where the location is x=Age and y=Price and the symbol represents the number of bedrooms.
 
 ### Aesthetics for points - size
@@ -423,7 +525,7 @@ You can also use the size of a point to represent a third dimension. Here is a p
 </div>
 
 ### Basic exercise - size
-
++ Use the Saratoga housing data set.
 + Draw a plot where the location is x=Age and y=Price and the size represents the living area.
 
 ### Aesthetics for points - color (1 of 2)
@@ -432,7 +534,7 @@ You can also use the size of a point to represent a third dimension. Here is a p
 fn <- "aesthetics-color-1"
 png(filename=paste0("../images/", fn, ".png"))
 g +
-  geom_point(aes(color=factor(Bathrooms)))
+  geom_point(aes(color=factor(Bathrooms)), size=5)
 quiet <- dev.off()
 write(pd_text, file=paste0("../images/", fn, ".txt"))
 ```
@@ -441,7 +543,7 @@ write(pd_text, file=paste0("../images/", fn, ".txt"))
 
 <div class="notes">
 
-
+This plot shows a blue point representing a four bathroom house in the upper left corner and an orange point representing a two bathroom house in the lower right corner.
 
 </div>
 
@@ -451,7 +553,7 @@ write(pd_text, file=paste0("../images/", fn, ".txt"))
 fn <- "aesthetics-color-2"
 png(filename=paste0("../images/", fn, ".png"))
 g +
-  geom_point(aes(color=Living.Area))
+  geom_point(aes(color=Living.Area), size=5)
 quiet <- dev.off()
 write(pd_text, file=paste0("../images/", fn, ".txt"))
 ```
@@ -465,7 +567,7 @@ Notice how the legend has changed.
 </div>
 
 ### Basic exercise - color
-
++ Use the Saratoga housing data set.
 + Draw a plot where the location is x=Age and y=Price and the color represents the number of bathrooms.
 
 ### Group exercise
@@ -482,9 +584,90 @@ I want you to review the visualizations that you discussed earlier. With you par
 
 </div>
 
-### Panels
+### Solutions to excessive overprinting
++ Opacity
++ Small points
++ Open symbols
++ Log scale
 
-((Show an example of panels and explain how they work))
+<div class="notes">
+
+The plots that you have drawn tend to have difficulty with overprinting. Too many data points crammed into a small area produces a large solid blob that is hard to interpret. There are three possible solutions: opacity, small points, and a log scale.
+
+</div>
+
+### Overprinting - opacity
+
+```{r point-opacity}
+fn <- "point-opacity"
+png(filename=paste0("../images/", fn, ".png"))
+ggplot(saratoga_houses, aes(x=Age, y=Price)) +
+  geom_point(alpha=0.1, size=5)
+quiet <- dev.off()
+write(pd_text, file=paste0("../images/", fn, ".txt"))
+```
+
+![R graph using opacity](../images/point-opacity.png)
+
+<div class="notes">
+
+If you make the data points somewhat translucent, so that you can see what it behind it, this prevents a massive black blob from forming. You have to experiement a bit with the level of translucence.
+
+</div>
+
+### Overprinting - small points
+
+```{r small-points}
+fn <- "small-points"
+png(filename=paste0("../images/", fn, ".png"))
+ggplot(saratoga_houses, aes(x=Age, y=Price)) +
+  geom_point(size=1)
+quiet <- dev.off()
+write(pd_text, file=paste0("../images/", fn, ".txt"))
+```
+
+![R graph using small points](../images/small-points.png)
+
+<div class="notes">
+
+Smaller data points have less trouble with overprinting.
+
+</div>
+
+### Overprinting - open symbols
+
+```{r open-symbols}
+fn <- "open-symbols"
+png(filename=paste0("../images/", fn, ".png"))
+ggplot(saratoga_houses, aes(x=Age, y=Price)) +
+  geom_point(size=5, shape=1)
+quiet <- dev.off()
+write(pd_text, file=paste0("../images/", fn, ".txt"))
+```
+
+![R graph using open circles](../images/open-symbols.png)
+
+<div class="notes">
+
+Smaller data points have less trouble with overprinting.
+
+</div>
+
+### Overprinting - log scale
+
+```{r point-log-scale}
+fn <- "log-scale"
+png(filename=paste0("../images/", fn, ".png"))
+saratoga_houses$age_plus <- saratoga_houses$Age + runif(1057)
+ggplot(saratoga_houses, aes(x=age_plus, y=Price)) +
+  geom_point(size=5) +
+  scale_x_log10() +
+  scale_y_log10()
+quiet <- dev.off()
+write(pd_text, file=paste0("../images/", fn, ".txt"))
+```
+
+![R graph using log scales](../images/log-scale.png)
 
 ### Some tips
 + Don't try to squeeze in too much
@@ -494,19 +677,59 @@ I want you to review the visualizations that you discussed earlier. With you par
 
 ### Don't try to squeeze in too much.
 
-((Show and example with four variables: shape and color))
+```{r point-aesthetics-color-3}
+fn <- "aesthetics-color-3"
+png(filename=paste0("../images/", fn, ".png"))
+saratoga_houses$age_plus <- saratoga_houses$Age + runif(1057)
+binary_colors <- c("red", "red", "blue", "blue", "blue", "blue", "blue", "blue")
+ggplot(saratoga_houses, aes(x=age_plus, y=Price)) +
+  geom_point(aes(color=factor(Bathrooms)), size=1, alpha=0.1) +
+  scale_x_log10() +
+  scale_y_log10() +
+  scale_color_manual(values=binary_colors)
+quiet <- dev.off()
+write(pd_text, file=paste0("../images/", fn, ".txt"))
+```
+
+![R graph using only two colors](../images/aesthetics-color-3.png)
+
 
 ### Double up to emphasize
 
-((Show an example where shape and color are mapped from the same variable))
+```{r double-up}
+fn <- "double-up"
+png(filename=paste0("../images/", fn, ".png"))
+saratoga_houses$age_plus <- saratoga_houses$Age + runif(1057)
+binary_colors <- c("red", "red", "blue", "blue", "blue", "blue", "blue", "blue")
+ggplot(saratoga_houses, aes(x=age_plus, y=Price)) +
+  geom_point(aes(color=factor(Bathrooms), shape=factor(Bathrooms)), size=5) +
+  scale_x_log10() +
+  scale_y_log10() +
+  scale_color_manual(values=binary_colors) + 
+  scale_shape_manual(values=rep(c(1, 4), c(2, 6)))
+quiet <- dev.off()
+write(pd_text, file=paste0("../images/", fn, ".txt"))
+```
 
-### Shape is only good for categories
+![R graph using colors and shapes](../images/double-up.png)
 
-((Explain why))
+<div class="notes">
 
-### Shape and size don't mix
+It's okay to map a single variable to more than one aesthetic. In fact, this often helps emphasize that variable.
 
-((Explain why))
+</div>
+
+### Some restrictions
++ Shape is only good for categories
++ Shape and size don't mix
+
+<div class="notes">
+
+There are some practical limits to aesthetics of points. First, shape makes sense only for categorical data. If you have a large number of values, as is typical for a continuous variable, you run out of symbols before you run out of categories.
+
+Also size and shape don't mix. You can really compare two diffent shapes, such as an X and an O on size. Is the size related to the diameter, the area, or the perimeter? There's no really good answer, so it's asking to much of a graph that asks you to decide which is larger among points represent different shapes. Either vary the shape or vary the size, but not both.
+
+</div>
 
 ### Advanced exercise
 
@@ -518,12 +741,12 @@ this data set at
   + http://www.statsci.org/data/general/sleep.txt
 
 ### Advanced exercise
-
 + Draw a visualization that illustrates the interrelationships among
   + bodywt, lifespan, gestation
   + bodywt, brainwt, and totalsleep
   + predation, exposure, and totalsleep
   + bodywt, predation, and lifespan
++ Divide the work among different group members
 
 ### Summary
 + "A mapping of data to the visual aesthetics of geometries/marks" 
