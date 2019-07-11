@@ -8,6 +8,7 @@ output: powerpoint_presentation
 knitr::opts_chunk$set(echo = FALSE)
 suppressMessages(suppressWarnings(library(ggplot2)))
 suppressMessages(suppressWarnings(library(magrittr)))
+pd_text <- "This image was produced by Steve Simon and is placed in the public domain. You are welcome to use this image any way you see fit. An acknowledgement would be appreciated, but is not required."
 ```
 
 ### About this class
@@ -71,77 +72,130 @@ One more consideration. Some of you in this class are "ringers." You already kno
 
 </div>
 
-### To prepare for this section
-+ Download and install Python, R, or Tableau
-  + For R, also install the ggplot2 library
-  + For Python, install the altair package
-+ Go to the DASL website and review the "Housing Prices" data set
-+ Import this data into Python, R, or Tableau
-+ Draw a scatterplot with Age on the x-axis and Price on the y-axis.
-  + Don't bother with changing any of the default options
+### Which is better? A bar chart...
 
-<div class="notes">
+```{r bar-chart-1}
+marital_status <- data.frame(
+  class=c("Divorced/Separated", "Married", "Single/Never married", "Widowed"),
+  n=c(49, 124, 55, 22),
+  prop=c(19.6, 49.6, 22.0, 8.8)
+)
+ggplot(marital_status, aes(x=class, y=prop)) +
+  geom_col()
+```
 
-Please do some work now, to get ready for the work in this section. If you do not already have Python, R, or Tableau installed on your computer, please do so now.
+### ... a stacked bar chart, ...
 
-I want you to import a particular data file and draw a simple scatterplot.
+```{r bar-chart-2}
+marital_status <- data.frame(
+  class=c("Divorced/Separated", "Married", "Single/Never married", "Widowed"),
+  n=c(49, 124, 55, 22),
+  prop=c(19.6, 49.6, 22.0, 8.8)
+)
+ggplot(marital_status, aes(x="", y=prop, fill=class)) +
+  geom_col()
+```
 
-</div>
+### ... or a pie chart
 
-### DASL https://dasl.datadescription.com/
+```{r pie-chart-1}
+ggplot(marital_status, aes(x = "", y = prop, fill = class)) +
+  geom_col() +
+  coord_polar("y", start = 0) +
+  theme_void()
+```
 
-![Main page of DASL website](../images/dasl-main-page.png)
-
-<div class="notes">
-
-DASL is an acronym for Data And Story Library. It used to sit on a website, Statlib, at Carnegie Mellon, but the company, Data Description, which makes a data analysis program, DataDesk, took over when the Statlib site went dark. It's a very nice site for small data sets useful for teaching.
-
-I want to use a file on housing prices in Saratoga, New York, and you can find it through the search function on the main page. Look for housing or Saratoga, and you'll find it pretty quickly.
-
-Note to myself: Try to keep this and every other image to no greater than 800 by 480.
-
-</div>
-
-### Choose "Saratoga House Prices" (not "Saratoga Houses")
-
-![Description of the Saratoga house prices dataset](../images/dasl-saratoga-house-prices.png)
-  
-<div class="notes">
-  
-There are two files actually, that look very similar. You want the "Saratoga House Prices" file and not the one called "Saratoga Houses". The Saratoga House Prices file has 1063 records and the variables are Price, Living.Area, Bathrooms, Bedrooms, Fireplaces, Lot.Size, Age, Fireplace.
-
-This is the file that you want to download and run a scatterplot.
-
-</div>
-
-### Some general advice if things don't work
-+ Download the file
-+ Tweak the file
-  + Remove variable names in first line
-  + Change missing value codes
-  + Change the delimiter
-  + Look for inconsistencies
-  + Convert the format
+### Better in what way?
++ Two most important criteria
+  + Speed
+  + Accuracy
   
 <div class="notes">
 
-These things never work right the first time. If computers worked the first time and every time, we'd all be getting paid the minimum wage. I'm glad to help if you have any problems importing this or any other files, but here is some general advice that you might want to try first.
+The answer really depends on what question you are asking. There are a variety of questions that you might ask.
 
-Some software systems allow you to download directly from the web. This is fast and easy and convenient, but if it doesn't work download the file and see if you can import it directly. 
-
-If this doesn't work, open the file in a text editing program like notepad and see if you can make some minor changes that allow you to import the file.
-
-If the first line of code has variable names, see if you can import the file without the variable names.
-
-Look at the code for missing values. Some systems use a single dot for a missing value, and others use the letters "NA". Sometimes converting the missing value code to a different code will help.
-
-Most files have a delimiter, a character that separates one variable from the next. This could be a space, a comma, or a tab character. You may have better luck if you do a careful search and replace, changing from one delimiter to another.
-
-Look for inconsistencies, such as some invalid lines at the bottom of the file or a line with one too few variables or an unmatched quote mark. Fix these and try again.
-
-See if you can read the file into a different program like a spreadsheet and export it in a different format.
+You can run an experiment (people have done this) where randomize and show half of them a bar chart and half of them a pie chart. Then you ask a question. Then you note the speed and accuracy of the response. Depending on the question, sometimes pie charts give faster and more accurate answers. Sometimes bar charts give faster and more accurate answers. It turns out that the results match up nicely with what we know about the psychology of perception.
 
 </div>
+
+### Which percentage is larger? Bar chart is best!
+
+```{r bar-chart-3}
+fn <- "bar-chart-3"
+png(filename=paste0("../images/", fn, ".png"))
+ggplot(marital_status, aes(x=class, y=prop)) +
+  geom_col() +
+  geom_segment(
+    x=1.5, y=19.6, xend=2.5, yend=19.6, 
+    color="darkred", size=2, 
+    arrow=arrow())
+quiet <- dev.off()
+write(pd_text, file=paste0("../images/", fn, ".txt"))
+```
+
+![Bar chart, projecting one bar to another](../images/bar-chart-3.png)
+
+<div class="notes">
+
+If you ask the question, which percentage is larger, the percentage for single or the percentage for divorced/separated, the bar chart is the winner, hands-down. The comparison involves a 
+
+</div>
+
+### Second best, stacked bar chart
+
+```{r bar-chart-4}
+marital_status <- data.frame(
+  class=c("Divorced/Separated", "Married", "Single/Never married", "Widowed"),
+  n=c(49, 124, 55, 22),
+  prop=c(19.6, 49.6, 22.0, 8.8)
+)
+ggplot(marital_status, aes(x="", y=prop, fill=class)) +
+  geom_col() +
+  geom_segment(
+    x=1.3, xend=1.3, y=80.4, yend=100, 
+    size=2, color="darkred",
+    arrow=arrow(ends="both")) +
+  geom_segment(
+    x=1.3, xend=1.3, y=8.8, yend=30.8, 
+    size=2, color="darkred",
+    arrow=arrow(ends="both"))
+```
+
+
+### Worst, pie chart
+
+```{r pie-chart-2}
+ggplot(marital_status, aes(x = "", y = prop, fill = class)) +
+  geom_col() +
+  coord_polar("y", start = 0) +
+  theme_void() +
+  geom_segment(
+    x=1, xend=1, y=80.4, yend=100, 
+    size=2, color="red",
+    arrow=arrow(ends="both")) +
+  geom_segment(
+    x=1, xend=1, y=8.8, yend=30.8,
+    size=2, color="darkred",
+    arrow=arrow(ends="both"))
+```
+
+### What fraction of people are single, Best is pie chart
+
+```{r pie-chart-3}
+ggplot(marital_status, aes(x = "", y = prop, fill = class)) +
+  geom_col() +
+  coord_polar("y", start = 0) +
+  theme_void() +
+  geom_segment(
+    x=1, xend=1, y=8.8, yend=30.8,
+    size=2, color="darkred",
+    arrow=arrow(ends="both")) +
+  geom_text(
+    x=1.1, y=19.9, hjust=0,
+    label="~90 degrees", 
+    size=4, col="darkred"
+  )
+```
 
 ### Group exercise (1 of 2)
 
@@ -440,7 +494,6 @@ g <- ggplot(saratoga_houses[x, ], aes(x=Age, y=Price)) +
   expand_limits(y=y_range)
 g + geom_text(aes(label=Age))
 quiet <- dev.off()
-pd_text <- "This image was produced by Steve Simon and is placed in the public domain. You are welcome to use this image any way you see fit. An acknowledgement would be appreciated, but is not required."
 write(pd_text, file=paste0("../images/", fn, ".txt"))
 ```
 
