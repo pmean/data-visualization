@@ -20,7 +20,7 @@ suppressMessages(suppressWarnings(library(readr)))
 
 ### To prepare for this section
 
-![Kaggle datasets webpage](../images/02/kaggle-scotus-data.png)
+![Kaggle datasets webpage](../images/kaggle-scotus-data.png)
 
 ### To prepare for this section
 
@@ -85,7 +85,7 @@ ggplot(sc_cases, aes(year_filed)) +
 
 ### Group exercise (1 of 2)
 
-![Bar chart of demographics of selected Texas counties](../images/02/texas-bar-chart.png)
+![Bar chart of demographics of selected Texas counties](../images/texas-bar-chart.png)
 
 <div class="notes">
 
@@ -104,7 +104,7 @@ Split into pairs. Review the article briefly (about 5 minutes) and look at the g
 
 ### A framework for graph perception
 
-![Part of first page from Simkin and Hastie journal article](../images/02/graph-perception.png)
+![Part of first page from Simkin and Hastie journal article](../images/graph-perception.png)
 
 <div class="notes">
 
@@ -158,7 +158,7 @@ You can run an experiment (people have done this) where randomize and show half 
 
 ### Projection (first yellow bar versus last yellow bar)
 
-![Stacked bar chart of crop yields](../images/02/crop-yield-bar-chart-position.png)
+![Stacked bar chart of crop yields](../images/crop-yield-bar-chart-position.png)
 
 <div class="notes">
 
@@ -168,7 +168,7 @@ The position means the vertical or horizontal location. Does the first yellow ba
 
 ### Superimposition (first green bar versus last blue bar)
 
-![Stacked bar chart of crop yields](../images/02/crop-yield-bar-chart-length.png)
+![Stacked bar chart of crop yields](../images/crop-yield-bar-chart-length.png)
 
 <div class="notes">
 
@@ -187,7 +187,7 @@ The length means either the width or the height. Does the first green bar in 193
 ### Scanning
 
 ```{r scanning}
-png("../images/02/simon_fuel_gauge1.png", width=240, height=480)
+png("../images/simon_fuel_gauge1.png", width=240, height=480)
 df <- data.frame(pct=c(35, 65
                        ), x=factor(rep(1, 2)), z=factor(1:2))
 ggplot(df, aes(y=pct, x=x, fill=z)) +
@@ -200,7 +200,7 @@ ggplot(df, aes(y=pct, x=x, fill=z)) +
 quiet <- dev.off()
 ```
 
-![Image of a fuel gauge, 65% full](../images/02/simon_fuel_gauge1.png)
+![Image of a fuel gauge, 65% full](../images/simon_fuel_gauge1.png)
   
 <div class="notes">
 
@@ -217,7 +217,7 @@ Now if you were Albert Einstein, you'd split the gauge at the halfway point and 
 ### Assisting scanning with anchors
   
 ```{r scanning-with-anchors}
-png("../images/02/simon_fuel_gauge2.png", width=240, height=480)
+png("../images/simon_fuel_gauge2.png", width=240, height=480)
 df <- data.frame(pct=c(35, 65
                        ), x=factor(rep(1, 2)), z=factor(1:2))
 ggplot(df, aes(y=pct, x=x, fill=z)) +
@@ -232,7 +232,7 @@ ggplot(df, aes(y=pct, x=x, fill=z)) +
 quiet <- dev.off()
 ```
 
-![Image of a fuel gauge, anchors at 1/4, half, 3/4](../images/02/simon_fuel_gauge2.png)
+![Image of a fuel gauge, anchors at 1/4, half, 3/4](../images/simon_fuel_gauge2.png)
 
 <div class="notes">
 
@@ -258,7 +258,7 @@ There are a variety of perceptual tasks that you use when making comparisons wit
 
 ### Position (first yellow bar versus last yellow bar)
 
-![Stacked bar chart of crop yields](../images/02/crop-yield-bar-chart-position.png)
+![Stacked bar chart of crop yields](../images/crop-yield-bar-chart-position.png)
 
 <div class="notes">
 
@@ -268,7 +268,7 @@ The comparison of the two yellow bars is a comparison of position. Which yellow 
 
 ### Length (first green bar versus last blue bar)
 
-![Stacked bar chart of crop yields](../images/02/crop-yield-bar-chart-length.png)
+![Stacked bar chart of crop yields](../images/crop-yield-bar-chart-length.png)
 
 <div class="notes">
 
@@ -280,7 +280,7 @@ Length is harder to judge than position, because it involves a superimposition r
 
 ### Angle/slope (first month decline versus last month decline)
 
-![Sales trend shown with a line graph](../images/02/sales-trend.png)
+![Sales trend shown with a line graph](../images/sales-trend.png)
 
 <div class="notes">
 
@@ -292,6 +292,71 @@ This graph shows sales trends over a twelve month span. If you want to assess wh
 
 ### Density/saturation/hue
 
+```{r rgb}
+df <- data.frame(x=c(0, 0, 2, 2, 1, 1, 3, 3), y=c(0, 2, 2, 0, 1, 3, 3, 1))
+df <- data.frame(x=1, y=1)
+ggplot(df, aes(x, y)) + 
+  geom_point() + 
+  geom_segment(x=1, y=1, xend=3, yend=1) +
+  geom_segment(x=1, y=1, xend=0, yend=0) +
+  geom_segment(x=1, y=1, xend=1, yend=3) +
+  geom_text(x=-0.2, y=-0.2, col=rgb(1, 0, 0), label="red", angle=45) +
+  geom_text(x=3.2, y=1, col=rgb(0, 1, 0), label="green") + 
+  geom_text(x=1, y=3.2, col=rgb(0, 0, 1), label="blue", angle=90) +
+  expand_limits(x=c(-0.5, 3.5)) +
+  expand_limits(y=c(-0.5, 3.5)) +
+  theme_void()
+```
+
+### Transitions
+
+```{r transition}
+"<-rgb(0, 0..1, 0)->" %>%
+  strsplit(split="") %>%
+  unlist -> s1
+n1 <- length(s1)
+p1 <- (1:n1)/(n1+1)
+x1 <- 1+2*p1
+y1 <- rep(1, n1)
+a1 <- rep(0, n1)
+c1 <- rgb(0, p1, 0)
+
+"<-rgb(0..1, 0, 0)->" %>%
+  strsplit(split="") %>%
+  unlist %>%
+  rev -> s2
+n2 <- length(s2)
+p2 <- (1:n2)/(n2+1)
+x2 <- 1-p2
+y2 <- 1-p2
+a2 <- rep(45, n2)
+c2 <- rgb(p2, 0, 0)
+
+"<-rgb(0, 0, 0..1)->" %>%
+  strsplit(split="") %>%
+  unlist -> s3
+n3 <- length(s3)
+p3 <- (1:n3)/(n3+1)
+x3 <- rep(1, n3)
+y3 <- 1+2*p3
+a3 <- rep(90, n3)
+c3 <- rgb(0, 0, p3)
+
+df <- data.frame(
+  x=c(x1, x2, x3), 
+  y=c(y1, y2, y3), 
+  a=c(a1, a2, a3), 
+  co=c(c1, c2, c3), 
+  s=c(s1, s2, s3))
+ggplot(df, aes(x, y, label=s)) + 
+  geom_text(col=df$co, angle=df$a) +
+  geom_text(x=-0.2, y=-0.2, col=rgb(1, 0, 0), label="red", angle=45) +
+  geom_text(x=3.2, y=1, col=rgb(0, 1, 0), label="green") + 
+  geom_text(x=1, y=3.2, col=rgb(0, 0, 1), label="blue", angle=90) +
+  expand_limits(x=c(-0.5, 3.5)) +
+  expand_limits(y=c(-0.5, 3.5)) +
+  theme_void()
+```
 ### A quick tutorial on colors
 
 ### Bars
@@ -378,7 +443,7 @@ Remember the fault of default principle. Always try different ways of displaying
   
 ### Don't make gaps equal to widths
 
-![Alternate white and black lines showing a Moire effect](../images/02/alternate-white-and-black.png)
+![Alternate white and black lines showing a Moire effect](../images/alternate-white-and-black.png)
 
 <div class="notes">
 
@@ -390,7 +455,7 @@ If the space between the bars is equal to the width of the bars themselves, you 
 
 ### Optical illusion
 
-![Optical illusion showing two bars becoming three](../images/02/optical-illusion-bars.png)
+![Optical illusion showing two bars becoming three](../images/optical-illusion-bars.png)
 
 <div class="width">
 
