@@ -412,15 +412,40 @@ r <- data.frame(x=-5, y=-5)
 g <- data.frame(x= 7, y= 0)
 b <- data.frame(x= 0, y= 7)
 d <- 1.2
+```
 
-df <- rbind(k, r, g, b)
+### Gradients
+
+```{r rgb-0}
+h <- c("F")
+
+rg <- paste0("#", h, h, "0000")
+
+n <- length(rg)
+p <- (1:n)/n
+rx <- r$x*p
+ry <- r$y*p
+
+gg <- paste0("#00", h, h, "00")
+gx <- g$x*p
+gy <- g$y*p
+
+bg <- paste0("#0000", h, h)
+bx <- b$x*p
+by <- b$y*p
+
+df <- data.frame(
+  x=c(rx, gx, bx), 
+  y=c(ry, gy, by), 
+  g=c(rg, gg, bg), 
+  a=rep(c(-45, -90, 0), each=n),
+  j=rep(c(0.5, 0.5, 0.5), each=n))
+
 ggplot(df, aes(x, y)) + 
-  geom_segment(x=k$x, y=k$y, xend=r$x,   yend=r$y) +
-  geom_segment(x=k$x, y=k$y, xend=g$x, yend=g$y) +
-  geom_segment(x=k$x, y=k$y, xend=b$x,  yend=b$y) +
-  geom_text(x=r$x*d, y=r$y*d, col=rgb(1, 0, 0), label="#FF0000", angle=45) +
-  geom_text(x=g$x*d, y=g$y*d, col=rgb(0, 1, 0), label="#00FF00") + 
-  geom_text(x=b$x*d, y=b$y*d, col=rgb(0, 0, 1), label="#0000FF", angle=90) +
+  geom_segment(x=k$x, y=k$y, xend=r$x, yend=r$y, col="gray") +
+  geom_segment(x=k$x, y=k$y, xend=g$x, yend=g$y, col="gray") +
+  geom_segment(x=k$x, y=k$y, xend=b$x, yend=b$y, col="gray") +
+  geom_text(col=df$g, label=df$g, angle=df$a, hjust=df$j) +
   expand_limits(x=c(-7, 9)) +
   expand_limits(y=c(-7, 9)) +
   theme_void()
@@ -428,41 +453,36 @@ ggplot(df, aes(x, y)) +
 
 ### Gradients
 
-```{r rgb}
-k <- data.frame(x= 0, y= 0)
-r <- data.frame(x=-5, y=-5)
-g <- data.frame(x= 7, y= 0)
-b <- data.frame(x= 0, y= 7)
-d <- 1.2
-h <- c(1:9, LETTERS[1:5])
-
-rg <- paste0("#", h, h, "0000")
-
-rg <- c(
-  "#110000", 
-  "#220000", 
-  "#330000", 
-  "#440000", 
-  "#550000", 
-  "#660000", 
-  "#770000", 
-  "#880000", 
-  "#990000", 
-  "#AA0000", 
-  "#BB0000", 
-  "#CC0000",
-  "#DD0000", 
-  "#EE0000")
+```{r rgb-gradient}
+h <- c("3", "6", "9", "C", "F")
 
 rg <- paste0("#", h, h, "0000")
 
 n <- length(rg)
-rx <- r$x*(1:n)/(n+1)
-ry <- r$y*(1:n)/(n+1)
+p <- (1:n)/n
+rx <- r$x*p
+ry <- r$y*p
 
-df <- data.frame(rx, ry, rg)
-ggplot(df, aes(rx, ry)) + 
-  geom_text(col=rg, label=rg, angle=-45) +
+gg <- paste0("#00", h, h, "00")
+gx <- g$x*p
+gy <- g$y*p
+c
+bg <- paste0("#0000", h, h)
+bx <- b$x*p
+by <- b$y*p
+
+df <- data.frame(
+  x=c(rx, gx, bx), 
+  y=c(ry, gy, by), 
+  g=c(rg, gg, bg), 
+  a=rep(c(-45, -90, 0), each=n),
+  j=rep(c(0.5, 0.5, 0.5), each=n))
+
+ggplot(df, aes(x, y)) + 
+  geom_segment(x=k$x, y=k$y, xend=r$x, yend=r$y, col="gray") +
+  geom_segment(x=k$x, y=k$y, xend=g$x, yend=g$y, col="gray") +
+  geom_segment(x=k$x, y=k$y, xend=b$x, yend=b$y, col="gray") +
+  geom_text(col=df$g, label=df$g, angle=df$a, hjust=df$j) +
   expand_limits(x=c(-7, 9)) +
   expand_limits(y=c(-7, 9)) +
   theme_void()
