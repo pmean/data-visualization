@@ -293,6 +293,7 @@ This graph shows sales trends over a twelve month span. If you want to assess wh
 ### Everything I know about colors, I learned in Kindergarten.
 
 ![](../images/julias-colour-wheel1.jpg)
+
 ### Hexadecimal codes for RGB
 + Hexadecimal digits (base 16)
   + 0-9, A-F
@@ -411,6 +412,9 @@ k <- data.frame(x= 0, y= 0)
 r <- data.frame(x=-5, y=-5)
 g <- data.frame(x= 7, y= 0)
 b <- data.frame(x= 0, y= 7)
+y <- data.frame(x= 2, y=-5)
+z <- data.frame(x=-5, y= 2)
+m <- data.frame(x= 7, y= 7)
 d <- 1.2
 ```
 
@@ -446,6 +450,9 @@ ggplot(df, aes(x, y)) +
   geom_segment(x=k$x, y=k$y, xend=g$x, yend=g$y, col="gray") +
   geom_segment(x=k$x, y=k$y, xend=b$x, yend=b$y, col="gray") +
   geom_text(col=df$g, label=df$g, angle=df$a, hjust=df$j) +
+  geom_text(col="#FFFF00", x=y$x, y=y$y, label="#FFFF00", angle=-67) +
+  geom_text(col="#FF00FF", x=z$x, y=z$y, label="#FF00FF", angle=-22) +
+  geom_text(col="#00FFFF", x=m$x, y=m$y, label="#00FFFF", angle=-45) +
   expand_limits(x=c(-7, 9)) +
   expand_limits(y=c(-7, 9)) +
   theme_void()
@@ -454,6 +461,41 @@ ggplot(df, aes(x, y)) +
 ### Gradients
 
 ```{r rgb-gradient}
+h <- c("3", "6", "9", "C", "F")
+
+rg <- paste0("#", h, h, "0000")
+
+n <- length(rg)
+p <- (1:n)/n
+rx <- r$x*p
+ry <- r$y*p
+
+gg <- paste0("#00", h, h, "00")
+gx <- g$x*p
+gy <- g$y*p
+c
+bg <- paste0("#0000", h, h)
+bx <- b$x*p
+by <- b$y*p
+
+df <- data.frame(
+  x=c(rx, gx, bx), 
+  y=c(ry, gy, by), 
+  g=c(rg, gg, bg), 
+  a=rep(c(-45, -90, 0), each=n),
+  j=rep(c(0.5, 0.5, 0.5), each=n))
+
+ggplot(df, aes(x, y)) + 
+  geom_segment(x=k$x, y=k$y, xend=r$x, yend=r$y, col="gray") +
+  geom_segment(x=k$x, y=k$y, xend=g$x, yend=g$y, col="gray") +
+  geom_segment(x=k$x, y=k$y, xend=b$x, yend=b$y, col="gray") +
+  geom_text(col=df$g, label=df$g, angle=df$a, hjust=df$j) +
+  expand_limits(x=c(-7, 9)) +
+  expand_limits(y=c(-7, 9)) +
+  theme_void()
+```
+
+```{r rgb-gradient1}
 h <- c("3", "6", "9", "C", "F")
 
 rg <- paste0("#", h, h, "0000")
