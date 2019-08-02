@@ -9,14 +9,21 @@ output: powerpoint_presentation
 knitr::opts_chunk$set(echo = FALSE)
 suppressMessages(suppressWarnings(library(dplyr)))
 suppressMessages(suppressWarnings(library(ggplot2)))
+suppressMessages(suppressWarnings(library(knitr)))
 suppressMessages(suppressWarnings(library(magrittr)))
 suppressMessages(suppressWarnings(library(readr)))
+pd_text <- "This image was produced by Steve Simon and is placed in the public domain. You are welcome to use this image any way you see fit. An acknowledgement would be appreciated, but is not required."
+initiate_image <- function() {
+  fn <- opts_current$get("label")
+  png(filename=paste0("../images/", fn, ".png"))
+  return(fn)
+}
+finalize_image <- function() {
+  quiet <- dev.off()
+  write(pd_text, file=paste0("../images/", fn, ".txt"))
+}
 ```
 
-### Notes about this talk
-+ This slide should not to be included in the final presentation
-+ 01-points MUST come before
-+ 03-lines could come before or after
 
 ### To prepare for this section
 
@@ -78,10 +85,14 @@ titanic <- read_tsv(fn, col_types=cols())
 ### This is what your bar chart should look like
 
 ```{r scotus-bar, message=FALSE}
+fn <- initiate_image()
 sc_cases <- read.csv(file="../data/scotus_cases.csv")
 ggplot(sc_cases, aes(year_filed)) +
   geom_bar()
+finalize_image()
 ```
+
+![Bar chart](../images/`r fn`.png)
 
 ### Group exercise (1 of 2)
 
@@ -117,6 +128,7 @@ Much of the work on the psychology of perception that I will be discussing next 
 ### Which is better? A bar chart...
 
 ```{r bar-chart}
+fn <- initiate_image()
 marital_status <- data.frame(
   class=c("Divorced/Separated", "Married", "Single/Never married", "Widowed"),
   n=c(49, 124, 55, 22),
@@ -124,16 +136,23 @@ marital_status <- data.frame(
 )
 ggplot(marital_status, aes(x=class, y=prop)) +
   geom_col()
+finalize_image()
 ```
+
+![Bar chart](../images/`r fn`.png)
 
 ### ... or a pie chart
 
 ```{r pie-chart}
+fn <- initiate_image()
 ggplot(marital_status, aes(x = "", y = prop, fill = class)) +
   geom_col() +
   coord_polar("y", start = 0) +
   theme_void()
+finalize_image()
 ```
+
+![Pie chart](../images/`r fn`.png)
 
 ### Answer. It depends.
 + What question are you trying to answer?
@@ -290,302 +309,25 @@ This graph shows sales trends over a twelve month span. If you want to assess wh
 
 ### Area
 
-### Everything I know about colors, I learned in Kindergarten.
+![Three ellipses](../images/ellipses.png)
 
-![](../images/julias-colour-wheel1.jpg)
+### Area
 
-### Hexadecimal codes for RGB
-+ Hexadecimal digits (base 16)
-  + 0-9, A-F
-  + Two hexadecimal digits represent the numbers 0-255.
-+ #rrggbb format
-  + #000000 is pure black
-  + #FFFFFF is pure white
-  + #FF0000 is pure red
-  + #00FF00 is pure green
-  + #0000FF is pure blue
-+ You can mix and match to get 16,777,216 colors
-  + #800080 is purple, #FF69B4 is pink, #40e0d0 is turquoise
-  
-### Contrasting pure colors often appear too intense
-
-```{r intense}
-c3 <- c("#FF0000", "#00FF00", "#0000FF")
-l3 <- c("#FF9090", "#90FF90", "#9090FF")
-d3 <- c("#700000", "#007000", "#000070")
-df <- data.frame(
-  x=rep(1:3, each=3), 
-  y=rep(3:1, 3),
-  b=rep(c3, 3),
-  f=rep(c3, each=3)
-)
-df <- df[c(2:4, 6:8), ]
-ggplot(df, aes(x, y)) +
-  expand_limits(x=c(0, 4), y=c(0, 4)) +
-  geom_point(size=30, color=df$b, shape="square") +
-  geom_text(
-    color=df$f,
-    label=paste0("F=", df$f, "\nB=", df$b)) +
-  theme_void()
-```
-
-### Lighten the background
-
-```{r ligthen-background}
-df <- data.frame(
-  x=rep(1:3, each=3), 
-  y=rep(3:1, 3),
-  b=rep(l3, 3),
-  f=rep(c3, each=3)
-)
-df <- df[c(2:4, 6:8), ]
-ggplot(df, aes(x, y)) +
-  expand_limits(x=c(0, 4), y=c(0, 4)) +
-  geom_point(size=30, color=df$b, shape="square") +
-  geom_text(
-    color=df$f,
-    label=paste0("F=", df$f, "\nB=", df$b)) +
-  theme_void()
-```
-
-### Darken the foreground
-
-```{r darken-foreground}
-df <- data.frame(
-  x=rep(1:3, each=3), 
-  y=rep(3:1, 3),
-  b=rep(c3, 3),
-  f=rep(d3, each=3)
-)
-df <- df[c(2:4, 6:8), ]
-ggplot(df, aes(x, y)) +
-  expand_limits(x=c(0, 4), y=c(0, 4)) +
-  geom_point(size=30, color=df$b, shape="square") +
-  geom_text(
-    color=df$f,
-    label=paste0("F=", df$f, "\nB=", df$b)) +
-  theme_void()
-```
-
-### or both
-
-```{r both}
-df <- data.frame(
-  x=rep(1:3, each=3), 
-  y=rep(3:1, 3),
-  b=rep(l3, 3),
-  f=rep(d3, each=3)
-)
-df <- df[c(2:4, 6:8), ]
-ggplot(df, aes(x, y)) +
-  expand_limits(x=c(0, 4), y=c(0, 4)) +
-  geom_point(size=30, color=df$b, shape="square") +
-  geom_text(
-    color=df$f,
-    label=paste0("F=", df$f, "\nB=", df$b)) +
-  theme_void()
-```
-
-### or the reverse
-
-```{r reverse}
-df <- data.frame(
-  x=rep(1:3, each=3), 
-  y=rep(3:1, 3),
-  b=rep(d3, 3),
-  f=rep(l3, each=3)
-)
-df <- df[c(2:4, 6:8), ]
-ggplot(df, aes(x, y)) +
-  expand_limits(x=c(0, 4), y=c(0, 4)) +
-  geom_point(size=30, color=df$b, shape="square") +
-  geom_text(
-    color=df$f,
-    label=paste0("F=", df$f, "\nB=", df$b)) +
-  theme_void()
-```
-
-### Density/saturation/hue
-
-```{r rgb}
-k <- data.frame(x= 0, y= 0)
-r <- data.frame(x=-5, y=-5)
-g <- data.frame(x= 7, y= 0)
-b <- data.frame(x= 0, y= 7)
-y <- data.frame(x= 2, y=-5)
-z <- data.frame(x=-5, y= 2)
-m <- data.frame(x= 7, y= 7)
-d <- 1.2
-```
-
-### Gradients
-
-```{r rgb-0}
-h <- c("F")
-
-rg <- paste0("#", h, h, "0000")
-
-n <- length(rg)
-p <- (1:n)/n
-rx <- r$x*p
-ry <- r$y*p
-
-gg <- paste0("#00", h, h, "00")
-gx <- g$x*p
-gy <- g$y*p
-
-bg <- paste0("#0000", h, h)
-bx <- b$x*p
-by <- b$y*p
-
-df <- data.frame(
-  x=c(rx, gx, bx), 
-  y=c(ry, gy, by), 
-  g=c(rg, gg, bg), 
-  a=rep(c(-45, -90, 0), each=n),
-  j=rep(c(0.5, 0.5, 0.5), each=n))
-
-ggplot(df, aes(x, y)) + 
-  geom_segment(x=k$x, y=k$y, xend=r$x, yend=r$y, col="gray") +
-  geom_segment(x=k$x, y=k$y, xend=g$x, yend=g$y, col="gray") +
-  geom_segment(x=k$x, y=k$y, xend=b$x, yend=b$y, col="gray") +
-  geom_text(col=df$g, label=df$g, angle=df$a, hjust=df$j) +
-  geom_text(col="#FFFF00", x=y$x, y=y$y, label="#FFFF00", angle=-67) +
-  geom_text(col="#FF00FF", x=z$x, y=z$y, label="#FF00FF", angle=-22) +
-  geom_text(col="#00FFFF", x=m$x, y=m$y, label="#00FFFF", angle=-45) +
-  expand_limits(x=c(-7, 9)) +
-  expand_limits(y=c(-7, 9)) +
-  theme_void()
-```
-
-### Gradients
-
-```{r rgb-gradient}
-h <- c("3", "6", "9", "C", "F")
-
-rg <- paste0("#", h, h, "0000")
-
-n <- length(rg)
-p <- (1:n)/n
-rx <- r$x*p
-ry <- r$y*p
-
-gg <- paste0("#00", h, h, "00")
-gx <- g$x*p
-gy <- g$y*p
-c
-bg <- paste0("#0000", h, h)
-bx <- b$x*p
-by <- b$y*p
-
-df <- data.frame(
-  x=c(rx, gx, bx), 
-  y=c(ry, gy, by), 
-  g=c(rg, gg, bg), 
-  a=rep(c(-45, -90, 0), each=n),
-  j=rep(c(0.5, 0.5, 0.5), each=n))
-
-ggplot(df, aes(x, y)) + 
-  geom_segment(x=k$x, y=k$y, xend=r$x, yend=r$y, col="gray") +
-  geom_segment(x=k$x, y=k$y, xend=g$x, yend=g$y, col="gray") +
-  geom_segment(x=k$x, y=k$y, xend=b$x, yend=b$y, col="gray") +
-  geom_text(col=df$g, label=df$g, angle=df$a, hjust=df$j) +
-  expand_limits(x=c(-7, 9)) +
-  expand_limits(y=c(-7, 9)) +
-  theme_void()
-```
-
-```{r rgb-gradient1}
-h <- c("3", "6", "9", "C", "F")
-
-rg <- paste0("#", h, h, "0000")
-
-n <- length(rg)
-p <- (1:n)/n
-rx <- r$x*p
-ry <- r$y*p
-
-gg <- paste0("#00", h, h, "00")
-gx <- g$x*p
-gy <- g$y*p
-c
-bg <- paste0("#0000", h, h)
-bx <- b$x*p
-by <- b$y*p
-
-df <- data.frame(
-  x=c(rx, gx, bx), 
-  y=c(ry, gy, by), 
-  g=c(rg, gg, bg), 
-  a=rep(c(-45, -90, 0), each=n),
-  j=rep(c(0.5, 0.5, 0.5), each=n))
-
-ggplot(df, aes(x, y)) + 
-  geom_segment(x=k$x, y=k$y, xend=r$x, yend=r$y, col="gray") +
-  geom_segment(x=k$x, y=k$y, xend=g$x, yend=g$y, col="gray") +
-  geom_segment(x=k$x, y=k$y, xend=b$x, yend=b$y, col="gray") +
-  geom_text(col=df$g, label=df$g, angle=df$a, hjust=df$j) +
-  expand_limits(x=c(-7, 9)) +
-  expand_limits(y=c(-7, 9)) +
-  theme_void()
-```
+![Bubble plot](../images/investment-risk.png)
 
 <div class="notes">
 
-Additive color mixing: adding red to green yields yellow; adding green to blue yields cyan; adding blue to red yields magenta; adding all three primary colors together yields white.
+This graph shows exposure and margin trends on the x and y axes. Larger values are worse on both axes. The size of the bubble is the size of the company (annual sales). There is some ambiguity here--is size measured in terms of diameter or in terms of area. Which is bigger, the brown circle (Metro) or the dark blue circle (Tesco)?
 
 </div>
 
-### Transitions
+### Volume
 
-```{r transition}
-"<-rgb(0, 0..1, 0)->" %>%
-  strsplit(split="") %>%
-  unlist -> s1
-n1 <- length(s1)
-p1 <- (1:n1)/(n1+1)
-x1 <- 1+2*p1
-y1 <- rep(1, n1)
-a1 <- rep(0, n1)
-c1 <- rgb(0, p1, 0)
+![Ellipsoid plot](../images/rgl_cda_ellipsoids.png)
 
-"<-rgb(0..1, 0, 0)->" %>%
-  strsplit(split="") %>%
-  unlist %>%
-  rev -> s2
-n2 <- length(s2)
-p2 <- (1:n2)/(n2+1)
-x2 <- 1-p2
-y2 <- 1-p2
-a2 <- rep(45, n2)
-c2 <- rgb(p2, 0, 0)
+### Color
 
-"<-rgb(0, 0, 0..1)->" %>%
-  strsplit(split="") %>%
-  unlist -> s3
-n3 <- length(s3)
-p3 <- (1:n3)/(n3+1)
-x3 <- rep(1, n3)
-y3 <- 1+2*p3
-a3 <- rep(90, n3)
-c3 <- rgb(0, 0, p3)
-
-df <- data.frame(
-  x=c(x1, x2, x3), 
-  y=c(y1, y2, y3), 
-  a=c(a1, a2, a3), 
-  co=c(c1, c2, c3), 
-  s=c(s1, s2, s3))
-ggplot(df, aes(x, y, label=s)) + 
-  geom_text(col=df$co, angle=df$a) +
-  geom_text(x=-0.2, y=-0.2, col=rgb(1, 0, 0), label="red", angle=45) +
-  geom_text(x=3.2, y=1, col=rgb(0, 1, 0), label="green") + 
-  geom_text(x=1, y=3.2, col=rgb(0, 0, 1), label="blue", angle=90) +
-  expand_limits(x=c(-0.5, 3.5)) +
-  expand_limits(y=c(-0.5, 3.5)) +
-  theme_void()
-```
-### A quick tutorial on colors
+![WEather map of annual snowfall](../images/btv_snow_average.png)
 
 ### Bars
 + Fewer in numbers than points
@@ -624,18 +366,39 @@ Recall that aesthetics are visual attributes associated with a geometry/mark. Yo
 ### Location (1 of 2)
 
 ```{r location-horizontal}
+fn <- initiate_image()
 ggplot(titanic, aes(Class)) +
   geom_bar()
+finalize_image()
 ```
+
+![Horizontal bar chart](../images/`r fn`.png)
+
+<div class="notes">
+
+
+
+</div>
+
 
 ### Location (2 of 2)
 
 ```{r location-vertical}
+fn <- initiate_image()
 ggplot(titanic, aes(Class)) +
   geom_bar() +
   coord_flip()
+finalize_image()
 ```
 
+
+![Vertical bar chart](../images/`r fn`.png)
+
+<div class="notes">
+
+
+
+</div>
 ### On your own
 + Draw a horizontal and vertical bar chart showing the number of people in each gender (use the Sex variable).
 
@@ -698,10 +461,12 @@ As a general rule, the gap between bars should be about 10 to 20 percent of the 
 ### Color
 
 ```{r bar-color}
+fn <- initiate_image()
 ggplot(titanic, aes(x=Class, fill=Class)) +
   geom_bar() +
   scale_fill_manual(values=c("darkgrey", "darkgrey", "red", "darkgrey"))
-  
+finalize_image()
+
 ```
 
 ### On your own
@@ -764,41 +529,92 @@ Bar charts that represent a summary across a single categorical variable are fai
 ### Titanic passenger count by gender
 
 ```{r count-by-gender}
+fn <- initiate_image()
 ggplot(titanic, aes(x=Sex)) +
   geom_bar()
+finalize_image()
 ```
 
+
+![Bar chart](../images/`r fn`.png)
+
+<div class="notes">
+
+
+
+</div>
 ### Titanic passenger count by passenger class
 
 ```{r count-by-passenger-class}
+fn <- initiate_image()
 ggplot(titanic, aes(x=Class)) +
   geom_bar()
+finalize_image()
 ```
+
+
+![Bar chart](../images/`r fn`.png)
+
+<div class="notes">
+
+
+
+</div>
 
 ### Titanic facet
 
 ```{r count-by-facet}
+fn <- initiate_image()
 titanic %>%
   ggplot(aes(x=Class, fill=Sex)) +
     geom_bar() + 
     facet_grid(cols=vars(Sex))
+finalize_image()
 ```
+
+![Bar chart](../images/`r fn`.png)
+
+<div class="notes">
+
+
+
+</div>
 
 ### Titanic dodge
 
 ```{r count-by-dodge}
+fn <- initiate_image()
 titanic %>%
   ggplot(aes(x=Class, fill=Sex)) +
     geom_bar(position="dodge")
+finalize_image()
 ```
+
+![Bar chart](../images/`r fn`.png)
+
+<div class="notes">
+
+
+
+</div>
 
 ### Titanic stack
 
 ```{r count-by-stack}
+fn <- initiate_image()
 titanic %>%
   ggplot(aes(x=Class, fill=Sex)) +
     geom_bar(position="stack")
+finalize_image()
 ```
+
+![Bar chart](../images/`r fn`.png)
+
+<div class="notes">
+
+
+
+</div>
 
 ### On your own
 + Draw a bar chart showing counts involving both mortality and gender. Use a panel, then stacking, then dodging. Which do you like best?
@@ -818,10 +634,12 @@ Anyway, examine how mortality is related to gender. It's a spoiler alert, but on
 
 R code
 ```{}
+fn <- initiate_image()
 titanic %>%
   ggplot(aes(x=Sex, fill=Survived)) +
     geom_bar() +
     facet_grid(cols=vars(Survived))
+finalize_image()
 ```
 
 ((Show Tableau))
@@ -829,52 +647,104 @@ titanic %>%
 ### Panel, one approach
 
 ```{r mortality-by-panel}
+fn <- initiate_image()
 titanic %>%
   ggplot(aes(x=Sex, fill=Survived)) +
     geom_bar() +
     facet_grid(cols=vars(Survived))
+finalize_image()
 ```
+
+![Bar chart](../images/`r fn`.png)
+
+<div class="notes">
+
+
+
+</div>
 
 ### Panel, alternate approach
 
 ```{r mortality-by-panel-alt}
+fn <- initiate_image()
 titanic %>%
   ggplot(aes(x=Survived, fill=Sex)) +
     geom_bar(position="stack") +
     facet_grid(cols=vars(Sex))
+finalize_image()
 ```
+
+![Bar chart](../images/`r fn`.png)
+
+<div class="notes">
+
+
+
+</div>
 
 ### Stack, one approach
 
 ```{r mortality-by-stack}
+fn <- initiate_image()
 titanic %>%
   ggplot(aes(x=Sex, fill=Survived)) +
     geom_bar(position="stack")
+finalize_image()
 ```
 
 ### Stack, alternate approach
 
 ```{r mortality-by-stack-alt}
+fn <- initiate_image()
 titanic %>%
   ggplot(aes(x=Survived, fill=Sex)) +
     geom_bar(position="stack")
+finalize_image()
 ```
+
+![Bar chart](../images/`r fn`.png)
+
+<div class="notes">
+
+
+
+</div>
 
 ### Dodge, one approach
 
 ```{r mortality-by-dodge}
+fn <- initiate_image()
 titanic %>%
   ggplot(aes(x=Sex, fill=Survived)) +
     geom_bar(position="dodge")
+finalize_image()
 ```
+
+![Bar chart](../images/`r fn`.png)
+
+<div class="notes">
+
+
+
+</div>
 
 ### Dodge, alternate approach
 
 ```{r mortality-by-dodge-alt}
+fn <- initiate_image()
 titanic %>%
   ggplot(aes(x=Survived, fill=Sex)) +
     geom_bar(position="dodge")
+finalize_image()
 ```
+
+![Bar chart](../images/`r fn`.png)
+
+<div class="notes">
+
+
+
+</div>
 
 ### Group exercise
 + Review the following visualization in your group
@@ -938,3 +808,6 @@ titanic %>%
 
 ((Find a totally different data set and get the students to draw four different visualizations. Have them divide into groups that like the same visualization software and have each person do a different visualization.))
 
+```{r save-everything}
+save.image("../data/data-visualization-02-bar.RData")
+```
