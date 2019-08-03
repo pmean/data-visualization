@@ -377,7 +377,15 @@ lines(sin(theta[c(175,  75,  75)]), 0.5*cos(theta[c(175,  75,  75)])-c(0,0,0.3))
 finalize_image()
 ```
 
-![Angles on a three dimensional pie chart](../images/`r fn`.png)
+<div class="notes">
+
+There are several issues with the three dimensional pie chart, and you can see this best when you split this pie chart into four equal pieces. Notice that the angles are no longer 90 degrees because the perspective view distorts the angles. So you lose the big advantage (and possibly the only advantage) of the pie chart, the ability to divide it easily into four pieces.
+
+Also notice that the wedge in the foreground looks bigger than the wedge in the background, because you can see the side of the foreground wedge, but you can't see the side of the background wedge.
+
+</div>
+
+![Three dimensional pie chart split into four equal pieces](../images/`r fn`.png)
 
 ### Bars
 + Fewer in numbers than points
@@ -498,7 +506,7 @@ If the space between the bars is equal to the width of the bars themselves, you 
 
 ![Optical illusion showing two bars becoming three](../images/optical-illusion-bars.png)
 
-<div class="width">
+<div class="notes">
 
 If the widths are the same and the bars are empty, then you can get a differnt problem. You might get confused as to what is the bar and what is the gap, as in this optical illusion.
 
