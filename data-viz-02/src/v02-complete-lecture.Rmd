@@ -1,0 +1,37 @@
+---
+title: "Data-viz-02, bar charts"
+author: "Steve Simon"
+output: powerpoint_presentation
+---
+
+### Data-viz-02, Outline
++ Preparation
++ Colors
++ Group exercises
++ Perception
++ Barchart fundamentals
++ Barchart recommendations
+
+<div class="notes">
+
+Here is an outline of what you will learn today.
+
+</div>
+
+```{r child="v02-initial-preparation.Rmd"}
+```
+
+```{r  child="colors-tutorial.Rmd"}
+```
+
+```{r child="v02-group-exercises.Rmd"}
+```
+
+```{r child="perception-tutorial.Rmd"}
+```
+
+```{r child="barchart-fundamentals.Rmd"}
+```
+
+```{r child="barchart-recommendations.Rmd"}
+```

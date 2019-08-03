@@ -1,0 +1,14 @@
+---
+title: "Data-viz-01, scatterplots"
+author: "Steve Simon"
+output: powerpoint_presentation
+---
+
+```{r include-prepare, child="v01-to-prepare-for-this-section.Rmd"}
+```
+
+```{r include-main, child="v01-main-scatterplots.Rmd"}
+```
+
+```{r include-color-exercise, child="v01-basic-exercise-color.Rmd"}
+```

@@ -5,7 +5,7 @@ date: "6/23/2019"
 output: powerpoint_presentation
 ---
 
-```{r setup, echo=FALSE}
+```{r setup-v02-colors, echo=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 suppressMessages(suppressWarnings(library(dplyr)))
 suppressMessages(suppressWarnings(library(ggplot2)))
@@ -13,11 +13,16 @@ suppressMessages(suppressWarnings(library(magrittr)))
 suppressMessages(suppressWarnings(library(readr)))
 ```
 
-### Everything I know about colors, I learned in Kindergarten.
+### Colors, introductory tutorial
++ Kindergarten view of colors
++ Review hexadecimal codes
++ RGB color system
+
+### COlors, Everything I know about colors, I learned in Kindergarten.
 
 ![](../images/julias-colour-wheel1.jpg)
 
-### Hexadecimal codes
+### Colors, Hexadecimal codes
 + "There are 10 types of programmers in the world, those who undestand binary and those who don't."
   + 1001 1100 (base 2)
   + = $1*2^7+0*2^6+0*2^5+1*2^4+1*2^3+1*2^2+0*2^1+0*2^0$
@@ -30,7 +35,7 @@ suppressMessages(suppressWarnings(library(readr)))
 + Two hexadecimal digits represent the numbers 0-255.
   + 00 (base 16) = 0, FF (base 16) = 255
 
-### Codes for colors
+### Colors, Codes for colors
 + #rrggbb format
   + #000000 is pure black
   + #FFFFFF is pure white
@@ -41,7 +46,7 @@ suppressMessages(suppressWarnings(library(readr)))
   + #800080 is purple, #FF69B4 is pink, #40e0d0 is turquoise
   
 
-### The color cube (1/2)
+### Colors, The color cube (1/2)
 
 ```{r color-cube-1}
 k <- data.frame(x= 0, y= 0, co="#000000")
@@ -67,7 +72,7 @@ ggplot(dg, aes(x, y)) +
   )
 ```
 
-### The color cube (2/2)
+### Colors, The color cube (2/2)
 
 ```{r color-cube-2}
 dg <- rbind(k, r, y, g, k, b, m, g, m, w, y, r, z, w, z, b)
@@ -84,7 +89,7 @@ ggplot(dg, aes(x, y)) +
 ```
 
 
-### Gradients (1/4)
+### Colors, Gradients (1/4)
 
 ```{r rgb-gradient-1}
 h <- c("0", "3", "6", "9", "C", "F")
@@ -122,7 +127,7 @@ ggplot(dg, aes(x, y)) +
   )
 ```
 
-### Gradients (2/4)
+### Colors, Gradients (2/4)
 
 ```{r rgb-gradient-2}
 h <- c("0", "3", "6", "9", "C", "F")
@@ -161,7 +166,7 @@ ggplot(dg, aes(x, y)) +
   )
 ```
 
-### Gradients (3/4)
+### Colors, Gradients (3/4)
 
 ```{r rgb-gradient-3}
 h <- c("0", "3", "6", "9", "C", "F")
@@ -195,7 +200,7 @@ ggplot(dg, aes(x, y)) +
   )
 ```
 
-### Gradients (4/4)
+### Colors, Gradients (4/4)
 
 ```{r rgb-gradient-4}
 h <- c("0", "3", "6", "9", "C", "F")
@@ -230,7 +235,7 @@ ggplot(dg, aes(x, y)) +
   )
 ```
 
-### Gradients (5/5)
+### Colors, Gradients (5/5)
 
 ```{r rgb-gradient-5}
 h <- rev(c("0", "3", "6", "9", "C", "F"))
@@ -264,12 +269,12 @@ ggplot(dg, aes(x, y)) +
   )
 ```
 
-### RGB combinations
+### Colors, RGB combinations
 
 Additive color mixing: adding red to green yields yellow; adding green to blue yields cyan; adding blue to red yields magenta; adding all three primary colors together yields white.
 
 
-### Contrasting pure colors often appear too intense
+### Colors, Contrasting pure colors often appear too intense
 
 ```{r intense}
 c3 <- c("#FF0000", "#00FF00", "#0000FF")
@@ -294,7 +299,7 @@ ggplot(df, aes(x, y)) +
   )
 ```
 
-### Lighten the background
+### Colors, Lighten the background
 
 ```{r ligthen-background}
 df <- data.frame(
@@ -316,7 +321,7 @@ ggplot(df, aes(x, y)) +
   )
 ```
 
-### Darken the foreground
+### Colors, Darken the foreground
 
 ```{r darken-foreground}
 df <- data.frame(
@@ -338,7 +343,7 @@ ggplot(df, aes(x, y)) +
   )
 ```
 
-### or both
+### Colors, or both
 
 ```{r both}
 df <- data.frame(
@@ -360,7 +365,7 @@ ggplot(df, aes(x, y)) +
   )
 ```
 
-### or the reverse
+### Colors, or the reverse
 
 ```{r reverse}
 df <- data.frame(
@@ -380,4 +385,8 @@ ggplot(df, aes(x, y)) +
   theme(
     panel.background=element_rect(fill="#888888")
   )
+```
+
+```{r save-colors-tutorial-files}
+save.image("../data/colors-tutorial.RData")
 ```

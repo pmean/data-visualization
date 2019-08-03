@@ -4,7 +4,7 @@ author: "Steve Simon"
 output: powerpoint_presentation
 ---
 
-```{r setup, echo=FALSE}
+```{r setup-v01-main-lecture, echo=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 suppressMessages(suppressWarnings(library(ggplot2)))
 suppressMessages(suppressWarnings(library(knitr)))
@@ -358,7 +358,7 @@ Split into pairs. Review the article briefly (about 5 minutes) and look at the g
 
 <div class="notes">
 
-Most of the current designers of data visualization software have based their work on the theoretical foundations of Leland Wilkinson. This includes ggplot2 in r, altair inPython, and Tableau, among others. Dr. Wilkinson wrote a book, The Grammar of Graphics, in 1999 (second edition in 2006) that laid out the principles for the development of pretty much any data visualizaton that you could imagine. The work is mathematically rigorous, and I do not recommend that you read this book unless you enjoy that sort of thing. I do want to highlight a few of the fundamental ideas in the book
+Most of the current designers of data visualization software have based their work on the theoretical foundations of Leland Wilkinson. This includes ggplot2 in r, altair in Python, and Tableau, among others. Dr. Wilkinson wrote a book, The Grammar of Graphics, in 1999 (second edition in 2006) that laid out the principles for the development of pretty much any data visualizaton that you could imagine. The work is mathematically rigorous, and I do not recommend that you read this book unless you enjoy that sort of thing. I do want to highlight a few of the fundamental ideas in the book
 
 </div>
 

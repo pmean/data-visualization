@@ -4,7 +4,7 @@ author: "Steve Simon"
 output: powerpoint_presentation
 ---
 
-```{r setup, echo=FALSE}
+```{r setup-exercise-color, echo=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 suppressMessages(suppressWarnings(library(ggplot2)))
 suppressMessages(suppressWarnings(library(magrittr)))

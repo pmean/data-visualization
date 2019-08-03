@@ -1,0 +1,91 @@
+---
+title: "v02 - initial preparationData visualization - 02 - bars"
+author: "Steve Simon"
+date: "6/23/2019"
+output: powerpoint_presentation
+---
+
+```{r setup-v02-initial-preparation, echo=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+source("../../common-files/setup.R")
+```
+
+### Preparation, overview
+
++ Follow these steps to get ready for lecture #2 in data visualization.
+  + Download and import Titanic data
+  + Download and import scotus data
+
+
+### Preparation, kaggle website
+
+![Kaggle datasets webpage](../images/kaggle-scotus-data.png)
+
+### Preparation, download scotus data
+
+Download the scotus_cases.csv data set, or go to the original source, the Kaggle datasets repository.
+
+Import the data and create a bar chart showing the frequency of opinions written by year_filed. Note that there are a few typos and a few rows that do not belong. You can remove these, but they will not affect any of the analyses we are considering.
+
+```{r clean, eval=FALSE}
+scotus_full <- read_csv("../data/opinions_since_1970.csv")
+scotus_full %>% select(-c(7, 8, 14)) %>% data.frame -> scotus
+scotus$author_name <- 
+  sub("justice [[author]]ginsburg[[/author]]", 
+      "justice ginsburg", scotus$author_name, fixed=TRUE)
+scotus$author_name <- sub("justice black;", "justice black", scotus$author_name)
+scotus$author_name <- sub("justice bruger", "justice burger", scotus$author_name)
+scotus$author_name <- sub("justice connor", "justice o'connor", scotus$author_name)
+scotus$author_name <- sub("justice o2122", "justice o'connor", scotus$author_name)
+scotus$author_name <- sub("justice waite", "justice white", scotus$author_name)
+table(scotus$author_name, scotus$year_filed)
+scotus %>%
+  data.frame(stingsAsFactors=FALSE) %>%
+  filter(category != "per_curiam") %>%
+  select(-scdb_decision_direction) %>%
+  select(-scdb_votes_majority) %>%
+  select(-scdb_votes_minority) %>%
+  write.csv(file="../data/scotus_opinions.csv", row.names=FALSE)
+scotus %>%
+  data.frame(stingsAsFactors=FALSE) %>%
+  filter(category=="majority") %>%
+  select(-author_name) %>%
+  select(-category) %>%
+  select(-per_curiam) %>%
+  write.csv(file="../data/scotus_cases.csv", row.names=FALSE)
+```
+
+```{r read}
+opinions <- read.csv("../data/scotus_opinions.csv", stringsAsFactors=FALSE)           
+sc_cases <- read.csv("../data/scotus_cases.csv", stringsAsFactors=FALSE) 
+fn <- "https://dasl.datadescription.com/download/data/3484"
+titanic <- read_tsv(fn, col_types=cols())
+```
+
+### Preparation, Python code
+
+((Add later))
+
+### Preparation, R code
+
+((Add later))
+
+### Preparation, Tableau steps
+
+((Add later))
+
+### Preparation, This is what your bar chart should look like
+
+```{r scotus-bar, message=FALSE}
+fn <- initiate_image()
+sc_cases <- read.csv(file="../data/scotus_cases.csv")
+ggplot(sc_cases, aes(year_filed)) +
+  geom_bar()
+finalize_image()
+```
+
+![Bar chart](../images/`r fn`.png)
+
+```{r save-initial-preparation-files}
+save.image("../data/v02-initial-preparation.RData")
+```

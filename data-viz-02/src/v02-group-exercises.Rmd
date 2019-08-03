@@ -1,0 +1,30 @@
+---
+title: "V02, group exercises"
+author: "Steve Simon"
+date: "6/23/2019"
+output: powerpoint_presentation
+---
+
+```{r echo=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+### Group exercise (1 of 2)
+
+![Bar chart of demographics of selected Texas counties](../images/texas-bar-chart.png)
+
+<div class="notes">
+
+This is one of two graphs. It was published in
+
+Badger, E. (2019). People Who Can’t Vote Still Count Politically in America. What if That Changes?. Retrieved June 24, 2019, from The New York Times website: https://www.nytimes.com/2019/06/22/upshot/america-who-deserves-representation.html
+
+
+Split into pairs. Review the article briefly (about 5 minutes) and look at the graph. Explain to your partner what the graph is trying to show. Your partner will get a different graph and do the same thing with you listening this time.
+
+</div>
+
+### Group exercise (2 of 2)
+
+((Image is not yet available.))
+

@@ -1,7 +1,7 @@
 ---
-title: "Data visualization - 02 - bars"
+title: "Barchart fundamentals"
 author: "Steve Simon"
-date: "6/23/2019"
+date: "2019-08-03"
 output: powerpoint_presentation
 ---
 
@@ -10,8 +10,7 @@ knitr::opts_chunk$set(echo = FALSE)
 source("../../common-files/setup.R")
 ```
 
-
-### Bars
+### Barchart fundamentals, Bars
 + Fewer in numbers than points
 + Usually a summary statistic
   + Count
@@ -28,7 +27,7 @@ There is a technical distinction between a bar chart and a histogram. Histograms
 
 </div>
 
-### Aesthetics for bars
+### Barchart fundamentals, Aesthetics for bars
 + Review
   + Location
   + Size
@@ -41,11 +40,11 @@ Recall that aesthetics are visual attributes associated with a geometry/mark. Yo
 
 </div>
 
-### Notes about this talk
+### Barchart fundamentals, Notes about this talk
 + Do not include this slide in the final presentation
 + If I do a flipped classroom, here would be a good place to split with most of the material before this slide being in lectures to be viewed before the class. Then the classrom lecture would start from about here (after a very quick review) and focus on the "On your own" exercises.
 
-### Location (1 of 2)
+### Barchart fundamentals, Location (1 of 2)
 
 ```{r location-horizontal}
 fn <- initiate_image()
@@ -63,7 +62,7 @@ finalize_image()
 </div>
 
 
-### Location (2 of 2)
+### Barchart fundamentals, Location (2 of 2)
 
 ```{r location-vertical}
 fn <- initiate_image()
@@ -81,10 +80,10 @@ finalize_image()
 
 
 </div>
-### On your own
+### Barchart fundamentals, On your own
 + Draw a horizontal and vertical bar chart showing the number of people in each gender (use the Sex variable).
 
-### Wait before showing
+### Barchart fundamentals, Wait before showing
 
 ((Python code))
 
@@ -92,11 +91,11 @@ finalize_image()
 
 ((Tableau steps))
 
-### What your visualization might look like
+### Barchart fundamentals, What your visualization might look like
 
 ((Show visualization))
 
-### Thoughts on location
+### Barchart fundamentals, Thoughts on location
 + Axis labels often fit better on vertical location
 + Cannot vary both X and Y
 
@@ -108,39 +107,13 @@ Remember the fault of default principle. Always try different ways of displaying
 
 </div>
 
-### Size
+### Barchart fundamentals, Size
 
 + Length varies, width doesn't
   + Exception, mosaic plots
   + Think about gaps between bars
   
-### Don't make gaps equal to widths
-
-![Alternate white and black lines showing a Moire effect](../images/alternate-white-and-black.png)
-
-<div class="notes">
-
-If the space between the bars is equal to the width of the bars themselves, you get an unsettling vibratory effect. This is because your eye is constantly shifting perspective. Sometimes it perceives the black as the foreground and the white as the background. Sometimes it perceives the white as the foreground and the black as the background.
-
-"I'm ten years old, my life's half over. And I don't even know if I'm black with white stripes or white with black stripes." Marty the Zebra in the movie Madagascar.
-
-</div>
-
-### Optical illusion
-
-![Optical illusion showing two bars becoming three](../images/optical-illusion-bars.png)
-
-<div class="notes">
-
-If the widths are the same and the bars are empty, then you can get a differnt problem. You might get confused as to what is the bar and what is the gap, as in this optical illusion.
-
-As a general rule, the gap between bars should be about 10 to 20 percent of the width of the bars. Most visualization software has sensible defaults, but beware when you have a very large number of bars. There's always a bit of rounding when you place pixels on a screen or on a page. Your software is trying to fill the available plotting area, so it may have to squeeze or stretch one gap or another. This unevenness can become noticeable when the gaps are only a few pixels wide.
-
-((Show an example of this using the scotus data))
-
-<div>
-
-### Color
+### Barchart fundamentals, Color
 
 ```{r bar-color}
 fn <- initiate_image()
@@ -151,10 +124,10 @@ finalize_image()
 
 ```
 
-### On your own
+### Barchart fundamentals, On your own
 + Make the first class bar red to show Leonardo di Caprio's perspective on the Titanic.
 
-### Wait before showing
+### Barchart fundamentals, Wait before showing
 
 ((Python code))
 
@@ -162,11 +135,11 @@ finalize_image()
 
 ((Tableau steps))
 
-### What your visualization might look like
+### Barchart fundamentals, What your visualization might look like
 
 ((Show visualization))
 
-### Color
+### Barchart fundamentals, Color
 + Use for emphasis in simple bar charts
 + Very important for stacked or side-by-side bar charts
 
@@ -178,10 +151,10 @@ Color becomes very important in just a minute when we add another layer of compl
 
 </div>
 
-### On your own
+### Barchart fundamentals, On your own
 + Revise this visualization so the first class bar is red.
 
-### Wait before showing
+### Barchart fundamentals, Wait before showing
 
 ((Python code))
 
@@ -189,11 +162,11 @@ Color becomes very important in just a minute when we add another layer of compl
 
 ((Tableau steps))
 
-### What your visualization might look like
+### Barchart fundamentals, What your visualization might look like
 
 ((Show visualization))
 
-### Stack versus dodge
+### Barchart fundamentals, Stack versus dodge
 + Summarize by two categories
 + Facet
   + Separate plots
@@ -208,7 +181,7 @@ Bar charts that represent a summary across a single categorical variable are fai
 
 </div>
 
-### Titanic passenger count by gender
+### Barchart fundamentals, Titanic passenger count by gender
 
 ```{r count-by-gender}
 fn <- initiate_image()
@@ -225,7 +198,7 @@ finalize_image()
 
 
 </div>
-### Titanic passenger count by passenger class
+### Barchart fundamentals, Titanic passenger count by passenger class
 
 ```{r count-by-passenger-class}
 fn <- initiate_image()
@@ -243,7 +216,7 @@ finalize_image()
 
 </div>
 
-### Titanic facet
+### Barchart fundamentals, Titanic facet
 
 ```{r count-by-facet}
 fn <- initiate_image()
@@ -262,7 +235,7 @@ finalize_image()
 
 </div>
 
-### Titanic dodge
+### Barchart fundamentals, Titanic dodge
 
 ```{r count-by-dodge}
 fn <- initiate_image()
@@ -280,7 +253,7 @@ finalize_image()
 
 </div>
 
-### Titanic stack
+### Barchart fundamentals, Titanic stack
 
 ```{r count-by-stack}
 fn <- initiate_image()
@@ -298,7 +271,7 @@ finalize_image()
 
 </div>
 
-### On your own
+### Barchart fundamentals, On your own
 + Draw a bar chart showing counts involving both mortality and gender. Use a panel, then stacking, then dodging. Which do you like best?
 
 <div class="notes">
@@ -309,7 +282,7 @@ Anyway, examine how mortality is related to gender. It's a spoiler alert, but on
 
 </div>
 
-### Wait a bit before showing the code
+### Barchart fundamentals, Wait a bit before showing the code
 + Did you make the panel/stack/dodge Survived or did you make it Sex? Here's some code, but yours might be different.
 
 ((Show Python code))
@@ -326,7 +299,7 @@ finalize_image()
 
 ((Show Tableau))
 
-### Panel, one approach
+### Barchart fundamentals, Panel, one approach
 
 ```{r mortality-by-panel}
 fn <- initiate_image()
@@ -345,7 +318,7 @@ finalize_image()
 
 </div>
 
-### Panel, alternate approach
+### Barchart fundamentals, Panel, alternate approach
 
 ```{r mortality-by-panel-alt}
 fn <- initiate_image()
@@ -364,7 +337,7 @@ finalize_image()
 
 </div>
 
-### Stack, one approach
+### Barchart fundamentals, Stack, one approach
 
 ```{r mortality-by-stack}
 fn <- initiate_image()
@@ -374,7 +347,7 @@ titanic %>%
 finalize_image()
 ```
 
-### Stack, alternate approach
+### Barchart fundamentals, Stack, alternate approach
 
 ```{r mortality-by-stack-alt}
 fn <- initiate_image()
@@ -392,7 +365,7 @@ finalize_image()
 
 </div>
 
-### Dodge, one approach
+### Barchart fundamentals, Dodge, one approach
 
 ```{r mortality-by-dodge}
 fn <- initiate_image()
@@ -410,7 +383,7 @@ finalize_image()
 
 </div>
 
-### Dodge, alternate approach
+### Barchart fundamentals, Dodge, alternate approach
 
 ```{r mortality-by-dodge-alt}
 fn <- initiate_image()
@@ -428,14 +401,14 @@ finalize_image()
 
 </div>
 
-### Group exercise
+### Barchart fundamentals, Group exercise
 + Review the following visualization in your group
   + Summarize what aesthetics appear in the graph
   + What variables map to each aesthetic?
   
 ((Provide visualization. Maybe use the visualization from the earlier exercise?))
 
-### Summarizations
+### Barchart fundamentals, Summarizations
 + One number summary (mean or percentage)
 + Two number summary (error bars)
 + Five number summary (boxplots)
@@ -449,35 +422,35 @@ finalize_image()
 
 </div>
   
-### Switching from count to percent
+### Barchart fundamentals, Switching from count to percent
 
 ((Show the code in Python, R, and Tableau. Explain why you might want counts versus percents.))
 
-### Example with means
+### Barchart fundamentals, Example with means
 
 ((Need to find the right data set to illustrate this. Maybe the Saratoga house prices?))
 
-### Example with totals
+### Barchart fundamentals, Example with totals
 
 ((Same data. What means tell you versus totals.))
 
-### Boxplots example
+### Barchart fundamentals, Boxplots example
 
 ((Include an explanation of what a boxplot is))
 
-### Jittering example
+### Barchart fundamentals, Jittering example
 
 ((Include an explanation on when it doesn't work.))
 
-### Opacity example
+### Barchart fundamentals, Opacity example
 
 ((Note the computational expense.))
 
-### On your own
+### Barchart fundamentals, On your own
 
 ((Find a totally different data set and get the students to draw four different visualizations. Have them divide into groups that like the same visualization software and have each person do a different visualization.))
 
-### Summary
+### Barchart fundamentals, Summary
 + "A mapping of data to the visual aesthetics of geometries/marks" 
   + Bars are a type of geometry/mark
   + Aesthetics for bars include location, size, color
@@ -486,7 +459,7 @@ finalize_image()
   + Place comparators close
   + Use axis ticks, light grid lines
 
-### On your own
+### Barchart fundamentals, On your own
 
 ((Find a totally different data set and get the students to draw four different visualizations. Have them divide into groups that like the same visualization software and have each person do a different visualization.))
 
