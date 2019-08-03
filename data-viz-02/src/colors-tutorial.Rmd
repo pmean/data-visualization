@@ -1,16 +1,13 @@
 ---
 title: "A tutorial on colors"
 author: "Steve Simon"
-date: "6/23/2019"
+date: "2019-07-22"
 output: powerpoint_presentation
 ---
 
 ```{r setup-v02-colors, echo=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
-suppressMessages(suppressWarnings(library(dplyr)))
-suppressMessages(suppressWarnings(library(ggplot2)))
-suppressMessages(suppressWarnings(library(magrittr)))
-suppressMessages(suppressWarnings(library(readr)))
+source("../../common-files/setup.R")
 ```
 
 ### Colors, introductory tutorial
@@ -89,7 +86,7 @@ ggplot(dg, aes(x, y)) +
 ```
 
 
-### Colors, Gradients (1/4)
+### Colors, Gradients (1/5)
 
 ```{r rgb-gradient-1}
 h <- c("0", "3", "6", "9", "C", "F")
@@ -127,7 +124,7 @@ ggplot(dg, aes(x, y)) +
   )
 ```
 
-### Colors, Gradients (2/4)
+### Colors, Gradients (2/5)
 
 ```{r rgb-gradient-2}
 h <- c("0", "3", "6", "9", "C", "F")
@@ -166,7 +163,7 @@ ggplot(dg, aes(x, y)) +
   )
 ```
 
-### Colors, Gradients (3/4)
+### Colors, Gradients (3/5)
 
 ```{r rgb-gradient-3}
 h <- c("0", "3", "6", "9", "C", "F")
@@ -200,7 +197,7 @@ ggplot(dg, aes(x, y)) +
   )
 ```
 
-### Colors, Gradients (4/4)
+### Colors, Gradients (4/5)
 
 ```{r rgb-gradient-4}
 h <- c("0", "3", "6", "9", "C", "F")

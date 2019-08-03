@@ -30,8 +30,8 @@ Here is an outline of what you will learn today.
 ```{r child="perception-tutorial.Rmd"}
 ```
 
-```{r child="barchart-fundamentals.Rmd"}
+```{r child="barcharts-fundamentals.Rmd"}
 ```
 
-```{r child="barchart-recommendations.Rmd"}
+```{r child="barcharts-recommendations.Rmd"}
 ```

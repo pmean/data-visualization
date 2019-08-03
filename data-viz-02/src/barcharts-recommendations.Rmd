@@ -36,3 +36,33 @@ As a general rule, the gap between bars should be about 10 to 20 percent of the 
 
 <div>
 
+### Barchart fundamentals, Thoughts on location
++ Axis labels often fit better on vertical location
++ Cannot vary both X and Y
+
+<div class="notes">
+
+The default for most visualization software is vertical bars, but you should give thoughtful consideration to horizontal bars. The labels often fit better when the bars are horizontal. You also often have more room left to right than you do up and down in a graph, so the bars can stretch out more, allowing you to more easily discern small and subtle differences.
+
+Remember the fault of default principle. Always try different ways of displaying your data. It costs nothing other than a few electrons to display a horizontal alternative to the typical vertical bar chart format, so why not indulge yourself?
+
+</div>
+
+### Barchart recommendations, Turn the chart sideways
+
+```{r location-vertical}
+fn <- initiate_image()
+ggplot(titanic, aes(Pclass)) +
+  geom_bar() +
+  coord_flip()
+finalize_image()
+```
+
+
+![Vertical bar chart](../images/`r fn`.png)
+
+<div class="notes">
+
+Labels often fit better on a vertical bar chart.
+
+</div>

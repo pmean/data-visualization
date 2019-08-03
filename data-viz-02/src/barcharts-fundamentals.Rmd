@@ -5,9 +5,10 @@ date: "2019-08-03"
 output: powerpoint_presentation
 ---
 
-```{r setup-v02-main, echo=FALSE}
+```{r setup-v02-main, echo=FALSE, message=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 source("../../common-files/setup.R")
+titanic <- read_tsv("../data/titanic.txt")
 ```
 
 ### Barchart fundamentals, Bars
@@ -40,15 +41,11 @@ Recall that aesthetics are visual attributes associated with a geometry/mark. Yo
 
 </div>
 
-### Barchart fundamentals, Notes about this talk
-+ Do not include this slide in the final presentation
-+ If I do a flipped classroom, here would be a good place to split with most of the material before this slide being in lectures to be viewed before the class. Then the classrom lecture would start from about here (after a very quick review) and focus on the "On your own" exercises.
-
 ### Barchart fundamentals, Location (1 of 2)
 
 ```{r location-horizontal}
 fn <- initiate_image()
-ggplot(titanic, aes(Class)) +
+ggplot(titanic, aes(Pclass)) +
   geom_bar()
 finalize_image()
 ```
@@ -57,29 +54,12 @@ finalize_image()
 
 <div class="notes">
 
+This is data from the Titanic, a ship that was as massive as its name. It was considered unsinkable, but on its maiden voyage in 1912, the ship hit an iceberg and sank. It sank during an era where people really believed in women and children first, and this shows quite clearly in the mortality statistics. There was a difference, though, between third class passengers like Leonardo diCaprio and first class passengers like Kate Winslet.
 
-
-</div>
-
-
-### Barchart fundamentals, Location (2 of 2)
-
-```{r location-vertical}
-fn <- initiate_image()
-ggplot(titanic, aes(Class)) +
-  geom_bar() +
-  coord_flip()
-finalize_image()
-```
-
-
-![Vertical bar chart](../images/`r fn`.png)
-
-<div class="notes">
-
-
+This shows a simple bar chart. The x-axis is passenger class and the y-axis is count. Note that there are about the same number of first and second class passengers, but the two combined does not come close to the number of third class passengers.
 
 </div>
+
 ### Barchart fundamentals, On your own
 + Draw a horizontal and vertical bar chart showing the number of people in each gender (use the Sex variable).
 
@@ -117,7 +97,7 @@ Remember the fault of default principle. Always try different ways of displaying
 
 ```{r bar-color}
 fn <- initiate_image()
-ggplot(titanic, aes(x=Class, fill=Class)) +
+ggplot(titanic, aes(x=Pclass, fill=Pclass)) +
   geom_bar() +
   scale_fill_manual(values=c("darkgrey", "darkgrey", "red", "darkgrey"))
 finalize_image()
@@ -202,7 +182,7 @@ finalize_image()
 
 ```{r count-by-passenger-class}
 fn <- initiate_image()
-ggplot(titanic, aes(x=Class)) +
+ggplot(titanic, aes(x=Pclass)) +
   geom_bar()
 finalize_image()
 ```
@@ -221,7 +201,7 @@ finalize_image()
 ```{r count-by-facet}
 fn <- initiate_image()
 titanic %>%
-  ggplot(aes(x=Class, fill=Sex)) +
+  ggplot(aes(x=Pclass, fill=Sex)) +
     geom_bar() + 
     facet_grid(cols=vars(Sex))
 finalize_image()
@@ -240,7 +220,7 @@ finalize_image()
 ```{r count-by-dodge}
 fn <- initiate_image()
 titanic %>%
-  ggplot(aes(x=Class, fill=Sex)) +
+  ggplot(aes(x=Pclass, fill=Sex)) +
     geom_bar(position="dodge")
 finalize_image()
 ```
@@ -258,7 +238,7 @@ finalize_image()
 ```{r count-by-stack}
 fn <- initiate_image()
 titanic %>%
-  ggplot(aes(x=Class, fill=Sex)) +
+  ggplot(aes(x=Pclass, fill=Sex)) +
     geom_bar(position="stack")
 finalize_image()
 ```
