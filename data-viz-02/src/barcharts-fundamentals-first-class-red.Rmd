@@ -1,0 +1,187 @@
+---
+title: "Barchart fundamentals, first-class-red"
+author: "Steve Simon"
+date: "2019-08-03"
+output: powerpoint_presentation
+---
+
+```{r echo=FALSE, message=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+source("../../common-files/setup.R")
+suppressMessages(suppressWarnings(library(reticulate)))
+titanic <- read_tsv("../data/titanic.txt")
+```
+
+### Barchart fundamentals, First class red
++ Make the first class bar red to show Leonardo di Caprio's perspective on the Titanic.
+
+### Barchart fundamentals, First class red
+
+((Python code))
+
+((R code))
+
+((Tableau steps))
+
+### Barchart fundamentals, What your visualization might look like
+
+((Show visualization))
+
+### Barchart fundamentals, Color
++ Use for emphasis in simple bar charts
++ Very important for stacked or side-by-side bar charts
+
+<div class="notes">
+
+For simple bar charts like all the ones we've seen so far, color is not really needed. You already can distinguish between the passenger classes using the location. If you do use color in a simple bar chart, it is often to emphasize a point. In the previous bar chart, I used red for third class, because Kate Winslet, a rich first class passenger, found true love in third class, with the adorable Leonardo di Caprio.
+
+Color becomes very important in just a minute when we add another layer of complexity.
+
+</div>
+
+### Barchart fundamentals, On your own
++ Revise this visualization so the first class bar is red.
+
+### Barchart fundamentals, Wait before showing
+
+((Python code))
+
+((R code))
+
+((Tableau steps))
+
+### Barchart fundamentals, What your visualization might look like
+
+((Show visualization))
+
+
+### Barchart fundamentals, On your own
++ Draw a bar chart showing counts involving both mortality and gender. Use a panel, then stacking, then dodging. Which do you like best?
+
+<div class="notes">
+
+Mortality on the Titanic reflects the fact that this was an era when people really did believe in the concept of "women and children first." Someone like me, I'd be shoving the little kids aside so I could get on one of the lifeboats.
+
+Anyway, examine how mortality is related to gender. It's a spoiler alert, but on the Titanic, Kate survives, but Leonardo, I am so sad to say this, didn't make it.
+
+</div>
+
+### Barchart fundamentals, Wait a bit before showing the code
++ Did you make the panel/stack/dodge Survived or did you make it Sex? Here's some code, but yours might be different.
+
+((Show Python code))
+
+R code
+```{}
+fn <- initiate_image()
+titanic %>%
+  ggplot(aes(x=Sex, fill=Survived)) +
+    geom_bar() +
+    facet_grid(cols=vars(Survived))
+finalize_image()
+```
+
+((Show Tableau))
+
+### Barchart fundamentals, Panel, one approach
+
+```{r mortality-by-panel}
+fn <- initiate_image()
+titanic %>%
+  ggplot(aes(x=Sex, fill=Survived)) +
+    geom_bar() +
+    facet_grid(cols=vars(Survived))
+finalize_image()
+```
+
+![Bar chart](../images/`r fn`.png)
+
+<div class="notes">
+
+
+
+</div>
+
+### Barchart fundamentals, Panel, alternate approach
+
+```{r mortality-by-panel-alt}
+fn <- initiate_image()
+titanic %>%
+  ggplot(aes(x=Survived, fill=Sex)) +
+    geom_bar(position="stack") +
+    facet_grid(cols=vars(Sex))
+finalize_image()
+```
+
+![Bar chart](../images/`r fn`.png)
+
+<div class="notes">
+
+
+
+</div>
+
+### Barchart fundamentals, Stack, one approach
+
+```{r mortality-by-stack}
+fn <- initiate_image()
+titanic %>%
+  ggplot(aes(x=Sex, fill=Survived)) +
+    geom_bar(position="stack")
+finalize_image()
+```
+
+### Barchart fundamentals, Stack, alternate approach
+
+```{r mortality-by-stack-alt}
+fn <- initiate_image()
+titanic %>%
+  ggplot(aes(x=Survived, fill=Sex)) +
+    geom_bar(position="stack")
+finalize_image()
+```
+
+![Bar chart](../images/`r fn`.png)
+
+<div class="notes">
+
+
+
+</div>
+
+### Barchart fundamentals, Dodge, one approach
+
+```{r mortality-by-dodge}
+fn <- initiate_image()
+titanic %>%
+  ggplot(aes(x=Sex, fill=Survived)) +
+    geom_bar(position="dodge")
+finalize_image()
+```
+
+![Bar chart](../images/`r fn`.png)
+
+<div class="notes">
+
+
+
+</div>
+
+### Barchart fundamentals, Dodge, alternate approach
+
+```{r mortality-by-dodge-alt}
+fn <- initiate_image()
+titanic %>%
+  ggplot(aes(x=Survived, fill=Sex)) +
+    geom_bar(position="dodge")
+finalize_image()
+```
+
+![Bar chart](../images/`r fn`.png)
+
+<div class="notes">
+
+
+
+</div>
+

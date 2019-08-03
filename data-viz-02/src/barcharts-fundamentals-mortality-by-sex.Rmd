@@ -1,0 +1,64 @@
+---
+title: "Barchart fundamentals, Mortality by gender"
+author: "Steve Simon"
+date: "2019-08-03"
+output: powerpoint_presentation
+---
+
+```{r echo=FALSE, message=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+source("../../common-files/setup.R")
+suppressMessages(suppressWarnings(library(reticulate)))
+titanic <- read_tsv("../data/titanic.txt")
+```
+
+### Barchart fundamentals, Mortality by gender
++ Draw a bar chart showing counts involving both mortality and gender. Use a panel, then stacking, then dodging. Which do you like best?
+
+<div class="notes">
+
+Mortality on the Titanic reflects the fact that this was an era when people really did believe in the concept of "women and children first." Someone like me, I'd be shoving the little kids aside so I could get on one of the lifeboats.
+
+Anyway, examine how mortality is related to gender. It's a spoiler alert, but on the Titanic, Kate survives, but Leonardo, I am so sad to say this, didn't make it.
+
+</div>
+
+### Barchart fundamentals, Mortality by gender, Python code
+
+((Python code))
+
+### Barchart fundamentals, Mortality by gender, Python results
+
+((Python results))
+
+### Barchart fundamentals, Mortality by gender, R code
+
+```{}
+titanic %>%
+  ggplot(aes(x=Sex, fill=Survived)) +
+    geom_bar() +
+    facet_grid(cols=vars(Survived))
+```
+
+
+### Barchart fundamentals, Mortality by gender, R results
+
+```{r mortality-by-gender-panel}
+fn <- initiate_image()
+titanic %>%
+  ggplot(aes(x=Sex, fill=Survived)) +
+    geom_bar() +
+    facet_grid(cols=vars(Survived))
+finalize_image()
+```
+
+![](../images/`r fn`.png)
+
+### Barchart fundamentals, Mortality by gender, Tableau steps
+
+((Tableau steps))
+
+### Barchart fundamentals, Mortality by gender, Tableau results
+
+((Tableau results))
+

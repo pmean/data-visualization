@@ -41,7 +41,7 @@ Recall that aesthetics are visual attributes associated with a geometry/mark. Yo
 
 </div>
 
-### Barchart fundamentals, Location (1 of 2)
+### Barchart fundamentals, Location
 
 ```{r location-horizontal}
 fn <- initiate_image()
@@ -60,32 +60,8 @@ This shows a simple bar chart. The x-axis is passenger class and the y-axis is c
 
 </div>
 
-### Barchart fundamentals, On your own
-+ Draw a horizontal and vertical bar chart showing the number of people in each gender (use the Sex variable).
-
-### Barchart fundamentals, Wait before showing
-
-((Python code))
-
-((R code))
-
-((Tableau steps))
-
-### Barchart fundamentals, What your visualization might look like
-
-((Show visualization))
-
-### Barchart fundamentals, Thoughts on location
-+ Axis labels often fit better on vertical location
-+ Cannot vary both X and Y
-
-<div class="notes">
-
-The default for most visualization software is vertical bars, but you should give thoughtful consideration to horizontal bars. The labels often fit better when the bars are horizontal. You also often have more room left to right than you do up and down in a graph, so the bars can stretch out more, allowing you to more easily discern small and subtle differences.
-
-Remember the fault of default principle. Always try different ways of displaying your data. It costs nothing other than a few electrons to display a horizontal alternative to the typical vertical bar chart format, so why not indulge yourself?
-
-</div>
+```{r child="barcharts-fundamentals-draw-gender.Rmd"}
+```
 
 ### Barchart fundamentals, Size
 
@@ -104,21 +80,6 @@ finalize_image()
 
 ```
 
-### Barchart fundamentals, On your own
-+ Make the first class bar red to show Leonardo di Caprio's perspective on the Titanic.
-
-### Barchart fundamentals, Wait before showing
-
-((Python code))
-
-((R code))
-
-((Tableau steps))
-
-### Barchart fundamentals, What your visualization might look like
-
-((Show visualization))
-
 ### Barchart fundamentals, Color
 + Use for emphasis in simple bar charts
 + Very important for stacked or side-by-side bar charts
@@ -131,20 +92,8 @@ Color becomes very important in just a minute when we add another layer of compl
 
 </div>
 
-### Barchart fundamentals, On your own
-+ Revise this visualization so the first class bar is red.
-
-### Barchart fundamentals, Wait before showing
-
-((Python code))
-
-((R code))
-
-((Tableau steps))
-
-### Barchart fundamentals, What your visualization might look like
-
-((Show visualization))
+```{r child="barcharts-fundamentals-first-class-red.Rmd"}
+```
 
 ### Barchart fundamentals, Stack versus dodge
 + Summarize by two categories
@@ -178,6 +127,7 @@ finalize_image()
 
 
 </div>
+
 ### Barchart fundamentals, Titanic passenger count by passenger class
 
 ```{r count-by-passenger-class}
@@ -251,135 +201,10 @@ finalize_image()
 
 </div>
 
-### Barchart fundamentals, On your own
-+ Draw a bar chart showing counts involving both mortality and gender. Use a panel, then stacking, then dodging. Which do you like best?
 
-<div class="notes">
-
-Mortality on the Titanic reflects the fact that this was an era when people really did believe in the concept of "women and children first." Someone like me, I'd be shoving the little kids aside so I could get on one of the lifeboats.
-
-Anyway, examine how mortality is related to gender. It's a spoiler alert, but on the Titanic, Kate survives, but Leonardo, I am so sad to say this, didn't make it.
-
-</div>
-
-### Barchart fundamentals, Wait a bit before showing the code
-+ Did you make the panel/stack/dodge Survived or did you make it Sex? Here's some code, but yours might be different.
-
-((Show Python code))
-
-R code
-```{}
-fn <- initiate_image()
-titanic %>%
-  ggplot(aes(x=Sex, fill=Survived)) +
-    geom_bar() +
-    facet_grid(cols=vars(Survived))
-finalize_image()
+```{r child="barcharts-fundamentals-mortality-by-sex.Rmd"}
 ```
 
-((Show Tableau))
-
-### Barchart fundamentals, Panel, one approach
-
-```{r mortality-by-panel}
-fn <- initiate_image()
-titanic %>%
-  ggplot(aes(x=Sex, fill=Survived)) +
-    geom_bar() +
-    facet_grid(cols=vars(Survived))
-finalize_image()
-```
-
-![Bar chart](../images/`r fn`.png)
-
-<div class="notes">
-
-
-
-</div>
-
-### Barchart fundamentals, Panel, alternate approach
-
-```{r mortality-by-panel-alt}
-fn <- initiate_image()
-titanic %>%
-  ggplot(aes(x=Survived, fill=Sex)) +
-    geom_bar(position="stack") +
-    facet_grid(cols=vars(Sex))
-finalize_image()
-```
-
-![Bar chart](../images/`r fn`.png)
-
-<div class="notes">
-
-
-
-</div>
-
-### Barchart fundamentals, Stack, one approach
-
-```{r mortality-by-stack}
-fn <- initiate_image()
-titanic %>%
-  ggplot(aes(x=Sex, fill=Survived)) +
-    geom_bar(position="stack")
-finalize_image()
-```
-
-### Barchart fundamentals, Stack, alternate approach
-
-```{r mortality-by-stack-alt}
-fn <- initiate_image()
-titanic %>%
-  ggplot(aes(x=Survived, fill=Sex)) +
-    geom_bar(position="stack")
-finalize_image()
-```
-
-![Bar chart](../images/`r fn`.png)
-
-<div class="notes">
-
-
-
-</div>
-
-### Barchart fundamentals, Dodge, one approach
-
-```{r mortality-by-dodge}
-fn <- initiate_image()
-titanic %>%
-  ggplot(aes(x=Sex, fill=Survived)) +
-    geom_bar(position="dodge")
-finalize_image()
-```
-
-![Bar chart](../images/`r fn`.png)
-
-<div class="notes">
-
-
-
-</div>
-
-### Barchart fundamentals, Dodge, alternate approach
-
-```{r mortality-by-dodge-alt}
-fn <- initiate_image()
-titanic %>%
-  ggplot(aes(x=Survived, fill=Sex)) +
-    geom_bar(position="dodge")
-finalize_image()
-```
-
-![Bar chart](../images/`r fn`.png)
-
-<div class="notes">
-
-
-
-</div>
 
 ### Barchart fundamentals, Group exercise
 + Review the following visualization in your group
@@ -444,5 +269,5 @@ finalize_image()
 ((Find a totally different data set and get the students to draw four different visualizations. Have them divide into groups that like the same visualization software and have each person do a different visualization.))
 
 ```{r save-everything}
-save.image("../data/data-visualization-02-bar.RData")
+save.image("../data/barcharts-fundamentals.RData")
 ```
