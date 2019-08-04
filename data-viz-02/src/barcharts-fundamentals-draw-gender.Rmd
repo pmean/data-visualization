@@ -16,20 +16,32 @@ titanic <- read_tsv("../data/titanic.txt")
 + Draw a bar chart showing the number of people in each gender (use the Sex variable).
 
 ### Barchart fundamentals, Gender barchart, Python code
++ Python code
 
-((Python code))
+```{}
+ch = alt.Chart(df).mark_bar().encode(
+    x='Sex',
+    y='count()'
+)
+```
 
 ### Barchart fundamentals, Gender barchart, Python results
 
 ```{python}
-print("Hello world")
-a = 3
-print(a + 2)
+import pandas as pd
+import altair as alt
+df = pd.read_csv("../data/titanic.txt", delimiter="\t")
+ch = alt.Chart(df).mark_bar().encode(
+    x='Sex',
+    y='count()'
+)
+ch.save("gender-barchart.html")
 ```
 
-((Python results))
+![](../images/gender-barchart.png)
 
 ### Barchart fundamentals, Gender barchart, R code
++ R code
 
 ```{}
 ggplot(titanic, aes(Pclass)) +
