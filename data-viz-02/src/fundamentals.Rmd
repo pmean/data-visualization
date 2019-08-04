@@ -60,7 +60,7 @@ This shows a simple bar chart. The x-axis is passenger class and the y-axis is c
 
 </div>
 
-```{r child="barcharts-fundamentals-draw-gender.Rmd"}
+```{r child="exercise-gender-barchart.Rmd"}
 ```
 
 ### Barchart fundamentals, Size
@@ -92,7 +92,7 @@ Color becomes very important in just a minute when we add another layer of compl
 
 </div>
 
-```{r child="barcharts-fundamentals-first-class-red.Rmd"}
+```{r child="exercise-first-class-red.Rmd"}
 ```
 
 ### Barchart fundamentals, Stack versus dodge
@@ -202,7 +202,7 @@ finalize_image()
 </div>
 
 
-```{r child="barcharts-fundamentals-mortality-by-sex.Rmd"}
+```{r child="exercise-mortality-by-sex.Rmd"}
 ```
 
 

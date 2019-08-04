@@ -18,20 +18,20 @@ Here is an outline of what you will learn today.
 
 </div>
 
-```{r child="v02-initial-preparation.Rmd"}
+```{r child="preparation.Rmd"}
 ```
 
-```{r  child="colors-tutorial.Rmd"}
+```{r child="exercise-group.Rmd"}
 ```
 
-```{r child="v02-group-exercises.Rmd"}
+```{r  child="tutorial-colors.Rmd"}
 ```
 
-```{r child="perception-tutorial.Rmd"}
+```{r child="tutorial-perception.Rmd"}
 ```
 
-```{r child="barcharts-fundamentals.Rmd"}
+```{r child="fundamentals.Rmd"}
 ```
 
-```{r child="barcharts-recommendations.Rmd"}
+```{r child="recommendations.Rmd"}
 ```

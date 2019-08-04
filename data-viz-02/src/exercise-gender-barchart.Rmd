@@ -61,5 +61,6 @@ ggplot(titanic, aes(Sex)) +
 
 ### Barchart fundamentals, Gender barchart, Tableau results
 
-((Tableau results))
+![Tableau barchart](../images/tableau-gender-barchart.png)
+
 
