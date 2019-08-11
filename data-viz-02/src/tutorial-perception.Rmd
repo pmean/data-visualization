@@ -268,6 +268,7 @@ Once you realize that you need to project to the back wall, you have to do this 
 ### Perception, Adding depth (4/4)
 
 ```{r pie-3d-2}
+fn <- initiate_image()
 theta <- seq(0, 2*pi, length=200)
 fn <- initiate_image()
 plot(-1:1, -1:1, axes=FALSE, type="n", xlab=" ", ylab=" ")
@@ -280,6 +281,8 @@ lines(sin(theta[c(175,  75,  75)]), 0.5*cos(theta[c(175,  75,  75)])-c(0,0,0.3))
 finalize_image()
 ```
 
+![Three dimensional pie chart split into four equal pieces](../images/`r fn`.png)
+
 <div class="notes">
 
 There are several issues with the three dimensional pie chart, and you can see this best when you split this pie chart into four equal pieces. Notice that the angles are no longer 90 degrees because the perspective view distorts the angles. So you lose the big advantage (and possibly the only advantage) of the pie chart, the ability to divide it easily into four pieces.
@@ -288,4 +291,7 @@ Also notice that the wedge in the foreground looks bigger than the wedge in the 
 
 </div>
 
-![Three dimensional pie chart split into four equal pieces](../images/`r fn`.png)
+### Perception, review
++ Visual tasks
++ Hierarchy of perception
+

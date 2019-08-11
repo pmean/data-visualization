@@ -15,7 +15,7 @@ source("../../common-files/setup.R")
 + Review hexadecimal codes
 + RGB color system
 
-### COlors, Everything I know about colors, I learned in Kindergarten.
+### Colors, Everything I know about colors, I learned in Kindergarten.
 
 ![](../images/julias-colour-wheel1.jpg)
 
@@ -296,51 +296,8 @@ ggplot(df, aes(x, y)) +
   )
 ```
 
-### Colors, Lighten the background
 
-```{r ligthen-background}
-df <- data.frame(
-  x=rep(1:3, each=3), 
-  y=rep(3:1, 3),
-  b=rep(l3, 3),
-  f=rep(c3, each=3)
-)
-df <- df[c(2:4, 6:8), ]
-ggplot(df, aes(x, y)) +
-  expand_limits(x=c(0, 4), y=c(0, 4)) +
-  geom_point(size=30, color=df$b, shape="square") +
-  geom_text(
-    color=df$f,
-    label=paste0("F=", df$f, "\nB=", df$b)) +
-  theme_void() +
-  theme(
-    panel.background=element_rect(fill="#888888")
-  )
-```
-
-### Colors, Darken the foreground
-
-```{r darken-foreground}
-df <- data.frame(
-  x=rep(1:3, each=3), 
-  y=rep(3:1, 3),
-  b=rep(c3, 3),
-  f=rep(d3, each=3)
-)
-df <- df[c(2:4, 6:8), ]
-ggplot(df, aes(x, y)) +
-  expand_limits(x=c(0, 4), y=c(0, 4)) +
-  geom_point(size=30, color=df$b, shape="square") +
-  geom_text(
-    color=df$f,
-    label=paste0("F=", df$f, "\nB=", df$b)) +
-  theme_void() +
-  theme(
-    panel.background=element_rect(fill="#888888")
-  )
-```
-
-### Colors, or both
+### Colors, Lighter background, darker foreground
 
 ```{r both}
 df <- data.frame(
@@ -383,6 +340,13 @@ ggplot(df, aes(x, y)) +
     panel.background=element_rect(fill="#888888")
   )
 ```
+
+### Colors, review
++ Kindergarten view of colors
++ Review hexadecimal codes
++ RGB color system
+
+
 
 ```{r save-colors-tutorial-files}
 save.image("../data/colors-tutorial.RData")
