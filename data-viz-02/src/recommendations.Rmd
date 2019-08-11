@@ -86,13 +86,15 @@ There's a similar lesson for data visualization.
 
 ### Barchart recommendations, Don't overuse colors.
 
-![Text will a variety of colors](too-many-colors.png)
+![Text will a variety of colors](../images/too-many-colors.png)
 
 <div class="notes">
 
 Naomi Robbins, an expert on data visualization, made an interesting observation. You would never make each word in a sentence a different color. So why would you make every bar, every point, and every line a different color?
 
-You can use a second color to add emphasis. Doing more than this is a big mistake.
+Too many colors dilutes the impact that color can have.
+
+You can use a second color to add emphasis. Or maybe a gradient between two different colors could work. Doing more than this is usually a big mistake.
 
 </div>
 
