@@ -1,5 +1,5 @@
 ---
-title: "Barchart fundamentals, draw gender"
+title: "Exercise, draw gender"
 author: "Steve Simon"
 date: "2019-08-03"
 output: powerpoint_presentation
@@ -9,58 +9,59 @@ output: powerpoint_presentation
 knitr::opts_chunk$set(echo = FALSE)
 source("../../common-files/setup.R")
 suppressMessages(suppressWarnings(library(reticulate)))
-titanic <- read_tsv("../data/titanic.txt")
+titanic <- read_csv("../data/titanic3.csv")
 ```
 
-### Barchart fundamentals, Gender barchart
+### Exercise, Gender barchart
 + Draw a bar chart showing the number of people in each gender (use the Sex variable).
 
-### Barchart fundamentals, Gender barchart, Python code
+### Exercise, Gender barchart, Python (1/2)
 + Python code
-
 ```{}
 ch = alt.Chart(df).mark_bar().encode(
-    x='Sex',
+    x='sex',
     y='count()'
 )
 ```
 
-### Barchart fundamentals, Gender barchart, Python results
+### Exercise, Gender barchart, Python (2/2)
 
 ```{python}
 import pandas as pd
 import altair as alt
-df = pd.read_csv("../data/titanic.txt", delimiter="\t")
+df = pd.read_csv("../data/titanic3.csv")
 ch = alt.Chart(df).mark_bar().encode(
-    x='Sex',
+    x='sex',
     y='count()'
 )
-ch.save("gender-barchart.html")
+ch.save("../images/python-gender-barchart.html")
 ```
 
 ![](../images/gender-barchart.png)
 
-### Barchart fundamentals, Gender barchart, R code
+### Exercise, Gender barchart, R (1/2)
 + R code
 
 ```{}
-ggplot(titanic, aes(Pclass)) +
+ggplot(titanic, aes(sex)) +
   geom_bar()
 ```
 
-### Barchart fundamentals, Gender barchart, R results
+### Exercise, Gender barchart, R (2/2)
 
-```{r bender-barchart}
-ggplot(titanic, aes(Sex)) +
+```{r r-gender-barchart}
+fn <- initiate_image()
+ggplot(titanic, aes(sex)) +
   geom_bar()
+finalize_image()
 ```
 
-### Barchart fundamentals, Gender barchart, Tableau steps
+![r gender barchart](../images/`r fn`.png)
+
+### Exercise, Gender barchart, Tableau (1/2)
 
 ((Tableau steps))
 
-### Barchart fundamentals, Gender barchart, Tableau results
+### Exercise, Gender barchart, Tableau (2/2)
 
 ![Tableau barchart](../images/tableau-gender-barchart.png)
-
-

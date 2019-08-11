@@ -8,7 +8,7 @@ output: powerpoint_presentation
 ```{r setup-v02-main, echo=FALSE, message=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 source("../../common-files/setup.R")
-titanic <- read_tsv("../data/titanic.txt")
+titanic <- read_csv("../data/titanic3.csv")
 ```
 
 ### Barchart fundamentals, Bars
@@ -45,7 +45,7 @@ Recall that aesthetics are visual attributes associated with a geometry/mark. Yo
 
 ```{r location-horizontal}
 fn <- initiate_image()
-ggplot(titanic, aes(Pclass)) +
+ggplot(titanic, aes(pclass)) +
   geom_bar()
 finalize_image()
 ```
@@ -69,16 +69,6 @@ This shows a simple bar chart. The x-axis is passenger class and the y-axis is c
   + Exception, mosaic plots
   + Think about gaps between bars
   
-### Barchart fundamentals, Color
-
-```{r bar-color}
-fn <- initiate_image()
-ggplot(titanic, aes(x=Pclass, fill=Pclass)) +
-  geom_bar() +
-  scale_fill_manual(values=c("darkgrey", "darkgrey", "red", "darkgrey"))
-finalize_image()
-
-```
 
 ### Barchart fundamentals, Color
 + Use for emphasis in simple bar charts
@@ -92,6 +82,18 @@ Color becomes very important in just a minute when we add another layer of compl
 
 </div>
 
+### Barchart fundamentals, Color
+
+```{r bar-color}
+fn <- initiate_image()
+ggplot(titanic, aes(x=pclass, fill=pclass)) +
+  geom_bar() +
+  scale_fill_manual(values=c("darkgrey", "darkgrey", "red"))
+finalize_image()
+```
+
+![Bar chart with emphasis color](../images/`r fn`.png)
+
 ```{r child="exercise-first-class-red.Rmd"}
 ```
 
@@ -101,6 +103,7 @@ Color becomes very important in just a minute when we add another layer of compl
   + Separate plots
 + Dodge
   + Side by side
+  + Similar to facet
 + Stack
   + One on top, one on bottom
 
@@ -114,7 +117,7 @@ Bar charts that represent a summary across a single categorical variable are fai
 
 ```{r count-by-gender}
 fn <- initiate_image()
-ggplot(titanic, aes(x=Sex)) +
+ggplot(titanic, aes(x=sex)) +
   geom_bar()
 finalize_image()
 ```
@@ -132,7 +135,7 @@ finalize_image()
 
 ```{r count-by-passenger-class}
 fn <- initiate_image()
-ggplot(titanic, aes(x=Pclass)) +
+ggplot(titanic, aes(x=pclass)) +
   geom_bar()
 finalize_image()
 ```
@@ -151,9 +154,9 @@ finalize_image()
 ```{r count-by-facet}
 fn <- initiate_image()
 titanic %>%
-  ggplot(aes(x=Pclass, fill=Sex)) +
+  ggplot(aes(x=pclass, fill=sex)) +
     geom_bar() + 
-    facet_grid(cols=vars(Sex))
+    facet_grid(cols=vars(sex))
 finalize_image()
 ```
 
@@ -170,7 +173,7 @@ finalize_image()
 ```{r count-by-dodge}
 fn <- initiate_image()
 titanic %>%
-  ggplot(aes(x=Pclass, fill=Sex)) +
+  ggplot(aes(x=pclass, fill=sex)) +
     geom_bar(position="dodge")
 finalize_image()
 ```
@@ -188,7 +191,7 @@ finalize_image()
 ```{r count-by-stack}
 fn <- initiate_image()
 titanic %>%
-  ggplot(aes(x=Pclass, fill=Sex)) +
+  ggplot(aes(x=pclass, fill=sex)) +
     geom_bar(position="stack")
 finalize_image()
 ```

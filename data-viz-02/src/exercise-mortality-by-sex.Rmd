@@ -1,5 +1,5 @@
 ---
-title: "Barchart fundamentals, Mortality by gender"
+title: "Exercise, Mortality by gender"
 author: "Steve Simon"
 date: "2019-08-03"
 output: powerpoint_presentation
@@ -9,10 +9,10 @@ output: powerpoint_presentation
 knitr::opts_chunk$set(echo = FALSE)
 source("../../common-files/setup.R")
 suppressMessages(suppressWarnings(library(reticulate)))
-titanic <- read_tsv("../data/titanic.txt")
+titanic <- read_csv("../data/titanic3.csv")
 ```
 
-### Barchart fundamentals, Mortality by gender
+### Exercise, Mortality by gender
 + Draw a bar chart showing counts involving both mortality and gender. Use a panel, then stacking, then dodging. Which do you like best?
 
 <div class="notes">
@@ -23,42 +23,44 @@ Anyway, examine how mortality is related to gender. It's a spoiler alert, but on
 
 </div>
 
-### Barchart fundamentals, Mortality by gender, Python code
 
+### Exercise, Mortality by gender, Python (1/2)
++ Python code
+```{}
 ((Python code))
+```
 
-### Barchart fundamentals, Mortality by gender, Python results
+### Exercise, Mortality by gender, Python (2/2)
 
 ((Python results))
 
-### Barchart fundamentals, Mortality by gender, R code
-
+### Exercise, Mortality by gender, R (1/2)
++ R code
 ```{}
 titanic %>%
-  ggplot(aes(x=Sex, fill=Survived)) +
+  ggplot(aes(x=sex, fill=survived)) +
     geom_bar() +
-    facet_grid(cols=vars(Survived))
+    facet_grid(cols=vars(survived))
 ```
 
-
-### Barchart fundamentals, Mortality by gender, R results
+### Exercise, Mortality by gender, R (2/2)
 
 ```{r mortality-by-gender-panel}
 fn <- initiate_image()
 titanic %>%
-  ggplot(aes(x=Sex, fill=Survived)) +
+  ggplot(aes(x=sex, fill=survived)) +
     geom_bar() +
-    facet_grid(cols=vars(Survived))
+    facet_grid(cols=vars(survived))
 finalize_image()
 ```
 
 ![](../images/`r fn`.png)
 
-### Barchart fundamentals, Mortality by gender, Tableau steps
+### Exercise, Mortality by gender, Tableau (1/2)
 
 ((Tableau steps))
 
-### Barchart fundamentals, Mortality by gender, Tableau results
+### Exercise, Mortality by gender, Tableau (2/2)
 
 ((Tableau results))
 
