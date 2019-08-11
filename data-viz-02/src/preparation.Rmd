@@ -17,9 +17,12 @@ source("../../common-files/setup.R")
   + Download and import scotus data
 
 ### Preparation, Titanic data set
-# fn <- "https://dasl.datadescription.com/download/data/3484"
-titanic <- read_tsv(fn, col_types=cols())
 
+```{r echo=TRUE}
+# fn <- "https://dasl.datadescription.com/download/data/3484"
+fn <- "../data/titanic3.csv"
+titanic <- read.csv(fn, stringsAsFactors=FALSE)
+```
 
 
 ### Preparation, kaggle website

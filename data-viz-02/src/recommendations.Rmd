@@ -10,6 +10,11 @@ knitr::opts_chunk$set(echo = FALSE)
 source("../../common-files/setup.R")
 ```
 
+```{r}
+fn <- "../data/titanic3.csv"
+titanic <- read.csv(fn, stringsAsFactors=FALSE)
+```
+
 ### Barchart recommendations, Don't make gaps equal to widths (1/2)
 
 ![Alternate white and black lines showing a Moire effect](../images/alternate-white-and-black.png)
@@ -34,7 +39,7 @@ As a general rule, the gap between bars should be about 10 to 20 percent of the 
 
 ((Show an example of this using the scotus data))
 
-<div>
+</div>
 
 ### Barchart fundamentals, Thoughts on location
 + Axis labels often fit better on vertical location
@@ -52,7 +57,7 @@ Remember the fault of default principle. Always try different ways of displaying
 
 ```{r location-vertical}
 fn <- initiate_image()
-ggplot(titanic, aes(Pclass)) +
+ggplot(titanic, aes(pclass)) +
   geom_bar() +
   coord_flip()
 finalize_image()
@@ -66,3 +71,28 @@ finalize_image()
 Labels often fit better on a vertical bar chart.
 
 </div>
+
+### Barchart recommendations, similar to fashion
+
+![Image of man wearing three bold colors](../images/fashion-mistake.png)
+
+<div class="notes">
+
+It's a well known fasion mistake to wear too many colors at the same time. Maybe this guy could get away with it, but most of us would look like idiots if we tried to dress that way.
+
+There's a similar lesson for data visualization.
+
+</div>
+
+### Barchart recommendations, Don't overuse colors.
+
+![Text will a variety of colors](too-many-colors.png)
+
+<div class="notes">
+
+Naomi Robbins, an expert on data visualization, made an interesting observation. You would never make each word in a sentence a different color. So why would you make every bar, every point, and every line a different color?
+
+You can use a second color to add emphasis. Doing more than this is a big mistake.
+
+</div>
+
