@@ -6,8 +6,8 @@ output: powerpoint_presentation
 
 ### Data-viz-02, Outline
 + Preparation
-+ Colors
 + Group exercises
++ Colors
 + Perception
 + Barchart fundamentals
 + Barchart recommendations
