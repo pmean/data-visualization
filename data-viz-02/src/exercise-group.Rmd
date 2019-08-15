@@ -9,7 +9,7 @@ output: powerpoint_presentation
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-### Group exercise (1 of 3)
+### Group exercise (1 of 4)
 
 ![Bar chart of demographics of selected Texas counties](../images/texas-bar-chart.png)
 
@@ -21,7 +21,7 @@ Badger, E. (2019). People Who Can’t Vote Still Count Politically in America. W
 
 </div>
 
-### Group exercise (2 of 3)
+### Group exercise (2 of 4)
 
 ![Bar chart counting white extremist terrorism attacks over time](../images/terrorism-bar-chart.png)
 
@@ -31,10 +31,21 @@ Weiyi Cai, Simone Landon. Attacks by White Extremists Are Growing. So Are Their 
 
 </div>
 
-### Group exercise (3 of 3)
+### Group exercise (3 of 4)
+
+![Bar chart showing speeds of various VPN providers](../images/vpn-speeds.png)
+
+<div class="notes">
+
+Mark Smirniotis. The Best VPN Service. Wirecutter, February 8, 2019. Retrieved August 14, 2019 from https://thewirecutter.com/reviews/best-vpn-service/.
+
+</div>
+
+### Group exercise (4 of 4)
 + These bar charts come from recent newspaper articles.
   + [People Who Can’t Vote Still Count Politically in America. What if That Changes?](https://www.nytimes.com/2019/06/22/upshot/america-who-deserves-representation.html)
-  + [Attacks by White Extremists Are Growing. So Are Their Connections.](https://www.nytimes.com/interactive/2019/04/03/world/white-extremist-terrorism-christchurch.html)
+  + [Attacks by White Extremists Are Growing. So Are Their Connections](https://www.nytimes.com/interactive/2019/04/03/world/white-extremist-terrorism-christchurch.html).
+  + [The Best VPN Service](https://thewirecutter.com/reviews/best-vpn-service/).
+
 + Read the newspaper article for context and then look at the graph again. 
-  + Explain to your partner what the graph is trying to show.
-  + Your partner will do the same to you with his/her graph.
+  + Explain to your partner what the graph is trying to show. Your partner will do the same to you with his/her graph.
