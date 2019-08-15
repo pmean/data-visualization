@@ -1,0 +1,462 @@
+---
+title: "v01 - Main presentation - scatterplots"
+author: "Steve Simon"
+output: powerpoint_presentation
+---
+
+```{r setup-v01-main-lecture, echo=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+suppressMessages(suppressWarnings(library(ggplot2)))
+suppressMessages(suppressWarnings(library(knitr)))
+suppressMessages(suppressWarnings(library(magrittr)))
+pd_text <- "This image was produced by Steve Simon and is placed in the public domain. You are welcome to use this image any way you see fit. An acknowledgement would be appreciated, but is not required."
+initiate_image <- function() {
+  fn <- opts_current$get("label")
+  png(filename=paste0("../images/", fn, ".png"))
+  return(fn)
+}
+finalize_image <- function() {
+  quiet <- dev.off()
+  write(pd_text, file=paste0("../images/", fn, ".txt"))
+}
+```
+
+
+### Review basic scatterplot
+
++ Python code
+
+```{}
+ch = alt.Chart(df).mark_point().encode(
+    x='Age', y='Price'
+)
+```
+
++ R code
+
+```{}
+ggplot(saratoga_houses, aes(x=Age, y=Price)) +
+  geom_point()
+```
+
++ Tableau
+  + (Drag and drop)
+  
+<div class="notes">
+
+You've already drawn a basic scatterplot in Python, R, or Tableau. All three systems choose a slightly different visualization, but, for the most part, the graphs look fairly nice. You can change some of those default options.
+
+</div>
+
+### Changing default options
+
++ Python code
+
+```{}
+.mark_point(shape="square", color="green").
+```
+
++ R code
+
+```{}
+geom_point(shape="square", color="green")
+```
+
++ Tableau
+  + (Drag and drop)
+  
+<div class="notes">
+
+In Python, you can change the default from blue circles to green squares in the mark_point function. In R, you do this inside the geom_point function. In Tableau, you have to click on the color and shape buttons to change the defaults.
+
+</div>
+
+### Basic exercise - global modifications
++ Use the Saratoga housing data set.
++ Try the suggested changes to the defaults and see what the visualization looks like.
++ Try changing the size of the points.
+
+### Aesthetics for points - location (1 of 2)
+
+```{r point-aesthetics-x}
+fn <- "point-aesthetics-x"
+f <- "https://dasl.datadescription.com/download/data/3275"
+saratoga_houses <- read.table(f, header=TRUE, sep="\x09")
+png(filename=paste0("../images/", fn, ".png"))
+x <- c(212, 103)
+x_range <- range(saratoga_houses$Age)
+y_range <- range(saratoga_houses$Price)
+g <- ggplot(saratoga_houses[x, ], aes(x=Age, y=Price)) + 
+  expand_limits(x=x_range) +
+  expand_limits(y=y_range)
+g + geom_text(aes(label=Age))
+quiet <- dev.off()
+write(pd_text, file=paste0("../images/", fn, ".txt"))
+```
+
+![Illustration of location aesthetics](../images/point-aesthetics-x.png)
+
+<div class="notes">
+
+This plot show only two data points, and is labeled with the variable age, corresponding to the X location.
+
+The point in the upper left corner is a young house, only 14 years old. The point in the lower right corner is an old house, 233 years old.
+
+</div>
+
+### Aesthetics for points - location (2 of 2)
+
+```{r point-aesthetics-y}
+fn <- "point-aesthetics-y"
+png(filename=paste0("../images/", fn, ".png"))
+g + geom_text(aes(label=format(Price, big.mark=",")))
+quiet <- dev.off()
+write(pd_text, file=paste0("../images/", fn, ".txt"))
+```
+
+![Illustration of location aesthetics](../images/point-aesthetics-y.png)
+
+<div class="notes">
+
+This plot is labeled with the variable Price, corresponding to the Y location.
+
+The point in the upper left corner is an expensive house, over a half million dollars. The point in the lower right corner is a cheap house, about one-tenth of the price.
+
+</div>
+
+### Basic exercise - location
++ Use the Saratoga housing data set.
++ Revise the plot so that the location of the points represents x=Bedrooms and Y=Price.
+
+```{r include-exercise-location, child="component/exercise-location.Rmd"}
+```
+
+
+### Aesthetics for points - shape
+
+```{r point-aesthetics-shape}
+fn <- "point-aesthetics-shape"
+png(filename=paste0("../images/", fn, ".png"))
+g + 
+  geom_point(aes(shape=factor(Bedrooms)), size=5)
+quiet <- dev.off()
+write(pd_text, file=paste0("../images/", fn, ".txt"))
+```
+
+![Illustration of shape aesthetics](../images/point-aesthetics-shape.png)
+
+<div class="notes">
+
+The house in the upper left corner has four bedrooms, and the house in the lower right corner has five bedrooms. You use circles and triangles to designate this and the legend on the right hand side tells you how to decipher the symbols.
+
+I want to note here that this plot is effectively showing three dimensions, Age, Price, and Bedrooms, even though it is restricted to a two dimensional screen.
+
+I also want to point out that this may not be the best way to visualize the relationship among these three variables.
+
+</div>
+
+### Basic exercise - shape
++ Use the Saratoga housing data set.
++ Draw a plot of all of the data where the location is x=Age and y=Price and the symbol represents the number of bedrooms.
+
+### Aesthetics for points - size
+
+```{r point-aesthetics-size}
+fn <- "point-aesthetics-size"
+png(filename=paste0("../images/", fn, ".png"))
+g + 
+  geom_point(aes(size=Living.Area))
+quiet <- dev.off()
+write(pd_text, file=paste0("../images/", fn, ".txt"))
+```
+
+![Illustration of size aesthetics](../images/point-aesthetics-size.png)
+
+<div class="notes">
+
+You can also use the size of a point to represent a third dimension. Here is a plot where the larger house, the house with more living area has a big circle and the house with less living area has a small circle. 
+
+</div>
+
+### Basic exercise - size
++ Use the Saratoga housing data set.
++ Draw a plot where the location is x=Age and y=Price and the size represents the living area.
+
+### Aesthetics for points - color (1 of 2)
+
+```{r point-aesthetics-color-1}
+fn <- "aesthetics-color-1"
+png(filename=paste0("../images/", fn, ".png"))
+g +
+  geom_point(aes(color=factor(Bathrooms)), size=5)
+quiet <- dev.off()
+write(pd_text, file=paste0("../images/", fn, ".txt"))
+```
+
+![Illustration of color aesthetics](../images/aesthetics-color-1.png)
+
+<div class="notes">
+
+This plot shows a blue point representing a four bathroom house in the upper left corner and an orange point representing a two bathroom house in the lower right corner.
+
+</div>
+
+### Aesthetics for points - color (2 of 2)
+
+```{r point-aesthetics-color-2}
+fn <- "aesthetics-color-2"
+png(filename=paste0("../images/", fn, ".png"))
+g +
+  geom_point(aes(color=Living.Area), size=5)
+quiet <- dev.off()
+write(pd_text, file=paste0("../images/", fn, ".txt"))
+```
+
+![R graph using color to represent Living.Area](../images/aesthetics-color-2.png)
+
+<div class="notes">
+
+Notice how the legend has changed.
+
+</div>
+
+### Basic exercise - color
++ Use the Saratoga housing data set.
++ Draw a plot where the location is x=Age and y=Price and the color represents the number of bathrooms.
+
+### Group exercise
+
++ Review the following visualization in your group.
+  + Summarize what aesthetics (location, size, shape, color) appear in the graph
+  + What variables map to each aesthetic?
+
++ ((Use the visualizations from the earlier group exercise.))
+
+<div class="notes">
+
+I want you to review the visualizations that you discussed earlier. With you partner review the visualization again. Talk about the aesthetics and what variables map to each aesthetic.
+
+</div>
+
+### Solutions to excessive overprinting
++ Opacity
++ Small points
++ Open symbols
++ Log scale
+
+<div class="notes">
+
+The plots that you have drawn tend to have difficulty with overprinting. Too many data points crammed into a small area produces a large solid blob that is hard to interpret. There are three possible solutions: opacity, small points, and a log scale.
+
+</div>
+
+### Overprinting - opacity
+
+```{r point-opacity}
+fn <- "point-opacity"
+png(filename=paste0("../images/", fn, ".png"))
+ggplot(saratoga_houses, aes(x=Age, y=Price)) +
+  geom_point(alpha=0.1, size=5)
+quiet <- dev.off()
+write(pd_text, file=paste0("../images/", fn, ".txt"))
+```
+
+![R graph using opacity](../images/point-opacity.png)
+
+<div class="notes">
+
+If you make the data points somewhat translucent, so that you can see what it behind it, this prevents a massive black blob from forming. You have to experiement a bit with the level of translucence.
+
+</div>
+
+### Overprinting - small points
+
+```{r small-points}
+fn <- "small-points"
+png(filename=paste0("../images/", fn, ".png"))
+ggplot(saratoga_houses, aes(x=Age, y=Price)) +
+  geom_point(size=1)
+quiet <- dev.off()
+write(pd_text, file=paste0("../images/", fn, ".txt"))
+```
+
+![R graph using small points](../images/small-points.png)
+
+<div class="notes">
+
+Smaller data points have less trouble with overprinting.
+
+</div>
+
+### Overprinting - open symbols
+
+```{r open-symbols}
+fn <- "open-symbols"
+png(filename=paste0("../images/", fn, ".png"))
+ggplot(saratoga_houses, aes(x=Age, y=Price)) +
+  geom_point(size=5, shape=1)
+quiet <- dev.off()
+write(pd_text, file=paste0("../images/", fn, ".txt"))
+```
+
+![R graph using open circles](../images/open-symbols.png)
+
+<div class="notes">
+
+Smaller data points have less trouble with overprinting.
+
+</div>
+
+### Overprinting - log scale
+
+```{r point-log-scale}
+fn <- "log-scale"
+png(filename=paste0("../images/", fn, ".png"))
+saratoga_houses$age_plus <- saratoga_houses$Age + runif(1057)
+ggplot(saratoga_houses, aes(x=age_plus, y=Price)) +
+  geom_point(size=5) +
+  scale_x_log10() +
+  scale_y_log10()
+quiet <- dev.off()
+write(pd_text, file=paste0("../images/", fn, ".txt"))
+```
+
+![R graph using log scales](../images/log-scale.png)
+
+### Some tips
++ Don't try to squeeze in too much
++ Double up to emphasize
++ Shape is only good for categories
++ Shape and size don't mix
+
+### Don't try to squeeze in too much.
+
+```{r point-aesthetics-color-3}
+fn <- "aesthetics-color-3"
+png(filename=paste0("../images/", fn, ".png"))
+saratoga_houses$age_plus <- saratoga_houses$Age + runif(1057)
+binary_colors <- c("red", "red", "blue", "blue", "blue", "blue", "blue", "blue")
+ggplot(saratoga_houses, aes(x=age_plus, y=Price)) +
+  geom_point(aes(color=factor(Bathrooms)), size=1, alpha=0.1) +
+  scale_x_log10() +
+  scale_y_log10() +
+  scale_color_manual(values=binary_colors)
+quiet <- dev.off()
+write(pd_text, file=paste0("../images/", fn, ".txt"))
+```
+
+![R graph using only two colors](../images/aesthetics-color-3.png)
+
+
+### Double up to emphasize
+
+```{r double-up}
+fn <- "double-up"
+png(filename=paste0("../images/", fn, ".png"))
+saratoga_houses$age_plus <- saratoga_houses$Age + runif(1057)
+binary_colors <- c("red", "red", "blue", "blue", "blue", "blue", "blue", "blue")
+ggplot(saratoga_houses, aes(x=age_plus, y=Price)) +
+  geom_point(aes(color=factor(Bathrooms), shape=factor(Bathrooms)), size=5) +
+  scale_x_log10() +
+  scale_y_log10() +
+  scale_color_manual(values=binary_colors) + 
+  scale_shape_manual(values=rep(c(1, 4), c(2, 6)))
+quiet <- dev.off()
+write(pd_text, file=paste0("../images/", fn, ".txt"))
+```
+
+![R graph using colors and shapes](../images/double-up.png)
+
+<div class="notes">
+
+It's okay to map a single variable to more than one aesthetic. In fact, this often helps emphasize that variable.
+
+</div>
+
+### Some restrictions
++ Shape is only good for categories
++ Shape and size don't mix
+
+<div class="notes">
+
+There are some practical limits to aesthetics of points. First, shape makes sense only for categorical data. If you have a large number of values, as is typical for a continuous variable, you run out of symbols before you run out of categories.
+
+Also size and shape don't mix. You can really compare two diffent shapes, such as an X and an O on size. Is the size related to the diameter, the area, or the perimeter? There's no really good answer, so it's asking to much of a graph that asks you to decide which is larger among points represent different shapes. Either vary the shape or vary the size, but not both.
+
+</div>
+
+### Quick quiz (1 of 4)
+Data visualization is a mapping of data to the visual aesthetics of geometries/marks. Some examples of visual aesthetics include (choose all that apply)
+1. Size
+2. Points
+3. Shapes
+
+<div class="notes">
+
+Answer: 1 and 3 (size and shapes)
+
+</div>
+
+### Quick quiz (2 of 4)
+The log transformation works by (choose the best answer)
+1. Stretching all data values equally.
+2. Stretching the small values and squeezing the large values.
+3. Stretching the large values and squeezing the small values.
+
+<div class="notes">
+
+Answer: 2 (strethcing the small values and squeezing the large values)
+
+</div>
+
+### Quick quiz (3 of 4)
+Strategies that can sometimes help when you have a lot of problems with overprinting include (choose all that apply)
+1. Using open circles
+2. Using large size points
+3. Using translucent points
+
+<div class="notes">
+
+Answer: 1 and 3 (using open circles and translucent points)
+
+</div>
+
+### Quick quiz (4 of 4)
+The two visual aesthetics that doen't work well together are (choose the best answer)
+1. color and size
+2. color and shape
+3. size and shape
+
+<div class="notes">
+
+Answer: 3 (size and shape)
+
+</div>
+
+### Advanced exercise
+
++ There is a second data set on sleep in 
+mammals. You can find a brief description of
+this data set at
+  + http://www.statsci.org/data/general/sleep.html
++ You can download the actual data at
+  + http://www.statsci.org/data/general/sleep.txt
+
+### Advanced exercise
++ Draw a visualization that illustrates the interrelationships among
+  + bodywt, lifespan, gestation
+  + bodywt, brainwt, and totalsleep
+  + predation, exposure, and totalsleep
+  + bodywt, predation, and lifespan
++ Divide the work among different group members
+
+### Summary
++ "A mapping of data to the visual aesthetics of geometries/marks" 
+  + Points are a type of geometry/mark
+  + Aesthetics for points include location, shape, size, color
++ Basic tips
+  + Don't try to squeeze in too much
+  + Double up to emphasize
+  + Shape is only good for categories
+  + Shape and size don't mix
+

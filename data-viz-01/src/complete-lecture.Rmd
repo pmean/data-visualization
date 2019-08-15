@@ -4,5 +4,17 @@ author: "Steve Simon"
 output: powerpoint_presentation
 ---
 
-```{r include-prepare, child="component/preparation.Rmd"}
+```{r child="../component/introduction.Rmd"}
+```
+
+```{r child="../component/preparation.Rmd"}
+```
+
+```{r child="../component/tutorial-evaluation.Rmd"}
+```
+
+```{r child="../component/exercise-group.Rmd"}
+```
+
+```{r child="../component/tutorial-grammar.Rmd"}
 ```

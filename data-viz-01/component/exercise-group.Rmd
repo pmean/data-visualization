@@ -1,0 +1,34 @@
+---
+title: "Data-viz-v01, Group exercise"
+author: "Steve Simon"
+output: powerpoint_presentation
+---
+
+### Group exercise (1 of 2)
+
+![Scatterplot of Arctic ice levels](../images/external/arctic-ice-scatterplot.png)
+
+<div class="notes">
+
+This is one of two graphs. It was published in
+
+Popvich, N., Fountain, H., & Pearce, A. (2017, September 22). We Charted Arctic Sea Ice for Nearly Every Day Since 1979. You’ll See a Trend. - The New York Times. The New York Times. Retrieved from https://www.nytimes.com/interactive/2017/09/22/climate/arctic-sea-ice-shrinking-trend-watch.html
+
+Split into pairs. Review the article briefly (about 5 minutes) and look at the graph. Explain to your partner what the graph is trying to show. Your partner will get a different graph and do the same thing with you listening this time.
+
+</div>
+
+### Group exercise (2 of 2)
+
+![Scatterplot of length versus reader difficulty](../images/external/privacy-policies.png)
+
+<div class="notes">
+
+This is one of two graphs. It was published in 
+
+Kevin Litman-Navarro. We Read 150 Privacy Policies. They Were an Incomprehensible Disaster. The New York Times. Retrieved from https://www.nytimes.com/interactive/2019/06/12/opinion/facebook-google-privacy-policies.html
+
+Split into pairs. Review the article briefly (about 5 minutes) and look at the graph. Explain to your partner what the graph is trying to show. Your partner will get a different graph and do the same thing with you listening this time.
+
+</div>
+

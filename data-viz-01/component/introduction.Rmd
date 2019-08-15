@@ -1,0 +1,77 @@
+---
+title: "data-viz-01, Introduction"
+author: "Steve Simon"
+output: powerpoint_presentation
+---
+
+### Introduction, Modules
++ Data-viz-01, Scatterplots
++ Data-viz-02, Bar charts
++ Data-viz-03, Line plots
++ Data-viz-04, Surface plots
++ Data-viz-05, Maps
+
+### Introduction, Data-viz-01 outline
++ Introduction
++ Preparation
++ Tutorial, Evaluation
++ Group exercise
++ Lecture
++ Basic exercises
++ Advanced exercises
++ Discussion questions
++ Short quizzes
+
+<div class="notes">
+
+This class is divided into several sections. 
+
+Each section will start with information that you need to get ready before the class starts. Then there will be a lecture interspersed between basic exercises, advanced exercises, and discussion questions. 
+
+The basic exercises involve running a short program, typically a one or two line modification of a program that I have just shown. These basic exercises are intended to slowly increase your comfort level with the visualization software (altair in Python, ggplot2 in R, or Tableau). Do the basic exercises on your own during the class. Warning: some of the visualizations you will be asked to produce will look terribly ugly. That's okay. You're just learning the basic programming steps for now. Later, you will see how to apply these steps to make better looking and more effective visualizations. 
+
+Advanced exercises will require you to adapt the code to an entirely different data set. Do this in a group setting with others who are using the same visualization software as you. The advanced exercises will require the production of four or five different visualizations, so your group should adopt a "divide and conquer" strategy.
+
+Discussion questions will involve small groups, or sometimes just pairs of individuals. You will see a typical media presention of a visualization along with the newspaper or magazine article that accompanies it. You and your group will discuss the visualization guided by a few questions provided here. Some groups may be asked to make a short presentation to the entire class.
+
+You will get a short quiz at the end of the lecture. This will be multiple choice.
+
+</div>
+
+### Introduction, Software agnosticism
+
++ This course will show examples using
+  + Python,
+  + R, and 
+  + Tableau
++ I do not play favorites
+
+<div class="notes">
+
+I am a big believer in software agnosticism. That means that when I teach something, I teach it with the expectation that the software used to do the assignments is software of YOUR choosing. I have my own preferences, but those should not be your preferences.
+
+It's a lot more work to teach a course that is not dependent on a particular software system, but I do not know what the best software choice would be for you. In this class, I will try to show examples using Python, R, and Tableau. I realize that there are other good choice, but I'm hoping that most of you will be happy with one of these three choices. Within Python, I will use the altair package. In R, I will use ggplot2. I realize that there are other graphics packages in these two languages, but altair and ggplot2 rely on modern graphics principles, so I will restrict my attention to these packages.
+
+Tableau is a commercial product. If you don't currently have access to Tableau, the company offers a free version, Tableau Public. It has all the features of Tableau, but you have to store any data visualizations on a public server. That's just fine for someone like me who uses teaching examples with publicly available data sets. If you are using private or proprietary data, you need to pay the money for the commercial version.
+
+</div>
+
+### Introduction, What software should you use?
+
++ Use the software you like best
++ What does your boss use?
++ What do your co-workers use?
++ What software are you most comfortable with?
+  
+<div class="notes">
+
+If you are not sure what software package to use in this class, let me offer a few suggestions. First, your boss may have a strong opinion about what software that you should use. You can go to your boss and say "Steve Simon is a really smart guy and he says that the ggplot2 package in R is the best choice for data visualization." Try it and see what happens. Nothing, I suspect. One of the great tragedies in life is that the SSSS principle (Steve Simon Said So) carries very little weight in the real world.
+
+If your boss doesn't care, see what most of your co-workers are using. They may not be as smart as I am (put on a false air of pride here) but they are a lot closer to your cubicle when this workshop ends and you have to find a quick answer.
+
+There's also a comfort level here. Tableau develops its visualizations using a graphical user interface. Python and R are programming languages. A graphical interface is great for getting work done quickly. A programming language is great for reproducibility and reusability. What fits your working style better.
+
+One more consideration. Some of you in this class are "ringers." You already know visualization better than I do because you've been doing it for longer, with bigger and more complex data sets. You're just here to see if I know one or two things that you don't already know. If you're a ringer, take the challenge of learning a new software system. It will keep you from getting too bored when I talk about all these things that you already know better than I do.
+
+</div>
+

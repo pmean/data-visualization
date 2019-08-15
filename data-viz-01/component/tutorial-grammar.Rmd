@@ -1,0 +1,205 @@
+---
+title: "Data-viz-v01, Grammar, A tutorial on the Grammar of Graphics"
+author: "Steve Simon"
+output: powerpoint_presentation
+---
+
+### Grammar, Theoretical foundation of data visualization
+
+![Front cover of the book, The Grammar of Graphics](../images/external/the-grammar-of-graphics.png)
+
+<div class="notes">
+
+Most of the current designers of data visualization software have based their work on the theoretical foundations of Leland Wilkinson. This includes ggplot2 in r, altair in Python, and Tableau, among others. Dr. Wilkinson wrote a book, The Grammar of Graphics, in 1999 (second edition in 2006) that laid out the principles for the development of pretty much any data visualizaton that you could imagine. The work is mathematically rigorous, and I do not recommend that you read this book unless you enjoy that sort of thing. I do want to highlight a few of the fundamental ideas in the book
+
+</div>
+
+### Grammar, Visualization before Wilkinson (1 of 3)
+
+![Excerpt from the R help file for the barplot function](../images/external/r-barplot-help.png)
+
+<div class="notes">
+
+I'm going to do one of those bad things that a presenter should never do. I'm going to show you a series of three slides that is intended to create a sense of confusion. I'm doing this because I want you to appreciate how bad things were before Leland Wilkinson came along.
+
+There's a saying that a camel is a horse designed by a committee. Well, this slide and the next two slides represent some very ugly looking camels.
+
+Here's the help function from the program R for the barplot function. This function and the following were developed before Wilkinson's work and show the problem without using his framework.
+
+I don't want you to study this help file closely. I just want to emphasize two points.
+
+First, there are a dizzying number of options, 30 for the barplot. Maybe this is unavoidable. But what follows when you look at the next help function is the real problem.
+
+When you switch from one function to another, from one visualization method to another, the options change. This is bad because it makes it harder for you to learn new graphical display methods. Even after you learn them, you will have a difficult time remembering which options and which defaults go with which graphical displays.
+
+</div>
+
+### Grammar, Visualization before Wilkinson (2 of 3)
+
+![Excerpt from the R help file for the hist function](../images/external/r-hist-help.png)
+
+<div class="notes">
+
+Here's the help function from the program R for the hist function. The default option for the borders of the bars of a barplot differ from the option for the borders of the bars of a histogram. This makes no sense. A histogram is different than a bar chart, but not that much different.
+
+The way that you determine the limits for the x-axis and the y-axis differ. Again, how is a histogram so much different from a barplot that you need different methods for deciding something like this.
+
+</div>
+
+### Grammar, Visualization before Wilkinson (3 of 3)
+
+![Excerpt from the R help file for the boxplot function](../images/external/r-boxplot-help.png)
+
+<div class="notes">
+
+If that isn't confusing enough, look at the help file for the boxplot.
+
+It's pure chaos. Each function has a different set of arguments, listed in a different order and with different default options. This continues when you look at help for the pie function for pie charts, the contour function for contour plots, the persp3d function for three dimensional surfaces, the stem function for stem and leaf diagrams, and many others.  
+
+Adopting the framework developed in The Grammar of Graphics provides you with one stop shopping. It is a bit daunting at first, because it includes everything and the kitchen sink. But once you get comfortable with it, you will find that each new visualization that you try uses the same syntax, more or less. 
+
+</div>
+
+### Grammar, Helpful resource
+
+![Title slide from the Bergen-Iverson presentation](../images/external/bergen-2019.png)
+
+<div class="notes">
+
+In this section, I am going to borrow heavily from a short course presented at the 2019 Symposium on Statistics and Data Science. The presenters are nice enough to share their materials on their github site. You can find it easily with a google search of bergen iverson sdss2019 data visualization.
+
+</div>
+
+### Grammar, Definition of data visualization
++ "A mapping of data to the visual aesthetics of geometries/marks" 
+  + Bergen and Iverson 2019
+  
+<div class="notes">
+
+A definition of visualization, based on the Grammar of Graphics framework is provided in the Bergan and Iverson presentation that I mentioned on the previous slide.
+
+There are four nouns in this definition.
+
+Data. I hope I don't have to define data other than to say that it is an interesting set of numbers. I won't talk about non-numeric data like text in this workshop. Ideally these numbers have enough structure that you can put them into a rectangular grid like a spreadsheet or database table.
+
+Aesthetics is a work that Dr. Wilkinson likes, but I'm not so sure that I care for it. An aesthetic is a visual feature.
+
+The compound noun geometries/marks is a deliberate choice of Bergen and Iverson. If you use ggplot2 in R, you will be more comfortable with the noun geometries. If you use altair in Python, or if you use Tableau, you will be more comfortable with the noun marks.
+
+Mapping means a transformation. You are taking data and converting it into various visual features.
+
+It will help to see some examples.
+
+</div>
+  
+### Grammar, Examples  
++ Geometries/marks
+  + Points
+  + Lines
+  + Bars
+  + Text
++ Aesthetics
+  + Position
+  + Shape
+  + Size
+  + Color
+
+<div class="notes">
+
+Think of geometries/marks are ink placed on a sheet of paper. They could represent points, lines, bars, or text, among other things. 
+
+There are four (more or less) major visual properties of points, lines, bars, and text.
+
+The aesthetics fall into five major classes: position, shape, size, and color.
+
+Not every geometry/mark will have every possible aesthetic. Some of these aesthetics can be combined to great effect, but sometimes they work antagonistically. Do consider every possible aesthetic in your graph, but intentionally ignoring an aesthetic can sometimes work to your advantage. Some aesthetics map very nicely to continuous data, but others only work well with categorical data.
+
+</div>
+
+### Grammar, Geometries/marks in Python
++ mark_point
++ mark_line
++ mark_bar
++ mark_text
+
+<div class="notes">
+
+You specify the type of geometry/mark in Python using a range of mark functions.
+
+</div>
+
+### Grammar, Geometries/marks in R
++ geom_point
++ geom_line
++ geom_bar, geom_col
++ geom_text, geom_lab
+
+<div class="notes">
+
+You specify the type of geometry/marks in R using a range of geom functions.
+
+</div>
+
+### Grammar, Geometries/marks in Tableau
++ Context specific
++ Variable classifications
+  + Dimension, attribute, measure
+  + Blue (categorical) versus green (continuous)
+  
+<div class="notes">
+
+Tableau does not have a formal declartion of the type of geometry/mark. Instead, it chooses the geometry/mark using an educated guess from what the variables look like. It will use bars, for example, if one of the location variables is categorical and lines if one of the location variables is continuous. 
+
+</div>
+
+### Grammar, Mapping to aesthetics in Python
++ encode function
+  + x=
+  + y=
+  + shape=
+  + size=
+  + color=
++ Example
+  + alt.Chart(cars).mark_point().encode(
+    x='Age', y='Price', size=Acres,
+    shape='Bedrooms', color='Bathrooms')
+    
+<div class="notes">
+
+In Python, the mapping is done with the encode function. The location is represented by x= and y= arguments. Size, shape, and color are mapped using the size=, shape=, and color= arguments.
+
+Here's an example. The age and price of the home are mapped to the x and y locations. The acreage of the land maps to the size. The number of bedrooms maps to the shape, and the number of bathrooms maps to the color.
+
+</div>
+
+### Grammar, Mapping to aesthetics in R
++ aes function
+  + x=
+  + y=
+  + size=
+  + shape=
+  + color=
++ Example
+  + ggplot(*data*, aes(x=Age, y=Price)) +
+  + geom_point(aes(size=Acres, shape=Bedrooms, color=Bathrooms))
+
+<div class=notes>
+
+In R, the mapping is done with the aes (short for aesthetics) function. The location is represented by x= and y= arguments. Size, shape, and color are mapped using the size=, shape=, and color= arguments.
+
+Here's an example. The age and price of the home are mapped to the x and y locations. The acreage of the land maps to the size. The number of bedrooms maps to the shape, and the number of bathrooms maps to the color. 
+
+</div>
+
+### Grammar, Mapping to aesthetics in Tableau
+
+![Tableau screenshot showing aesthetics mapping](../images/tableau/mapping.png)
+
+<div class="notes">
+
+Tableau accomplishes mapping through a drag and drop interface. Drag a variable to the Columns field and a second variable to the Rows field to specify the x and y locations. Drag a variable on top of the size, shape, and color icons to map those variables appropriately.
+
+This screenshot shows an example where Age is mapped to the x location, Price is mapped to the y location, Acres is mapped to size, Bedrooms is mapped to shape, and Baths is mapped to color.
+
+</div>
+

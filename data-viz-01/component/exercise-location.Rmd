@@ -1,5 +1,5 @@
 ---
-title: "v01 Basic exercise - location"
+title: "Data-viz-01, Basic exercise - location"
 author: "Steve Simon"
 output: powerpoint_presentation
 ---

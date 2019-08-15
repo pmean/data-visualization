@@ -12,19 +12,19 @@ knitr::opts_chunk$set(echo = FALSE)
 pd_text <- "This image was produced by Steve Simon and is placed in the public domain. You are welcome to use this image any way you see fit. An acknowledgement would be appreciated, but is not required."
 initiate_image <- function() {
   fn <- opts_current$get("label")
-  png(filename=paste0("../../images/r/", fn, ".png"))
+  png(filename=paste0("../images/r/", fn, ".png"))
   return(fn)
 }
 finalize_image <- function() {
   fn <- opts_current$get("label")
   quiet <- dev.off()
-  write(pd_text, file=paste0("../../images/external", fn, ".txt"))
+  write(pd_text, file=paste0("../images/external", fn, ".txt"))
 }
 ```
 
-### DASL https://dasl.datadescription.com/
+### Preparation, DASL https://dasl.datadescription.com/
 
-![Main page of DASL website](../../images/external/dasl-main-page.png)
+![Main page of DASL website](../images/external/dasl-main-page.png)
 
 <div class="notes">
 
@@ -36,9 +36,9 @@ Note to myself: Try to keep this and every other image to no greater than 800 by
 
 </div>
 
-### Choose "Saratoga House Prices" (not "Saratoga Houses")
+### Preparation, Choose "Saratoga House Prices" (not "Saratoga Houses")
 
-![Description of the Saratoga house prices dataset](../../images/external/dasl-saratoga-house-prices.png)
+![Description of the Saratoga house prices dataset](../images/external/dasl-saratoga-house-prices.png)
   
 <div class="notes">
   
@@ -48,7 +48,7 @@ This is the file that you want to download and run a scatterplot.
 
 </div>
 
-### Some general advice if things don't work
+### Preparation, Some general advice if things don't work
 + Download the file
 + Tweak the file
   + Remove variable names in first line
@@ -78,7 +78,7 @@ See if you can read the file into a different program like a spreadsheet and exp
 </div>
 
 
-### Python code
+### Preparation, Python code
 
 ```{}
 http://localhost:8888/?token=defbcdfe24454796470962f1cae834a7c7c8ec78d2c9075f
@@ -98,11 +98,11 @@ Here is the Python code that will download the data and create a simple scatterp
 
 </div>
 
-### Python plot
+### Preparation, Python plot
 
-![Basic scatterplot using Python](../../images/python/basic-scatterplot.png)
+![Basic scatterplot using Python](../images/python/basic-scatterplot.png)
 
-### R code
+### Preparation, R code
 
 Here is the R code that will download the data and create a simple scatterplot.
 
@@ -120,7 +120,7 @@ Here's a brief bit of R code that should work.
 
 </div>
 
-### What your scatterplot should look like (R version)
+### Preparation, What your scatterplot should look like (R version)
 
 ```{r simple-scatterplot}
 fn <- "r-simple-scatterplot"
@@ -133,12 +133,12 @@ ggplot(saratoga_houses, aes(x=Age, y=Price)) +
 finalize_image()
 ```
 
-![Basic scatterplot](../../images/r/`r fn`.png)
+![Basic scatterplot](../images/r/`r fn`.png)
 
 
-### Importing into Tableau
+### Preparation, Importing into Tableau
 
-![Screenshot of Tableau software, main screen](../../images/tableau/main-screen.png)
+![Screenshot of Tableau software, main screen](../images/tableau/main-screen.png)
 
 <div class="notes">
 
@@ -152,9 +152,9 @@ Select "Text file" from the left side menu bar or "File | Open" from the main me
 
 </div>
 
-### Importing into Tableau
+### Preparation, Importing into Tableau
 
-![Screenshot of Tableau software, file open dialog box](../../images/tableau/file-open.png)
+![Screenshot of Tableau software, file open dialog box](../images/tableau/file-open.png)
 
 <div class="notes">
 
@@ -162,9 +162,9 @@ Find the proper location on your computer where you stored the downloaded file a
 
 </div>
 
-### Importing into Tableau
+### Preparation, Importing into Tableau
 
-![Screenshot of Tableau software with data imported](../../images/tableau/with-saratoga.png)
+![Screenshot of Tableau software with data imported](../images/tableau/with-saratoga.png)
 
 <div class="notes">
 
@@ -172,9 +172,9 @@ Your screen should look something like this if you imported the data correctly. 
 
 </div>
 
-### Importing into Tableau
+### Preparation, Importing into Tableau
 
-![Screenshot of Tableau software, blank visualization page](../../images/tableau/empty-frame.png)
+![Screenshot of Tableau software, blank visualization page](../images/tableau/empty-frame.png)
 
 <div class="notes">
 
@@ -184,9 +184,9 @@ Drag the variable Age into the Columns field and drag Price into the Rows field
 
 </div>
 
-### Importing into Tableau
+### Preparation, Importing into Tableau
 
-![Screenshot of Tableau software after initial drag and drop](../../images/tableau/drag-and-drop.png)
+![Screenshot of Tableau software after initial drag and drop](../images/tableau/drag-and-drop.png)
 
 <div class="notes">
 
@@ -196,9 +196,9 @@ This is not what you want, but that's okay. Better a wrong guess that you can co
 
 </div>
 
-### Importing into Tableau
+### Preparation, Importing into Tableau
 
-![Screenshot of Tableau software changing from measure to dimension](../../images/tableau/change-to-dimension.png)
+![Screenshot of Tableau software changing from measure to dimension](../images/tableau/change-to-dimension.png)
 
 <div class="notes">
 
@@ -206,9 +206,9 @@ Click on the green Sum(Age) and change it from Measure(Sum) to Dimension. Don't 
 
 </div>
 
-### Importing into Tableau
+### Preparation, Importing into Tableau
 
-![Screenshot of Tableau software changing from measure to dimension](../../images/tableau/basic-scatterplot.png)
+![Screenshot of Tableau software changing from measure to dimension](../images/tableau/basic-scatterplot.png)
 
 <div class="notes">
 
