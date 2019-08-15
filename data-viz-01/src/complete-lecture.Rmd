@@ -1,0 +1,8 @@
+---
+title: "Data-viz-01, scatterplots"
+author: "Steve Simon"
+output: powerpoint_presentation
+---
+
+```{r include-prepare, child="component/preparation.Rmd"}
+```

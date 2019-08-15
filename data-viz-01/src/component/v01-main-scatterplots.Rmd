@@ -657,6 +657,10 @@ The point in the upper left corner is an expensive house, over a half million do
 + Use the Saratoga housing data set.
 + Revise the plot so that the location of the points represents x=Bedrooms and Y=Price.
 
+```{r include-exercise-location, child="component/exercise-location.Rmd"}
+```
+
+
 ### Aesthetics for points - shape
 
 ```{r point-aesthetics-shape}
