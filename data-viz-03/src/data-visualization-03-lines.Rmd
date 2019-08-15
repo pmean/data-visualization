@@ -11,6 +11,7 @@ suppressMessages(suppressWarnings(library(dplyr)))
 suppressMessages(suppressWarnings(library(ggplot2)))
 suppressMessages(suppressWarnings(library(magrittr)))
 suppressMessages(suppressWarnings(library(readr)))
+source("../../common-files/setup.R")
 fn <- "https://dasl.datadescription.com/download/data/3138"
 cpi <- read_tsv(fn, col_types=cols())
 cpi$t <- 2007 + (1:132)/12
@@ -36,7 +37,7 @@ ggplot(cpi, aes(x=t, y=CPI)) +
 
 ### Group exercise (1 of 2)
 
-![Line graph of strikeouts and hits over time](../images/03/baseball-line-graph.png)
+![Line graph of strikeouts and hits over time](../images/baseball-line-graph.png)
 
 <div class="notes">
 
@@ -50,7 +51,13 @@ Split into pairs. Review the article briefly (about 5 minutes) and look at the g
 
 ### Group exercise (2 of 2)
 
-((Find second news article and image))
+![Line graph of technology trends](../images/technology-trends.png)
+
+<div class="notes">
+
+Aaron Smith, Record shares of Americans now own smartphones, have home broadband. Pew Research Center, January 12, 2017. Retrived August 14, 2019 from https://www.pewresearch.org/fact-tank/2017/01/12/evolution-of-technology/.
+
+</div>
 
 ### More theory -- The gestalt of graphics
 
@@ -60,6 +67,7 @@ Split into pairs. Review the article briefly (about 5 minutes) and look at the g
 ### A block of points - no emphasis
 
 ```{r block-no-emphasis}
+fn <- initiate_image()
 df <- data.frame(
   x=rep(1:5, 4),
   y=rep(1:4, each=5)
@@ -68,50 +76,110 @@ ggplot(df, aes(x=x, y=y)) +
   scale_x_continuous(name=NULL, breaks=NULL) +
   scale_y_continuous(name=NULL, breaks=NULL) -> g
 g + geom_point(size=5)
+finalize_image()
 ```
+
+![](../images/`r fn`.png)
+<div class="notes">
+
+
+
+</div>
 
 ### Color emphasizes rows
 
 ```{r block-color}
+fn <- initiate_image()
 f <- rep(c("red", "green", "red", "green"), each=5)
 g + geom_point(color=f, size=5)
+finalize_image()
 ```
+
+![](../images/`r fn`.png)
+
+<div class="notes">
+
+
+
+</div>
+
 
 ### Shape emphasizes columns
 
 ```{r block-shape}
+fn <- initiate_image()
 f <- rep(c("triangle", "square", "triangle", "square", "triangle"), 4)
 g + geom_point(shape=f, size=5)
+finalize_image()
 ```
+
+![](../images/`r fn`.png)
+
+<div class="notes">
+
+
+
+</div>
 
 ### Double up for stronger emphasis
 
 ```{r block-double-up}
+fn <- initiate_image()
 f1 <- rep(c("red", "green", "red", "green"), each=5)
 f2 <- rep(c("triangle", "square", "triangle", "square"), each=5)
 g + geom_point(color=f1, shape=f2, size=5)
+finalize_image()
 ```
+
+![](../images/`r fn`.png)
+
+<div class="notes">
+
+
+
+</div>
 
 ### Connectedness emphasizes rows
 
 ```{r block-connectedness}
+fn <- initiate_image()
 g + geom_point(size=5) +
   geom_segment(x=1, y=1, xend=5, yend=1) + 
   geom_segment(x=1, y=2, xend=5, yend=2) + 
   geom_segment(x=1, y=3, xend=5, yend=3) + 
   geom_segment(x=1, y=4, xend=5, yend=4) 
+finalize_image()
 ```
+
+![](../images/`r fn`.png)
+
+<div class="notes">
+
+
+
+</div>
 
 ### Proximity emphasize columns
 
 ```{r block-proximity}
+fn <- initiate_image()
 g + geom_point(size=5) +
   expand_limits(y=c(-3, 8))
+finalize_image()
 ```
+
+![](../images/`r fn`.png)
+
+<div class="notes">
+
+
+
+</div>
 
 ### Enclosure for emphasis, eight special points
 
 ```{r block-enclosure}
+fn <- initiate_image()
 g + geom_point(size=5) +
   expand_limits(y=c(0.8, 4.2)) +
   expand_limits(x=c(0.8, 5.2)) +
@@ -119,7 +187,16 @@ g + geom_point(size=5) +
   geom_segment(x=3.8, y=4.2, xend=5.2, yend=4.2) +
   geom_segment(x=3.8, y=0.8, xend=3.8, yend=4.2) +
   geom_segment(x=5.2, y=0.8, xend=5.2, yend=4.2)
+finalize_image()
 ```
+
+![](../images/`r fn`.png)
+
+<div class="notes">
+
+
+
+</div>
 
 ### Continuity
 
@@ -150,16 +227,36 @@ You can vary the size, shape, and color of a line. Shape is not what you think i
 ### Size
 
 ```{r line-size}
+fn <- initiate_image()
 ggplot(cpi, aes(x=t, y=CPI)) +
   geom_line(size=8)
+finalize_image()
 ```
+
+![](../images/`r fn`.png)
+
+<div class="notes">
+
+
+
+</div>
 
 ### Shape
 
 ```{r line-shape}
+fn <- initiate_image()
 ggplot(cpi, aes(x=t, y=CPI)) +
   geom_line(linetype="dotted")
+finalize_image()
 ```
+
+![](../images/`r fn`.png)
+
+<div class="notes">
+
+
+
+</div>
 
 ### On your own
 + change the line to a dashed line.
@@ -181,36 +278,79 @@ ggplot(cpi, aes(x=t, y=CPI)) +
 ### What your visualization might look like
 
 ```{r width-shape-color}
+fn <- initiate_image()
 ggplot(cpi, aes(x=t, y=CPI)) +
   geom_line(size=3, linetype="dashed", color="green")
+finalize_image()
 ```
+
+![](../images/`r fn`.png)
+
+<div class="notes">
+
+
+
+</div>
+
+
 ### Lines as summary statistics
 
 ```{r old-friend}
 fn <- "https://dasl.datadescription.com/download/data/3275"
 saratoga_houses <- read.table(fn, header=TRUE, sep="\x09")
+fn <- initiate_image()
 ggplot(saratoga_houses, aes(x=Bedrooms, y=Price)) +
   geom_point()
+finalize_image()
 ```
+
+![](../images/`r fn`.png)
+
+<div class="notes">
+
+
+
+</div>
+
 ### Lines as averages
 
 ```{r average}
+fn <- initiate_image()
 saratoga_houses %>%
   group_by(Bedrooms) %>%
   summarize(avg_price=mean(Price)) %>%
   ggplot(aes(x=Bedrooms, y=avg_price)) +
     geom_line() + geom_point(size=5)
+finalize_image()
 ```
+
+![](../images/`r fn`.png)
+
+<div class="notes">
+
+
+
+</div>
 
 ### Lines as counts
 
 ```{r count}
+fn <- initiate_image()
 saratoga_houses %>%
   group_by(Bedrooms) %>%
   summarize(n=n()) %>%
   ggplot(aes(x=Bedrooms, y=n)) +
     geom_line() + geom_point(size=5)
+finalize_image()
 ```
+
+![](../images/`r fn`.png)
+
+<div class="notes">
+
+
+
+</div>
 
 ### On your own
 + Draw a line graph showing the relationship between the number of bathrooms and price.
@@ -230,27 +370,56 @@ saratoga_houses %>%
 ### Trend lines (linear)
 
 ```{r linear-trend-age}
+fn <- initiate_image()
 ggplot(saratoga_houses, aes(Age, Price)) +
   geom_point() +
   geom_smooth(method="lm")
+finalize_image()
 ```
 
+![](../images/`r fn`.png)
+
+<div class="notes">
+
+
+
+</div>
 
 ### Trend lines (spline)
 
 ```{r smooth-trend}
+fn <- initiate_image()
 ggplot(saratoga_houses, aes(Age, Price)) +
   geom_point() +
   geom_smooth(method="loess")
+finalize_image()
 ```
+
+![](../images/`r fn`.png)
+
+<div class="notes">
+
+
+
+</div>
 
 ### Trend lines (spline), not so smooth
 
 ```{r smooth-trend-3}
+fn <- initiate_image()
 ggplot(saratoga_houses, aes(Age, Price)) +
   geom_point() +
   geom_smooth(method="loess", span=0.3)
+finalize_image()
 ```
+
+![](../images/`r fn`.png)
+
+<div class="notes">
+
+
+
+</div>
 
 ### On your own
 + Fit a linear trend line looking at Living.Area versus Price.
@@ -261,14 +430,26 @@ ggplot(saratoga_houses, aes(Age, Price)) +
 ### What your visualization might look like
 
 ```{r living-area-lm}
+fn <- initiate_image()
 ggplot(saratoga_houses, aes(x=Living.Area, y=Price)) +
   geom_point() +
   geom_smooth(method="lm")
+finalize_image()
 ```
+
+![](../images/`r fn`.png)
+
+<div class="notes">
+
+
+
+</div>
+
 
 ### What your visualization might look like
 
 ```{r living-area-loess}
+fn <- initiate_image()
 ggplot(saratoga_houses, aes(x=Living.Area, y=Price)) +
   geom_point() +
   geom_smooth(method="loess")
