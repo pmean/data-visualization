@@ -1,0 +1,23 @@
+---
+title: "Data-viz-01, Exercise using the sleep data set"
+author: "Steve Simon"
+output: powerpoint_presentation
+---
+
+### Advanced exercise
+
++ There is a second data set on sleep in 
+mammals. You can find a brief description of
+this data set at
+  + http://www.statsci.org/data/general/sleep.html
++ You can download the actual data at
+  + http://www.statsci.org/data/general/sleep.txt
+
+### Advanced exercise
++ Draw a visualization that illustrates the interrelationships among
+  + bodywt, lifespan, gestation
+  + bodywt, brainwt, and totalsleep
+  + predation, exposure, and totalsleep
+  + bodywt, predation, and lifespan
++ Divide the work among different group members
+

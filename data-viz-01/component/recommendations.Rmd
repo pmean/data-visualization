@@ -14,6 +14,17 @@ source("../../common-files/setup.R")
 + Don't mix shape and size
 + Double up for emphasis
 + Shape is only good for categories
++ Size is only good for contiuous variables.
+
+<div class="notes">
+
+Here are some general recommendations for scatterplots.
+
+First, if you have a lot of data, your scatterplot may look like a large black blob in one corner of your graph with a few stgray points in the other corners. Or it may look like a large elliptical blob in the center of the graph. Either way, there are several strategies to help you see patterns that might otherwise be lost with overprinting.
+
+Another important lesson is to not let both the size and the shape aesthetic to vary within the same graph. At the same time, you can sometimes double up aesthetics, letting both the shape and the color, for example, to both represent the same variable.
+
+The other important issue is that shape is a useful aesthetic only for categorical data, while size is only good for continuous variables.
 
 ### Solutions to excessive overprinting
 + Opacity
