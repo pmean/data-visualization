@@ -1,11 +1,11 @@
 ---
-title: "v02 - initial preparationData visualization - 02 - bars"
+title: "Data-viz-02, Preparation"
 author: "Steve Simon"
 date: "6/23/2019"
 output: powerpoint_presentation
 ---
 
-```{r setup-v02-initial-preparation, echo=FALSE}
+```{r echo=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 source("../../common-files/setup.R")
 ```

@@ -18,20 +18,20 @@ Here is an outline of what you will learn today.
 
 </div>
 
-```{r child="preparation.Rmd"}
+```{r child="../component/preparation.Rmd"}
 ```
 
-```{r child="exercise-group.Rmd"}
+```{r child="../component/exercise-group.Rmd"}
 ```
 
-```{r  child="tutorial-colors.Rmd"}
+```{r  child="../component/tutorial-colors.Rmd"}
 ```
 
-```{r child="tutorial-perception.Rmd"}
+```{r child="../component/tutorial-perception.Rmd"}
 ```
 
-```{r child="fundamentals.Rmd"}
+```{r child="../component/fundamentals.Rmd"}
 ```
 
-```{r child="recommendations.Rmd"}
+```{r child="../component/recommendations.Rmd"}
 ```
