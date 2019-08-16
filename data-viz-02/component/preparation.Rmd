@@ -27,7 +27,7 @@ titanic <- read.csv(fn, stringsAsFactors=FALSE)
 
 ### Preparation, kaggle website
 
-![Kaggle datasets webpage](../images/kaggle-scotus-data.png)
+![Kaggle datasets webpage](../images/external/kaggle-scotus-data.png)
 
 ### Preparation, download scotus data
 
@@ -90,7 +90,7 @@ ggplot(sc_cases, aes(year_filed)) +
 finalize_image()
 ```
 
-![Bar chart](../images/`r fn`.png)
+`r display_image`
 
 ```{r save-initial-preparation-files}
 save.image("../data/v02-initial-preparation.RData")
