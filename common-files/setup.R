@@ -15,3 +15,6 @@ finalize_image <- function(caption="") {
   write(pd_text, file=paste0("../images/r", fn, ".txt"))
   display_image <<- paste0("![", caption, "](../images/r/", fn, ".png)")
 }
+f <- "https://dasl.datadescription.com/download/data/3275"
+saratoga_houses <- read.table(f, header=TRUE, sep="\x09")
+saratoga_houses$i <- 1:1057

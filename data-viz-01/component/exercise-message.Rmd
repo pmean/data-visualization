@@ -1,5 +1,5 @@
 ---
-title: "Data-viz-v01, Group exercise"
+title: "Data-viz-v01, Group exercise, Summarize the message"
 author: "Steve Simon"
 output: powerpoint_presentation
 ---
@@ -29,6 +29,19 @@ This is one of two graphs. It was published in
 Kevin Litman-Navarro. We Read 150 Privacy Policies. They Were an Incomprehensible Disaster. The New York Times. Retrieved from https://www.nytimes.com/interactive/2019/06/12/opinion/facebook-google-privacy-policies.html
 
 Split into pairs. Review the article briefly (about 5 minutes) and look at the graph. Explain to your partner what the graph is trying to show. Your partner will get a different graph and do the same thing with you listening this time.
+
+</div>
+
+### In small groups
+
++ Read the article associated with your graph
++ Review your graph
++ In 25 words or lesss
+  + What is the message of this graph?
+  
+<div class="notes">
+
+There is a newspaper article associated with the graph you have been given. Read the newspaper article and then look at the graph again. Try to summarize briefly what message the authors were trying to convey with this graph.
 
 </div>
 

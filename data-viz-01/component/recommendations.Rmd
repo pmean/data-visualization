@@ -1,25 +1,19 @@
 ---
-title: "v01 - Main presentation - scatterplots"
+title: "Data-viz-01, Recommendations"
 author: "Steve Simon"
 output: powerpoint_presentation
 ---
 
-```{r setup-v01-main-lecture, echo=FALSE}
+```{r echo=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
-suppressMessages(suppressWarnings(library(ggplot2)))
-suppressMessages(suppressWarnings(library(knitr)))
-suppressMessages(suppressWarnings(library(magrittr)))
-pd_text <- "This image was produced by Steve Simon and is placed in the public domain. You are welcome to use this image any way you see fit. An acknowledgement would be appreciated, but is not required."
-initiate_image <- function() {
-  fn <- opts_current$get("label")
-  png(filename=paste0("../images/", fn, ".png"))
-  return(fn)
-}
-finalize_image <- function() {
-  quiet <- dev.off()
-  write(pd_text, file=paste0("../images/", fn, ".txt"))
-}
+source("../../common-files/setup.R")
 ```
+
+### Recommendations
++ Solving problems with overprinting
++ Don't mix shape and size
++ Double up for emphasis
++ Shape is only good for categories
 
 ### Solutions to excessive overprinting
 + Opacity
@@ -167,79 +161,4 @@ There are some practical limits to aesthetics of points. First, shape makes sens
 Also size and shape don't mix. You can really compare two diffent shapes, such as an X and an O on size. Is the size related to the diameter, the area, or the perimeter? There's no really good answer, so it's asking to much of a graph that asks you to decide which is larger among points represent different shapes. Either vary the shape or vary the size, but not both.
 
 </div>
-
-### Quick quiz (1 of 4)
-Data visualization is a mapping of data to the visual aesthetics of geometries/marks. Some examples of visual aesthetics include (choose all that apply)
-1. Size
-2. Points
-3. Shapes
-
-<div class="notes">
-
-Answer: 1 and 3 (size and shapes)
-
-</div>
-
-### Quick quiz (2 of 4)
-The log transformation works by (choose the best answer)
-1. Stretching all data values equally.
-2. Stretching the small values and squeezing the large values.
-3. Stretching the large values and squeezing the small values.
-
-<div class="notes">
-
-Answer: 2 (strethcing the small values and squeezing the large values)
-
-</div>
-
-### Quick quiz (3 of 4)
-Strategies that can sometimes help when you have a lot of problems with overprinting include (choose all that apply)
-1. Using open circles
-2. Using large size points
-3. Using translucent points
-
-<div class="notes">
-
-Answer: 1 and 3 (using open circles and translucent points)
-
-</div>
-
-### Quick quiz (4 of 4)
-The two visual aesthetics that doen't work well together are (choose the best answer)
-1. color and size
-2. color and shape
-3. size and shape
-
-<div class="notes">
-
-Answer: 3 (size and shape)
-
-</div>
-
-### Advanced exercise
-
-+ There is a second data set on sleep in 
-mammals. You can find a brief description of
-this data set at
-  + http://www.statsci.org/data/general/sleep.html
-+ You can download the actual data at
-  + http://www.statsci.org/data/general/sleep.txt
-
-### Advanced exercise
-+ Draw a visualization that illustrates the interrelationships among
-  + bodywt, lifespan, gestation
-  + bodywt, brainwt, and totalsleep
-  + predation, exposure, and totalsleep
-  + bodywt, predation, and lifespan
-+ Divide the work among different group members
-
-### Summary
-+ "A mapping of data to the visual aesthetics of geometries/marks" 
-  + Points are a type of geometry/mark
-  + Aesthetics for points include location, shape, size, color
-+ Basic tips
-  + Don't try to squeeze in too much
-  + Double up to emphasize
-  + Shape is only good for categories
-  + Shape and size don't mix
 

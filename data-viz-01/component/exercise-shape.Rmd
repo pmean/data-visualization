@@ -25,7 +25,7 @@ ch5 = alt.Chart(df).mark_point().encode(
 
 ![Python scatterplot mapping bedrooms to shape](../images/python/altair-basic-exercise-shape.png)
 
-Here's the R code.
+### Here's the R code.
 
 ```{}
 ggplot(saratoga_houses, aes(x=Age, y=Price)) + 
@@ -33,12 +33,6 @@ ggplot(saratoga_houses, aes(x=Age, y=Price)) +
 ```
 
 ### Here's the results in R
-
-```{r}
-f <- "https://dasl.datadescription.com/download/data/3275"
-saratoga_houses <- read.table(f, header=TRUE, sep="\x09")
-saratoga_houses$i <- 1:1057
-```
 
 ```{r shape-bedrooms}
 initiate_image()

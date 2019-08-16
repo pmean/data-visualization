@@ -13,8 +13,14 @@ output: powerpoint_presentation
 ```{r child="../component/tutorial-evaluation.Rmd"}
 ```
 
-```{r child="../component/exercise-group.Rmd"}
+```{r child="../component/exercise-message.Rmd"}
 ```
 
 ```{r child="../component/tutorial-grammar.Rmd"}
+```
+
+```{r child="../component/fundamentals.Rmd"}
+```
+
+```{r child="../component/exercise-aesthetics.Rmd"}
 ```
