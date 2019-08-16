@@ -6,10 +6,8 @@ output: powerpoint_presentation
 
 ```{r echo=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
-suppressMessages(suppressWarnings(library(ggplot2)))
-suppressMessages(suppressWarnings(library(magrittr)))
+source("../../common-files/setup.R")
 ```
-
 
 ### Basic exercise - shape
 

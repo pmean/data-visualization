@@ -6,21 +6,7 @@ output: powerpoint_presentation
 
 ```{r echo=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
-suppressMessages(suppressWarnings(library(ggplot2)))
-suppressMessages(suppressWarnings(library(knitr)))
-suppressMessages(suppressWarnings(library(magrittr)))
-pd_text <- "This image was produced by Steve Simon and is placed in the public domain. You are welcome to use this image any way you see fit. An acknowledgement would be appreciated, but is not required."
-initiate_image <- function() {
-  fn <- opts_current$get("label")
-  png(filename=paste0("../images/r/", fn, ".png"))
-  return(fn)
-}
-finalize_image <- function(caption="") {
-  quiet <- dev.off()
-  fn <- opts_current$get("label")
-  write(pd_text, file=paste0("../images/r/", fn, ".txt"))
-  display_figure <<- paste0("![", caption, "](../images/r/", fn, ".png)")
-}
+source("../../common-files/setup.R")
 ```
 
 
@@ -87,7 +73,7 @@ g + geom_text(aes(label=Age))
 finalize_image("Illustration of location aesthetics")
 ```
 
-`r display_figure`
+`r display_image`
 
 <div class="notes">
 
@@ -105,7 +91,7 @@ g + geom_text(aes(label=format(Price, big.mark=",")))
 finalize_image("Illustration of location aesthetics")
 ```
 
-`r display_figure`
+`r display_image`
 
 <div class="notes">
 
@@ -132,7 +118,7 @@ g +
 finalize_image("Illustration of shape aesthetics")
 ```
 
-`r display_figure`
+`r display_image`
 
 <div class="notes">
 
@@ -160,7 +146,7 @@ g +
 finalize_image("Illustration of size aesthetics")
 ```
 
-`r display_figure`
+`r display_image`
 
 <div class="notes">
 
@@ -184,7 +170,7 @@ g +
 finalize_image("Illustration of color aesthetics")
 ```
 
-`r display_figure`
+`r display_image`
 
 <div class="notes">
 
@@ -201,7 +187,7 @@ g +
 finalize_image("R graph using color to represent Living.Area")
 ```
 
-`r display_figure`
+`r display_image`
 
 <div class="notes">
 

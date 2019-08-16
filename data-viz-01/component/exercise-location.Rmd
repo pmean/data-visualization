@@ -6,8 +6,7 @@ output: powerpoint_presentation
 
 ```{r echo=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
-suppressMessages(suppressWarnings(library(ggplot2)))
-suppressMessages(suppressWarnings(library(magrittr)))
+source("../../common-files/setup.R")
 ```
 
 ### Basic exercise - location
@@ -53,7 +52,7 @@ finalize_image("Scatterplot of bedrooms and price")
 
 `r display_image`
 
-### Here are the steps in Tableau.
+### Here are the results in Tableau.
 
 ![Tableau scatterplot of Bedrooms and Price](../images/tableau/bedrooms-vs-price.png)
 

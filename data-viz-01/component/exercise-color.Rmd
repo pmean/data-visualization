@@ -1,13 +1,12 @@
 ---
-title: "v01 Basic exercise, color"
+title: "Data-viz-01, exercise, color"
 author: "Steve Simon"
 output: powerpoint_presentation
 ---
 
 ```{r echo=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
-suppressMessages(suppressWarnings(library(ggplot2)))
-suppressMessages(suppressWarnings(library(magrittr)))
+source("../../common-files/setup.R")
 ```
 
 ### Basic exercise - color
@@ -43,9 +42,7 @@ saratoga_houses$i <- 1:1057
 ```
 
 ```{r bathroom-colors}
-initate_image()
-fn <- "r-bathroom-colors"
-png(filename=paste0("../images/", fn, ".png"))
+initiate_image()
 ggplot(saratoga_houses, aes(x=Age, y=Price)) + 
   geom_point(aes(color=factor(Bathrooms)))
 finalize_image("R scatterplot mapping bathrooms to color")
@@ -55,5 +52,5 @@ finalize_image("R scatterplot mapping bathrooms to color")
 
 ### Here's the result in Tableau.
 
-![Tableau scatterplot mapping Bathrooms to color](../images/tabeleau/tableau-basic-exercise-color.png)
+![Tableau scatterplot mapping Bathrooms to color](../images/tableau/basic-exercise-color.png)
 

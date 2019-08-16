@@ -7,11 +7,9 @@ pd_text <- "This image was produced by Steve Simon and is placed in the public d
 initiate_image <- function() {
   fn <- opts_current$get("label")
   png(filename=paste0("../images/r/", fn, ".png"))
-  return(invisible(fn))
+  return(fn)
 }
-finalize_image <- function(caption="") {
-  fn <- opts_current$get("label")
+finalize_image <- function() {
   quiet <- dev.off()
-  write(pd_text, file=paste0("../images/r", fn, ".txt"))
-  display_image <<- paste0("![", caption, "](../images/r/", fn, ".png)")
+  write(pd_text, file=paste0("../images/r/", fn, ".txt"))
 }
