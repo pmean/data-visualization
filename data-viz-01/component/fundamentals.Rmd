@@ -4,7 +4,7 @@ author: "Steve Simon"
 output: powerpoint_presentation
 ---
 
-```{r setup-v01-main-lecture, echo=FALSE}
+```{r echo=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 suppressMessages(suppressWarnings(library(ggplot2)))
 suppressMessages(suppressWarnings(library(knitr)))
@@ -17,6 +17,7 @@ initiate_image <- function() {
 }
 finalize_image <- function(caption="") {
   quiet <- dev.off()
+  fn <- opts_current$get("label")
   write(pd_text, file=paste0("../images/r/", fn, ".txt"))
   display_figure <<- paste0("![", caption, "](../images/r/", fn, ".png)")
 }
@@ -86,7 +87,7 @@ g + geom_text(aes(label=Age))
 finalize_image("Illustration of location aesthetics")
 ```
 
-`r dispaly_figure`
+`r display_figure`
 
 <div class="notes">
 
@@ -118,7 +119,7 @@ The point in the upper left corner is an expensive house, over a half million do
 + Use the Saratoga housing data set.
 + Revise the plot so that the location of the points represents x=Bedrooms and Y=Price.
 
-```{r include-exercise-location, child="../component/exercise-location.Rmd"}
+```{r child="../component/exercise-location.Rmd"}
 ```
 
 
@@ -131,7 +132,7 @@ g +
 finalize_image("Illustration of shape aesthetics")
 ```
 
-`r diplay_figure`
+`r display_figure`
 
 <div class="notes">
 
@@ -159,7 +160,7 @@ g +
 finalize_image("Illustration of size aesthetics")
 ```
 
-`r display_image`
+`r display_figure`
 
 <div class="notes">
 
@@ -171,7 +172,7 @@ You can also use the size of a point to represent a third dimension. Here is a p
 + Use the Saratoga housing data set.
 + Draw a plot where the location is x=Age and y=Price and the size represents the living area.
 
-```{r child="../component/exercise.size.Rmd"}
+```{r child="../component/exercise-size.Rmd"}
 ```
 
 ### Aesthetics for points - color (1 of 2)
@@ -183,7 +184,7 @@ g +
 finalize_image("Illustration of color aesthetics")
 ```
 
-`r diplay_figure`
+`r display_figure`
 
 <div class="notes">
 

@@ -4,7 +4,7 @@ author: "Steve Simon"
 output: powerpoint_presentation
 ---
 
-```{r setup, echo=FALSE}
+```{r echo=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 suppressMessages(suppressWarnings(library(ggplot2)))
 suppressMessages(suppressWarnings(library(magrittr)))
@@ -25,7 +25,7 @@ ch6 = alt.Chart(df).mark_point().encode(
 
 ### Here's the result in Python.
 
-![Python scatterplot mapping living area to size](../images/altair-basic-exercise-size.png)
+![Python scatterplot mapping living area to size](../images/python/altair-basic-exercise-size.png)
 
 ### Here's the R code.
 
@@ -36,22 +36,22 @@ ggplot(saratoga_houses, aes(x=Age, y=Price)) +
 
 ### Here's the result in R.
 
-```{r size-living-area}
+```{r}
 f <- "https://dasl.datadescription.com/download/data/3275"
 saratoga_houses <- read.table(f, header=TRUE, sep="\x09")
 saratoga_houses$i <- 1:1057
-fn <- "r-size-living-area"
-png(filename=paste0("../images/", fn, ".png"))
-ggplot(saratoga_houses, aes(x=Age, y=Price)) + 
-  geom_point(aes(size=Living.Area))
-quiet <- dev.off()
-pd_text <- "This image was produced by Steve Simon and is placed in the public domain. You are welcome to use this image any way you see fit. An acknowledgement would be appreciated, but is not required."
-write(pd_text, file=paste0("../images/", fn, ".txt"))
 ```
 
-![R graph using size to represent Living.Area](../images/r-size-living-area.png)
+```{r size-living-area}
+initiate_image()
+ggplot(saratoga_houses, aes(x=Age, y=Price)) + 
+  geom_point(aes(size=Living.Area))
+finalize_image("R graph using size to represent Living Area")
+```
+
+![](../images/r-size-living-area.png)
 
 ### Here's the result in Tableau.
 
-![Visualizaion using Living.Area as the size](../images/tableau-size-living-area.png)
+![Visualizaion using Living.Area as the size](../images/tableau/size-living-area.png)
 

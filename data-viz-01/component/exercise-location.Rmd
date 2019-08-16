@@ -4,7 +4,7 @@ author: "Steve Simon"
 output: powerpoint_presentation
 ---
 
-```{r setup, echo=FALSE}
+```{r echo=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 suppressMessages(suppressWarnings(library(ggplot2)))
 suppressMessages(suppressWarnings(library(magrittr)))
@@ -26,7 +26,7 @@ ch4 = alt.Chart(df).mark_point().encode(
 
 ### Here's the result in Python
 
-![Python scatterplot of bedrooms and price](../images/altair-basic-exercise-location.png)
+![Python scatterplot of bedrooms and price](../images/python/altair-basic-exercise-location.png)
 
 ### Here's the R code
 
@@ -37,24 +37,25 @@ ggplot(saratoga_houses, aes(x=Bedrooms, y=Price)) +
 
 ### Here's the result in R
 
-```{r bedrooms-and-price}
+```{r}
 f <- "https://dasl.datadescription.com/download/data/3275"
 saratoga_houses <- read.table(f, header=TRUE, sep="\x09")
 saratoga_houses$i <- 1:1057
-fn <- "r-bedrooms-and-price"
-png(filename=paste0("../images/", fn, ".png"))
-ggplot(saratoga_houses, aes(x=Bedrooms, y=Price)) + 
-  geom_point()
-quiet <- dev.off()
-pd_text <- "This image was produced by Steve Simon and is placed in the public domain. You are welcome to use this image any way you see fit. An acknowledgement would be appreciated, but is not required."
-write(pd_text, file=paste0("../images/", fn, ".txt"))
 ```
 
-![Illustration of location aesthetics](../images/r-bedrooms-and-price.png)
+
+```{r bedrooms-and-price}
+initiate_image()
+ggplot(saratoga_houses, aes(x=Bedrooms, y=Price)) + 
+  geom_point()
+finalize_image("Scatterplot of bedrooms and price")
+```
+
+`r display_image`
 
 ### Here are the steps in Tableau.
 
-![Tableau scatterplot of Bedrooms and Price](../images/tableau-bedrooms-vs-price.png)
+![Tableau scatterplot of Bedrooms and Price](../images/tableau/bedrooms-vs-price.png)
 
 <div class="notes">
 

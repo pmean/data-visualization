@@ -4,7 +4,7 @@ author: "Steve Simon"
 output: powerpoint_presentation
 ---
 
-```{r setup-exercise-color, echo=FALSE}
+```{r echo=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 suppressMessages(suppressWarnings(library(ggplot2)))
 suppressMessages(suppressWarnings(library(magrittr)))
@@ -24,7 +24,7 @@ ch2 = alt.Chart(df).mark_point().encode(
 
 ### Here's the result in Python
 
-![Python scatterplot mapping bathrooms to color](../images/python-basic-exercise-color.png)
+![Python scatterplot mapping bathrooms to color](../images/python/python-basic-exercise-color.png)
 
 ### Here's the R code.
 
@@ -35,22 +35,25 @@ ggplot(saratoga_houses, aes(x=Age, y=Price)) +
 
 ### Here's the result in R
 
-```{r bathroom-colors}
-fn <- "r-bathroom-colors"
+
+```{r}
 f <- "https://dasl.datadescription.com/download/data/3275"
 saratoga_houses <- read.table(f, header=TRUE, sep="\x09")
 saratoga_houses$i <- 1:1057
+```
+
+```{r bathroom-colors}
+initate_image()
+fn <- "r-bathroom-colors"
 png(filename=paste0("../images/", fn, ".png"))
 ggplot(saratoga_houses, aes(x=Age, y=Price)) + 
   geom_point(aes(color=factor(Bathrooms)))
-quiet <- dev.off()
-pd_text <- "This image was produced by Steve Simon and is placed in the public domain. You are welcome to use this image any way you see fit. An acknowledgement would be appreciated, but is not required."
-write(pd_text, file=paste0("../images/", fn, ".txt"))
+finalize_image("R scatterplot mapping bathrooms to color")
 ```
 
-![R scatterplot mapping bathrooms to color](../images/r-bathroom-colors.png)
+`r display_image`
 
 ### Here's the result in Tableau.
 
-![Tableau scatterplot mapping Bathrooms to color](../images/tableau-basic-exercise-color.png)
+![Tableau scatterplot mapping Bathrooms to color](../images/tabeleau/tableau-basic-exercise-color.png)
 
