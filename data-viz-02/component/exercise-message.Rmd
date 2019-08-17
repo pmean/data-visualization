@@ -1,17 +1,13 @@
 ---
-title: "V02, group exercises"
+title: "Data-viz-02, Exercise, What is the message in this graph?"
 author: "Steve Simon"
 date: "6/23/2019"
 output: powerpoint_presentation
 ---
 
-```{r echo=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
-```
-
 ### Group exercise (1 of 4)
 
-![Bar chart of demographics of selected Texas counties](../images/texas-bar-chart.png)
+![Bar chart of demographics of selected Texas counties](../images/external/texas-bar-chart.png)
 
 <div class="notes">
 
@@ -23,7 +19,7 @@ Badger, E. (2019). People Who Can’t Vote Still Count Politically in America. W
 
 ### Group exercise (2 of 4)
 
-![Bar chart counting white extremist terrorism attacks over time](../images/terrorism-bar-chart.png)
+![Bar chart counting white extremist terrorism attacks over time](../images/external/terrorism-bar-chart.png)
 
 <div class="notes">
 
@@ -33,7 +29,7 @@ Weiyi Cai, Simone Landon. Attacks by White Extremists Are Growing. So Are Their 
 
 ### Group exercise (3 of 4)
 
-![Bar chart showing speeds of various VPN providers](../images/vpn-speeds.png)
+![Bar chart showing speeds of various VPN providers](../images/external/vpn-speeds.png)
 
 <div class="notes">
 
