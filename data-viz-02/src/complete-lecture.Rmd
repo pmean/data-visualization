@@ -21,7 +21,7 @@ Here is an outline of what you will learn today.
 ```{r child="../component/preparation.Rmd"}
 ```
 
-```{r child="../component/exercise-group.Rmd"}
+```{r child="../component/exercise-message.Rmd"}
 ```
 
 ```{r  child="../component/tutorial-colors.Rmd"}
@@ -34,4 +34,7 @@ Here is an outline of what you will learn today.
 ```
 
 ```{r child="../component/recommendations.Rmd"}
+```
+
+```{r child="../component/exercise-aesthetics.Rmd"}
 ```
