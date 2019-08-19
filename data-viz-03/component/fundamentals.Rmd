@@ -268,25 +268,3 @@ ggplot(saratoga_houses, aes(x=Living.Area, y=Price)) +
 
 ((Add three or four slides here. Maybe talk about opacity.))
 
-### Group exercise
-
-+ Review the following visualization in your group.
-  + Summarize what aesthetics (location, size, shape, color) appear in the graph
-  + What variables map to each aesthetic?
-
-((Find new images or use the ones from earlier))
-
-### Summary (1 of 2)
-+ Gestalt principles
-  + ((List here))
-+ Aesthetics for lines
-  + Size, Shape, Color
-+ Lines as summary statistics
-  + One number summary (mean, total, count, percent)
-  + Two number summary (error bars)
-  + Five number summary (boxplots)
-  
-### Summary (2 of 2)
-+ Trend lines (linear, logistic, spline)
-+ Helpful tips
-  + ((List here))
