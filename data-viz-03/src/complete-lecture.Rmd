@@ -1,0 +1,29 @@
+---
+title: "Data-viz=03"
+author: "Steve Simon"
+date: "Created: 2019-08-19"
+output: powerpoint_presentation
+---
+
+```{r echo=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+source("../../common-files/setup.R")
+```
+
+```{r child="../component/preparation.Rmd"}
+```
+
+### Summary (1 of 2)
++ Gestalt principles
+  + ((List here))
++ Aesthetics for lines
+  + Size, Shape, Color
++ Lines as summary statistics
+  + One number summary (mean, total, count, percent)
+  + Two number summary (error bars)
+  + Five number summary (boxplots)
+  
+### Summary (2 of 2)
++ Trend lines (linear, logistic, spline)
++ Helpful tips
+  + ((List here))

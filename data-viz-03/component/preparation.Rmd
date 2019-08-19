@@ -1,7 +1,7 @@
 ---
 title: "Data-viz-03, Preparation"
 author: "Steve Simon"
-date: "6/23/2019"
+date: "Created: 2019-08-18"
 output: powerpoint_presentation
 ---
 
@@ -10,14 +10,23 @@ knitr::opts_chunk$set(echo = FALSE)
 source("../../common-files/setup.R")
 ```
 
-```{r setup, echo=FALSE}
+```{r read-cpi}
 fn <- "https://dasl.datadescription.com/download/data/3138"
 cpi <- read_tsv(fn, col_types=cols())
 cpi$t <- 2007 + (1:132)/12
 cpi <- cpi[1:128, ]
+```
+
+### CPI line graph
+
+```{r cpi-graph}
+initiate_image()
 ggplot(cpi, aes(x=t, y=CPI)) +
   geom_line()
+finalize_image("Line graph showing increase over time of the consumer price index")
 ```
+
+`r display_image`
 
 ### To prepare for this section
 
