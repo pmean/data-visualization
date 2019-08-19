@@ -1,0 +1,31 @@
+---
+title: "Data-viz-03, Preparation"
+author: "Steve Simon"
+date: "6/23/2019"
+output: powerpoint_presentation
+---
+
+```{r echo=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+source("../../common-files/setup.R")
+```
+
+```{r setup, echo=FALSE}
+fn <- "https://dasl.datadescription.com/download/data/3138"
+cpi <- read_tsv(fn, col_types=cols())
+cpi$t <- 2007 + (1:132)/12
+cpi <- cpi[1:128, ]
+ggplot(cpi, aes(x=t, y=CPI)) +
+  geom_line()
+```
+
+### To prepare for this section
+
+((Download the Titanic data set))
+
+### Python code
+
+### R code
+
+### Tableau steps
+
