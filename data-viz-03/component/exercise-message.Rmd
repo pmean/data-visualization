@@ -10,24 +10,34 @@ knitr::opts_chunk$set(echo = FALSE)
 source("../../common-files/setup.R")
 ```
 
-
-### Group exercise (1 of 2)
-
-![Line graph of strikeouts and hits over time](../images/baseball-line-graph.png)
+### Group exercise
++ Review one of these graphs/newspaper articles
+  + [More Strikeouts Than Hits? Welcome to Baseball’s Latest Crisis.](https://www.nytimes.com/2018/08/16/sports/baseball-mlb-strikeouts.html)
+  + [Record shares of Americans now own smartphones, have home broadband.](https://www.pewresearch.org/fact-tank/2017/01/12/evolution-of-technology/)
+  + [F.D.A. Seeks Restrictions on Teens’ Access to Flavored E-Cigarettes and a Ban on Menthol Cigarettes.](http://nytimes.com/2018/11/15/health/ecigarettes-fda-flavors-ban.html)
++ What is the message? Summarize in 25 words or less.
 
 <div class="notes">
 
-This is one of two graphs. It was published in
+The following images are taken from various newspaper articles or press releases. Look at the graph and read/skim the article.
 
-Popvich, N., Fountain, H., & Pearce, A. (2017, September 22). We Charted Arctic Sea Ice for Nearly Every Day Since 1979. You’ll See a Trend. - The New York Times. The New York Times. Retrieved from https://www.nytimes.com/interactive/2017/09/22/climate/arctic-sea-ice-shrinking-trend-watch.html
-
-Split into pairs. Review the article briefly (about 5 minutes) and look at the graph. Explain to your partner what the graph is trying to show. Your partner will get a different graph and do the same thing with you listening this time.
+What message do you think the journalist is trying to convey with this graph. Summarize this message in 25 words or less.
 
 </div>
 
-### Group exercise (2 of 2)
+### Graphs in the news, baseball strikeouts
 
-![Line graph of technology trends](../images/technology-trends.png)
+![Line graph of strikeouts and hits over time](../images/external/baseball-line-graph.png)
+
+<div class="notes">
+
+Tyler Kepner. More Strikeouts Than Hits? Welcome to Baseball’s Latest Crisis. The New York Times, Augst 16, 2018. Retrieved from https://www.nytimes.com/2018/08/16/sports/baseball-mlb-strikeouts.html.
+
+</div>
+
+### Graphs in the news, technology adaptation
+
+![Line graph of technology trends](../images/external/technology-trends.png)
 
 <div class="notes">
 
@@ -35,3 +45,12 @@ Aaron Smith, Record shares of Americans now own smartphones, have home broadband
 
 </div>
 
+### Graphs in the news, Tobacco and e-cigarette consumption
+
+![Line graph of tobacco and e-cigarette consumption](../images/external/tobacco-consumption.png)
+
+<div class="notes">
+
+Sheila Kaplan and Jan Hoffman, F.D.A. Seeks Restrictions on Teens’ Access to Flavored E-Cigarettes and a Ban on Menthol Cigarettes. The New York Times, November 15, 2018. Retrieved from http://nytimes.com/2018/11/15/health/ecigarettes-fda-flavors-ban.html
+
+</div>
