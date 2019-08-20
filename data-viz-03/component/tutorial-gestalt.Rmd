@@ -1,7 +1,7 @@
 ---
-title: "Data-viz=03"
+title: "Data-viz=03, Tutorial on Gestalt principles"
 author: "Steve Simon"
-date: "6/23/2019"
+date: "Created: 2019-08-19"
 output: powerpoint_presentation
 ---
 
@@ -14,11 +14,13 @@ source("../../common-files/setup.R")
 
 + How do you draw someone's eye to quickly make certain associations?
 + These ideas drawn from the Bergen and Iverson workshop.
++ Gestalt definition
+  + "The whole is greater than the sum of the parts"
 
 ### A block of points - no emphasis
 
 ```{r block-no-emphasis}
-fn <- initiate_image()
+initiate_image()
 df <- data.frame(
   x=rep(1:5, 4),
   y=rep(1:4, each=5)
@@ -30,23 +32,24 @@ g + geom_point(size=5)
 finalize_image()
 ```
 
-![](../images/`r fn`.png)
+`r display_image`
+
 <div class="notes">
 
-
+What you see in this graph is 20 individual points. When you design a graph, you want people to group things in a way to reveal patterns.
 
 </div>
 
 ### Color emphasizes rows
 
 ```{r block-color}
-fn <- initiate_image()
+initiate_image()
 f <- rep(c("red", "green", "red", "green"), each=5)
 g + geom_point(color=f, size=5)
 finalize_image()
 ```
 
-![](../images/`r fn`.png)
+`r display_image`
 
 <div class="notes">
 
@@ -58,13 +61,13 @@ finalize_image()
 ### Shape emphasizes columns
 
 ```{r block-shape}
-fn <- initiate_image()
+initiate_image()
 f <- rep(c("triangle", "square", "triangle", "square", "triangle"), 4)
 g + geom_point(shape=f, size=5)
 finalize_image()
 ```
 
-![](../images/`r fn`.png)
+`r display_image`
 
 <div class="notes">
 
@@ -75,14 +78,14 @@ finalize_image()
 ### Double up for stronger emphasis
 
 ```{r block-double-up}
-fn <- initiate_image()
+initiate_image()
 f1 <- rep(c("red", "green", "red", "green"), each=5)
 f2 <- rep(c("triangle", "square", "triangle", "square"), each=5)
 g + geom_point(color=f1, shape=f2, size=5)
 finalize_image()
 ```
 
-![](../images/`r fn`.png)
+`r display_image`
 
 <div class="notes">
 
@@ -93,7 +96,7 @@ finalize_image()
 ### Connectedness emphasizes rows
 
 ```{r block-connectedness}
-fn <- initiate_image()
+initiate_image()
 g + geom_point(size=5) +
   geom_segment(x=1, y=1, xend=5, yend=1) + 
   geom_segment(x=1, y=2, xend=5, yend=2) + 
@@ -102,7 +105,7 @@ g + geom_point(size=5) +
 finalize_image()
 ```
 
-![](../images/`r fn`.png)
+`r display_image`
 
 <div class="notes">
 
@@ -113,13 +116,13 @@ finalize_image()
 ### Proximity emphasize columns
 
 ```{r block-proximity}
-fn <- initiate_image()
+initiate_image()
 g + geom_point(size=5) +
   expand_limits(y=c(-3, 8))
 finalize_image()
 ```
 
-![](../images/`r fn`.png)
+`r display_image`
 
 <div class="notes">
 
@@ -130,7 +133,7 @@ finalize_image()
 ### Enclosure for emphasis, eight special points
 
 ```{r block-enclosure}
-fn <- initiate_image()
+initiate_image()
 g + geom_point(size=5) +
   expand_limits(y=c(0.8, 4.2)) +
   expand_limits(x=c(0.8, 5.2)) +
@@ -141,7 +144,7 @@ g + geom_point(size=5) +
 finalize_image()
 ```
 
-![](../images/`r fn`.png)
+`r display_image`
 
 <div class="notes">
 

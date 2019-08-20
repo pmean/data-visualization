@@ -1,5 +1,5 @@
 ---
-title: "Data-viz=03"
+title: "Data-viz-03, Fundamentals"
 author: "Steve Simon"
 date: "Created: 2019-08-19"
 output: powerpoint_presentation
@@ -8,6 +8,13 @@ output: powerpoint_presentation
 ```{r echo=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 source("../../common-files/setup.R")
+```
+
+```{r read-cpi}
+fn <- "https://dasl.datadescription.com/download/data/3138"
+cpi <- read_tsv(fn, col_types=cols())
+cpi$t <- 2007 + (1:132)/12
+cpi <- cpi[1:128, ]
 ```
 
 ### Aesthetics for lines
@@ -31,13 +38,13 @@ You can vary the size, shape, and color of a line. Shape is not what you think i
 ### Size
 
 ```{r line-size}
-fn <- initiate_image()
+initiate_image()
 ggplot(cpi, aes(x=t, y=CPI)) +
   geom_line(size=8)
 finalize_image()
 ```
 
-![](../images/`r fn`.png)
+`r display_image`
 
 <div class="notes">
 
@@ -48,13 +55,13 @@ finalize_image()
 ### Shape
 
 ```{r line-shape}
-fn <- initiate_image()
+initiate_image()
 ggplot(cpi, aes(x=t, y=CPI)) +
   geom_line(linetype="dotted")
 finalize_image()
 ```
 
-![](../images/`r fn`.png)
+`r display_image`
 
 <div class="notes">
 
@@ -82,13 +89,13 @@ ggplot(cpi, aes(x=t, y=CPI)) +
 ### What your visualization might look like
 
 ```{r width-shape-color}
-fn <- initiate_image()
+initiate_image()
 ggplot(cpi, aes(x=t, y=CPI)) +
   geom_line(size=3, linetype="dashed", color="green")
 finalize_image()
 ```
 
-![](../images/`r fn`.png)
+`r display_image`
 
 <div class="notes">
 
@@ -100,15 +107,15 @@ finalize_image()
 ### Lines as summary statistics
 
 ```{r old-friend}
-fn <- "https://dasl.datadescription.com/download/data/3275"
+"https://dasl.datadescription.com/download/data/3275"
 saratoga_houses <- read.table(fn, header=TRUE, sep="\x09")
-fn <- initiate_image()
+initiate_image()
 ggplot(saratoga_houses, aes(x=Bedrooms, y=Price)) +
   geom_point()
 finalize_image()
 ```
 
-![](../images/`r fn`.png)
+`r display_image`
 
 <div class="notes">
 
@@ -119,7 +126,7 @@ finalize_image()
 ### Lines as averages
 
 ```{r average}
-fn <- initiate_image()
+initiate_image()
 saratoga_houses %>%
   group_by(Bedrooms) %>%
   summarize(avg_price=mean(Price)) %>%
@@ -128,7 +135,7 @@ saratoga_houses %>%
 finalize_image()
 ```
 
-![](../images/`r fn`.png)
+`r display_image`
 
 <div class="notes">
 
@@ -139,7 +146,7 @@ finalize_image()
 ### Lines as counts
 
 ```{r count}
-fn <- initiate_image()
+initiate_image()
 saratoga_houses %>%
   group_by(Bedrooms) %>%
   summarize(n=n()) %>%
@@ -148,7 +155,7 @@ saratoga_houses %>%
 finalize_image()
 ```
 
-![](../images/`r fn`.png)
+`r display_image`
 
 <div class="notes">
 
@@ -174,14 +181,14 @@ finalize_image()
 ### Trend lines (linear)
 
 ```{r linear-trend-age}
-fn <- initiate_image()
+initiate_image()
 ggplot(saratoga_houses, aes(Age, Price)) +
   geom_point() +
   geom_smooth(method="lm")
 finalize_image()
 ```
 
-![](../images/`r fn`.png)
+`r display_image`
 
 <div class="notes">
 
@@ -192,14 +199,14 @@ finalize_image()
 ### Trend lines (spline)
 
 ```{r smooth-trend}
-fn <- initiate_image()
+initiate_image()
 ggplot(saratoga_houses, aes(Age, Price)) +
   geom_point() +
   geom_smooth(method="loess")
 finalize_image()
 ```
 
-![](../images/`r fn`.png)
+`r display_image`
 
 <div class="notes">
 
@@ -210,14 +217,14 @@ finalize_image()
 ### Trend lines (spline), not so smooth
 
 ```{r smooth-trend-3}
-fn <- initiate_image()
+initiate_image()
 ggplot(saratoga_houses, aes(Age, Price)) +
   geom_point() +
   geom_smooth(method="loess", span=0.3)
 finalize_image()
 ```
 
-![](../images/`r fn`.png)
+`r display_image`
 
 <div class="notes">
 
@@ -234,14 +241,14 @@ finalize_image()
 ### What your visualization might look like
 
 ```{r living-area-lm}
-fn <- initiate_image()
+initiate_image()
 ggplot(saratoga_houses, aes(x=Living.Area, y=Price)) +
   geom_point() +
   geom_smooth(method="lm")
 finalize_image()
 ```
 
-![](../images/`r fn`.png)
+`r display_image`
 
 <div class="notes">
 
@@ -253,12 +260,20 @@ finalize_image()
 ### What your visualization might look like
 
 ```{r living-area-loess}
-fn <- initiate_image()
+initiate_image()
 ggplot(saratoga_houses, aes(x=Living.Area, y=Price)) +
   geom_point() +
   geom_smooth(method="loess")
+finalize_image()
 ```
 
+`r display_image`
+
+<div class="notes">
+
+
+
+</div>
 
 ### Trend lines (logistic)
 
