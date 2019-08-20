@@ -16,6 +16,9 @@ source("../../common-files/setup.R")
 ```{r child="../component/exercise-message.Rmd"}
 ```
 
+```{r child="../component/tutorial-gestalt.Rmd"}
+```
+
 ### Summary (1 of 2)
 + Gestalt principles
   + ((List here))
