@@ -1,5 +1,5 @@
 ---
-title: "Data-viz=03"
+title: "Data-viz-03, line graphs"
 author: "Steve Simon"
 date: "Created: 2019-08-19"
 output: powerpoint_presentation
@@ -17,6 +17,12 @@ source("../../common-files/setup.R")
 ```
 
 ```{r child="../component/tutorial-gestalt.Rmd"}
+```
+
+```{r child="../component/fundamentals.Rmd"}
+```
+
+```{r child="../component/recommendations.Rmd"}
 ```
 
 ### Summary (1 of 2)

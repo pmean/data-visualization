@@ -1,0 +1,29 @@
+---
+title: "Download key files"
+author: "Steve Simon"
+date: "Created: 2019-08-19"
+output: html_document
+---
+
+This program will download key files and store the results as CSV files as well as RData files.
+
+cpi: This is a data file used mostly in data-viz-03.
+
+```{r read-cpi}
+library(readr)
+fn <- "https://dasl.datadescription.com/download/data/3138"
+cpi <- read_tsv(fn, col_types=cols())
+cpi$t <- 2007 + (1:132)/12
+cpi <- cpi[1:128, ]
+save(cpi, file="../data/cpi.RData")
+write.csv(cpi, file="../data/cpi.csv", row.names=FALSE)
+```
+
+saratoga_houses: This is used in data-viz-01 and data-viz-03.
+
+```{r read-houses}
+fn <- "https://dasl.datadescription.com/download/data/3275"
+saratoga_houses <- read.table(fn, header=TRUE, sep="\x09")
+save(saratoga_houses, file="../data/houses.RData")
+write.csv(saratoga_houses, file="../data/houses.csv", row.names=FALSE)
+```

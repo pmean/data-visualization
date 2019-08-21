@@ -10,11 +10,9 @@ knitr::opts_chunk$set(echo = FALSE)
 source("../../common-files/setup.R")
 ```
 
-```{r read-cpi}
-fn <- "https://dasl.datadescription.com/download/data/3138"
-cpi <- read_tsv(fn, col_types=cols())
-cpi$t <- 2007 + (1:132)/12
-cpi <- cpi[1:128, ]
+```{r read-files}
+load("../../common-files/data/cpi.RData")
+load("../../common-files/data/houses.RData")
 ```
 
 ### Aesthetics for lines
@@ -107,8 +105,6 @@ finalize_image()
 ### Lines as summary statistics
 
 ```{r old-friend}
-"https://dasl.datadescription.com/download/data/3275"
-saratoga_houses <- read.table(fn, header=TRUE, sep="\x09")
 initiate_image()
 ggplot(saratoga_houses, aes(x=Bedrooms, y=Price)) +
   geom_point()
