@@ -12,10 +12,29 @@ source("../../common-files/setup.R")
 
 ### More theory -- The gestalt of graphics
 
-+ How do you draw someone's eye to quickly make certain associations?
 + These ideas drawn from the Bergen and Iverson workshop.
 + Gestalt definition
   + "The whole is greater than the sum of the parts"
++ How do you draw someone's eye to quickly make certain associations?
+  
+<div class="notes">
+
+
+
+</div>
+
+### Gestalt theory in artistic design
++ Many lesssons in effective artistic design
+  + [The Gestalt Principles](https://graphicdesign.sfcc.spokane.edu/dZine/tutorials/process/gestaltprinciples/gestaltprinc.htm) Spokane Falls Community College. 
+  + [Gestalt Theory](https://www.sophia.org/tutorials/gestalt-theory-2) Sophia.
+  + [Gestalt Principles Applied to Design](https://www.grayboxpdx.com/blog/post/gestalt-principles-applied-to-design) The Graybox blog, January 19, 2015.
+  + [Gestalt Principles](https://www.interaction-design.org/literature/topics/gestalt-principles) Interaction Design Foundation.
+  
+<div class="notes">
+
+The field of artistic design is more commonly called graphic design, but I use the former term to distinguish it from statistical graphics. Artistic design is the use of typography, photography, and illustration to effectively convey a message. Artistic designers work on commercial logos, magazines and brochure s, and product packaging.
+
+</div>
 
 ### A block of points - no emphasis
 
