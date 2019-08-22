@@ -1,0 +1,16 @@
+---
+title: "Data visualization -- surfaces"
+author: "Steve Simon"
+date: "2019-08-22"
+output: powerpoint_presentation
+---
+
+```{r setup, echo=FALSE}
+source("../../common-files/setup.R")
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+### Group exercise (1 of 2) and (2 of 2)
+
+((Just like the earlier group exercises, but find newspaper articles with images similar to the ones used in this talk.))
+

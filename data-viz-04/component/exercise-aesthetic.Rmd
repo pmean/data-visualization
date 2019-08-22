@@ -1,0 +1,17 @@
+---
+title: "Data visualization -- surfaces"
+author: "Steve Simon"
+date: "2019-08-22"
+output: powerpoint_presentation
+---
+
+```{r setup, echo=FALSE}
+source("../../common-files/setup.R")
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+### Group exercise
+
++ Review the following visualization in your group.
+  + Summarize what aesthetics (location, size, shape, color) appear in the graph
+  + What variables map to each aesthetic?

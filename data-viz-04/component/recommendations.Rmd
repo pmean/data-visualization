@@ -1,0 +1,13 @@
+---
+title: "surfaces, recommendations"
+author: "Steve Simon"
+date: "2019-08-22"
+output: powerpoint_presentation
+---
+
+```{r setup, echo=FALSE}
+source("../../common-files/setup.R")
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+### Recommendations

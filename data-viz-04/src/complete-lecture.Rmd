@@ -1,0 +1,40 @@
+---
+title: "Data visualization -- surfaces"
+author: "Steve Simon"
+date: "2019-08-22"
+output: powerpoint_presentation
+---
+
+```{r setup, echo=FALSE}
+source("../../common-files/setup.R")
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+```{r child="../component/preparation.Rmd"}
+```
+
+```{r child="../component/exercise-message.Rmd"}
+```
+
+```{r child="../tutorial-dimensionality}
+```
+
+```{r child="fundamentals.Rmd"}
+```
+
+```{r child="recommendations.Rmd"}
+```
+
+```{r child="exercise-aesthetics.Rmd"}
+```
+
+### Summary
++ Myth of objectivity
+  + Statistics are a social construct (Joel Best)
+  + Positivism versus post-postivism
++ Contour plots
+
+### On your own
+
+((Find a totally different data set and get the students to draw four different visualizations. Have them divide into groups that like the same visualization software and have each person do a different visualization.))
+

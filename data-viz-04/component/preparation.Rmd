@@ -1,0 +1,16 @@
+---
+title: "Data visualization -- surfaces"
+author: "Steve Simon"
+date: "2019-08-22"
+output: powerpoint_presentation
+---
+
+```{r setup, echo=FALSE}
+source("../../common-files/setup.R")
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+### To prepare for this section
+
+((Just like the other sections. Find a data set. Give instructions on how to import the data into Python, R, or Tableau. Ask them to produce a VERY simple visualization.))
+
