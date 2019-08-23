@@ -1,27 +1,35 @@
 ---
-title: "Data-viz-01, Fundamentals"
+title: "Scatterplots, Fundamentals"
 author: "Steve Simon"
 output: powerpoint_presentation
 ---
 
 ```{r echo=FALSE}
+source("../../common-files/src/setup.R")
 knitr::opts_chunk$set(echo = FALSE)
-source("../../common-files/setup.R")
 ```
 
+```{r options}
+redraw_graphs <- FALSE
+```
 
 ### Review basic scatterplot
+
 + Python code
-```
+
+```{}
 ch = alt.Chart(df).mark_point().encode(
     x='Age', y='Price'
 )
 ```
+
 + R code
-```
+
+```{}
 ggplot(saratoga_houses, aes(x=Age, y=Price)) +
   geom_point()
 ```
+
 + Tableau
   + (Drag and drop)
   
@@ -32,14 +40,19 @@ You've already drawn a basic scatterplot in Python, R, or Tableau. All three sys
 </div>
 
 ### Changing default options
+
 + Python code
-```
+
+```{}
 .mark_point(shape="square", color="green").
 ```
+
 + R code
-```
+
+```{}
 geom_point(shape="square", color="green")
 ```
+
 + Tableau
   + (Drag and drop)
   
@@ -56,12 +69,8 @@ In Python, you can change the default from blue circles to green squares in the 
 
 ### Aesthetics for points - location (1 of 2)
 
-```{r read}
-f <- "https://dasl.datadescription.com/download/data/3275"
-saratoga_houses <- read.table(f, header=TRUE, sep="\x09")
-```
-
 ```{r point-aesthetics-x}
+load("../../common-files/data/houses.RData")
 initiate_image()
 x <- c(212, 103)
 x_range <- range(saratoga_houses$Age)
@@ -134,9 +143,6 @@ I also want to point out that this may not be the best way to visualize the rela
 + Use the Saratoga housing data set.
 + Draw a plot of all of the data where the location is x=Age and y=Price and the symbol represents the number of bedrooms.
 
-```{r child="../component/exercise-shape.Rmd"}
-```
-
 ### Aesthetics for points - size
 
 ```{r point-aesthetics-size}
@@ -157,9 +163,6 @@ You can also use the size of a point to represent a third dimension. Here is a p
 ### Basic exercise - size
 + Use the Saratoga housing data set.
 + Draw a plot where the location is x=Age and y=Price and the size represents the living area.
-
-```{r child="../component/exercise-size.Rmd"}
-```
 
 ### Aesthetics for points - color (1 of 2)
 
@@ -198,6 +201,3 @@ Notice how the legend has changed.
 ### Basic exercise - color
 + Use the Saratoga housing data set.
 + Draw a plot where the location is x=Age and y=Price and the color represents the number of bathrooms.
-
-```{r child="../component/exercise-color.Rmd"}
-```

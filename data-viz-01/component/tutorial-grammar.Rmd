@@ -203,3 +203,24 @@ This screenshot shows an example where Age is mapped to the x location, Price is
 
 </div>
 
+### Grammar, Summary
++ "A mapping of data to the visual aesthetics of geometries/marks" 
++ Geometries/marks
+  + Point
+  + Bar
+  + Line
++ Aesthetics
+  + Location
+  + Size
+  + Shape
+  + Color
+  
+<div class="notes">
+
+Data visualization is a mapping of data.
+
+Geometries/marks include points, bars, and lines. Aesthetics include location, size, shape, and color.
+
+These ideas are implemented in R (ggplot2), Python (Altair), and Tableau.
+
+</div>

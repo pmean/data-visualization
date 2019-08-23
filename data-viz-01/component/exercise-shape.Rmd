@@ -6,7 +6,7 @@ output: powerpoint_presentation
 
 ```{r echo=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
-source("../../common-files/setup.R")
+source("../../common-files/src/setup.R")
 ```
 
 ### Basic exercise - shape

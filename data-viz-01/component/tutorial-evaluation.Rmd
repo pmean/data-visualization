@@ -1,25 +1,17 @@
 ---
-title: "Data-viz-01, Tutorial, Evaluating visualizations"
+title: "Tutorial, Evaluating visualizations"
 author: "Steve Simon"
 output: powerpoint_presentation
+date: "Created 2019-08-22"
 ---
 
 ```{r echo=FALSE}
+source("../../common-files/src/setup.R")
 knitr::opts_chunk$set(echo = FALSE)
-suppressMessages(suppressWarnings(library(ggplot2)))
-suppressMessages(suppressWarnings(library(knitr)))
-suppressMessages(suppressWarnings(library(magrittr)))
-pd_text <- "This image was produced by Steve Simon and is placed in the public domain. You are welcome to use this image any way you see fit. An acknowledgement would be appreciated, but is not required."
-initiate_image <- function() {
-  fn <- opts_current$get("label")
-  png(filename=paste0("../images/r/", fn, ".png"))
-  return(fn)
-}
-finalize_image <- function() {
-  quiet <- dev.off()
-  write(pd_text, file=paste0("../images/r/", fn, ".txt"))
-}
-  
+```
+
+```{r options}
+if (!exists("redraw_graphs")) redraw_graphs <- FALSE
 ```
 
 ### Evaluation, Which is better? A bar chart...
@@ -31,14 +23,14 @@ marital_status <- data.frame(
   n=c(49, 124, 55, 22),
   prop=c(19.6, 49.6, 22.0, 8.8)
 )
-fn <- initiate_image()
+initiate_image()
 ggplot(marital_status, aes(x=class, y=n, fill=class)) +
   geom_col(fill=c("#F8766D", "#7CAE00", "#00BFC4", "#C77CFF")) -> bar_chart1
 plot(bar_chart1)
-finalize_image()
+finalize_image("Bar chart, with four bars side by side")
 ```
 
-![Bar chart, with four bars side by side](../images\r\`r fn`.png)
+`r display_image`
 
 <div class="notes">
 
@@ -46,20 +38,17 @@ Here's a bar chart dispaying the counts for people in four categories for marita
 
 </div>
 
-
-
-
 ### Evaluation, ... a stacked bar chart, ...
 
 ```{r bar-chart-2}
-fn <- initiate_image()
+initiate_image()
 ggplot(marital_status, aes(x="", y=n, fill=class)) +
   geom_col() -> bar_chart2
 plot(bar_chart2)
-finalize_image()
+finalize_image("")
 ```
 
-![Bar chart, four bars stacked in a single column](../images\r\`r fn`.png)
+`r display_image`
 
 <div class="notes">
 
@@ -71,16 +60,16 @@ Here's the same data, but the bars are now stacked in a single column.
 ### Evaluation, ... or a pie chart
 
 ```{r pie-chart-1}
-fn <- initiate_image()
+initiate_image()
 ggplot(marital_status, aes(x = "", y = n, fill = class)) +
   geom_col() +
   coord_polar("y", start = 0) +
   theme_void() -> pie_chart
 plot(pie_chart)
-finalize_image()
+finalize_image("Pie chart")
 ```
 
-![Pie chart](../images\r\`r fn`.png)
+`r display_image`
 
 <div class="notes">
 
@@ -105,16 +94,16 @@ You can run an experiment (people have done this) where randomize and show half 
 ### Evaluation, Which percentage is larger? Bar chart is best!
 
 ```{r bar-chart-3}
-fn <- initiate_image()
+initiate_image()
 bar_chart1 +
   geom_segment(
     x=1.5, y=49, xend=2.5, yend=49, 
     color="darkred", size=2, 
     arrow=arrow())
-finalize_image()
+finalize_image("Bar chart, projecting one bar to another")
 ```
 
-![Bar chart, projecting one bar to another](../images\r\`r fn`.png)
+`r display_image`
 
 <div class="notes">
 
@@ -125,7 +114,7 @@ If you ask the question, which percentage is larger, the percentage for single o
 ### Evaluation, Second best, stacked bar chart
 
 ```{r bar-chart-4}
-fn <- initiate_image()
+initiate_image()
 bar_chart2 +
   geom_segment(
     x=1.3, xend=1.3, y=201, yend=250, 
@@ -135,10 +124,10 @@ bar_chart2 +
     x=1.3, xend=1.3, y=22, yend=77, 
     size=2, color="darkred",
     arrow=arrow(ends="both"))
-finalize_image()
+finalize_image("Stacked bar chart, comparing lengths")
 ```
 
-![Stacked bar chart, comparing lengths](../images\r\`r fn`.png)
+`r display_image`
 
 <div class="notes">
 
@@ -149,7 +138,7 @@ The second best choice for answering this question is the stacked bar chart. You
 ### Evaluation, Worst, pie chart
 
 ```{r pie-chart-2}
-fn <- initiate_image()
+initiate_image()
 pie_chart +
   geom_segment(
     x=1, xend=1, y=22, yend=77, 
@@ -159,10 +148,10 @@ pie_chart +
     x=1, xend=1, y=201, yend=250,
     size=2, color="darkred",
     arrow=arrow(ends="both"))
-finalize_image()
+finalize_image("Pie chart, comparing two angles")
 ```
 
-![Pie chart, comparing two angles](../images\r\`r fn`.png)
+`r display_image`
 
 <div class="notes">
 
@@ -176,7 +165,7 @@ Now I need to note that this is not my opinion. It is a fact established by empi
 ### Evaluation, What fraction of people are single? Best is pie chart
 
 ```{r pie-chart-3}
-fn <- initiate_image()
+initiate_image()
 pie_chart +
   geom_segment(
     x=1, xend=1, y=22, yend=77,
@@ -187,10 +176,10 @@ pie_chart +
     label="~90 degrees", 
     size=4, col="darkred"
   )
-finalize_image()
+finalize_image("Pie chart, estimating a percentage for one wedge")
 ```
 
-![Pie chart, estimating a percentage for one wedge](../images\r\`r fn`.png)
+`r display_image`
 
 <div class="notes">
 
@@ -198,19 +187,19 @@ But wait! If you ask a different question, what percentage of people in your sam
 
 </div>
 
-### Evaluation, For a percentage question, the stacked bar chart is second best
+### Evaluation, The stacked bar chart is second best
 
 ```{r bar-chart-5}
-fn <- initiate_image()
+initiate_image()
 bar_chart2 +
   geom_segment(
     x=1.3, xend=1.3, y=22, yend=77, 
     size=2, color="darkred",
     arrow=arrow(ends="both"))
-finalize_image()
+finalize_image("Stacked bar chart, estimating percentage")
 ```
 
-![Stacked bar chart, estimating percentage](../images\r\`r fn`.png)
+`r display_image`
 
 <div class="notes">
 
@@ -218,16 +207,16 @@ You can ask the same question for the stacked bar chart, but it will take longer
 
 </div>
 
-### Evaluation, The side-by-side bar chart is hopeless for percentage questions.
+### Evaluation, The side-by-side bar chart is hopeless.
 
 ```{r bar-chart-6}
-fn <- initiate_image()
+initiate_image()
 bar_chart1 + 
   geom_text(x=3, y=27, label="??", size=20, color="darkred")
-finalize_image()
+finalize_image("Bar chart, trying to assess percentage questions")
 ```
 
-![Bar chart, trying to assess percentage questions](../images\r\`r fn`.png)
+`r display_image`
 
 <div class="notes">
 
@@ -245,20 +234,37 @@ re_ordered_marital_status <- data.frame(
   n=c(55, 124, 49, 22),
   prop=c(19.6, 49.6, 22.0, 8.8)
 )
-fn <- initiate_image()
+initiate_image()
 ggplot(re_ordered_marital_status, aes(x=re_ordered_class, y=prop, fill=re_ordered_class)) +
   geom_col(fill=c("#00BFC4", "#7CAE00", "#F8766D", "#C77CFF")) -> bar_chart3
 plot(bar_chart3)
-finalize_image()
+finalize_image("Bar chart, with bars re-ordered and a percentage value on the Y axis")
 ```
 
-![Bar chart, with bars re-ordered and a percentage value on the Y axis](../images\r\`r fn`.png)
+`r display_image`
 
 <div class="notes">
 
 Things are never totally hopeless, however. If your goal is to simplify the estimation of the percentage of your sample in the single/never married category, change your y axis from counts to percentages. Also, place the most important bar closest to the Y axis. Horizontal projections are easiest when the distances you have to project are very short.
 
 There's lots of other little things you can do. We'll talk a lot more about bars in the second part of this workshop.
+
+</div>
+
+### Evaluation, Summary
++ Judging effectiveness of a graph
+  + Speed
+  + Accuracy
++ Pie chart better for estimating percentages
++ Any graph can be improved
+
+<div class="notes">
+
+The way that you judge the effectiveness of a graph is by speed and accuracy. How quickly you answer a question about the graph, and how accurate your answer is.
+
+The bar chart is best for comparing one bar to another, but if you want to estimate the percentage of a whole, then a pie chart is better, particularly for percentages around 25% and 75%.
+
+Even a bad graph can often be improved with some minor changes.
 
 </div>
 

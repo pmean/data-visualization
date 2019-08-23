@@ -11,9 +11,9 @@ initiate_image <- function() {
   return(invisible(fn))
 }
 finalize_image <- function(caption="") {
-  if (redraw_graphs==FALSE) return
   fn <- opts_current$get("label")
-  quiet <- dev.off()
-  write(pd_text, file=paste0("../images/r", fn, ".txt"))
   display_image <<- paste0("![", caption, "](../images/r/", fn, ".png)")
+  if (redraw_graphs==FALSE) return
+  quiet <- dev.off()
+  write(pd_text, file=paste0("../images/r/", fn, ".txt"))
 }

@@ -4,7 +4,7 @@ author: "Steve Simon"
 output: powerpoint_presentation
 date: "Created 2019-08-16"
 
----
+---                                                                                                                
 
 ```{r echo=FALSE}
 source("../../common-files/src/setup.R")
