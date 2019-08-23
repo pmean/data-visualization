@@ -1,11 +1,23 @@
 ---
-title: "Data-viz-02, Exercise, What is the message in this graph?"
+title: "Bar charts, What is the message?"
 author: "Steve Simon"
 date: "6/23/2019"
 output: powerpoint_presentation
 ---
 
-### Group exercise (1 of 4)
+### Group exercise
++ Review one of these graphs/newspaper articles
++ What is the message? Summarize in 25 words or less.
+
+<div class="notes">
+
+The following images are taken from various newspaper articles or press releases. Look at the graph and read/skim the article.
+
+What message do you think the journalist is trying to convey with this graph. Summarize this message in 25 words or less.
+
+</div>
+
+### Graphs in the news, Voters in Texas
 
 ![Bar chart of demographics of selected Texas counties](../images/external/texas-bar-chart.png)
 

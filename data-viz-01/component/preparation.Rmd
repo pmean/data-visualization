@@ -5,22 +5,13 @@ output: powerpoint_presentation
 date: "Created 2019-08-16"
 ---
 
-```{r setup-v01-prepare, echo=FALSE}
-suppressMessages(suppressWarnings(library(ggplot2)))
-suppressMessages(suppressWarnings(library(knitr)))
-suppressMessages(suppressWarnings(library(magrittr)))
+```{r echo=FALSE}
+source("../../common-files/src/setup.R")
 knitr::opts_chunk$set(echo = FALSE)
-pd_text <- "This image was produced by Steve Simon and is placed in the public domain. You are welcome to use this image any way you see fit. An acknowledgement would be appreciated, but is not required."
-initiate_image <- function() {
-  fn <- opts_current$get("label")
-  png(filename=paste0("../images/r/", fn, ".png"))
-  return(fn)
-}
-finalize_image <- function() {
-  fn <- opts_current$get("label")
-  quiet <- dev.off()
-  write(pd_text, file=paste0("../images/external", fn, ".txt"))
-}
+```
+
+```{r options}
+if (!exists("redraw_graphs")) redraw_graphs <- FALSE
 ```
 
 ### Preparation, DASL https://dasl.datadescription.com/
@@ -33,11 +24,9 @@ DASL is an acronym for Data And Story Library. It used to sit on a website, Stat
 
 I want to use a file on housing prices in Saratoga, New York, and you can find it through the search function on the main page. Look for housing or Saratoga, and you'll find it pretty quickly.
 
-Note to myself: Try to keep this and every other image to no greater than 800 by 480.
-
 </div>
 
-### Preparation, Choose "Saratoga House Prices" (not "Saratoga Houses")
+### Preparation, Saratoga House Prices
 
 ![Description of the Saratoga house prices dataset](../images/external/dasl-saratoga-house-prices.png)
   
@@ -49,7 +38,7 @@ This is the file that you want to download and run a scatterplot.
 
 </div>
 
-### Preparation, Some general advice if things don't work
+### Preparation, Advice if things don't work
 + Download the file
 + Tweak the file
   + Remove variable names in first line
@@ -77,7 +66,6 @@ Look for inconsistencies, such as some invalid lines at the bottom of the file o
 See if you can read the file into a different program like a spreadsheet and export it in a different format.
 
 </div>
-
 
 ### Preparation, Python code
 
@@ -124,20 +112,16 @@ Here's a brief bit of R code that should work.
 ### Preparation, What your scatterplot should look like (R version)
 
 ```{r simple-scatterplot}
-fn <- "r-simple-scatterplot"
-f <- "https://dasl.datadescription.com/download/data/3275"
-saratoga_houses <- read.table(f, header=TRUE, sep="\x09")
-saratoga_houses$i <- 1:1057
-fn <- initiate_image()
+load("../../common-files/data/houses.RData")
+initiate_image()
 ggplot(saratoga_houses, aes(x=Age, y=Price)) +
   geom_point()
 finalize_image()
 ```
 
-![Basic scatterplot](../images/r/`r fn`.png)
+`r display_image`
 
-
-### Preparation, Importing into Tableau
+### Preparation, Tableau Open dialog box
 
 ![Screenshot of Tableau software, main screen](../images/tableau/main-screen.png)
 
@@ -153,7 +137,7 @@ Select "Text file" from the left side menu bar or "File | Open" from the main me
 
 </div>
 
-### Preparation, Importing into Tableau
+### Preparation, Tableau, Select your file
 
 ![Screenshot of Tableau software, file open dialog box](../images/tableau/file-open.png)
 
@@ -163,7 +147,7 @@ Find the proper location on your computer where you stored the downloaded file a
 
 </div>
 
-### Preparation, Importing into Tableau
+### Preparation, Tabelau data preview
 
 ![Screenshot of Tableau software with data imported](../images/tableau/with-saratoga.png)
 
@@ -173,7 +157,7 @@ Your screen should look something like this if you imported the data correctly. 
 
 </div>
 
-### Preparation, Importing into Tableau
+### Preparation, Tableau, start visualization
 
 ![Screenshot of Tableau software, blank visualization page](../images/tableau/empty-frame.png)
 
@@ -185,7 +169,7 @@ Drag the variable Age into the Columns field and drag Price into the Rows field
 
 </div>
 
-### Preparation, Importing into Tableau
+### Preparation, Tableau, Identify columns and rows
 
 ![Screenshot of Tableau software after initial drag and drop](../images/tableau/drag-and-drop.png)
 
@@ -197,7 +181,7 @@ This is not what you want, but that's okay. Better a wrong guess that you can co
 
 </div>
 
-### Preparation, Importing into Tableau
+### Preparation, Tableau, change columns
 
 ![Screenshot of Tableau software changing from measure to dimension](../images/tableau/change-to-dimension.png)
 
@@ -207,7 +191,7 @@ Click on the green Sum(Age) and change it from Measure(Sum) to Dimension. Don't 
 
 </div>
 
-### Preparation, Importing into Tableau
+### Preparation, Tableau, what your graph should look like
 
 ![Screenshot of Tableau software changing from measure to dimension](../images/tableau/basic-scatterplot.png)
 

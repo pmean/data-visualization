@@ -6,6 +6,11 @@ date: "Created 2019-08-16"
 
 ---
 
+```{r echo=FALSE}
+source("../../common-files/src/setup.R")
+knitr::opts_chunk$set(echo = FALSE)
+```
+
 ```{r options}
 redraw_graphs <- FALSE
 ```

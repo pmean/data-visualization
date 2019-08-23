@@ -374,9 +374,8 @@ summary {
 <p>cpi: This is a data file used mostly in data-viz-03.</p>
 <pre class="r"><code>library(readr)
 fn &lt;- &quot;https://dasl.datadescription.com/download/data/3138&quot;
-cpi &lt;- read_tsv(fn, col_types=cols())</code></pre>
-<pre><code>## `curl` package not installed, falling back to using `url()`</code></pre>
-<pre class="r"><code>cpi$t &lt;- 2007 + (1:132)/12
+cpi &lt;- read_tsv(fn, col_types=cols())
+cpi$t &lt;- 2007 + (1:132)/12
 cpi &lt;- cpi[1:128, ]
 save(cpi, file=&quot;../data/cpi.RData&quot;)
 write.csv(cpi, file=&quot;../data/cpi.csv&quot;, row.names=FALSE)</code></pre>
