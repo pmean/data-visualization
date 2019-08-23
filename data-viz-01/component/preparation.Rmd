@@ -1,7 +1,8 @@
 ---
-title: "V01, Preparation"
+title: "Scatterplots, Preparation"
 author: "Steve Simon"
 output: powerpoint_presentation
+date: "Created 2019-08-16"
 ---
 
 ```{r setup-v01-prepare, echo=FALSE}

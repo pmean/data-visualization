@@ -2,7 +2,13 @@
 title: "Data-viz-01, scatterplots"
 author: "Steve Simon"
 output: powerpoint_presentation
+date: "Created 2019-08-16"
+
 ---
+
+```{r options}
+redraw_graphs <- FALSE
+```
 
 ```{r child="../component/introduction.Rmd"}
 ```

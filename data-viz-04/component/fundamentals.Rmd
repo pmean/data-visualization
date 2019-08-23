@@ -13,7 +13,7 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ### Contour plot
 
-![Illustration of a contour plot above a three dimensional surface](../images/04/contour-plot.png)
+![Illustration of a contour plot above a three dimensional surface](../images/external/contour-plot.png)
 
 <div class="notes">
 
@@ -25,15 +25,15 @@ Note to myself: This may not be the best image to use. I have some alternatives 
 
 ### Contour plot
 
-![Illustration of a contour plots surrounding a three dimensional surface](../images/04/contour-plot-alternate1.png)
+![Illustration of a contour plots surrounding a three dimensional surface](../images/external/contour-plot-alternate1.png)
 
 ### Contour plot
 
-![Illustration of a contour plot above a three dimensional surface](../images/04/contour-plot-alternate2.png)
+![Illustration of a contour plot above a three dimensional surface](../images/external/contour-plot-alternate2.png)
 
 ### Ternary plot
 
-![Ternary plot of proportions (developer, designer, journalist)](../images/04/ternary-diagram.png)
+![Ternary plot of proportions (developer, designer, journalist)](../images/external/ternary-diagram.png)
 
 <div class="notes">
 

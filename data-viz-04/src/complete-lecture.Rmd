@@ -5,7 +5,7 @@ date: "2019-08-22"
 output: powerpoint_presentation
 ---
 
-```{r setup, echo=FALSE}
+```{r  echo=FALSE}
 source("../../common-files/setup.R")
 knitr::opts_chunk$set(echo = FALSE)
 ```
@@ -16,16 +16,16 @@ knitr::opts_chunk$set(echo = FALSE)
 ```{r child="../component/exercise-message.Rmd"}
 ```
 
-```{r child="../tutorial-dimensionality}
+```{r child="../component/tutorial-dimensionality.Rmd"}
 ```
 
-```{r child="fundamentals.Rmd"}
+```{r child="../component/fundamentals.Rmd"}
 ```
 
-```{r child="recommendations.Rmd"}
+```{r child="../component/recommendations.Rmd"}
 ```
 
-```{r child="exercise-aesthetics.Rmd"}
+```{r child="../component/exercise-aesthetic.Rmd"}
 ```
 
 ### Summary

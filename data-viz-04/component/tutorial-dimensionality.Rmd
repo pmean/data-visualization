@@ -5,14 +5,14 @@ date: "2019-08-22"
 output: powerpoint_presentation
 ---
 
-```{r setup, echo=FALSE}
+```{r echo=FALSE}
 source("../../common-files/setup.R")
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
 ### No animations, interactivity, three dimensional effects, virtual reality
 
-![Three dimensional surface with two peaks in the far back](../images/04/hedging-prior-surface.png)
+![Three dimensional surface with two peaks in the far back](../images/external/hedging-prior-surface.png)
 
 <div class="notes">
 
@@ -26,7 +26,7 @@ It also means no animation. Animation is a third dimension of time. While I have
 
 ### Stuck in a two-dimensional world
 
-![Flatland book cover](../images/04/flatland-book-cover.png)
+![Flatland book cover](../images/external/flatland-book-cover.png)
 
 <div class="notes">
 
@@ -38,7 +38,7 @@ Everything is going to be two dimensions. No z-axis, only x and y axes. I also a
 
 ### Static two dimensional images - no distortions
 
-![Penrose stairs - an optical illusion](../images/04/penrose-stairs.png)
+![Penrose stairs - an optical illusion](../images/external/penrose-stairs.png)
 
 <div class="notes">
 
@@ -58,7 +58,7 @@ Here is a note I wrote to myseslf when I was drawing the three dimensional surfa
 
 ### Static two dimesional images - no distractions
 
-![Illustration of the infamous blink tag](../images/04/blink_tag.gif)
+![Illustration of the infamous blink tag](../images/external/blink_tag.gif)
 
 <div class="notes">
 

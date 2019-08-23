@@ -1,7 +1,8 @@
 ---
-title: "data-viz-01, Introduction"
+title: "Scatterplots, Introduction"
 author: "Steve Simon"
 output: powerpoint_presentation
+date: "Created 2019-08-16"
 ---
 
 ### Introduction, Modules
@@ -11,30 +12,40 @@ output: powerpoint_presentation
 + Data-viz-04, Surface plots
 + Data-viz-05, Maps
 
-### Introduction, Data-viz-01 outline
-+ Introduction
+<div class="notes">
+
+This workshop is split up into five modules that cover scatterplats, bar charts, line plots, surface plots, and maps.
+
+</div>
+
+### Introduction, Module components
 + Preparation
-+ Tutorial, Evaluation
-+ Group exercise
-+ Lecture
++ Exercise, what is the message?
++ Tutorial
++ Fundamentals
 + Basic exercises
-+ Advanced exercises
-+ Discussion questions
-+ Short quizzes
++ Recommendations
++ Exercise, identify features
++ Short quiz
++ On your own
 
 <div class="notes">
 
-This class is divided into several sections. 
+Each module will start with some basic preparations that you need.
 
-Each section will start with information that you need to get ready before the class starts. Then there will be a lecture interspersed between basic exercises, advanced exercises, and discussion questions. 
+Then you will review some data visualizations that appeats in newpspaper or web articles. Your goal is to identify in 25 words or less what the message is that the visualization is trying to convey.
 
-The basic exercises involve running a short program, typically a one or two line modification of a program that I have just shown. These basic exercises are intended to slowly increase your comfort level with the visualization software (altair in Python, ggplot2 in R, or Tableau). Do the basic exercises on your own during the class. Warning: some of the visualizations you will be asked to produce will look terribly ugly. That's okay. You're just learning the basic programming steps for now. Later, you will see how to apply these steps to make better looking and more effective visualizations. 
+Each module will include a tutorial on perceptual issues that you need to understand in order to design effective data visulalizations.
 
-Advanced exercises will require you to adapt the code to an entirely different data set. Do this in a group setting with others who are using the same visualization software as you. The advanced exercises will require the production of four or five different visualizations, so your group should adopt a "divide and conquer" strategy.
+Then you will review some fundamental commands that you need to know to draw basic data visualizations. Warning: some of the visualizations you will be asked to produce will look terribly ugly. That's okay. You're just learning the basic programming steps for now. Later, you will see how to apply these steps to make better looking and more effective visualizations. 
 
-Discussion questions will involve small groups, or sometimes just pairs of individuals. You will see a typical media presention of a visualization along with the newspaper or magazine article that accompanies it. You and your group will discuss the visualization guided by a few questions provided here. Some groups may be asked to make a short presentation to the entire class.
+Then you will learn some general recommendations on how to produce effective visualizations.
 
-You will get a short quiz at the end of the lecture. This will be multiple choice.
+You will return to the newspaper articles and identify features of the data visualizations used.
+
+You will have to answer a short quiz, not for a grade, but to reinforce some of the important points in the module. 
+
+Then you will work on your own with a different data set, trying to create effective data visualizations similar to the ones presented in this module.
 
 </div>
 
