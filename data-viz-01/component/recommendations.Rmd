@@ -4,12 +4,10 @@ author: "Steve Simon"
 output: powerpoint_presentation
 ---
 
-```{r echo=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
-source("../../common-files/src/setup.R")
+```{r child="../../common-files/src/component-header.Rmd"}
 ```
 
-### Recommendations
+### Recommendations, outline of topics
 + Solving problems with overprinting
 + Don't mix shape and size
 + Double up for emphasis
@@ -28,7 +26,7 @@ The other important issue is that shape is a useful aesthetic only for categoric
 
 </div>
 
-### Solutions to excessive overprinting
+### Recommendations, Solutions to excessive overprinting
 + Opacity
 + Small points
 + Open symbols
@@ -40,18 +38,17 @@ The plots that you have drawn tend to have difficulty with overprinting. Too man
 
 </div>
 
-### Overprinting - opacity
+### Recommendations, Overprinting - opacity
 
 ```{r point-opacity}
-fn <- "point-opacity"
-png(filename=paste0("../images/", fn, ".png"))
+load("../../common-files/data/houses.RData")
+initiate_image()
 ggplot(saratoga_houses, aes(x=Age, y=Price)) +
   geom_point(alpha=0.1, size=5)
-quiet <- dev.off()
-write(pd_text, file=paste0("../images/", fn, ".txt"))
+finalize_image("Graph using opacity")
 ```
 
-![R graph using opacity](../images/point-opacity.png)
+`r display_image`
 
 <div class="notes">
 
@@ -59,18 +56,16 @@ If you make the data points somewhat translucent, so that you can see what it be
 
 </div>
 
-### Overprinting - small points
+### Recommendations, Overprinting - small points
 
 ```{r small-points}
-fn <- "small-points"
-png(filename=paste0("../images/", fn, ".png"))
+initiate_image()
 ggplot(saratoga_houses, aes(x=Age, y=Price)) +
   geom_point(size=1)
-quiet <- dev.off()
-write(pd_text, file=paste0("../images/", fn, ".txt"))
+finalize_image("Graph using small points")
 ```
 
-![R graph using small points](../images/small-points.png)
+`r display_image`
 
 <div class="notes">
 
@@ -78,18 +73,16 @@ Smaller data points have less trouble with overprinting.
 
 </div>
 
-### Overprinting - open symbols
+### Recommendations, Overprinting - open symbols
 
 ```{r open-symbols}
-fn <- "open-symbols"
-png(filename=paste0("../images/", fn, ".png"))
+initiate_image()
 ggplot(saratoga_houses, aes(x=Age, y=Price)) +
   geom_point(size=5, shape=1)
-quiet <- dev.off()
-write(pd_text, file=paste0("../images/", fn, ".txt"))
+finalize_image("R graph using open circles")
 ```
 
-![R graph using open circles](../images/open-symbols.png)
+`r display_image`
 
 <div class="notes">
 
@@ -97,33 +90,30 @@ Smaller data points have less trouble with overprinting.
 
 </div>
 
-### Overprinting - log scale
+### Recommendations, Overprinting - log scale
 
 ```{r point-log-scale}
-fn <- "log-scale"
-png(filename=paste0("../images/", fn, ".png"))
+initiate_image()
 saratoga_houses$age_plus <- saratoga_houses$Age + runif(1057)
 ggplot(saratoga_houses, aes(x=age_plus, y=Price)) +
   geom_point(size=5) +
   scale_x_log10() +
   scale_y_log10()
-quiet <- dev.off()
-write(pd_text, file=paste0("../images/", fn, ".txt"))
+finalize_image("Graph using log scales")
 ```
 
-![R graph using log scales](../images/log-scale.png)
+`r display_image`
 
-### Some tips
+### Recommendations, Some tips
 + Don't try to squeeze in too much
 + Double up to emphasize
 + Shape is only good for categories
 + Shape and size don't mix
 
-### Don't try to squeeze in too much.
+### Recommendations, Don't try to squeeze in too much.
 
 ```{r point-aesthetics-color-3}
-fn <- "aesthetics-color-3"
-png(filename=paste0("../images/", fn, ".png"))
+initiate_image()
 saratoga_houses$age_plus <- saratoga_houses$Age + runif(1057)
 binary_colors <- c("red", "red", "blue", "blue", "blue", "blue", "blue", "blue")
 ggplot(saratoga_houses, aes(x=age_plus, y=Price)) +
@@ -131,18 +121,15 @@ ggplot(saratoga_houses, aes(x=age_plus, y=Price)) +
   scale_x_log10() +
   scale_y_log10() +
   scale_color_manual(values=binary_colors)
-quiet <- dev.off()
-write(pd_text, file=paste0("../images/", fn, ".txt"))
+finalize_image("Graph using only two colors")
 ```
 
-![R graph using only two colors](../images/aesthetics-color-3.png)
+`r display_image`
 
-
-### Double up to emphasize
+### Recommendations, Double up to emphasize
 
 ```{r double-up}
-fn <- "double-up"
-png(filename=paste0("../images/", fn, ".png"))
+initiate_image()
 saratoga_houses$age_plus <- saratoga_houses$Age + runif(1057)
 binary_colors <- c("red", "red", "blue", "blue", "blue", "blue", "blue", "blue")
 ggplot(saratoga_houses, aes(x=age_plus, y=Price)) +
@@ -151,11 +138,10 @@ ggplot(saratoga_houses, aes(x=age_plus, y=Price)) +
   scale_y_log10() +
   scale_color_manual(values=binary_colors) + 
   scale_shape_manual(values=rep(c(1, 4), c(2, 6)))
-quiet <- dev.off()
-write(pd_text, file=paste0("../images/", fn, ".txt"))
+finalize_image("Graph using colors and shapes")
 ```
 
-![R graph using colors and shapes](../images/double-up.png)
+`r display_image`
 
 <div class="notes">
 
@@ -163,7 +149,7 @@ It's okay to map a single variable to more than one aesthetic. In fact, this oft
 
 </div>
 
-### Some restrictions
+### Recommendations, Some restrictions
 + Shape is only good for categories
 + Shape and size don't mix
 
@@ -175,3 +161,5 @@ Also size and shape don't mix. You can really compare two diffent shapes, such a
 
 </div>
 
+### Recommendations, summary
++ (To be added)

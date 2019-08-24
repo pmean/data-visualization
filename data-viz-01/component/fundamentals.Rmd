@@ -4,13 +4,7 @@ author: "Steve Simon"
 output: powerpoint_presentation
 ---
 
-```{r echo=FALSE}
-source("../../common-files/src/setup.R")
-knitr::opts_chunk$set(echo = FALSE)
-```
-
-```{r}
-if (!exists("redraw_graphs")) redraw_graphs <- FALSE
+```{r child="../../common-files/src/component-header.Rmd"}
 ```
 
 ### Fundamentals, Review basic scatterplot

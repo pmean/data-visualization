@@ -5,13 +5,7 @@ output: powerpoint_presentation
 date: "Created 2019-08-22"
 ---
 
-```{r echo=FALSE}
-source("../../common-files/src/setup.R")
-knitr::opts_chunk$set(echo = FALSE)
-```
-
-```{r}
-if (!exists("redraw_graphs")) redraw_graphs <- FALSE
+```{r child="../../common-files/src/component-header.Rmd"}
 ```
 
 ### Evaluation, Which is better? A bar chart...
