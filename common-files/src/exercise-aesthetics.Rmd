@@ -1,11 +1,11 @@
 ---
-title: "Scatterplots, Identify the aesthetics"
+title: "Identify the aesthetics"
 author: "Steve Simon"
 output: powerpoint_presentation
 ---
 
-### Review the graphs in the news
-+ What asthetics (location, shape, size, color) are used?
+### Graphs in the news, what are the aesthetics?
++ What aesthetics (location, shape, size, color) are used?
 + What aesthetics are not used?
 + What variables are mapped to which aesthetics?
 

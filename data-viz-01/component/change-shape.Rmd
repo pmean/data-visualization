@@ -1,7 +1,8 @@
 ---
-title: "v01 Basic exercise - shape"
+title: "Scatterplot exercise, change the shape"
 author: "Steve Simon"
 output: powerpoint_presentation
+date: "Created: 2019-08-24"
 ---
 
 ```{r echo=FALSE}
@@ -9,30 +10,45 @@ knitr::opts_chunk$set(echo = FALSE)
 source("../../common-files/src/setup.R")
 ```
 
-### Basic exercise - shape
+```{r}
+if (!exists("redraw_graphs")) redraw_graphs <- FALSE
+```
+
+### Exercise, change the shape
 
 + Use the Saratoga housing data set.
-+ Draw a plot of all of the data where the location is x=Age and y=Price and the symbol represents the number of bedrooms.
++ Draw a plot of all of the data where
+  + X=Age,
+  + Y=Price,
+  + Symbol=number of bedrooms.
+  
+<div class="notes">
 
-### Here's the Python code.
+Revisit your scatterplot. Draw a plot with x representing the age of the house, y representing the price, and the symbol representing the number of bedrooms.
+
+</div>
+
+### Exercise, Python code 
++ Here's the Python code.
 
 ```{}
 ch5 = alt.Chart(df).mark_point().encode(
       x='Age',y='Price', shape='Bedrooms:N')
 ```
 
-### Here's the results in Python.
+### Exercise, Python output
 
 ![Python scatterplot mapping bedrooms to shape](../images/python/altair-basic-exercise-shape.png)
 
-### Here's the R code.
+### Exercise, R code 
++ Here's the R code.
 
 ```{}
 ggplot(saratoga_houses, aes(x=Age, y=Price)) + 
   geom_point(aes(shape=factor(Bedrooms)))
 ```
 
-### Here's the results in R
+### Exercise, R output
 
 ```{r shape-bedrooms}
 initiate_image()
@@ -49,7 +65,7 @@ Here is what the R graph looks like. I don't particularly like this graph. It is
 
 </div>
 
-### Here 's the result in Tableau.
+### Exercise, Tableau output
 
 ![Tableau scatterplot using shapes to represent Bedrooms](../images/tableau/shape-bedrooms.png)
 

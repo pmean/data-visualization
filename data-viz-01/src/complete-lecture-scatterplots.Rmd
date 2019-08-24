@@ -21,10 +21,13 @@ redraw_graphs <- FALSE
 ```{r child="../component/preparation.Rmd"}
 ```
 
-```{r child="../component/tutorial-evaluation.Rmd"}
+```{r child="../component/newspaper-graphs.Rmd"}
 ```
 
-```{r child="../component/exercise-message.Rmd"}
+```{r child="../../common-files/src/exercise-message.Rmd"}
+```
+
+```{r child="../component/tutorial-evaluation.Rmd"}
 ```
 
 ```{r child="../component/tutorial-grammar.Rmd"}
@@ -33,13 +36,13 @@ redraw_graphs <- FALSE
 ```{r child="../component/fundamentals.Rmd"}
 ```
 
-```{r child="../component/exercise-aesthetics.Rmd"}
-```
-
 ```{r child="../component/recommendations.Rmd"}
 ```
 
 ```{r child="../component/quiz.Rmd"}
+```
+
+```{r child="../../common-files/src/exercise-aesthetics.Rmd"}
 ```
 
 ```{r child="../component/exercise-sleep.Rmd"}

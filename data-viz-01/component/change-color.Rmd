@@ -1,7 +1,8 @@
 ---
-title: "Data-viz-01, exercise, color"
+title: "Scatterplot exercise, change the color"
 author: "Steve Simon"
 output: powerpoint_presentation
+date: "Created: 2019-08-24"
 ---
 
 ```{r echo=FALSE}
@@ -9,39 +10,41 @@ knitr::opts_chunk$set(echo = FALSE)
 source("../../common-files/src/setup.R")
 ```
 
-### Basic exercise - color
-
+### Exercise, change the color
 + Use the Saratoga housing data set.
-+ Draw a plot where the location is x=Age and y=Price and the color represents the number of bathrooms.
++ Draw a plot of all of the data where
+  + X=Age,
+  + Y=Price,
+  + Color=Bathrooms.
+  
+<div class="notes">
 
-### Here's the Python code.
+Revisit your scatterplot. Draw a plot with x representing the age of the house, y representing the price, and the color representing the number of bathrooms.
 
-```{}
+</div>
+
+### Exercise, Python code
++ Here's the Python code.
+```
 ch2 = alt.Chart(df).mark_point().encode(
   x="Age", y="Price", color="Baths")
 ```
 
-### Here's the result in Python
+### Exercise, Python output
 
 ![Python scatterplot mapping bathrooms to color](../images/python/python-basic-exercise-color.png)
 
-### Here's the R code.
-
-```{}
+### Exercise, R code
++ Here's the R code.
+```
 ggplot(saratoga_houses, aes(x=Age, y=Price)) + 
   geom_point(aes(color=factor(Bathrooms)))
 ```
 
-### Here's the result in R
-
-
-```{r}
-f <- "https://dasl.datadescription.com/download/data/3275"
-saratoga_houses <- read.table(f, header=TRUE, sep="\x09")
-saratoga_houses$i <- 1:1057
-```
+### Exercise, R output
 
 ```{r bathroom-colors}
+load("../../common-files/data/houses.RData")
 initiate_image()
 ggplot(saratoga_houses, aes(x=Age, y=Price)) + 
   geom_point(aes(color=factor(Bathrooms)))
@@ -50,7 +53,7 @@ finalize_image("R scatterplot mapping bathrooms to color")
 
 `r display_image`
 
-### Here's the result in Tableau.
+### Exercise, Tableau output
 
 ![Tableau scatterplot mapping Bathrooms to color](../images/tableau/basic-exercise-color.png)
 

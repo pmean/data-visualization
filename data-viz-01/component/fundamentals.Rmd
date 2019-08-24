@@ -9,11 +9,11 @@ source("../../common-files/src/setup.R")
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-```{r options}
-redraw_graphs <- FALSE
+```{r}
+if (!exists("redraw_graphs")) redraw_graphs <- FALSE
 ```
 
-### Review basic scatterplot
+### Fundamentals, Review basic scatterplot
 
 + Python code
 
@@ -39,7 +39,7 @@ You've already drawn a basic scatterplot in Python, R, or Tableau. All three sys
 
 </div>
 
-### Changing default options
+### Fundamentals, Changing default options
 
 + Python code
 
@@ -62,12 +62,10 @@ In Python, you can change the default from blue circles to green squares in the 
 
 </div>
 
-### Basic exercise - global modifications
-+ Use the Saratoga housing data set.
-+ Try the suggested changes to the defaults and see what the visualization looks like.
-+ Try changing the size of the points.
+```{r child="../component/change-default.Rmd"}
+```
 
-### Aesthetics for points - location (1 of 2)
+### Fundamentals, Aesthetics for points - location (1 of 2)
 
 ```{r point-aesthetics-x}
 load("../../common-files/data/houses.RData")
@@ -92,7 +90,7 @@ The point in the upper left corner is a young house, only 14 years old. The poin
 
 </div>
 
-### Aesthetics for points - location (2 of 2)
+### Fundamentals, Aesthetics for points - location (2 of 2)
 
 ```{r point-aesthetics-y}
 initiate_image()
@@ -110,15 +108,10 @@ The point in the upper left corner is an expensive house, over a half million do
 
 </div>
 
-### Basic exercise - location
-+ Use the Saratoga housing data set.
-+ Revise the plot so that the location of the points represents x=Bedrooms and Y=Price.
-
-```{r child="../component/exercise-location.Rmd"}
+```{r child="../component/change-location.Rmd"}
 ```
 
-
-### Aesthetics for points - shape
+### Fundamentals, Aesthetics for points - shape
 
 ```{r point-aesthetics-shape}
 initiate_image()
@@ -139,11 +132,10 @@ I also want to point out that this may not be the best way to visualize the rela
 
 </div>
 
-### Basic exercise - shape
-+ Use the Saratoga housing data set.
-+ Draw a plot of all of the data where the location is x=Age and y=Price and the symbol represents the number of bedrooms.
+```{r child="../component/change-shape.Rmd"}
+```
 
-### Aesthetics for points - size
+### Fundamentals, Aesthetics for points - size
 
 ```{r point-aesthetics-size}
 initiate_image()
@@ -160,11 +152,10 @@ You can also use the size of a point to represent a third dimension. Here is a p
 
 </div>
 
-### Basic exercise - size
-+ Use the Saratoga housing data set.
-+ Draw a plot where the location is x=Age and y=Price and the size represents the living area.
+```{r child="../component/change-size.RMd"}
+```
 
-### Aesthetics for points - color (1 of 2)
+### Fundamentals, Aesthetics for points - color (1 of 2)
 
 ```{r point-aesthetics-color-1}
 initiate_image()
@@ -181,7 +172,7 @@ This plot shows a blue point representing a four bathroom house in the upper lef
 
 </div>
 
-### Aesthetics for points - color (2 of 2)
+### Fundamentals, Aesthetics for points - color (2 of 2)
 
 ```{r point-aesthetics-color-2}
 initiate_image()
@@ -198,6 +189,17 @@ Notice how the legend has changed.
 
 </div>
 
-### Basic exercise - color
-+ Use the Saratoga housing data set.
-+ Draw a plot where the location is x=Age and y=Price and the color represents the number of bathrooms.
+```{r child="../component/change-color.Rmd"}
+```
+
+### Fundamentals, summary
++ In this section, you learned how to use Python, R, and/or Tableau to
+  + Assign variables to the x and y position of a graph
+  + Change the defaults for aesthetics like shape and color
+  + Assign a third variable to shape, size, or color
+  
+<div class="notes">
+
+Pat yourself on the back because you've alredy learned a lot. You know how to assign variables to the x and y positions of a graph. You can change the appears of the points on that graph. You can include a third variable in your graph, represented by shape, size, or color.
+
+</div>

@@ -6,7 +6,7 @@ output: powerpoint_presentation
 
 ```{r echo=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
-source("../../common-files/setup.R")
+source("../../common-files/src/setup.R")
 ```
 
 ### Recommendations
@@ -25,6 +25,8 @@ First, if you have a lot of data, your scatterplot may look like a large black b
 Another important lesson is to not let both the size and the shape aesthetic to vary within the same graph. At the same time, you can sometimes double up aesthetics, letting both the shape and the color, for example, to both represent the same variable.
 
 The other important issue is that shape is a useful aesthetic only for categorical data, while size is only good for continuous variables.
+
+</div>
 
 ### Solutions to excessive overprinting
 + Opacity

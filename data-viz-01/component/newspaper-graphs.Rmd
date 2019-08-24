@@ -1,21 +1,18 @@
 ---
-title: "Scatterplots, What is the message?"
+title: "Graphs in the news"
 author: "Steve Simon"
 output: powerpoint_presentation
 ---
 
-### Group exercise
+### Graphs in the news, group exercise
 + Review one of these graphs/newspaper articles
   + [We Charted Arctic Sea Ice for Nearly Every Day Since 1979. You’ll See a Trend.](https://www.nytimes.com/interactive/2017/09/22/climate/arctic-sea-ice-shrinking-trend-watch.html)
   + [We Read 150 Privacy Policies. They Were an Incomprehensible Disaster.](https://www.nytimes.com/interactive/2019/06/12/opinion/facebook-google-privacy-policies.html)
   + [How Medicine Became the Stealth Family Friendly Profession.](https://nytimes.com/2019/08/21/upshot/medicine-family-friendly-profession-women.html)
-+ What is the message? Summarize in 25 words or less.
 
 <div class="notes">
 
 The following images are taken from various newspaper articles or press releases. Look at the graph and read/skim the article.
-
-What message do you think the journalist is trying to convey with this graph. Summarize this message in 25 words or less.
 
 </div>
 
@@ -54,17 +51,3 @@ This image was found in a newpaper article,
 Claire Cain Miller (2019, August 21). How Medicine Became the Stealth Family Friendly Profession. The New York Times. Retrieved from https://nytimes.com/2019/08/21/upshot/medicine-family-friendly-profession-women.html
 
 </div>
-
-### In small groups
-
-+ Read the article associated with your graph
-+ Review your graph
-+ In 25 words or lesss
-  + What is the message of this graph?
-  
-<div class="notes">
-
-There is a newspaper article associated with the graph you have been given. Read the newspaper article and then look at the graph again. Try to summarize briefly what message the authors were trying to convey with this graph.
-
-</div>
-

@@ -1,0 +1,50 @@
+---
+title: "Scatterplots exercise, change defaults"
+author: "Steve Simon"
+output: powerpoint_presentation
+date: "Created 2019-08-24"
+---
+
+```{r echo=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+source("../../common-files/src/setup.R")
+```
+
+```{r}
+if (!exists("redraw_graphs")) redraw_graphs <- FALSE
+```
+
+### Exercise, change the color and shape
++ Use the Saratoga housing data set.
++ Change the default color to any color you like
++ Change the default shape to any shape you like
+
+
+<div class="notes">
+
+Take the scatterplot that you have already drawn and change the color of the points. Any color is fine as long as it is different from the default color. Change the shape of the points as well to any shape you want.
+
+</div>
+
+### Exercise, Python code
++ Here's the Python code.
+```
+(To be added)
+```
+### Exercise, Python output
+
+(To be added)
+
+### Exercise, R code
++ Here's the R code
+```
+(To be added)
+```
+
+### Exercise, R output
+
+(To be added)
+
+### Exercise, Tabeleau output
+
+(To be added)

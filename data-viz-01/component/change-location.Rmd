@@ -1,7 +1,8 @@
 ---
-title: "Data-viz-01, Basic exercise - location"
+title: "Scatterplots exercise, change location"
 author: "Steve Simon"
 output: powerpoint_presentation
+date: "Created 2019-08-24"
 ---
 
 ```{r echo=FALSE}
@@ -9,41 +10,43 @@ knitr::opts_chunk$set(echo = FALSE)
 source("../../common-files/src/setup.R")
 ```
 
-### Basic exercise - location
+```{r}
+if (!exists("redraw_graphs")) redraw_graphs <- FALSE
+```
+
+### Exercise, change the location
 
 + Use the Saratoga housing data set.
 + Revise the plot so that the location of the points represents x=Bedrooms and Y=Price.
 
-### Here's the Python code
+<div class="notes">
 
-Here's the Python code.
+Go back to the plot you just drew. Modify it so that the x location is Bedrooms and not Age.
 
-```{}
+</div>
+
+### Exercise, Python code
++ Here's the Python code.
+```
 ch4 = alt.Chart(df).mark_point().encode(
       x='Bedrooms',y='Price')
 ```
 
-### Here's the result in Python
+### Exercise, Python output
 
 ![Python scatterplot of bedrooms and price](../images/python/altair-basic-exercise-location.png)
 
-### Here's the R code
-
-```{}
+### Exercise, R code
++ Here's the R code
+```
 ggplot(saratoga_houses, aes(x=Bedrooms, y=Price)) + 
   geom_point())
 ```
 
 ### Here's the result in R
 
-```{r}
-f <- "https://dasl.datadescription.com/download/data/3275"
-saratoga_houses <- read.table(f, header=TRUE, sep="\x09")
-saratoga_houses$i <- 1:1057
-```
-
-
 ```{r bedrooms-and-price}
+load("../../common-files/data/houses.RData")
 initiate_image()
 ggplot(saratoga_houses, aes(x=Bedrooms, y=Price)) + 
   geom_point()

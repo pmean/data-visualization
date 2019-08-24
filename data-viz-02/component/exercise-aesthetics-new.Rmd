@@ -1,5 +1,5 @@
 ---
-title: "Scatterplots, Identify the aesthetics"
+title: "Bar charts, Identify the aesthetics"
 author: "Steve Simon"
 output: powerpoint_presentation
 ---

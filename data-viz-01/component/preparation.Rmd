@@ -10,7 +10,7 @@ source("../../common-files/src/setup.R")
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-```{r options}
+```{r}
 if (!exists("redraw_graphs")) redraw_graphs <- FALSE
 ```
 
