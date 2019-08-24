@@ -5,25 +5,55 @@ date: "2019-07-22"
 output: powerpoint_presentation
 ---
 
-```{r setup-v02-colors, echo=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
-source("../../common-files/setup.R")
+```{r child="../../common-files/src/component-header.Rmd"}
 ```
 
 ### Colors, introductory tutorial
 + Kindergarten view of colors
 + Review hexadecimal codes
-+ RGB color system
++ Color systems
+  + RGB
+  + HSV
+  + CYMK
+  
+<div class="notes">
+
+There are three major color systems used on computers, RGB, HSV, and CYMK. I'll discuss RGB in detail, and touch briefly on the other systems. But you need to realize that how colors work on a computer was not the way you learned in Kindergarten. A solid understanding of the RGB color system also requires you to work comfortably with hexadecimal codes, so I have a brief review of that as well.
+
+</div>
 
 ### Colors, Everything I know about colors, I learned in Kindergarten.
 
 ![](../images/external/julias-colour-wheel1.jpg)
 
-### Colors, Hexadecimal codes
+<div class="notes">
+
+It was probably in Kindergarten where you learned the basic way to combine primary colors. Yellow plus red equals orange, Yellow plus blue equals green. Red plus blue equals purple/violoet.
+
+It doesn't work that way on a computer screen because the screen. Computer screens use light to create colors and lights blend in different ways than paints or crayons.
+
+Before you tackle ths computer system for colors, you need to review binary and hexadecimal number systems.
+
+</div>
+
+### Colors, Binary codes
 + "There are 10 types of programmers in the world, those who undestand binary and those who don't."
   + 1001 1100 (base 2)
   + = $1*2^7+0*2^6+0*2^5+1*2^4+1*2^3+1*2^2+0*2^1+0*2^0$
   + = 128+16+8+4 = 156
++ Eight binary digits represent the numbers 0-255
+  
+<div class="notes">
+
+Let me share a bad joke about binary numbers. Actually, you need to read it because the digits "1"-"0" represent something entirely different in the world of binary numbers.
+
+Here's an example of how to decode the binary number 1001 1100.
+
+Binary numbers use powers of two: 1, 2, 4, 8, 16, etc. Eight binary digits can represent any number from 0 to 255.
+
+</div>
+
+### Colors, Hexadecimal codes
 + Hexadecimal digits (base 16)
   + 0-9, A=10, B=11, C=12, D=13, E=14, F=15
   + 1001 1100 (base 2)
@@ -31,6 +61,23 @@ source("../../common-files/setup.R")
   + = $9*16^1+12*16^0$
 + Two hexadecimal digits represent the numbers 0-255.
   + 00 (base 16) = 0, FF (base 16) = 255
++ A # prefix implies hexadecimal in most computer languages.
+
+<div class="notes">
+
+Binary representations get unwieldy very quickly, and the hexadecimal format provides a much tighter representation that still has the spirit of binary.
+
+Hexadecimal means powers of 16 and you can represent numbers up to (but not including) 16 using four binary digits. The ehxadecimal digits start out like normal digits, 0, 1, 2, etc. but once you get up to nine you run out of single digits. So the value of 10 is represented by the letter A, the value of 11 by B, etc. through the letter F which represents 15. At sixten, you roll over to the next place.
+
+So you count in hexadecimal like 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A, B, C, D, E, F, 10, 11, ...
+
+Split the eight digit binary number 1001 1100 into groups of four binary digits. The binary 1001 is equal to 9 and the binary 1100 is equal to 12 or C. So the hexadecimal equivalent is 9C. You can represent this using powers of 16, 9 times 16 to the first power plus twelve times 16 to the zeroth power. That works out to 156.
+
+Tow hexadecimal digits just like eight binary digits can represent the numbers 0 to 255, with 00 hexadecimal equaling 0 and FF hexadecimal equaling 255 (15*16+15).
+
+Use the prefix of a pound sign (has tag) to tell the computer that you are speaking to it in hexadecimal.
+
+</div>
 
 ### Colors, Codes for colors
 + #rrggbb format
@@ -42,6 +89,39 @@ source("../../common-files/setup.R")
 + You can mix and match to get 16,777,216 colors
   + #800080 is purple, #FF69B4 is pink, #40e0d0 is turquoise
   
+<div class="notes">
+
+The RGB format uses six hexadecimal digits to represent colors. A hexidecimal of all zeros is pure black and at the other extreme, a hexidecimal of all F's is pure white. The first two hexidecimal digits represent the red channel. The highest value FF for the red channel combined with zeros for the other two channels (#FF0000) equals pure red. The next two digits represent the green channel. #00FF00, giving the maximum to the green channel and the minimum to the other two channels produces a pure green. The last two digits represent the blue channel, and #0000FF represents pure blue.
+
+</div>
+
+### Colors, RGB combinations
+
++ Red, green, and blue combinations produce yellow, magenta, and cyan.
+  + #FF0000 (pure red) plus ##00FF00 (pure green) equals #FFFF00 (pure yellow)
+  + #FF0000 (pure red) plus #0000FF (pure blue) equals #FF00FF (pure magenta)
+  + #00FF00 (pure green) plus #0000FF (pure blue) equals #00FFFF (pure cyan)
+
+<div class="notes">
+
+You can combine the red, green, and blue channels to produce three more colors: yellow, magenta, and cyan. 
+
+</div>
+
+### Colors, more RGB combinations
+
++ Add the third color to produce white
+  + #FFFF00 (pure yellow) plus #0000FF (pure blue) equals #FFFFFF (pure white)
+  + #FF00FF (pure magenta) plus #00FF00 (pure green) equals #FFFFFF (pure white)
+  + #00FFFF (pure cyan) plus #FF0000 (pure red) equals #FFFFFF (pure white)
+
+<div class="notes">
+
+Combine yellow, megenta, and cyan with the complementary colors (blue, green, and red, respectively) to get white.
+
+The RGB color system is called an additive system because as you add more colors, you add to the brightness. Eventaully, you get all the way to white.
+
+</div>
 
 ### Colors, The color cube (1/2)
 
@@ -68,14 +148,14 @@ ggplot(dg, aes(x, y)) +
   theme(
     panel.background=element_rect(fill="#808080")
   )
-finalize_image()
+finalize_image("The three axes of the color cube")
 ```
 
 `r display_image`
 
 <div class="notes">
 
-
+The color cube shows the three dimensions (red, green, and blue) of the RGB color system as axes in a three dimensional space.
 
 </div>
 
@@ -94,22 +174,20 @@ ggplot(dg, aes(x, y)) +
   theme(
     panel.background=element_rect(fill="#808080")
   )
-finalize_image()
+finalize_image("The full color cube with a front white vertex")
 ```
 
 `r display_image`
 
 <div class="notes">
 
-
+The combination colors of yellow, magenta, cyan, and white represent different vertices of the color cube.
 
 </div>
 
+### Colors, Gradients of black to red
 
-
-### Colors, Gradients (1/5)
-
-```{r rgb-gradient-1}
+```{r gradient-black-to-red}
 initiate_image()
 h <- c("0", "3", "6", "9", "C", "F")
 
@@ -128,12 +206,13 @@ bg <- paste0("#0000", h, h)
 bx <- b$x*p
 by <- b$y*p
 
-df <- data.frame(
+da <- data.frame(
   x=c(rx, gx, bx), 
   y=c(ry, gy, by), 
   g=c(rg, gg, bg), 
   a=rep(c(-45, -45, -45), each=n),
   j=rep(c(0.5, 0.5, 0.5), each=n))
+df <- da[1:n, ]
 
 ggplot(dg, aes(x, y)) + 
   geom_path(col="white") +
@@ -151,14 +230,69 @@ finalize_image()
 
 <div class="notes">
 
+You can develop gradients, gradual and continuous changes in color, by varying the channels from lowest to highest. If you let the red channel range from 00 to FF and keep the other channels at zero, you get a gradient from black through dark shades of red to pure red.
 
+The figure only shows six values for the gradient (red channels ranging from 00 to 33, to 66 to 99 to CC), but you can produce 255 different shades between black and red.
 
 </div>
 
+### Colors, Gradients of black to green
 
-### Colors, Gradients (2/5)
+```{r gradient-black-to-green}
+initiate_image()
 
-```{r rgb-gradient-2}
+df <- da[(n+1):(2*n), ]
+
+ggplot(dg, aes(x, y)) + 
+  geom_path(col="white") +
+  geom_text(data=df, col=df$g, label=df$g, angle=df$a, hjust=df$j) +
+  expand_limits(x=c(-7, 9)) +
+  expand_limits(y=c(-7, 9)) +
+  theme_void() +
+  theme(
+    panel.background=element_rect(fill="#888888")
+  )
+finalize_image()
+```
+
+`r display_image`
+
+<div class="notes">
+
+Similarly, if you let the green channel vary from 00 to FF and hold the red and blue channels at zero, you get a gradient that goes from black through dark shades of green to pure green.
+
+</div>
+
+### Colors, Gradients of black to blue
+
+```{r gradient-black-to-blue}
+initiate_image()
+
+df <- da[(2*n+1):(3*n), ]
+
+ggplot(dg, aes(x, y)) + 
+  geom_path(col="white") +
+  geom_text(data=df, col=df$g, label=df$g, angle=df$a, hjust=df$j) +
+  expand_limits(x=c(-7, 9)) +
+  expand_limits(y=c(-7, 9)) +
+  theme_void() +
+  theme(
+    panel.background=element_rect(fill="#888888")
+  )
+finalize_image()
+```
+
+`r display_image`
+
+<div class="notes">
+
+Varying the blue channel from 00 to FF while keeping the red and green channels at zero will produce a gradient of black through dark shades of blue to pure blue.
+
+</div>
+
+### Colors, Gradients of red to white
+
+```{r gradient-red-to-white}
 initiate_image()
 h <- c("0", "3", "6", "9", "C", "F")
 
@@ -177,13 +311,14 @@ bg <- paste0("#", h, h, h, h, "FF")
 bx <- b$x + (w$x-b$x)*p
 by <- b$y + (w$y-b$y)*p
 
-df <- data.frame(
+da <- data.frame(
   x=c(rx, gx, bx), 
   y=c(ry, gy, by), 
   g=c(rg, gg, bg), 
   a=rep(c(0, 0, 0), each=n),
   j=rep(c(0.5, 0.5, 0.5), each=n))
 
+df <- da[1:n, ]
 ggplot(dg, aes(x, y)) + 
   geom_path(col="white") +
 #  geom_text(col=dg$co, label=dg$co, angle=-45, hjust=0.5) +
@@ -201,35 +336,16 @@ finalize_image()
 
 <div class="notes">
 
-
+To create a gradient from red through the lighter shades of red (pinkish, actually) to white, keep the red channel at full strength (FF) and vary the green and blue channels from 00 to FF.
 
 </div>
 
 
-### Colors, Gradients (3/5)
+### Colors, Gradient of green to white
 
-```{r rgb-gradient-3}
+```{r gradient-green-to-white}
 initiate_image()
-h <- c("0", "3", "6", "9", "C", "F")
-
-rg <- paste0("#FF", h, h, "00")
-
-n <- length(rg)
-p <- (0:(n-1))/(n-1)
-rx <- r$x + (y$x-r$x)*p
-ry <- r$y + (y$y-r$y)*p
-
-gg <- paste0("#", h, h, "FF00")
-gx <- g$x + (y$x-g$x)*p
-gy <- g$y + (y$y-g$y)*p
-
-df <- data.frame(
-  x=c(rx, gx), 
-  y=c(ry, gy), 
-  g=c(rg, gg), 
-  a=rep(c(-45, -45), each=n),
-  j=rep(c(0.5, 0.5), each=n))
-
+df <- da[(n+1):(2*n), ]
 ggplot(dg, aes(x, y)) + 
   geom_path(col="white") +
   geom_text(data=df, col=df$g, label=df$g, angle=df$a, hjust=df$j) +
@@ -246,14 +362,38 @@ finalize_image()
 
 <div class="notes">
 
-
+Similary, you can create a gradient from pure green through the lighter shades of green to white.
 
 </div>
 
+### Colors, Gradient of blue to white
 
-### Colors, Gradients (4/5)
+```{r gradient-blue-to-white}
+initiate_image()
+df <- da[(2*n+1):(3*n), ]
+ggplot(dg, aes(x, y)) + 
+  geom_path(col="white") +
+  geom_text(data=df, col=df$g, label=df$g, angle=df$a, hjust=df$j) +
+  expand_limits(x=c(-7, 9)) +
+  expand_limits(y=c(-7, 9)) +
+  theme_void() +
+  theme(
+    panel.background=element_rect(fill="#888888")
+  )
+finalize_image()
+```
 
-```{r rgb-gradient-4}
+`r display_image`
+
+<div class="notes">
+
+And just as easily you can develop a gradient that goes from pure blue through the lighter shades of blue to white.
+
+</div>
+
+### Colors, Gradients of red to green via white
+
+```{r gradient-red-white-green}
 initiate_image()
 h <- c("0", "3", "6", "9", "C", "F")
 
@@ -292,13 +432,13 @@ finalize_image()
 
 <div class="notes">
 
-
+If you want to go from one pure color to another, there is more than one route that works. You can run red to white and then white to green.
 
 </div>
 
-### Colors, Gradients (5/5)
+### Colors, Gradients of red to green via yellow
 
-```{r rgb-gradient-5}
+```{r gradient-red-yellow-green}
 initiate_image()
 h <- rev(c("0", "3", "6", "9", "C", "F"))
 
@@ -340,116 +480,59 @@ finalize_image()
 
 </div>
 
+### Colors, gradients of red to green through gray
+
+(To be added)
+
+<div class="notes">
+
+You cna just as easily go from red to green through gray.
+
+</div>
+
 ### Colors, RGB combinations
 
 Additive color mixing: adding red to green yields yellow; adding green to blue yields cyan; adding blue to red yields magenta; adding all three primary colors together yields white.
 
 
-### Colors, Contrasting pure colors often appear too intense
+### Gradients in Python
 
-```{r intense}
-initiate_image()
-c3 <- c("#FF0000", "#00FF00", "#0000FF")
-l3 <- c("#FF9090", "#90FF90", "#9090FF")
-d3 <- c("#700000", "#007000", "#000070")
-df <- data.frame(
-  x=rep(1:3, each=3), 
-  y=rep(3:1, 3),
-  b=rep(c3, 3),
-  f=rep(c3, each=3)
-)
-df <- df[c(2:4, 6:8), ]
-ggplot(df, aes(x, y)) +
-  expand_limits(x=c(0, 4), y=c(0, 4)) +
-  geom_point(size=30, color=df$b, shape="square") +
-  geom_text(
-    color=df$f,
-    label=paste0("F=", df$f, "\nB=", df$b)) +
-  theme_void() +
-  theme(
-    panel.background=element_rect(fill="#888888")
-  )
-finalize_image()
-```
+(To be added)
 
-`r display_image`
+### Gradients in R
 
-<div class="notes">
+(To be added)
 
+### Gradients in Tableau
 
+(To be added)
 
-</div>
+### Colors, HSV system
 
-### Colors, Lighter background, darker foreground
++ (To be added)
 
-```{r both}
-initiate_image()
-df <- data.frame(
-  x=rep(1:3, each=3), 
-  y=rep(3:1, 3),
-  b=rep(l3, 3),
-  f=rep(d3, each=3)
-)
-df <- df[c(2:4, 6:8), ]
-ggplot(df, aes(x, y)) +
-  expand_limits(x=c(0, 4), y=c(0, 4)) +
-  geom_point(size=30, color=df$b, shape="square") +
-  geom_text(
-    color=df$f,
-    label=paste0("F=", df$f, "\nB=", df$b)) +
-  theme_void() +
-  theme(
-    panel.background=element_rect(fill="#888888")
-  )
-finalize_image()
-```
+### Colors, discrete color palletes
 
-`r display_image`
++ (To be added)
 
-<div class="notes">
+### Colors, CYMK system
 
-
-
-</div>
-
-### Colors, or the reverse
-
-```{r reverse}
-initiate_image()
-df <- data.frame(
-  x=rep(1:3, each=3), 
-  y=rep(3:1, 3),
-  b=rep(d3, 3),
-  f=rep(l3, each=3)
-)
-df <- df[c(2:4, 6:8), ]
-ggplot(df, aes(x, y)) +
-  expand_limits(x=c(0, 4), y=c(0, 4)) +
-  geom_point(size=30, color=df$b, shape="square") +
-  geom_text(
-    color=df$f,
-    label=paste0("F=", df$f, "\nB=", df$b)) +
-  theme_void() +
-  theme(
-    panel.background=element_rect(fill="#888888")
-  )
-finalize_image()
-```
-
-`r display_image`
-
-<div class="notes">
-
-
-
-</div>
++ (To be added)
 
 ### Colors, review
 + Kindergarten view of colors
 + Review hexadecimal codes
 + RGB color system
+  + Gradients
++ HSV color system
+  +  Discrete color palettes
++ CYMK system
+
+<div class="notes">
 
 
+
+</div>
 
 ```{r save-colors-tutorial-files}
 save.image("../data/colors-tutorial.RData")

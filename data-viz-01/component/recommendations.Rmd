@@ -1,5 +1,5 @@
 ---
-title: "Data-viz-01, Recommendations"
+title: "Scatterplots, Recommendations"
 author: "Steve Simon"
 output: powerpoint_presentation
 ---

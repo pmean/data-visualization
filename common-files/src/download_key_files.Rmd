@@ -27,3 +27,43 @@ saratoga_houses <- read.table(fn, header=TRUE, sep="\x09")
 save(saratoga_houses, file="../data/houses.RData")
 write.csv(saratoga_houses, file="../data/houses.csv", row.names=FALSE)
 ```
+
+Scotus: This is used in data-viz-02.
+
+```{r read-scotus}
+```
+
+```{r clean-scotus}
+scotus_full <- read_csv("../data/opinions_since_1970.csv")
+scotus_full %>% select(-c(7, 8, 14)) %>% data.frame -> scotus
+scotus$author_name <- 
+  sub("justice [[author]]ginsburg[[/author]]", 
+      "justice ginsburg", scotus$author_name, fixed=TRUE)
+scotus$author_name <- sub("justice black;", "justice black", scotus$author_name)
+scotus$author_name <- sub("justice bruger", "justice burger", scotus$author_name)
+scotus$author_name <- sub("justice connor", "justice o'connor", scotus$author_name)
+scotus$author_name <- sub("justice o2122", "justice o'connor", scotus$author_name)
+scotus$author_name <- sub("justice waite", "justice white", scotus$author_name)
+table(scotus$author_name, scotus$year_filed)
+```
+
+```{r save-scotus}
+scotus %>%
+  data.frame(stingsAsFactors=FALSE) %>%
+  filter(category != "per_curiam") %>%
+  select(-scdb_decision_direction) %>%
+  select(-scdb_votes_majority) %>%
+  select(-scdb_votes_minority) %>%
+  write.csv(file="../data/scotus_opinions.csv", row.names=FALSE)
+scotus %>%
+  data.frame(stingsAsFactors=FALSE) %>%
+  filter(category=="majority") %>%
+  select(-author_name) %>%
+  select(-category) %>%
+  select(-per_curiam) %>%
+  write.csv(file="../data/scotus_cases.csv", row.names=FALSE)
+opinions <- read.csv("../data/scotus_opinions.csv", stringsAsFactors=FALSE) 
+sc_cases <- read.csv("../data/scotus_cases.csv", stringsAsFactors=FALSE) 
+save(c("opinions", "sc_cases"). file="../data/scotus.RData")
+```
+

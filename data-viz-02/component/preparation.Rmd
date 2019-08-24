@@ -1,13 +1,11 @@
 ---
-title: "Data-viz-02, Preparation"
+title: "Bar charts, Preparation"
 author: "Steve Simon"
-date: "6/23/2019"
+date: "created: 2019-06-23"
 output: powerpoint_presentation
 ---
 
-```{r echo=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
-source("../../common-files/setup.R")
+```{r child="../../common-files/src/component-header.Rmd"}
 ```
 
 ### Preparation, overview
@@ -17,73 +15,69 @@ source("../../common-files/setup.R")
   + Download and import scotus data
 
 ### Preparation, Titanic data set
-
-```{r echo=TRUE}
-# fn <- "https://dasl.datadescription.com/download/data/3484"
-fn <- "../data/titanic3.csv"
-titanic <- read.csv(fn, stringsAsFactors=FALSE)
++ R code
+```
+read.csv("../../common-files/data/titanic3.csv")
+```
++ Python code
+```
+(To be added)
 ```
 
+<div class="notes">
+
+Make sure you can import the file titanic3.csv to Python, R or Tableau.
+
+</div>
+
+### Preparation, Scotus data set
++ Python code
+```
+(To be added)
+```
++ R code
+```
+(To be added)
+```
+
+<div class="notes">
+
+Also import the scotus (Supreme Court of the United States) data.
+
+</div>
 
 ### Preparation, kaggle website
 
 ![Kaggle datasets webpage](../images/external/kaggle-scotus-data.png)
 
-### Preparation, download scotus data
+<div class="notes">
 
-Download the scotus_cases.csv data set, or go to the original source, the Kaggle datasets repository.
+The scotus file comes originally from the Kaggle datasets webpages. I fixed a few small typos, but you can get pretty much the same results by downloading the original file and keeping the typos in there.
+
+</div>
+
+### Preparation, Draw a simple bar chart
 
 Import the data and create a bar chart showing the frequency of opinions written by year_filed. Note that there are a few typos and a few rows that do not belong. You can remove these, but they will not affect any of the analyses we are considering.
 
-```{r clean, eval=FALSE}
-scotus_full <- read_csv("../data/opinions_since_1970.csv")
-scotus_full %>% select(-c(7, 8, 14)) %>% data.frame -> scotus
-scotus$author_name <- 
-  sub("justice [[author]]ginsburg[[/author]]", 
-      "justice ginsburg", scotus$author_name, fixed=TRUE)
-scotus$author_name <- sub("justice black;", "justice black", scotus$author_name)
-scotus$author_name <- sub("justice bruger", "justice burger", scotus$author_name)
-scotus$author_name <- sub("justice connor", "justice o'connor", scotus$author_name)
-scotus$author_name <- sub("justice o2122", "justice o'connor", scotus$author_name)
-scotus$author_name <- sub("justice waite", "justice white", scotus$author_name)
-table(scotus$author_name, scotus$year_filed)
-scotus %>%
-  data.frame(stingsAsFactors=FALSE) %>%
-  filter(category != "per_curiam") %>%
-  select(-scdb_decision_direction) %>%
-  select(-scdb_votes_majority) %>%
-  select(-scdb_votes_minority) %>%
-  write.csv(file="../data/scotus_opinions.csv", row.names=FALSE)
-scotus %>%
-  data.frame(stingsAsFactors=FALSE) %>%
-  filter(category=="majority") %>%
-  select(-author_name) %>%
-  select(-category) %>%
-  select(-per_curiam) %>%
-  write.csv(file="../data/scotus_cases.csv", row.names=FALSE)
+### Preparation, Code
++ Python code
+```
+(Add later)
+```
++ R code
+```
+(Add later)
 ```
 
-```{r read}
-opinions <- read.csv("../data/scotus_opinions.csv", stringsAsFactors=FALSE)           
-sc_cases <- read.csv("../data/scotus_cases.csv", stringsAsFactors=FALSE) 
-```
+### Preparation, Python output
 
-### Preparation, Python code
+(Add later)
 
-((Add later))
-
-### Preparation, R code
-
-((Add later))
-
-### Preparation, Tableau steps
-
-((Add later))
-
-### Preparation, This is what your bar chart should look like
+### Preparation, R output
 
 ```{r scotus-bar, message=FALSE}
-fn <- initiate_image()
+initiate_image()
 sc_cases <- read.csv(file="../data/scotus_cases.csv")
 ggplot(sc_cases, aes(year_filed)) +
   geom_bar()
@@ -92,6 +86,6 @@ finalize_image()
 
 `r display_image`
 
-```{r save-initial-preparation-files}
-save.image("../data/v02-initial-preparation.RData")
-```
+### Preparation, Tableau output
+
+(Add later)

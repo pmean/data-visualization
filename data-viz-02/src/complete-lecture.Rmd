@@ -1,10 +1,11 @@
 ---
-title: "Data-viz-02, bar charts"
+title: "Data visualization, Barcharts"
 author: "Steve Simon"
 output: powerpoint_presentation
+date: "Created: 2019-08-24"
 ---
 
-### Data-viz-02, Outline
+### Barcharts, Outline
 + Preparation
 + Group exercises
 + Colors
@@ -21,7 +22,10 @@ Here is an outline of what you will learn today.
 ```{r child="../component/preparation.Rmd"}
 ```
 
-```{r child="../component/exercise-message.Rmd"}
+```{r child="../component/newspaper-graphs.Rmd"}
+```
+
+```{r child="../../common-files/src/exercise-message.Rmd"}
 ```
 
 ```{r  child="../component/tutorial-colors.Rmd"}
