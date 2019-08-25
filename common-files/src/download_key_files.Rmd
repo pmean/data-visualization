@@ -28,13 +28,20 @@ save(saratoga_houses, file="../data/houses.RData")
 write.csv(saratoga_houses, file="../data/houses.csv", row.names=FALSE)
 ```
 
+Titanic: This is used in data-viz-02. There are several different versions of this file floating around and I'm not sure which one this is originally from.
+
+```{r read-titanic}
+titanic <- read.csv(file="../data/titanic3.csv", as.is=TRUE)
+save(titanic, file="../data/titanic.RData")
+```
+
 Scotus: This is used in data-viz-02.
 
 ```{r read-scotus}
+scotus_full <- read_csv("../data/opinions_since_1970.csv")
 ```
 
 ```{r clean-scotus}
-scotus_full <- read_csv("../data/opinions_since_1970.csv")
 scotus_full %>% select(-c(7, 8, 14)) %>% data.frame -> scotus
 scotus$author_name <- 
   sub("justice [[author]]ginsburg[[/author]]", 

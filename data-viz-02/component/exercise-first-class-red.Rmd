@@ -15,30 +15,26 @@ load("../../common-files/data/titanic.RData")
 ### Exercise, First class red
 + Make the first class bar red to show Leonardo di Caprio's perspective on the Titanic.
 
-### Exercise, First class red, Python (1/2)
-+ Python code
+### Exercise, Python code
++ Here's the Python code
 ```{}
 ((Python code))
 ```
 
-### Exercise, First class red, Python (2/2)
+### Exercise, Python output
 ((Python results))
 
-### Exercise, First class red, R (1/2)
-+ R code
+### Exercise, R code
++ Here's the R code
 ```{}
 ((R code))
 ```
 
-### Exercise, First class red, R (2/2)
+### Exercise, R output
+
 ((R results))
 
-
-### Exercise, First class red, Tableau (1/2)
-
-((Tableau steps))
-
-### Exercise, First class red, Tableau (2/2)
+### Exercise, Tableau output
 
 ((Tableau results))
 

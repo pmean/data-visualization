@@ -8,7 +8,7 @@ output: powerpoint_presentation
 ```{r child="../../common-files/src/component-header.Rmd"}
 ```
 
-### Barchart fundamentals, Bars
+### Barchart fundamentals
 + Fewer in numbers than points
 + Usually a summary statistic
   + Count
@@ -41,6 +41,7 @@ Recall that aesthetics are visual attributes associated with a geometry/mark. Yo
 ### Barchart fundamentals, Location
 
 ```{r location-horizontal}
+load("../../common-files/data/titanic.RData")
 initiate_image()
 ggplot(titanic, aes(pclass)) +
   geom_bar()
@@ -210,14 +211,6 @@ finalize_image()
 ```{r child="exercise-mortality-by-sex.Rmd"}
 ```
 
-
-### Barchart fundamentals, Group exercise
-+ Review the following visualization in your group
-  + Summarize what aesthetics appear in the graph
-  + What variables map to each aesthetic?
-  
-((Provide visualization. Maybe use the visualization from the earlier exercise?))
-
 ### Barchart fundamentals, Summarizations
 + One number summary (mean or percentage)
 + Two number summary (error bars)
@@ -227,6 +220,8 @@ finalize_image()
   + Opacity
   
 <div class="notes">
+
+All of the examples, so far, have used counts in the bar chart. There are many other statistics that you can choose from, and 
 
 ((note to myself: maybe this goes better in the talk about lines.))
 
@@ -256,10 +251,6 @@ finalize_image()
 
 ((Note the computational expense.))
 
-### Barchart fundamentals, On your own
-
-((Find a totally different data set and get the students to draw four different visualizations. Have them divide into groups that like the same visualization software and have each person do a different visualization.))
-
 ### Barchart fundamentals, Summary
 + "A mapping of data to the visual aesthetics of geometries/marks" 
   + Bars are a type of geometry/mark
@@ -268,10 +259,6 @@ finalize_image()
 + Basic tips
   + Place comparators close
   + Use axis ticks, light grid lines
-
-### Barchart fundamentals, On your own
-
-((Find a totally different data set and get the students to draw four different visualizations. Have them divide into groups that like the same visualization software and have each person do a different visualization.))
 
 ```{r save-everything}
 save.image("../data/barcharts-fundamentals.RData")

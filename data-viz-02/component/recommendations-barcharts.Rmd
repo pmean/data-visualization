@@ -5,19 +5,16 @@ date: "Created: 2019-08-03"
 output: powerpoint_presentation
 ---
 
-```{r echo=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
-source("../../common-files/setup.R")
+```{r child="../../common-files/src/component-header.Rmd"}
 ```
 
 ```{r}
-fn <- "../data/titanic3.csv"
-titanic <- read.csv(fn, stringsAsFactors=FALSE)
+load("../../common-files/data/titanic.RData")
 ```
 
 ### Barchart recommendations, Don't make gaps equal to widths (1/2)
 
-![Alternate white and black lines showing a Moire effect](../images/alternate-white-and-black.png)
+![Alternate white and black lines showing a Moire effect](../images/r/alternate-white-and-black.png)
 
 <div class="notes">
 
@@ -29,7 +26,7 @@ If the space between the bars is equal to the width of the bars themselves, you 
 
 ### Barchart recommendations, Don't make gaps equal to widths (2/2)
 
-![Optical illusion showing two bars becoming three](../images/optical-illusion-bars.png)
+![Optical illusion showing two bars becoming three](../images/r/optical-illusion-bars.png)
 
 <div class="notes">
 
@@ -56,15 +53,14 @@ Remember the fault of default principle. Always try different ways of displaying
 ### Barchart recommendations, Turn the chart sideways
 
 ```{r location-vertical}
-fn <- initiate_image()
+initiate_image()
 ggplot(titanic, aes(pclass)) +
   geom_bar() +
   coord_flip()
 finalize_image()
 ```
 
-
-![Vertical bar chart](../images/`r fn`.png)
+`r display_image`
 
 <div class="notes">
 

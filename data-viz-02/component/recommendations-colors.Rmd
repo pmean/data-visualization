@@ -5,20 +5,16 @@ date: "Created: 2019-08-24"
 output: powerpoint_presentation
 ---
 
-```{r echo=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
-source("../../common-files/setup.R")
+```{r child="../../common-files/src/component-header.Rmd"}
 ```
 
 ```{r}
-fn <- "../data/titanic3.csv"
-titanic <- read.csv(fn, stringsAsFactors=FALSE)
+load("../../common-files/data/titanic.RData")
 ```
-
 
 ### Barchart recommendations, similar to fashion
 
-![Image of man wearing three bold colors](../images/fashion-mistake.png)
+![Image of man wearing three bold colors](../images/external/fashion-mistake.png)
 
 <div class="notes">
 
@@ -30,7 +26,7 @@ There's a similar lesson for data visualization.
 
 ### Barchart recommendations, Don't overuse colors.
 
-![Text will a variety of colors](../images/too-many-colors.png)
+![Text will a variety of colors](../images/external/too-many-colors.png)
 
 <div class="notes">
 

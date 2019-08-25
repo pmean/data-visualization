@@ -5,18 +5,18 @@ date: "2019-08-03"
 output: powerpoint_presentation
 ---
 
-```{r echo=FALSE, message=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
-source("../../common-files/setup.R")
-suppressMessages(suppressWarnings(library(reticulate)))
-titanic <- read_csv("../data/titanic3.csv")
+```{r child="../../common-files/src/component-header.Rmd"}
+```
+
+```{r}
+load("../../common-files/data/titanic.RData")
 ```
 
 ### Exercise, Gender barchart
 + Draw a bar chart showing the number of people in each gender (use the Sex variable).
 
-### Exercise, Gender barchart, Python (1/2)
-+ Python code
+### Exercise, Python code
++ Here's the Python code
 ```{}
 ch = alt.Chart(df).mark_bar().encode(
     x='sex',
@@ -24,44 +24,39 @@ ch = alt.Chart(df).mark_bar().encode(
 )
 ```
 
-### Exercise, Gender barchart, Python (2/2)
+### Exercise, Python output
 
 ```{python}
 import pandas as pd
 import altair as alt
-df = pd.read_csv("../data/titanic3.csv")
+df = pd.read_csv("../../common-files/data/titanic3.csv")
 ch = alt.Chart(df).mark_bar().encode(
     x='sex',
     y='count()'
 )
-ch.save("../images/python-gender-barchart.html")
+ch.save("../images/python/gender-barchart.html")
 ```
 
-![](../images/gender-barchart.png)
+![](../images/python/gender-barchart.png)
 
-### Exercise, Gender barchart, R (1/2)
-+ R code
-
-```{}
+### Exercise, R code
++ Here's the R code
+```
 ggplot(titanic, aes(sex)) +
   geom_bar()
 ```
 
-### Exercise, Gender barchart, R (2/2)
+### Exercise, R output
 
-```{r r-gender-barchart}
-fn <- initiate_image()
+```{r gender-barchart}
+initiate_image()
 ggplot(titanic, aes(sex)) +
   geom_bar()
 finalize_image()
 ```
 
-![r gender barchart](../images/`r fn`.png)
+`r display_image`
 
-### Exercise, Gender barchart, Tableau (1/2)
+### Exercise, Tableau output
 
-((Tableau steps))
-
-### Exercise, Gender barchart, Tableau (2/2)
-
-![Tableau barchart](../images/tableau-gender-barchart.png)
+![Tableau barchart](../images/tableau/gender-barchart.png)

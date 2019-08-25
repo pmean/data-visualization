@@ -11,8 +11,8 @@ initiate_image <- function() {
   return(invisible(fn))
 }
 narrow_image <- function() {
-  if (redraw_graphs==FALSE) return
   fn <- opts_current$get("label")
+  if (redraw_graphs==FALSE) return
   png(filename=paste0("../images/r/", fn, ".png"), width=240, height=480)
   return(invisible(fn))
 }

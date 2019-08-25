@@ -48,3 +48,6 @@ Here is an outline of what you will learn today.
 
 ```{r child="../../common-files/src/exercise-aesthetics.Rmd"}
 ```
+
+```{r child="../component/exercise-scotus.Rmd"}
+```

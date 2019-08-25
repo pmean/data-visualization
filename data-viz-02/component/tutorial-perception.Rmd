@@ -76,7 +76,7 @@ ggplot(marital_status, aes(x = "", y = prop, fill = class)) +
 finalize_image("Pie chart")
 ```
 
-![Pie chart](../images/`r fn`.png)
+`r display_image`
 
 ### Perception, Answer. It depends.
 + What question are you trying to answer?

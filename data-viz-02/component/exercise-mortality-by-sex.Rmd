@@ -5,11 +5,11 @@ date: "2019-08-03"
 output: powerpoint_presentation
 ---
 
-```{r echo=FALSE, message=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
-source("../../common-files/setup.R")
-suppressMessages(suppressWarnings(library(reticulate)))
-titanic <- read_csv("../data/titanic3.csv")
+```{r child="../../common-files/src/component-header.Rmd"}
+```
+
+```{r}
+load("../../common-files/data/titanic.RData")
 ```
 
 ### Exercise, Mortality by gender
@@ -24,17 +24,17 @@ Anyway, examine how mortality is related to gender. It's a spoiler alert, but on
 </div>
 
 
-### Exercise, Mortality by gender, Python (1/2)
+### Exercise,Python code
 + Python code
 ```{}
 ((Python code))
 ```
 
-### Exercise, Mortality by gender, Python (2/2)
+### Exercise, Python output
 
 ((Python results))
 
-### Exercise, Mortality by gender, R (1/2)
+### Exercise, R code
 + R code
 ```{}
 titanic %>%
@@ -43,10 +43,10 @@ titanic %>%
     facet_grid(cols=vars(survived))
 ```
 
-### Exercise, Mortality by gender, R (2/2)
+### Exercise, R output
 
 ```{r mortality-by-gender-panel}
-fn <- initiate_image()
+initiate_image()
 titanic %>%
   ggplot(aes(x=sex, fill=survived)) +
     geom_bar() +
@@ -54,13 +54,9 @@ titanic %>%
 finalize_image()
 ```
 
-![](../images/`r fn`.png)
+`r display_image`
 
-### Exercise, Mortality by gender, Tableau (1/2)
-
-((Tableau steps))
-
-### Exercise, Mortality by gender, Tableau (2/2)
+### Exercise, Tableau output
 
 ((Tableau results))
 
