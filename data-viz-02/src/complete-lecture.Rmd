@@ -37,8 +37,14 @@ Here is an outline of what you will learn today.
 ```{r child="../component/fundamentals.Rmd"}
 ```
 
-```{r child="../component/recommendations.Rmd"}
+```{r child="../component/recommendations-barcharts.Rmd"}
 ```
 
-```{r child="../component/exercise-aesthetics.Rmd"}
+```{r child="../component/recommendations-colors.Rmd"}
+```
+
+```{r child="../component/recommendations-perception.Rmd"}
+```
+
+```{r child="../../common-files/src/exercise-aesthetics.Rmd"}
 ```

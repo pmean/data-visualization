@@ -5,11 +5,11 @@ date: "2019-08-03"
 output: powerpoint_presentation
 ---
 
-```{r echo=FALSE, message=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
-source("../../common-files/setup.R")
-suppressMessages(suppressWarnings(library(reticulate)))
-titanic <- read_csv("../data/titanic3.csv")
+```{r child="../../common-files/src/component-header.Rmd"}
+```
+
+```{r}
+load("../../common-files/data/titanic.RData")
 ```
 
 ### Exercise, First class red

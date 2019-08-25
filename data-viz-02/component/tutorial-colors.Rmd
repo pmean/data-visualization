@@ -476,7 +476,7 @@ finalize_image()
 
 <div class="notes">
 
-
+A common gradient for red to green relies on the fact that yellow is a combination of red and green. So start with red at full blast (FF), green at zero (and blue at zero). Move towards yellow by mixing in a bit more green. Once you get to pure yellow (FF in the green and red channels), reverse this process by keeping the green channel at full blast (FF) and gradually reduce the red channel to zero.
 
 </div>
 
@@ -489,11 +489,6 @@ finalize_image()
 You cna just as easily go from red to green through gray.
 
 </div>
-
-### Colors, RGB combinations
-
-Additive color mixing: adding red to green yields yellow; adding green to blue yields cyan; adding blue to red yields magenta; adding all three primary colors together yields white.
-
 
 ### Gradients in Python
 
@@ -521,7 +516,6 @@ Additive color mixing: adding red to green yields yellow; adding green to blue y
 
 ### Colors, review
 + Kindergarten view of colors
-+ Review hexadecimal codes
 + RGB color system
   + Gradients
 + HSV color system
@@ -530,7 +524,7 @@ Additive color mixing: adding red to green yields yellow; adding green to blue y
 
 <div class="notes">
 
-
+The kindergarten view of colors (red plus yellow equals orange) doesn't work on a computer screen because the screen uses mixtures of light to combine colors. We covered the RGB system including how to create gradients. The HSV system provides a more intuitive description of colors, while CMYK is used when printing, where a substractive rather than additive color system is needed.
 
 </div>
 

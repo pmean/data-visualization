@@ -10,6 +10,12 @@ initiate_image <- function() {
   png(filename=paste0("../images/r/", fn, ".png"))
   return(invisible(fn))
 }
+narrow_image <- function() {
+  if (redraw_graphs==FALSE) return
+  fn <- opts_current$get("label")
+  png(filename=paste0("../images/r/", fn, ".png"), width=240, height=480)
+  return(invisible(fn))
+}
 finalize_image <- function(caption="") {
   fn <- opts_current$get("label")
   display_image <<- paste0("![", caption, "](../images/r/", fn, ".png)")

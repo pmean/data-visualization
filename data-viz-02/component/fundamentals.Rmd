@@ -5,10 +5,7 @@ date: "2019-08-03"
 output: powerpoint_presentation
 ---
 
-```{r setup-v02-main, echo=FALSE, message=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
-source("../../common-files/setup.R")
-titanic <- read_csv("../data/titanic3.csv")
+```{r child="../../common-files/src/component-header.Rmd"}
 ```
 
 ### Barchart fundamentals, Bars
@@ -44,13 +41,13 @@ Recall that aesthetics are visual attributes associated with a geometry/mark. Yo
 ### Barchart fundamentals, Location
 
 ```{r location-horizontal}
-fn <- initiate_image()
+initiate_image()
 ggplot(titanic, aes(pclass)) +
   geom_bar()
-finalize_image()
+finalize_image("Bar chart of passenger class count")
 ```
 
-![Horizontal bar chart](../images/`r fn`.png)
+`r display_image`
 
 <div class="notes">
 
@@ -68,7 +65,14 @@ This shows a simple bar chart. The x-axis is passenger class and the y-axis is c
 + Length varies, width doesn't
   + Exception, mosaic plots
   + Think about gaps between bars
-  
+
+<div class="notes">
+
+Normally bar charts have different lengths but a common width. That's not always the case. There are some bar charts that vary the width, such as mosaic plots and spine plots. We will not cover those types of barcharts.
+
+Barcharts are also typically rooted at the axis. There are a few exceptions, such as Gannt charts, but again, we will not cover those types of graphs.
+
+</div>
 
 ### Barchart fundamentals, Color
 + Use for emphasis in simple bar charts
@@ -85,14 +89,14 @@ Color becomes very important in just a minute when we add another layer of compl
 ### Barchart fundamentals, Color
 
 ```{r bar-color}
-fn <- initiate_image()
+initiate_image()
 ggplot(titanic, aes(x=pclass, fill=pclass)) +
   geom_bar() +
   scale_fill_manual(values=c("darkgrey", "darkgrey", "red"))
-finalize_image()
+finalize_image("Barchart")
 ```
 
-![Bar chart with emphasis color](../images/`r fn`.png)
+`r display_image`
 
 ```{r child="exercise-first-class-red.Rmd"}
 ```
@@ -116,14 +120,13 @@ Bar charts that represent a summary across a single categorical variable are fai
 ### Barchart fundamentals, Titanic passenger count by gender
 
 ```{r count-by-gender}
-fn <- initiate_image()
+initiate_image()
 ggplot(titanic, aes(x=sex)) +
   geom_bar()
-finalize_image()
+finalize_image("Bar chart")
 ```
 
-
-![Bar chart](../images/`r fn`.png)
+`r display_image`
 
 <div class="notes">
 
@@ -134,14 +137,13 @@ finalize_image()
 ### Barchart fundamentals, Titanic passenger count by passenger class
 
 ```{r count-by-passenger-class}
-fn <- initiate_image()
+initiate_image()
 ggplot(titanic, aes(x=pclass)) +
   geom_bar()
 finalize_image()
 ```
 
-
-![Bar chart](../images/`r fn`.png)
+`r display_image`
 
 <div class="notes">
 
@@ -152,7 +154,7 @@ finalize_image()
 ### Barchart fundamentals, Titanic facet
 
 ```{r count-by-facet}
-fn <- initiate_image()
+initiate_image()
 titanic %>%
   ggplot(aes(x=pclass, fill=sex)) +
     geom_bar() + 
@@ -160,7 +162,7 @@ titanic %>%
 finalize_image()
 ```
 
-![Bar chart](../images/`r fn`.png)
+`r display_image`
 
 <div class="notes">
 
@@ -171,14 +173,14 @@ finalize_image()
 ### Barchart fundamentals, Titanic dodge
 
 ```{r count-by-dodge}
-fn <- initiate_image()
+initiate_image()
 titanic %>%
   ggplot(aes(x=pclass, fill=sex)) +
     geom_bar(position="dodge")
 finalize_image()
 ```
 
-![Bar chart](../images/`r fn`.png)
+`r display_image`
 
 <div class="notes">
 
@@ -189,14 +191,14 @@ finalize_image()
 ### Barchart fundamentals, Titanic stack
 
 ```{r count-by-stack}
-fn <- initiate_image()
+initiate_image()
 titanic %>%
   ggplot(aes(x=pclass, fill=sex)) +
     geom_bar(position="stack")
 finalize_image()
 ```
 
-![Bar chart](../images/`r fn`.png)
+`r display_images
 
 <div class="notes">
 
