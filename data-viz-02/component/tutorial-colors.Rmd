@@ -95,31 +95,119 @@ The RGB format uses six hexadecimal digits to represent colors. A hexidecimal of
 
 </div>
 
-### Colors, RGB combinations
+### Colors, Red plus green equals yellow
 
-+ Red, green, and blue combinations produce yellow, magenta, and cyan.
-  + #FF0000 (pure red) plus ##00FF00 (pure green) equals #FFFF00 (pure yellow)
-  + #FF0000 (pure red) plus #0000FF (pure blue) equals #FF00FF (pure magenta)
-  + #00FF00 (pure green) plus #0000FF (pure blue) equals #00FFFF (pure cyan)
+```{r red-plus-green}
+add_colors <- function(c1, c2, c3) {
+  df <- data.frame(
+    x=rep(2, 3),
+    y=3:1,
+    b=c(c1, c2, c3)
+  )
+  ggplot(df, aes(x, y)) +
+    geom_text(color=df$b, size=24, label=df$b) +
+    expand_limits(x=c(0, 4), y=c(0, 4)) +
+    geom_text(x=0.25, y=2, label="+", size=24) +
+    geom_segment(x=0.75, y=1.5, xend=3.25, yend=1.5, size=3) +
+    theme_void() +
+    theme(
+      panel.background=element_rect(fill="#888888"))
+}
+initiate_image()
+add_colors("#FF0000", "#00FF00", "#FFFF00")
+finalize_image()
+```
+
+`r display_image`
 
 <div class="notes">
 
-You can combine the red, green, and blue channels to produce three more colors: yellow, magenta, and cyan. 
+Whne you combine colors in the RGB system, they become lighter in color. So if you add red light (FF in the red channel) to green light (FF in the green chanel), you get yellow, which is FF in both the red and green channels.
 
 </div>
 
-### Colors, more RGB combinations
+### Colors, Red plus blue equals magenta
 
-+ Add the third color to produce white
-  + #FFFF00 (pure yellow) plus #0000FF (pure blue) equals #FFFFFF (pure white)
-  + #FF00FF (pure magenta) plus #00FF00 (pure green) equals #FFFFFF (pure white)
-  + #00FFFF (pure cyan) plus #FF0000 (pure red) equals #FFFFFF (pure white)
+```{r red-plus-blue}
+a3 <- c("#FF0000", "#FF0000", "#00FF00")
+b3 <- c("#00FF00", "#0000FF", "#0000FF")
+c3 <- c("#FFFF00", "#FF00FF", "#00FFFF")
+initiate_image()
+add_colors("#FF0000", "#0000FF", "#FF00FF")
+finalize_image()
+```
+
+`r display_image`
 
 <div class="notes">
 
-Combine yellow, megenta, and cyan with the complementary colors (blue, green, and red, respectively) to get white.
+Red plus blue gives you #FF00FF, which is magenta, a light purplish red.
 
-The RGB color system is called an additive system because as you add more colors, you add to the brightness. Eventaully, you get all the way to white.
+</div>
+
+### Colors, Green plus blue equals cyan
+
+```{r green-plus-blue}
+initiate_image()
+add_colors("#00FF00", "#0000FF", "#00FFFF")
+finalize_image()
+```
+
+`r display_image`
+
+<div class="notes">
+
+Green plus blue gives you #00FFFF, which is cyan, a greenish blue color.
+
+</div>
+
+### Colors, Yellow plus blue equals white
+
+```{r yellow-plus-blue}
+initiate_image()
+add_colors("#FFFF00", "#0000FF", "#FFFFFF")
+finalize_image()
+```
+
+`r display_image`
+
+<div class="notes">
+
+Yellow has FF in the red and green channels and 00 in the blue chanel. If you combine yellow with blue, you fill up all three channels and produce white.
+
+Notice that this is not at all what happens with crayons or paints. In those settings, yellow plus blue gives you green.
+
+</div>
+
+### Colors, Magenta plus green equals white
+
+```{r magenta-plus-green}
+initiate_image()
+add_colors("#FF00FF", "#00FF00", "#FFFFFF")
+finalize_image()
+```
+
+`r display_image`
+
+<div class="notes">
+
+Similarly, magenta has FF in the red and blue channles. Add green to fill in the last channel and you get white.
+
+</div>
+
+### Colors, Cyan plus red equals white
+
+```{r cyan-plus-red}
+initiate_image()
+add_colors("#00FFFF", "#FF0000", "#FFFFFF")
+finalize_image()
+```
+
+`r display_image`
+
+<div class="notes">
+
+Finally, cyan has FF in the green and blue channels. Adding red to fill the last channel produces white.
 
 </div>
 
