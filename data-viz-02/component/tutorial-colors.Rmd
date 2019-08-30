@@ -728,13 +728,25 @@ finalize_image()
 
 `r display_image`
 
-### Colors, discrete color palletes
-
-+ (To be added)
-
 ### Colors, CYMK system
 
-+ (To be added)
+![Illustration of subtractive color scheme](../images/external/cymk-subtractive.png)
+
+<div class="notes">
+
+When you are printing, more of something makes things darker. This is the exact opposite of a computer monitor, where more of something makes things lighter. Also, printing is typically done on a sheet of white paper, so you don't need to put any ink down in areas that are pure white and you put very little ink down in areas that are nearly white.
+
+</div>
+
+### Colors, CYMK system, combinations
++ Magenta plus Yellow equals Red
++ Magenta plus Cyan equals Blue
++ Cyan plus Yellow equals Green
++ All three combined equals Black
+
+### Colors, CYMK system, Why you need black
++ Only in theory does, C+Y+M = Black
+
 
 ### Colors, review
 + Kindergarten view of colors
