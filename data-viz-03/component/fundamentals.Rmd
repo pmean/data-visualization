@@ -8,12 +8,12 @@ output: powerpoint_presentation
 ```{r child="../../common-files/src/component-header.Rmd"}
 ```
 
-```{r read-files}
+```{r}
 load("../../common-files/data/cpi.RData")
 load("../../common-files/data/houses.RData")
 ```
 
-### Aesthetics for lines
+### Fundamentals, Aesthetics for lines
 + Location
 + Size
 + Shape (not what you think it is!)
@@ -27,11 +27,11 @@ You can vary the size, shape, and color of a line. Shape is not what you think i
 
 </div>
 
-### Show different types and locations of lines
+### Fundamentals, Show different types and locations of lines
 
-((Show a curved line, a straight line, a line segment, a series of line segments, and a polygon.))
+((Show a curved line, a straight line, a line segment, a series of line segments, and a polygon. Show the code to create these.))
 
-### Size
+### Fundamentals, Size
 
 ```{r line-size}
 initiate_image()
@@ -44,11 +44,11 @@ finalize_image()
 
 <div class="notes">
 
-
+Lines can change size, but most systems refer to this as line width rather than size.
 
 </div>
 
-### Shape
+### Fundamentals, Shape
 
 ```{r line-shape}
 initiate_image()
@@ -61,46 +61,14 @@ finalize_image()
 
 <div class="notes">
 
-
-
-</div>
-
-### On your own
-+ change the line to a dashed line.
-+ Make the width equal to 3
-+ Make the color green
-
-### Wait before showing
-
-((Python code))
-
-```{}
-# R code
-ggplot(cpi, aes(x=t, y=CPI)) +
-  geom_line(size=3, linetype="dashed", color="green")
-```
-
-((Tableau steps))
-
-### What your visualization might look like
-
-```{r width-shape-color}
-initiate_image()
-ggplot(cpi, aes(x=t, y=CPI)) +
-  geom_line(size=3, linetype="dashed", color="green")
-finalize_image()
-```
-
-`r display_image`
-
-<div class="notes">
-
-
+The shape of a line is not whether it is curved or straight. The shape of a line is whether it is represented using solid, dashed, or dotted lines. Most visualizations call this a line type rather than a line shape.
 
 </div>
 
+```{r child="../component/change-defaults.Rmd"}
+```
 
-### Lines as summary statistics
+### Fundamentals, Lines as summary statistics
 
 ```{r old-friend}
 initiate_image()
@@ -113,11 +81,11 @@ finalize_image()
 
 <div class="notes">
 
-
+If you have a lot of data, a line can sometimes emphasize patterns or trends that oyu might miss with just a scatterplot.
 
 </div>
 
-### Lines as averages
+### Fundamentals, Lines as averages
 
 ```{r average}
 initiate_image()
@@ -133,11 +101,11 @@ finalize_image()
 
 <div class="notes">
 
-
+This image replaces a bunch of data points with an average computed at each X-value.
 
 </div>
 
-### Lines as counts
+### Fundamentals, Lines as counts
 
 ```{r count}
 initiate_image()
@@ -153,26 +121,22 @@ finalize_image()
 
 <div class="notes">
 
-
+This impage replaces a bunch of data points with the count at each x-value.
 
 </div>
 
-### On your own
-+ Draw a line graph showing the relationship between the number of bathrooms and price.
+```{r child="../component/connect-averages.Rmd"}
+```
 
-### Wait before showing
+### Fundamentals, Error bars
 
-((Add code here))
+### Fundamentals, high-low bars
 
-### What your visualization might look like
-
-((Add visualization here))
-
-### Boxplots
+### Fundamentals, Boxplots
 
 ((Draw example and ask students to do a similar example))
 
-### Trend lines (linear)
+### Fundamentals, Trend lines (linear)
 
 ```{r linear-trend-age}
 initiate_image()
@@ -190,7 +154,7 @@ finalize_image()
 
 </div>
 
-### Trend lines (spline)
+### Fundamentals, Trend lines (spline)
 
 ```{r smooth-trend}
 initiate_image()
@@ -226,48 +190,8 @@ finalize_image()
 
 </div>
 
-### On your own
-+ Fit a linear trend line looking at Living.Area versus Price.
-+ Fit a smooth curve
-
-### Wait before showing
-
-### What your visualization might look like
-
-```{r living-area-lm}
-initiate_image()
-ggplot(saratoga_houses, aes(x=Living.Area, y=Price)) +
-  geom_point() +
-  geom_smooth(method="lm")
-finalize_image()
+```{r child="../component/insert-trend.Rmd"}
 ```
-
-`r display_image`
-
-<div class="notes">
-
-
-
-</div>
-
-
-### What your visualization might look like
-
-```{r living-area-loess}
-initiate_image()
-ggplot(saratoga_houses, aes(x=Living.Area, y=Price)) +
-  geom_point() +
-  geom_smooth(method="loess")
-finalize_image()
-```
-
-`r display_image`
-
-<div class="notes">
-
-
-
-</div>
 
 ### Trend lines (logistic)
 
@@ -276,4 +200,6 @@ finalize_image()
 ### Helpful tips
 
 ((Add three or four slides here. Maybe talk about opacity.))
+
+### Families of lines
 

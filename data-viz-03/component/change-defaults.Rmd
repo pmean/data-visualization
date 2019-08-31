@@ -1,0 +1,50 @@
+---
+title: "Exercise, change line defaults"
+author: "Steve Simon"
+date: "Created: 2019-08-19"
+output: powerpoint_presentation
+---
+
+```{r child="../../common-files/src/component-header.Rmd"}
+```
+
+```{r read-files}
+load("../../common-files/data/cpi.RData")
+load("../../common-files/data/houses.RData")
+```
+
+### Fundamentals, On your own
++ change the line to a dashed line.
++ Make the width equal to 3
++ Make the color green
+
+### Fundamentals, Wait before showing
+
+((Python code))
+
+```{}
+# R code
+ggplot(cpi, aes(x=t, y=CPI)) +
+  geom_line(size=3, linetype="dashed", color="green")
+```
+
+((Tableau steps))
+
+### Fundamentals, What your visualization might look like
+
+```{r width-shape-color}
+initiate_image()
+ggplot(cpi, aes(x=t, y=CPI)) +
+  geom_line(size=3, linetype="dashed", color="green")
+finalize_image()
+```
+
+`r display_image`
+
+<div class="notes">
+
+
+
+</div>
+
+

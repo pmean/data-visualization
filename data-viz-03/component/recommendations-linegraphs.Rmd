@@ -1,0 +1,25 @@
+---
+title: "Recommendations for line graphss"
+author: "Steve Simon"
+date: "Created: 2019-08-19"
+output: powerpoint_presentation
+---
+
+```{r child="../../common-files/src/component-header.Rmd"}
+```
+
+### Recomendations, line graphs
++ High frequenct events
+  + Avoid think lines, long dashes.
+  
+<div class="notes">
+
+High frequency events are sudden surges and dips in a line over a narrow range. If your data has high frequency events (think stock market prices), then avoid thick lines or long dashes. These can hide some of the high frequency events.
+
+</div>
+
+### Recommendations, show variation
++ Original data
++ Error bars
++ Confidence bands
++ Boxplots

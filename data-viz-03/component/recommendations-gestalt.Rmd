@@ -1,0 +1,22 @@
+---
+title: "Recommendations based on Gestalt principles"
+author: "Steve Simon"
+date: "Created: 2019-08-19"
+output: powerpoint_presentation
+---
+
+```{r child="../../common-files/src/component-header.Rmd"}
+```
+
+
+### Gestalt, Changing your emphasis
+
+((Recreate example from slides 47-50 of Bergen and Iverson))
+
+### Gestalt, Text versus legend
+
+((Show how the proximity of text on the graph is superior to a legend off in a corner))
+
+### Gestalt, stronger versus weaker
+
+(Show an informal hierarchy of Gestalt principles. Enclosure, Connectedness, Proximity, Color, Shape)

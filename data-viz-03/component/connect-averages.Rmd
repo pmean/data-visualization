@@ -1,0 +1,26 @@
+---
+title: "Exercise, connect averages"
+author: "Steve Simon"
+date: "Created: 2019-08-19"
+output: powerpoint_presentation
+---
+
+```{r child="../../common-files/src/component-header.Rmd"}
+```
+
+```{r}
+load("../../common-files/data/cpi.RData")
+load("../../common-files/data/houses.RData")
+```
+
+### Fundamentals, On your own
++ Draw a line graph showing the relationship between the number of bathrooms and price.
+
+### Fundamentals, Wait before showing
+
+((Add code here))
+
+### Fundamentals, What your visualization might look like
+
+((Add visualization here))
+

@@ -1,5 +1,5 @@
 ---
-title: "Data-viz-03, Tutorial on Gestalt principles"
+title: "Tutorial on Gestalt principles"
 author: "Steve Simon"
 date: "Created: 2019-08-19"
 output: powerpoint_presentation
@@ -8,7 +8,7 @@ output: powerpoint_presentation
 ```{r child="../../common-files/src/component-header.Rmd"}
 ```
 
-### The gestalt of graphics
+### Gestalt, introduction
 
 + These ideas drawn from the Bergen and Iverson workshop.
 + Gestalt definition
@@ -17,7 +17,7 @@ output: powerpoint_presentation
   
 <div class="notes">
 
-
+The Gestalt school of Psychology developed several principles that are very useful in helping to make an effective visualization. A simple definition of Gestalt is that the whole is more than just the individual items. There is a lot to Gestalt psychology, but the portion that is relevant to you is the ability to draw someone's eye not to individual components of a graph, but to a group of related components that allow the viewer to see patterns or associations.
 
 </div>
 
@@ -30,11 +30,13 @@ output: powerpoint_presentation
   
 <div class="notes">
 
-The field of artistic design is more commonly called graphic design, but I use the former term to distinguish it from statistical graphics. Artistic design is the use of typography, photography, and illustration to effectively convey a message. Artistic designers work on commercial logos, magazines and brochure s, and product packaging.
+The field of artistic design is more commonly called graphic design, but I use the former term to distinguish it from statistical graphics. Artistic design is the use of typography, photography, and illustration to effectively convey a message. Artistic designers work on commercial logos, magazines and brochures, and product packaging.
+
+These are interesting, and well worth some time viewing, even though they don't speak directly to the process of developing effective visualizations.
 
 </div>
 
-### A block of points - no emphasis
+### Gestalt, A block of points - no emphasis
 
 ```{r block-no-emphasis}
 initiate_image()
@@ -57,25 +59,7 @@ What you see in this graph is 20 individual points. When you design a graph, you
 
 </div>
 
-### Color emphasizes rows
-
-```{r block-color}
-initiate_image()
-f <- rep(c("red", "green", "red", "green"), each=5)
-g + geom_point(color=f, size=5)
-finalize_image()
-```
-
-`r display_image`
-
-<div class="notes">
-
-
-
-</div>
-
-
-### Shape emphasizes columns
+### Gestalt, Similarity (shape)
 
 ```{r block-shape}
 initiate_image()
@@ -88,11 +72,33 @@ finalize_image()
 
 <div class="notes">
 
+Items that are similar tend to be grouped together.
 
+The use of common shapes causes you to see five columns rather than twenty individual data points.
 
 </div>
 
-### Double up for stronger emphasis
+### Gestalt, Similarity (color)
+
+```{r block-color}
+initiate_image()
+f <- rep(c("red", "green", "red", "green"), each=5)
+g + geom_point(color=f, size=5)
+finalize_image()
+```
+
+`r display_image`
+
+<div class="notes">
+
+Notice how the use of color tends to draw the eye in and see the graph as not 20 separate points, but rather four rows of points.
+
+The effect of color is a lot stronger than the effect of shape.
+
+</div>
+
+
+### Gestalt, Double up for stronger emphasis
 
 ```{r block-double-up}
 initiate_image()
@@ -106,11 +112,11 @@ finalize_image()
 
 <div class="notes">
 
-
+You can double up by using a common shape AND a common color to develop an even stronger association.
 
 </div>
 
-### Connectedness emphasizes rows
+### Gestalt, Connectedness
 
 ```{r block-connectedness}
 initiate_image()
@@ -126,11 +132,11 @@ finalize_image()
 
 <div class="notes">
 
-
+A connection between individual points causes you to perceive those connected points as part of a single group. Here, you see four rows rather than five columns.
 
 </div>
 
-### Proximity emphasize columns
+### Gestalt, Proximity
 
 ```{r block-proximity}
 initiate_image()
@@ -143,11 +149,11 @@ finalize_image()
 
 <div class="notes">
 
-
+Points that are close to one another also tend to encourage their grouping. Notice that the scaling change caused the points within a column to be a lot closer than the points within a row. So you tend to see this as five columns rather than four rows.
 
 </div>
 
-### Enclosure for emphasis, eight special points
+### Gestalt, Enclosure for emphasis, eight special points
 
 ```{r block-enclosure}
 initiate_image()
@@ -165,15 +171,30 @@ finalize_image()
 
 <div class="notes">
 
-
+An enclosure is a strong way to emphasize grouping. Here the box provides an emphasis on a special group of eight points.
 
 </div>
 
-### Continuity
+### Gestalt, contrast
 
-((Show example of sloping text))
+(Show image of contrasts)
 
-### Changing your emphasis
+<div class="notes">
 
-((Recreate example from slides 47-50 of Bergen and Iverson))
+The one pattern that deviates from the others tends to draw your eye toards it.
 
+</div>
+
+### Gestalt, Continuity
+
+(Show example of sloping text)
+
+<div class="notes">
+
+A consistent trend or pattern between two elements of a graph will encourage you to group those elements together.
+
+</div>
+
+### Gestalt, Common fate
+
+(Show an image of five upward trends with two downward trends)

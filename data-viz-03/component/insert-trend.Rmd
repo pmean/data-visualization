@@ -1,0 +1,58 @@
+---
+title: "Exercise, insert a trend line"
+author: "Steve Simon"
+date: "Created: 2019-08-19"
+output: powerpoint_presentation
+---
+
+```{r child="../../common-files/src/component-header.Rmd"}
+```
+
+```{r}
+load("../../common-files/data/cpi.RData")
+load("../../common-files/data/houses.RData")
+```
+
+### On your own
++ Fit a linear trend line looking at Living.Area versus Price.
++ Fit a smooth curve
+
+### Wait before showing
+
+### What your visualization might look like
+
+```{r living-area-lm}
+initiate_image()
+ggplot(saratoga_houses, aes(x=Living.Area, y=Price)) +
+  geom_point() +
+  geom_smooth(method="lm")
+finalize_image()
+```
+
+`r display_image`
+
+<div class="notes">
+
+
+
+</div>
+
+
+### What your visualization might look like
+
+```{r living-area-loess}
+initiate_image()
+ggplot(saratoga_houses, aes(x=Living.Area, y=Price)) +
+  geom_point() +
+  geom_smooth(method="loess")
+finalize_image()
+```
+
+`r display_image`
+
+<div class="notes">
+
+
+
+</div>
+

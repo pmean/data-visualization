@@ -40,7 +40,6 @@ ggplot(cpi, aes(x=t, y=CPI)) +
 
 Here is the Python code and the R code to read in the data and produce a simple line graph.
 
-
 </div>
 
 ### Preparation, Python graph
