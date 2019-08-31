@@ -5,11 +5,6 @@ date: "Creation date: 2019-08-18"
 output: powerpoint_presentation
 ---
 
-```{r echo=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
-source("../../common-files/setup.R")
-```
-
 ### Group exercise
 + Review one of these graphs/newspaper articles
   + [More Strikeouts Than Hits? Welcome to Baseball’s Latest Crisis.](https://www.nytimes.com/2018/08/16/sports/baseball-mlb-strikeouts.html)

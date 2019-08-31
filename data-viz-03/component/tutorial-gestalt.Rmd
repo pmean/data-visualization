@@ -5,9 +5,7 @@ date: "Created: 2019-08-19"
 output: powerpoint_presentation
 ---
 
-```{r echo=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
-source("../../common-files/setup.R")
+```{r child="../../common-files/src/component-header.Rmd"}
 ```
 
 ### The gestalt of graphics

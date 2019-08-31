@@ -73,4 +73,3 @@ opinions <- read.csv("../data/scotus_opinions.csv", stringsAsFactors=FALSE)
 sc_cases <- read.csv("../data/scotus_cases.csv", stringsAsFactors=FALSE) 
 save(c("opinions", "sc_cases"). file="../data/scotus.RData")
 ```
-

@@ -1,13 +1,14 @@
 ---
-title: "Data-viz-03, Recommendations"
+title: "Line graphs, recommendations"
 author: "Steve Simon"
 date: "Created: 2019-08-19"
 output: powerpoint_presentation
 ---
 
-```{r echo=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
-source("../../common-files/setup.R")
+```{r child="../../common-files/src/component-header.Rmd"}
+```
+
+```{r}
 load("../../common-files/data/cpi.Rdata")
 ```
 

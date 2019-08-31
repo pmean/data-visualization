@@ -1,5 +1,5 @@
 ---
-title: "Data-viz-03, line graphs"
+title: "Data visualization, line graphs"
 author: "Steve Simon"
 date: "Created: 2019-08-19"
 output: powerpoint_presentation
@@ -7,13 +7,16 @@ output: powerpoint_presentation
 
 ```{r echo=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
-source("../../common-files/setup.R")
+source("../../common-files/src/setup.R")
 ```
 
 ```{r child="../component/preparation.Rmd"}
 ```
 
-```{r child="../component/exercise-message.Rmd"}
+```{r child="../component/newspaper-graphs.Rmd"}
+```
+
+```{r child="../../common-files/src/exercise-message.Rmd"}
 ```
 
 ```{r child="../component/tutorial-gestalt.Rmd"}

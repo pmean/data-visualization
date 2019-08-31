@@ -1,13 +1,11 @@
 ---
-title: "Data-viz-03, Fundamentals"
+title: "Line graphs, Fundamentals"
 author: "Steve Simon"
 date: "Created: 2019-08-19"
 output: powerpoint_presentation
 ---
 
-```{r echo=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
-source("../../common-files/setup.R")
+```{r child="../../common-files/src/component-header.Rmd"}
 ```
 
 ```{r read-files}

@@ -14,7 +14,7 @@ output: powerpoint_presentation
 + Color systems
   + RGB
   + HSV
-  + CYMK
+  + CMYK
   
 <div class="notes">
 
@@ -728,7 +728,7 @@ finalize_image()
 
 `r display_image`
 
-### Colors, CYMK system
+### Colors, CMYK system
 
 ![Illustration of subtractive color scheme](../images/external/cymk-subtractive.png)
 
@@ -738,15 +738,17 @@ When you are printing, more of something makes things darker. This is the exact 
 
 </div>
 
-### Colors, CYMK system, combinations
-+ Magenta plus Yellow equals Red
-+ Magenta plus Cyan equals Blue
+### Colors, CMYK system, combinations
++ Building blocks Cyan (C), Magenta (M), Yellow (Y), Black (K).
++ Cyan plus Magenta equals Blue
 + Cyan plus Yellow equals Green
++ Magenta plus Yellow equals Red
 + All three combined equals Black
 
-### Colors, CYMK system, Why you need black
-+ Only in theory does, C+Y+M = Black
-
+### Colors, CMYK system, Why you need black
++ Only in theory does, C+M+Y = Black
+  + Too much ink
+  + Dull muddy color
 
 ### Colors, review
 + Kindergarten view of colors
