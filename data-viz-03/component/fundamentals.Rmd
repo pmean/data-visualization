@@ -105,22 +105,21 @@ If you have a lot of data, a line can sometimes emphasize patterns or trends tha
 
 ### Fundamentals, Lines as averages
 
+### R code
++ Here's the code in R
+```
+ggplot(saratoga_houses, aes(Bedrooms, Price)) +
+  geom_point() +
+  stat_summary(fun.y=mean, geom="line")
+```
+
+### R output
+
 ```{r average-with-data}
 initiate_image()
 ggplot(saratoga_houses, aes(Bedrooms, Price)) +
   geom_point() +
-  stat_summary(aes(y=Price, group=1), fun.y=mean, geom="line")
-finalize_image()
-```
-
-`r display_image`
-
-### Fundamentals, Lines as averages
-
-```{r average-without-data}
-initiate_image()
-ggplot(saratoga_houses, aes(Bedrooms, Price)) +
-  stat_summary(aes(y=Price, group=1), fun.y=mean, geom="line")
+  stat_summary(fun.y=mean, geom="line")
 finalize_image()
 ```
 
@@ -128,16 +127,19 @@ finalize_image()
 
 <div class="notes">
 
-This image replaces a bunch of data points with an average computed at each X-value.
+
 
 </div>
 
-### Python
-
+### Python code
++ Here's the Python code
 ```{python}
 import pandas as pd
 import altair as alt
 df = pd.read_csv("../../common-files/data/houses.csv")
+```
+
+```{python, echo=TRUE}
 pts = alt.Chart(df).mark_point().encode(
     x='Bedrooms',
     y='Price'
@@ -147,8 +149,13 @@ avg = alt.Chart(df).mark_line().encode(
     y='mean(Price)'
 )
 ch = pts + avg
+```
+
+```{python}
 ch.save("../images/python/average-summary.html")
 ```
+
+### Python graph
 
 ![Python graph with average summary line](../images/python/average-summary.png)
 
