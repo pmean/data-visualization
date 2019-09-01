@@ -21,7 +21,14 @@ read.csv("../../common-files/data/titanic3.csv")
 ```
 + Python code
 ```
-(To be added)
+import pandas as pd
+import altair as alt
+df = pd.read_csv("../../common-files/data/titanic3.csv")
+ch = alt.Chart(df).mark_bar().encode(
+    x='pclass',
+    y='count()'
+)
+ch.save("../images/python/basic-barchart.html")
 ```
 
 <div class="notes">
@@ -63,7 +70,14 @@ Import the data and create a bar chart showing the frequency of opinions written
 ### Preparation, Code
 + Python code
 ```
-(Add later)
+import pandas as pd
+import altair as alt
+df = pd.read_csv("../../common-files/data/titanic3.csv")
+ch = alt.Chart(df).mark_bar().encode(
+    x='pclass:N',
+    y='count()'
+)
+ch.save("../images/python/basic-barchart.html")
 ```
 + R code
 ```
@@ -72,7 +86,18 @@ Import the data and create a bar chart showing the frequency of opinions written
 
 ### Preparation, Python output
 
-(Add later)
+```{python}
+import pandas as pd
+import altair as alt
+df = pd.read_csv("../../common-files/data/titanic3.csv")
+ch = alt.Chart(df).mark_bar().encode(
+    x='pclass:N',
+    y='count()'
+)
+ch.save("../images/python/basic-barchart.html")
+```
+
+![Barchart in Python](../images/python/basic-barchart.png)
 
 ### Preparation, R output
 
@@ -86,6 +111,14 @@ finalize_image()
 
 `r display_image`
 
+### Preparation, Tableau steps
++ Import titanic3.csv
++ Drag pclass to columns
+  + Change to Discete Dimension
++ Drag pclass to rows
+  + Change to Measure(Count)
++ If needed, change Marks to Bar
+
 ### Preparation, Tableau output
 
-(Add later)
+![Barchart in Tableau](../images/tableau/basic-barchart.png)

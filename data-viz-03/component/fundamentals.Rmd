@@ -13,6 +13,24 @@ load("../../common-files/data/cpi.RData")
 load("../../common-files/data/houses.RData")
 ```
 
+### Fundamentals, how to produce a line graph
++The key step in Python
+```
+mark_line()
+```
++ The key step in R
+```
+geom_line()
+```
++ The key step in Tableau
+  + Choose Line from the Marks pulldown list
+  
+<div class="notes">
+
+The basic steps to producing a line graph are fairly easy in each of the systems. In Tableau, you use the mark_line function. In R, you use the geom_line function. In Tableau, if you are lucky, the default graph choice will be a line graph. If not, select Line from the Marks list.
+
+</div>
+
 ### Fundamentals, Aesthetics for lines
 + Location
 + Size
@@ -44,7 +62,7 @@ finalize_image()
 
 <div class="notes">
 
-Lines can change size, but most systems refer to this as line width rather than size.
+Lines can change size, but some systems refer to this as line width rather than size.
 
 </div>
 
@@ -81,19 +99,28 @@ finalize_image()
 
 <div class="notes">
 
-If you have a lot of data, a line can sometimes emphasize patterns or trends that oyu might miss with just a scatterplot.
+If you have a lot of data, a line can sometimes emphasize patterns or trends that you might miss with just a scatterplot.
 
 </div>
 
 ### Fundamentals, Lines as averages
 
-```{r average}
+```{r average-with-data}
 initiate_image()
-saratoga_houses %>%
-  group_by(Bedrooms) %>%
-  summarize(avg_price=mean(Price)) %>%
-  ggplot(aes(x=Bedrooms, y=avg_price)) +
-    geom_line() + geom_point(size=5)
+ggplot(saratoga_houses, aes(Bedrooms, Price)) +
+  geom_point() +
+  stat_summary(aes(y=Price, group=1), fun.y=mean, geom="line")
+finalize_image()
+```
+
+`r display_image`
+
+### Fundamentals, Lines as averages
+
+```{r average-without-data}
+initiate_image()
+ggplot(saratoga_houses, aes(Bedrooms, Price)) +
+  stat_summary(aes(y=Price, group=1), fun.y=mean, geom="line")
 finalize_image()
 ```
 
@@ -104,6 +131,26 @@ finalize_image()
 This image replaces a bunch of data points with an average computed at each X-value.
 
 </div>
+
+### Python
+
+```{python}
+import pandas as pd
+import altair as alt
+df = pd.read_csv("../../common-files/data/houses.csv")
+pts = alt.Chart(df).mark_point().encode(
+    x='Bedrooms',
+    y='Price'
+)
+avg = alt.Chart(df).mark_line().encode(
+    x='Bedrooms',
+    y='mean(Price)'
+)
+ch = pts + avg
+ch.save("../images/python/average-summary.html")
+```
+
+![Python graph with average summary line](../images/python/average-summary.png)
 
 ### Fundamentals, Lines as counts
 

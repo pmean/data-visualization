@@ -24,27 +24,53 @@ You can find information about this data set on the DASL website, but use the cs
 
 </div>
 
-### Preparation, Pyhton and R code
-+ Python code
+### Preparation, Pyhton code
++ Here's the code in Python
 ```
-(To be added)
+import pandas as pd
+import altair as alt
+df = pd.read_csv("../../common-files/data/cpi.csv")
+ch = alt.Chart(df).mark_line().encode(
+    x='t',
+    y='CPI'
+)
+ch.save("../images/python/basic-lineplot.html")
 ```
-+ R code
+
+<div class="notes">
+
+Here is the Python code to read in the data and produce a simple line graph.
+
+</div>
+
+### Preparation, Python graph
+
+```{python}
+import pandas as pd
+import altair as alt
+df = pd.read_csv("../../common-files/data/cpi.csv")
+ch = alt.Chart(df).mark_line().encode(
+    x='t',
+    y='CPI'
+)
+ch.save("../images/python/basic-lineplot.html")
 ```
-cpi <- read.csv("../data/cpi.csv)
+
+![Line plot in Python](../images/python/basic-lineplot.png)
+
+### Preparation, R code
++ Here's the code in R
+```
+cpi <- read.csv("../data/cpi.csv")
 ggplot(cpi, aes(x=t, y=CPI)) +
   geom_line()
 ```
 
 <div class="notes">
 
-Here is the Python code and the R code to read in the data and produce a simple line graph.
+Here is the R code to read in the data and produce a simple line graph.
 
 </div>
-
-### Preparation, Python graph
-
-(To be added)
 
 ### Preparation, R graph
 
@@ -63,7 +89,21 @@ Here is what the graph looks like in R. See if you can reproduce it.
 
 </div>
 
+### Preparation, Tableau steps
++ Import cpi.csv
++ Drag t to Columns
+  + Change t to Dimension Continuous
++ Drag CPI to Rows
+  + Chage CPI to Dimension Continuous
++ Change Marks to Line
+
+<div class="notes">
+
+Here are the steps in creating a line graph in Tableau.
+
+</div>
+
 ### Preparation, Tableau graph
 
-(To be added)
+![Line graph in Tableau](../images/tableau/basic-linegraph.png)
 
