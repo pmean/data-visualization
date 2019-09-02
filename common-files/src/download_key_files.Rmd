@@ -37,11 +37,11 @@ save(titanic, file="../data/titanic.RData")
 
 Scotus: This is used in data-viz-02.
 
-```{r read-scotus}
+```{r read-scotus, eval=FALSE}
 scotus_full <- read_csv("../data/opinions_since_1970.csv")
 ```
 
-```{r clean-scotus}
+```{r clean-scotus, eval=FALSE}
 scotus_full %>% select(-c(7, 8, 14)) %>% data.frame -> scotus
 scotus$author_name <- 
   sub("justice [[author]]ginsburg[[/author]]", 
@@ -54,7 +54,7 @@ scotus$author_name <- sub("justice waite", "justice white", scotus$author_name)
 table(scotus$author_name, scotus$year_filed)
 ```
 
-```{r save-scotus}
+```{r save-scotus, eval=FALSE}
 scotus %>%
   data.frame(stingsAsFactors=FALSE) %>%
   filter(category != "per_curiam") %>%
@@ -72,4 +72,27 @@ scotus %>%
 opinions <- read.csv("../data/scotus_opinions.csv", stringsAsFactors=FALSE) 
 sc_cases <- read.csv("../data/scotus_cases.csv", stringsAsFactors=FALSE) 
 save(c("opinions", "sc_cases"). file="../data/scotus.RData")
+```
+
+The cpi food indexes are used in data-viz-03. They were downloaded from FRED.
+
+```{r read-fred}
+library(ggplot2)
+food_pets <- read.csv("../../common-files/data/cpi-pet-food.csv", as.is=TRUE)
+food_home <- read.csv("../../common-files/data/cpi-food-at-home.csv", as.is=TRUE)
+food_away <- read.csv("../../common-files/data/cpi-food-away-from-home.csv", as.is=TRUE)
+food_home <- food_home[food_home$DATE>=as.Date("2002-01-01"), ]
+food_away <- food_away[food_away$DATE>=as.Date("2002-01-01"), ]
+names(food_pets) <- c("date", "cpi")
+names(food_home) <- c("date", "cpi")
+names(food_away) <- c("date", "cpi")
+food_pets$cpi <- food_pets$cpi/food_pets$cpi[1]
+food_home$cpi <- food_home$cpi/food_home$cpi[1]
+food_away$cpi <- food_away$cpi/food_away$cpi[1]
+n <- dim(food_pets)[1]
+food_indx <- rbind(food_away, food_home, food_pets)
+food_indx$indx <- rep(c("away", "home", "pets"), each=n)
+ggplot(food_indx, aes(date, cpi)) + geom_point()
+ggplot(food_home, aes(date, cpi)) + geom_point()
+ggplot(food_away, aes(date, cpi)) + geom_point()
 ```

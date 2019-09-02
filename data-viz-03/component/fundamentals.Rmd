@@ -214,70 +214,7 @@ There is a clear and consistnet trend in the average price. As the number of bed
 ```{r child="../component/connect-averages.Rmd"}
 ```
 
-### Fundamentals, Trend lines (linear)
-
-```{r linear-trend-age}
-initiate_image()
-ggplot(saratoga_houses, aes(Age, Price)) +
-  geom_point() +
-  geom_smooth(method="lm")
-finalize_image()
-```
-
-`r display_image`
-
-<div class="notes">
-
-
-
-</div>
-
-### Fundamentals, Trend lines (spline)
-
-```{r smooth-trend}
-initiate_image()
-ggplot(saratoga_houses, aes(Age, Price)) +
-  geom_point() +
-  geom_smooth(method="loess")
-finalize_image()
-```
-
-`r display_image`
-
-<div class="notes">
-
-
-
-</div>
-
-### Trend lines (spline), not so smooth
-
-```{r smooth-trend-3}
-initiate_image()
-ggplot(saratoga_houses, aes(Age, Price)) +
-  geom_point() +
-  geom_smooth(method="loess", span=0.3)
-finalize_image()
-```
-
-`r display_image`
-
-<div class="notes">
-
-
-
-</div>
-
-```{r child="../component/insert-trend.Rmd"}
-```
-
-### Trend lines (logistic)
-
-((Need a different data set here. Titanic???))
-
-### Helpful tips
-
-((Add three or four slides here. Maybe talk about opacity.))
-
 ### Families of lines
+
+(Add three or four slides plus an exercise)
 

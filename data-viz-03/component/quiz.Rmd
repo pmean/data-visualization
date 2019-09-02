@@ -1,5 +1,5 @@
 ---
-title: "Scatterplots, quiz"
+title: "Linegraphs, quiz"
 author: "Steve Simon"
 output: powerpoint_presentation
 ---

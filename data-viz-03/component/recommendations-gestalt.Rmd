@@ -1,5 +1,5 @@
 ---
-title: "Recommendations based on Gestalt principles"
+title: "Recommendations, Gestalt principles"
 author: "Steve Simon"
 date: "Created: 2019-08-19"
 output: powerpoint_presentation
@@ -8,15 +8,247 @@ output: powerpoint_presentation
 ```{r child="../../common-files/src/component-header.Rmd"}
 ```
 
+### Experiment with gestalt principles
++ Some features are stronger than others
++ Different groupings lead to different messages
++ Limitations of high frequency data
 
-### Gestalt, Changing your emphasis
+### Gestalt recommendations, Fictional data set
++ Ficitonal data on three individuals
+```{r fictional-data}
+exam <- rep(1:4, 3)
+score <- c(80, 50, 20, 22, 90, 70, 30, 28, 20, 30, 70, 73)
+id <- rep(1:3, each=4)
+name <- rep(c("Able", "Baker", "Charlie"), each=4)
+fiction <- data.frame(id=id, name=name, exam=exam, score=score)
+fiction
+```
 
-((Recreate example from slides 47-50 of Bergen and Iverson))
+<div class="notes">
+
+These ideas drawn from the Bergen and Iverson workshop. The data is purely fictional, but it is a great example of how you can emphasize different features of your data in a visualization.
+
+</div>
+
+### Gestalt recommendations, How do you establish groupings
+
+```{r fictional-ungrouped}
+initiate_image()
+ggplot(fiction, aes(exam, score)) +
+  geom_point()
+finalize_image()
+```
+
+`r display_image`
+
+<div class="notes">
+
+Here are the data points without any indication of which values belong to which individuals. How can you best show the individual values?
+
+</div>
+
+### Gestalt recommendations, Using shape to establish groupings
+
+```{r groupings-shape}
+initiate_image()
+ggplot(fiction, aes(exam, score, shape=name)) +
+  geom_point(size=5)
+finalize_image()
+
+```
+
+`r display_image`
+
+<div class="notes">
+
+You are relying on the principle of similarity, and there needs to be sufficient dissimilarity in the different symbols to make this work. A closed circle, a closed square, and a closed triangle all loop pretty much alike. How can you get more contrast?
+
+</div>
+
+### Gestalt recommendations, shape choices in R
+
+```{r different-shapes}
+initiate_image()
+nx <- 5
+ny <- 5
+x <- rep(1:nx, ny)
+y <- rep(1:ny, each=nx)
+df <- data.frame(x, y)
+z <- 1:(nx*ny)
+ggplot(df, aes(x, y)) + 
+  geom_point(shape=z, size=5)
+finalize_image()
+```
+
+`r display_image`
+
+### Gestalt recommendations, Better contrasting shapes
+
+```{r contrasting-shapes}
+initiate_image()
+ggplot(fiction, aes(exam, score, shape=name)) +
+  geom_point(size=5) +
+  scale_shape_manual(values=c(1, 15, 3))
+finalize_image()
+
+```
+
+`r display_image`
+
+<div class="notes">
+
+You are relying on the principle of similarity, and there needs to be sufficient dissimilarity in the different symbols to make this work. A closed circle, a closed square, and a closed triangle all loop pretty much alike. How can you get more contrast?
+
+</div>
+
+### Gestalt recommendations, Color
+
+```{r contrasting-colors}
+initiate_image()
+ggplot(fiction, aes(exam, score, color=name)) +
+  geom_point(size=5) +
+  scale_color_manual(values=c("Darkred", "Darkgreen", "Darkblue"))
+finalize_image()
+
+```
+
+`r display_image`
+
+<div class="notes">
+
+You are relying on the principle of similarity, and there needs to be sufficient dissimilarity in the different symbols to make this work. A closed circle, a closed square, and a closed triangle all loop pretty much alike. How can you get more contrast?
+
+</div>
+
+### Gestalt recommendations, Color
+
+```{r contrasting-better-colors}
+initiate_image()
+ggplot(fiction, aes(exam, score, color=name)) +
+  geom_point(size=5) +
+  scale_color_manual(values=c("Red", "Green", "Blue"))
+finalize_image()
+
+```
+
+`r display_image`
+
+<div class="notes">
+
+You are relying on the principle of similarity, and there needs to be sufficient dissimilarity in the different symbols to make this work. A closed circle, a closed square, and a closed triangle all loop pretty much alike. How can you get more contrast?
+
+</div>
+
+### Gestalt recommendations, Connectedness
+
+```{r connected-shapes}
+shp <- function(i) {c(1, 3, 15)[1:i]}
+initiate_image()
+ggplot(fiction, aes(exam, score, shape=name)) +
+  geom_point(size=5) +
+  scale_shape_manual(values=c(1, 15, 3)) + 
+  geom_line(group=fiction$name)
+finalize_image()
+
+```
+
+`r display_image`
+
+<div class="notes">
+
+Connectedness provides a much stronger sense of gestalt than similarity.
+
+
+</div>
 
 ### Gestalt, Text versus legend
++ Legends
+  + Violates the rule of proximity
+  + Use color cues, if possible
+  + Replace with text labels on the graph
+  + Use letter codes
 
-((Show how the proximity of text on the graph is superior to a legend off in a corner))
+### Gestalt, Color cues
 
-### Gestalt, stronger versus weaker
+(Use color in legend names)
 
-(Show an informal hierarchy of Gestalt principles. Enclosure, Connectedness, Proximity, Color, Shape)
+### Gestalt, Letter codes
+
+(Show text symbols A, B, and C)
+
+### Gestalt, text labels
+
+```{r poor-text-labels}
+shp <- function(i) {c(1, 3, 15)[1:i]}
+initiate_image()
+ggplot(fiction, aes(exam, score, color=name)) +
+  geom_point(size=5) +
+  geom_line(group=fiction$name) +
+  scale_color_manual(values=c("Red", "Green", "Blue")) +
+  geom_text(x=3.5, y=25, label="Able", size=8, color="black") +
+  geom_text(x=3.5, y=35, label="Baker", size=8, color="black") +
+  geom_text(x=3.5, y=75, label="Charlie", size=8, color="black") +
+  theme(legend.position="none")
+finalize_image()
+
+```
+
+`r display_image`
+
+<div class="notes">
+
+By putting the labels directly on the graph, you minimize the distance that your eye has to travel. No more back and forth between the legend and the graph.
+
+You can improve further on these labels. You might have had a moment of hesitation when you saw the label for Abel. Does it belong with the line just above or the line just below. It only slows you down for a second, because by process of elimination, you can quickly decide that it belongs with the line just below it.
+
+But you can improve the sense of belongingness by using some of your Gestalt principles.
+
+</div>
+
+### Gestalt, text labels
+
+```{r better-text-labels}
+shp <- function(i) {c(1, 3, 15)[1:i]}
+initiate_image()
+ggplot(fiction, aes(exam, score, color=name)) +
+  geom_point(size=5) +
+  geom_line(group=fiction$name) +
+  scale_color_manual(values=c("Red", "Green", "Blue")) +
+  geom_text(x=3.5, y=24, label="Able", size=8, color="red", angle=4) +
+  geom_text(x=3.5, y=32, label="Baker", size=8, color="green", angle=-4) +
+  geom_text(x=3.5, y=75, label="Charlie", size=8, color="blue", angle=8) +
+  theme(legend.position="none")
+finalize_image()
+
+```
+
+`r display_image`
+
+<div class="notes">
+
+Notice how the labels in this example have been moved closer to the lines. The exploits the Gestalt principle of proximity. Notice how the names have the same colors as the lines. Thie exploits the Gestalt principle of similarity. It would be very hard to incorrectly assign the red label of Abel with the green line of Baker. Notice further that the labels have a slope that roughly matches the lines they are attached to. This exploits the Gestalt principle of common fate.
+
+</div>
+
+### What patterns do you see in this graph?
+
+```{r what-message}
+shp <- function(i) {c(1, 3, 15)[1:i]}
+initiate_image()
+ggplot(fiction, aes(exam, score)) +
+  geom_point(size=5) +
+  geom_line(group=fiction$name) +
+  geom_text(x=3.5, y=24, label="Able", size=8, angle=4) +
+  geom_text(x=3.5, y=32, label="Baker", size=8, angle=-4) +
+  geom_text(x=3.5, y=75, label="Charlie", size=8, angle=8) +
+  theme(legend.position="none")
+finalize_image()
+```
+
+`r display_image`
+
+<div class="notes">
+
+There are at least two messages hiding in this graph. What are they? 
+
+</div>

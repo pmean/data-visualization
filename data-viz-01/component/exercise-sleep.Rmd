@@ -1,5 +1,5 @@
 ---
-title: "Data-viz-01, Exercise using the sleep data set"
+title: "Scaterplots, Final exercise, Using the sleep data set"
 author: "Steve Simon"
 output: powerpoint_presentation
 ---
