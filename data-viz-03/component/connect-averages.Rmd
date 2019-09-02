@@ -13,14 +13,94 @@ load("../../common-files/data/cpi.RData")
 load("../../common-files/data/houses.RData")
 ```
 
-### Fundamentals, On your own
-+ Draw a line graph showing the relationship between the number of bathrooms and price.
+### Exercise, Connect individual averages
++ Draw a scatterplot showing
+  + X = Bathrooms
+  + Y = Age
++ Add a line connect the individual averages
 
-### Fundamentals, Wait before showing
+<div class="notes">
 
-((Add code here))
+On your own, draw a similar plot. Put the number of bathrooms on the X axis and the age of the house on the Y-axis. Add a line conencting the individual averages.
 
-### Fundamentals, What your visualization might look like
+</div>
 
-((Add visualization here))
+### Exercise, Python code
+
+```{python}
+import pandas as pd
+import altair as alt
+df = pd.read_csv("../../common-files/data/houses.csv")
+```
+
+```{python, echo=TRUE}
+pts = alt.Chart(df).mark_point().encode(
+    x='Bathrooms',
+    y='Age'
+)
+avg =alt.Chart(df).mark_line().encode(
+    x='Bathrooms',
+    y='mean(Age)'
+)
+ch = pts+avg
+```
+
+```{python}
+ch.save("../images/python/average-age.html")
+```
+
+
+### Exercise, Pyhton output
+
+![Python plot showing trend of age versus bathrooms](../images/python/average-age.png)
+
+### Exercise, R code
++ Here's the R code
+```
+ggplot(saratoga_houses, aes(Bathrooms, Age)) +
+  geom_point() +
+  stat_summary(fun.y=mean, geom="line")
+```
+
+<div class="notes">
+
+The geom_point function creates the scatterplot and the stat_summary function adds the line.
+
+</div>
+
+### Exercise, R output
+```{r average-with-data}
+initiate_image()
+ggplot(saratoga_houses, aes(Bathrooms, Age)) +
+  geom_point() +
+  stat_summary(fun.y=mean, geom="line")
+finalize_image()
+```
+
+`r display_image`
+
+<div class="notes">
+
+There is a clear and consistent trend in the average age. The average age declines as the number of bathrooms increase. There is a blip at the end, but this is probably just an artefact due to the small sample size.
+
+</div>
+
+
+### Exercise, Tableau steps
+
+<div class="notes">
+
+
+
+</div>
+
+### Exercise, Tabeleau output
+
+![Tableau plot showing trend in average age versus number of bathrooms](../images/tableau/average-age.png)
+
+<div class="notes">
+
+
+
+</div>
 

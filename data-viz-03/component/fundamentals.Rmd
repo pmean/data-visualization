@@ -31,6 +31,24 @@ The basic steps to producing a line graph are fairly easy in each of the systems
 
 </div>
 
+### Fundamentals, Changing axis range
++ Python
+```
+alt.Y(scale=alt.Scale(zero=False))
+```
+or
+```
+alt.Y(scale=alt.Scale(domain=(200, 250)))
+```
++ R code
+```
+expand_limits(y=0)
+```
++ Tableau steps
+ + (Add details)
+ 
+<div class="notes
+
 ### Fundamentals, Aesthetics for lines
 + Location
 + Size
@@ -86,7 +104,25 @@ The shape of a line is not whether it is curved or straight. The shape of a line
 ```{r child="../component/change-defaults.Rmd"}
 ```
 
-### Fundamentals, Lines as summary statistics
+### Fundamentals, Adding lines to a scatterplot
+
++ Lines can emphasize patterns in a scatterplot
+  + Connect means
+  + Linear regression (not covered)
+  + Moving average (not covered)
+  + Smoothing splines (not covered)
+
+<div class="notes">
+
+If you have a lot of data, a line can sometimes emphasize patterns or trends that you might miss with just a scatterplot.
+
+You can do this by connecting lines between individual point means, a linear regression trend line, moving averages, or smoothing splines.
+
+We will only cover the first approach connecting means. The other approaches are quite good and definitely worth talking about. Unfortunately, these alternative approaches are implemented inconsistently across the different programs.
+
+</div>
+
+### Fundamentals, Review an earlier scatterplot
 
 ```{r old-friend}
 initiate_image()
@@ -99,39 +135,11 @@ finalize_image()
 
 <div class="notes">
 
-If you have a lot of data, a line can sometimes emphasize patterns or trends that you might miss with just a scatterplot.
+Here's the housing data set that we looked at earlier. This scatterplot shows the relationship between number of bedrooms and price.
 
 </div>
 
-### Fundamentals, Lines as averages
-
-### R code
-+ Here's the code in R
-```
-ggplot(saratoga_houses, aes(Bedrooms, Price)) +
-  geom_point() +
-  stat_summary(fun.y=mean, geom="line")
-```
-
-### R output
-
-```{r average-with-data}
-initiate_image()
-ggplot(saratoga_houses, aes(Bedrooms, Price)) +
-  geom_point() +
-  stat_summary(fun.y=mean, geom="line")
-finalize_image()
-```
-
-`r display_image`
-
-<div class="notes">
-
-
-
-</div>
-
-### Python code
+### Fundamentals, Lines at individual averages, Python
 + Here's the Python code
 ```{python}
 import pandas as pd
@@ -159,15 +167,27 @@ ch.save("../images/python/average-summary.html")
 
 ![Python graph with average summary line](../images/python/average-summary.png)
 
-### Fundamentals, Lines as counts
+### Fundamentals, Lines at individual averages, R
++ Here's the code in R
+```
+ggplot(saratoga_houses, aes(Bedrooms, Price)) +
+  geom_point() +
+  stat_summary(fun.y=mean, geom="line")
+```
 
-```{r count}
+<div class="notes">
+
+Here is the R code. You need the stat_summary function to create averages for y at each discrete value of X.
+
+</div>
+
+### R output
+
+```{r average-with-data}
 initiate_image()
-saratoga_houses %>%
-  group_by(Bedrooms) %>%
-  summarize(n=n()) %>%
-  ggplot(aes(x=Bedrooms, y=n)) +
-    geom_line() + geom_point(size=5)
+ggplot(saratoga_houses, aes(Bedrooms, Price)) +
+  geom_point() +
+  stat_summary(fun.y=mean, geom="line")
 finalize_image()
 ```
 
@@ -175,20 +195,24 @@ finalize_image()
 
 <div class="notes">
 
-This impage replaces a bunch of data points with the count at each x-value.
+There is a clear and consistnet trend in the average price. As the number of bedrooms increase, the average price increases.
 
 </div>
 
+### Fundamentals, Lines at individual averages, Tableau steps
++ Draw your normal scatterplot
++ Drag Price to opposite Y axis
+  + Change to Measure(Average)
++ Change Marks for first plot to Shape
++ Right click on either Y axis
+  + Select Synchronize Axis
+
+### Fundamentals, Lines at individual averages, Tableau plot
+
+![Tableau plot with lines at individual averages](../images/tableau/individual-averages.png)
+
 ```{r child="../component/connect-averages.Rmd"}
 ```
-
-### Fundamentals, Error bars
-
-### Fundamentals, high-low bars
-
-### Fundamentals, Boxplots
-
-((Draw example and ask students to do a similar example))
 
 ### Fundamentals, Trend lines (linear)
 

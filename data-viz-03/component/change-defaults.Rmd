@@ -13,24 +13,52 @@ load("../../common-files/data/cpi.RData")
 load("../../common-files/data/houses.RData")
 ```
 
-### Fundamentals, On your own
-+ change the line to a dashed line.
-+ Make the width equal to 3
-+ Make the color green
+### Exercise, change defaults
++ Draw a line graph with the cpi data
+  + x=t
+  + y=CPI
++ Change the defaults for the line
+  + Use a dashed rather than a solid lineline to a dashed line.
+  + Make the width equal to 3
+  + Make the color green
 
-### Fundamentals, Wait before showing
+<div class="notes">
 
-((Python code))
+Take the CPI line graph and modify some of the default options. Make the line green and increase the thickness to three pixels. Use a dashed line instead of a dotted line.
 
-```{}
-# R code
+</div>
+
+### Exercise, Python code
++ Here's the Python code
+```{python}
+import pandas as pd
+import altair as alt
+df = pd.read_csv("../../common-files/data/cpi.csv")
+```
+
+```{python, echo=TRUE}
+ch = alt.Chart(df).mark_line(
+    strokeDash=[5, 5, 2, 5]
+).encode(
+    alt.X('t'),
+    alt.Y('CPI', scale=alt.Scale(domain=(200, 400)))
+)
+```
+
+```{python}
+ch.save("../images/python/dotted-line.html")
+```
+
+### Exercise, Python output
+
+### Exercise, R code
++ Here's the R code
+```
 ggplot(cpi, aes(x=t, y=CPI)) +
   geom_line(size=3, linetype="dashed", color="green")
 ```
 
-((Tableau steps))
-
-### Fundamentals, What your visualization might look like
+### Exercise, R output
 
 ```{r width-shape-color}
 initiate_image()
@@ -46,5 +74,10 @@ finalize_image()
 
 
 </div>
+
+
+### Exercise, Tableau steps
+
+### Exercise, Tableau output
 
 
