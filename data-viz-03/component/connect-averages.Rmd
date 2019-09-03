@@ -69,7 +69,7 @@ The geom_point function creates the scatterplot and the stat_summary function ad
 </div>
 
 ### Exercise, R output
-```{r average-with-data}
+```{r exercise-average}
 initiate_image()
 ggplot(saratoga_houses, aes(Bathrooms, Age)) +
   geom_point() +
