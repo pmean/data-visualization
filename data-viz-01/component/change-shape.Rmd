@@ -30,9 +30,21 @@ ch5 = alt.Chart(df).mark_point().encode(
       x='Age',y='Price', shape='Bedrooms:N')
 ```
 
+<div class="notes">
+
+In Python, when you want the shape to vary by the levels of a particular variable, you specify this in the encode function. This Python program has three variables that are mapped. Age is mapped to the X location, Price is mapped to the Y location, and Bedrooms is mapped to various shapes.
+
+Bedrooms is on a continuous scale, and you have to tell Python that you want to treat it as if it were nominal.
+
+</div>
+
 ### Exercise, Python output
 
 ![Python scatterplot mapping bedrooms to shape](../images/python/altair-basic-exercise-shape.png)
+
+<div class="notes">
+
+This is what the plot looks like. There is a terrible mix of shapes with no obvious pattern.
 
 ### Exercise, R code 
 + Here's the R code.
@@ -41,6 +53,16 @@ ch5 = alt.Chart(df).mark_point().encode(
 ggplot(saratoga_houses, aes(x=Age, y=Price)) + 
   geom_point(aes(shape=factor(Bedrooms)))
 ```
+
+<div class="notes">
+
+Here is the R code. When the shape of a point is dependent on a variable, you need to specify that variable inside the aes function. You could have defined it inside the existing aes function in the first line of code, but you can also add an aes function to the geom_oint function.
+
+I like the second option because it makes the code a bit easier to read.
+
+Bedrooms is numeric, and by default in R is treated as a continuous variable. You can convert it to a nominal variable with the factor function.
+
+</div>
 
 ### Exercise, R output
 

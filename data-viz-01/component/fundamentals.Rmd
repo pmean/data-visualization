@@ -72,7 +72,7 @@ y_range <- range(saratoga_houses$Price)
 g <- ggplot(saratoga_houses[x, ], aes(x=Age, y=Price)) + 
   expand_limits(x=x_range) +
   expand_limits(y=y_range)
-g + geom_text(aes(label=Age))
+g + geom_text(aes(label=Age), size=6)
 finalize_image("Illustration of location aesthetics")
 ```
 
@@ -82,7 +82,7 @@ finalize_image("Illustration of location aesthetics")
 
 This plot show only two data points, and is labeled with the variable age, corresponding to the X location.
 
-The point in the upper left corner is a young house, only 14 years old. The point in the lower right corner is an old house, 233 years old.
+The point on the left is a young house, only 14 years old. The point on the right is an old house, 233 years old.
 
 </div>
 
@@ -90,7 +90,7 @@ The point in the upper left corner is a young house, only 14 years old. The poin
 
 ```{r point-aesthetics-y}
 initiate_image()
-g + geom_text(aes(label=format(Price, big.mark=",")))
+g + geom_text(aes(label=format(Price, big.mark=",")), size=6)
 finalize_image("Illustration of location aesthetics")
 ```
 
@@ -100,7 +100,7 @@ finalize_image("Illustration of location aesthetics")
 
 This plot is labeled with the variable Price, corresponding to the Y location.
 
-The point in the upper left corner is an expensive house, over a half million dollars. The point in the lower right corner is a cheap house, about one-tenth of the price.
+The point in the up high is an expensive house, over a half million dollars. The point down low a cheap house, about one-tenth of the price.
 
 </div>
 

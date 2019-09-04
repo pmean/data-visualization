@@ -13,7 +13,6 @@ date: "Created 2019-08-24"
 + Change the default color to any color you like
 + Change the default shape to any shape you like
 
-
 <div class="notes">
 
 Take the scatterplot that you have already drawn and change the color of the points. Any color is fine as long as it is different from the default color. Change the shape of the points as well to any shape you want.
@@ -23,22 +22,76 @@ Take the scatterplot that you have already drawn and change the color of the poi
 ### Exercise, Python code
 + Here's the Python code.
 ```
-(To be added)
+ch = alt.Chart(df).mark_point(
+    shape="square",
+    color="green"
+).encode(
+    x='Age',
+    y='Price'
+)
 ```
+
+<div class="notes">
+
+In Python, you change defaults inside the mark_point function.
+
+</div>
+
 ### Exercise, Python output
 
-(To be added)
+```{python}
+import pandas as pd
+import altair as alt
+df = pd.read_csv("../../common-files/data/houses.csv")
+ch = alt.Chart(df).mark_point(
+    shape="square",
+    color="green"
+).encode(
+    x='Age',
+    y='Price'
+)
+ch.save("../images/python/change-default.html")
+```
+
+![Python scatterplot with green squares](../images/python/change-default.png)
+
+<div class="notes">
+
+Here's what my output looks like. You are welcome to experiment with different colors and different shapes.
+
+</div>
 
 ### Exercise, R code
 + Here's the R code
 ```
-(To be added)
+ggplot(saratoga_houses, aes(x=Age, y=Price)) +
+  geom_point(shape="square", color="green")
 ```
+
+<div class="notes">
+
+The change in default shape and color are found in the geom_point function.
+
+</div>
 
 ### Exercise, R output
 
-(To be added)
+```{r change-default}
+initiate_image()
+saratoga_houses <- read.csv("../../common-files/data/houses.csv")
+ggplot(saratoga_houses, aes(x=Age, y=Price)) +
+  geom_point(shape="square", color="green")
+finalize_image()
+```
 
-### Exercise, Tabeleau output
+`r display_image`
 
-(To be added)
+<div class="notes">
+
+This is the R output. Try other options if you have time.
+
+</div>
+
+### Exercise, Tableau output
+
+![Tableau scatterplot with green squares](../images/tableau/change-default.png)
