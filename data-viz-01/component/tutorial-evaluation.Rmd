@@ -101,7 +101,7 @@ finalize_image("Bar chart, projecting one bar to another")
 
 <div class="notes">
 
-If you ask the question, which percentage is larger, the percentage for single or the percentage for divorced/separated, the bar chart is the winner, hands-down. The comparison involves a 
+If you ask the question, which percentage is larger, the percentage for single or the percentage for divorced/separated, the bar chart is the winner, hands-down. The comparison involves a simple horizontal projection. You can do this quickly and accurately.
 
 </div>
 
@@ -216,11 +216,11 @@ finalize_image("Bar chart, trying to assess percentage questions")
 
 Trying to answer a percentage question for a side by side bar chart is pretty much hopeless. What you have to do is visually stack the bars and then divide the bars into quarters. 
 
-When you ask percentage questions, all methods do pretty well for percentages near 0% and 100%. All methods also do  well for percentages around half, or 50%. Th pie chart also does well for percentages close to 25% and 75%. It is easy visually to split a pie into four equal pieces. Just look for the 90 degree angles. The empirical research supports this. Speed and accuracy of percentage judgements are about the same for bar charts and pie charts, except around 25% and 75% where the pie chart is markedly superior.
+When you ask percentage questions, all methods do pretty well for percentages near 0% and 100%. All methods also do  well for percentages around half, or 50%. The pie chart also does well for percentages close to 25% and 75%. It is easy visually to split a pie into four equal pieces. Just look for the 90 degree angles. The empirical research supports this. Speed and accuracy of percentage judgements are about the same for bar charts and pie charts, except around 25% and 75% where the pie chart is markedly superior.
 
 </div>
 
-### Evaluation, Improvements to the "hopeless" bar chart
+### Evaluation, Maybe the "hopeless" bar chart isn't so hopeless
 
 ```{r bar-chart-7}
 re_ordered_marital_status <- data.frame(

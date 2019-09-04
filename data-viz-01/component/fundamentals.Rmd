@@ -48,11 +48,13 @@ geom_point(shape="square", color="green")
 ```
 
 + Tableau
-  + (Drag and drop)
+  + Click on the shape and color buttons
   
 <div class="notes">
 
-In Python, you can change the default from blue circles to green squares in the mark_point function. In R, you do this inside the geom_point function. In Tableau, you have to click on the color and shape buttons to change the defaults.
+In Python, you can change the default for every data point inside the mark_point function. In R, you do this inside the geom_point function. In Tableau, you have to click on the color and shape buttons to change the defaults.
+
+Note that you may want to change the color or shape only for some of the data points. This is done inside the encode function in Altair/Python. In R, this is done inside the aes function. In Tableau, you drag and drop certain variables on top of buttons for color and shape.
 
 </div>
 

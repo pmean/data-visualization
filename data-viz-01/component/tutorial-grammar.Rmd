@@ -1,7 +1,8 @@
 ---
-title: "Data-viz-v01, Grammar, A tutorial on the Grammar of Graphics"
+title: "A tutorial on the Grammar of Graphics"
 author: "Steve Simon"
 output: powerpoint_presentation
+date: "Created: 2019-08-24"
 ---
 
 ### Grammar, Theoretical foundation of data visualization
@@ -42,7 +43,7 @@ When you switch from one function to another, from one visualization method to a
 
 Here's the help function from the program R for the hist function. The default option for the borders of the bars of a barplot differ from the option for the borders of the bars of a histogram. This makes no sense. A histogram is different than a bar chart, but not that much different.
 
-The way that you determine the limits for the x-axis and the y-axis differ. Again, how is a histogram so much different from a barplot that you need different methods for deciding something like this.
+The way that you determine the limits for the x-axis and the y-axis differ. Again, how is a histogram so much different from a barplot that you need different methods for deciding something like this?
 
 </div>
 
@@ -141,14 +142,12 @@ You specify the type of geometry/marks in R using a range of geom functions.
 </div>
 
 ### Grammar, Geometries/marks in Tableau
-+ Context specific
-+ Variable classifications
-  + Dimension, attribute, measure
-  + Blue (categorical) versus green (continuous)
+
+![Screenshot of the Marks pulldown menu](../images/tableau/marks-pull-down.png)
   
 <div class="notes">
 
-Tableau does not have a formal declartion of the type of geometry/mark. Instead, it chooses the geometry/mark using an educated guess from what the variables look like. It will use bars, for example, if one of the location variables is categorical and lines if one of the location variables is continuous. 
+Tableau will try to guess what type of marks to use, but if it guesses wrong, you can correct things with the Marks pull down menu. This menu gives you options for (among other things) Bar, Line, Shape (scatterplot), and Text.
 
 </div>
 
@@ -160,9 +159,9 @@ Tableau does not have a formal declartion of the type of geometry/mark. Instead,
   + size=
   + color=
 + Example
-  + alt.Chart(cars).mark_point().encode(
-    x='Age', y='Price', size=Acres,
-    shape='Bedrooms', color='Bathrooms')
+  + alt.Chart(*data*).mark_point().encode(
+    x='*var1*', y='*var2*', size='*var3*',
+    shape='*var4*', color='*var5*')
     
 <div class="notes">
 
@@ -180,8 +179,8 @@ Here's an example. The age and price of the home are mapped to the x and y locat
   + shape=
   + color=
 + Example
-  + ggplot(*data*, aes(x=Age, y=Price)) +
-  + geom_point(aes(size=Acres, shape=Bedrooms, color=Bathrooms))
+  + ggplot(*data*, aes(x=*var1*, y=*var2*)) +
+  + geom_point(aes(size=*var3*, shape=*var4*, color=*var5*))
 
 <div class=notes>
 
@@ -193,13 +192,11 @@ Here's an example. The age and price of the home are mapped to the x and y locat
 
 ### Grammar, Mapping to aesthetics in Tableau
 
-![Tableau screenshot showing aesthetics mapping](../images/tableau/mapping.png)
+![Tableau buttons below Marks](../images/tableau/marks-buttons.png)
 
 <div class="notes">
 
 Tableau accomplishes mapping through a drag and drop interface. Drag a variable to the Columns field and a second variable to the Rows field to specify the x and y locations. Drag a variable on top of the size, shape, and color icons to map those variables appropriately.
-
-This screenshot shows an example where Age is mapped to the x location, Price is mapped to the y location, Acres is mapped to size, Bedrooms is mapped to shape, and Baths is mapped to color.
 
 </div>
 

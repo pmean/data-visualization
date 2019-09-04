@@ -6,15 +6,15 @@ date: "Created 2019-08-16"
 ---
 
 ### Introduction, Modules
-+ Data-viz-01, Scatterplots
-+ Data-viz-02, Bar charts
-+ Data-viz-03, Line plots
-+ Data-viz-04, Surface plots
-+ Data-viz-05, Maps
++ Scatterplots
++ Bar charts
++ Line plots
++ Surface plots (optional)
++ Maps (optional)
 
 <div class="notes">
 
-This workshop is split up into five modules that cover scatterplats, bar charts, line plots, surface plots, and maps.
+This workshop is split up into three to five modules. The basic modules cover scatterplats, bar charts, and line plots. There are optional advanced modules on surface plots and maps.
 
 </div>
 
@@ -31,9 +31,9 @@ This workshop is split up into five modules that cover scatterplats, bar charts,
 
 <div class="notes">
 
-Each module will start with some basic preparations that you need.
+Each module will start with some basic preparations that you should do before the class starts or at the very beginning of the class..
 
-Then you will review some data visualizations that appeats in newpspaper or web articles. Your goal is to identify in 25 words or less what the message is that the visualization is trying to convey.
+Then you will review some data visualizations that appeats in newpspaper or web articles. Your goal is to identify (in 25 words or less) the message is that the visualization is trying to convey. The 
 
 Each module will include a tutorial on perceptual issues that you need to understand in order to design effective data visulalizations.
 
@@ -41,11 +41,11 @@ Then you will review some fundamental commands that you need to know to draw bas
 
 Then you will learn some general recommendations on how to produce effective visualizations.
 
-You will return to the newspaper articles and identify features of the data visualizations used.
+You will return to the newspaper articles and and relate features of the data visualizations to concepts discussed in the previous lecture.
 
 You will have to answer a short quiz, not for a grade, but to reinforce some of the important points in the module. 
 
-Then you will work on your own with a different data set, trying to create effective data visualizations similar to the ones presented in this module.
+Finally, you will work on your own with a different data set, trying to create effective data visualizations similar to the ones presented in each module.
 
 </div>
 
@@ -76,11 +76,11 @@ Tableau is a commercial product. If you don't currently have access to Tableau, 
   
 <div class="notes">
 
-If you are not sure what software package to use in this class, let me offer a few suggestions. First, your boss may have a strong opinion about what software that you should use. You can go to your boss and say "Steve Simon is a really smart guy and he says that the ggplot2 package in R is the best choice for data visualization." Try it and see what happens. Nothing, I suspect. One of the great tragedies in life is that the SSSS principle (Steve Simon Said So) carries very little weight in the real world.
+If you are not sure what software package to use in this class, let me offer a few suggestions. First, your boss may have a strong opinion about what software that you should use. You can go to your boss and say "My teacher is a really smart guy says that the _____ package in _____ is the best choice for data visualization." Try it and see what happens. Nothing, I suspect. One of the great tragedies in life is that the wise advice you get in this class carries very little weight in the real world.
 
 If your boss doesn't care, see what most of your co-workers are using. They may not be as smart as I am (put on a false air of pride here) but they are a lot closer to your cubicle when this workshop ends and you have to find a quick answer.
 
-There's also a comfort level here. Tableau develops its visualizations using a graphical user interface. Python and R are programming languages. A graphical interface is great for getting work done quickly. A programming language is great for reproducibility and reusability. What fits your working style better.
+There's also a comfort level here. Tableau develops its visualizations using a graphical user interface. Python and R are programming languages. A graphical interface is great for getting work done quickly. A programming language is great for reproducibility and reusability. What fits your working style better? I don't know and it would be arrogant of me to make the presumption that I do know.
 
 One more consideration. Some of you in this class are "ringers." You already know visualization better than I do because you've been doing it for longer, with bigger and more complex data sets. You're just here to see if I know one or two things that you don't already know. If you're a ringer, take the challenge of learning a new software system. It will keep you from getting too bored when I talk about all these things that you already know better than I do.
 

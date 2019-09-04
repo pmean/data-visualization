@@ -1,7 +1,8 @@
 ---
-title: "Graphs in the news"
+title: "Graphs in the news, scatterplots"
 author: "Steve Simon"
 output: powerpoint_presentation
+date: "Created: 2019-08-24"
 ---
 
 ### Graphs in the news, group exercise
@@ -12,7 +13,7 @@ output: powerpoint_presentation
 
 <div class="notes">
 
-The following images are taken from various newspaper articles or press releases. Look at the graph and read/skim the article.
+The following images are taken from various newspaper articles. Look at the graph and read/skim the article.
 
 </div>
 

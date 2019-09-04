@@ -8,10 +8,6 @@ date: "Created 2019-08-16"
 ```{r child="../../common-files/src/component-header.Rmd"}
 ```
 
-```{r}
-library(reticulate)
-```
-
 ### Preparation, DASL https://dasl.datadescription.com/
 
 ![Main page of DASL website](../images/external/dasl-main-page.png)
@@ -67,7 +63,18 @@ See if you can read the file into a different program like a spreadsheet and exp
 
 ### Preparation, Python code
 
-```{python}
+```
+import pandas as pd
+import altair as alt
+df = pd.read_csv("data/houses.csv")
+ch = alt.Chart(df).mark_point().encode(
+    x='Age',
+    y='Price'
+)
+ch.save("/images/python-scatterplot.html")
+```
+
+```{python, echo=FALSE}
 import pandas as pd
 import altair as alt
 df = pd.read_csv("../../common-files/data/houses.csv")
@@ -80,16 +87,19 @@ ch.save("../images/python/basic-scatterplot.html")
 
 <div class="notes">
 
-http://localhost:8888/?token=defbcdfe24454796470962f1cae834a7c7c8ec78d2c9075f
-
-
-Here is the Python code that will download the data and create a simple scatterplot.
+Here is the Python code that will download the data and create a simple scatterplot. You may need to adapt the names of the files or the directories where they are stored.
 
 </div>
 
-### Preparation, Python plot
+### Preparation, Python output
 
 ![Basic scatterplot using Python](../images/python/basic-scatterplot.png)
+
+<div class="notes">
+
+See if you can get a graph that looks something like this. If your graph uses different colors, scaling, etc. don't worry. I just want to know at this point that you can produce any sort of reasonable graph.
+
+</div>
 
 ### Preparation, R code
 
@@ -97,19 +107,18 @@ Here is the R code that will download the data and create a simple scatterplot.
 
 ```{}
 library(ggplot2)
-fn <- "https://dasl.datadescription.com/download/data/3275"
-saratoga_houses <- read.table(fn, header=TRUE, sep="\x09")
+saratoga_houses <- read.csv("data/houses.csv")
 ggplot(saratoga_houses, aes(x=Age, y=Price)) +
   geom_point()
 ```
 
 <div class="notes">
 
-Here's a brief bit of R code that should work.
+Here's a brief bit of R code that should work. You may need to adapt the names of the files or the directories where they are stored.
 
 </div>
 
-### Preparation, What your scatterplot should look like (R version)
+### Preparation, R output
 
 ```{r simple-scatterplot}
 load("../../common-files/data/houses.RData")
@@ -120,6 +129,12 @@ finalize_image()
 ```
 
 `r display_image`
+
+<div class="notes">
+
+Again, see if you can get a graph that looks something like this. If your graph uses different colors, scaling, etc. don't worry. I just want to know at this point that you can produce any sort of reasonable graph.
+
+</div>
 
 ### Preparation, Tableau Open dialog box
 
@@ -191,7 +206,7 @@ Click on the green Sum(Age) and change it from Measure(Sum) to Dimension. Don't 
 
 </div>
 
-### Preparation, Tableau, what your graph should look like
+### Preparation, Tableau output
 
 ![Screenshot of Tableau software changing from measure to dimension](../images/tableau/basic-scatterplot.png)
 
