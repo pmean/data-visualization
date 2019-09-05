@@ -30,7 +30,7 @@ There are three major color systems used on computers, RGB, HSV, and CYMK. I'll 
 
 It was probably in Kindergarten where you learned the basic way to combine primary colors. Yellow plus red equals orange, Yellow plus blue equals green. Red plus blue equals purple/violoet.
 
-It doesn't work that way on a computer screen because the screen. Computer screens use light to create colors and lights blend in different ways than paints or crayons.
+It doesn't work that way on a computer screen because screens use light to create colors and lights blend in different ways than paints or crayons.
 
 Before you tackle ths computer system for colors, you need to review binary and hexadecimal number systems.
 
@@ -65,7 +65,7 @@ Binary numbers use powers of two: 1, 2, 4, 8, 16, etc. Eight binary digits can r
 
 <div class="notes">
 
-Binary representations get unwieldy very quickly, and the hexadecimal format provides a much tighter representation that still has the spirit of binary.
+Binary representations get unwieldy very quickly, and the hexadecimal format provides a much tighter representation that still has the spirit of binary. It is fairly easy to switch back and forth between binary and hexadecimal.
 
 Hexadecimal means powers of 16 and you can represent numbers up to (but not including) 16 using four binary digits. The ehxadecimal digits start out like normal digits, 0, 1, 2, etc. but once you get up to nine you run out of single digits. So the value of 10 is represented by the letter A, the value of 11 by B, etc. through the letter F which represents 15. At sixten, you roll over to the next place.
 
@@ -75,7 +75,7 @@ Split the eight digit binary number 1001 1100 into groups of four binary digits.
 
 Tow hexadecimal digits just like eight binary digits can represent the numbers 0 to 255, with 00 hexadecimal equaling 0 and FF hexadecimal equaling 255 (15*16+15).
 
-Use the prefix of a pound sign (has tag) to tell the computer that you are speaking to it in hexadecimal.
+Use the prefix of a pound sign (hash tag) to tell the computer that you are speaking to it in hexadecimal.
 
 </div>
 
@@ -91,7 +91,15 @@ Use the prefix of a pound sign (has tag) to tell the computer that you are speak
   
 <div class="notes">
 
-The RGB format uses six hexadecimal digits to represent colors. A hexidecimal of all zeros is pure black and at the other extreme, a hexidecimal of all F's is pure white. The first two hexidecimal digits represent the red channel. The highest value FF for the red channel combined with zeros for the other two channels (#FF0000) equals pure red. The next two digits represent the green channel. #00FF00, giving the maximum to the green channel and the minimum to the other two channels produces a pure green. The last two digits represent the blue channel, and #0000FF represents pure blue.
+The RGB format uses six hexadecimal digits to represent colors. A hexidecimal of all zeros is pure black and at the other extreme, a hexidecimal of all F's is pure white. 
+
+The first two hexidecimal digits represent the red channel. The highest value FF for the red channel combined with zeros for the other two channels (#FF0000) equals pure red. 
+
+The next two digits represent the green channel. #00FF00, giving the maximum to the green channel and the minimum to the other two channels produces a pure green. 
+
+The last two digits represent the blue channel, and #0000FF represents pure blue.
+
+You can combine these in a variety of ways. You end up with an almost unlimited number of colors. Six hexadecimal digits allow you to produce 16^6 or 16,777,216 different colors.
 
 </div>
 
@@ -528,18 +536,18 @@ If you want to go from one pure color to another, there is more than one route t
 
 ```{r gradient-red-yellow-green}
 initiate_image()
-h <- rev(c("0", "3", "6", "9", "C", "F"))
+h <- c("0", "3", "6", "9", "C", "F")
 
-rg <- paste0("#", h, h, "0000")
+rg <- paste0("#FF", h, h, "00")
 
 n <- length(rg)
 p <- (0:(n-1))/(n-1)
-rx <- r$x + (k$x-r$x)*p
-ry <- r$y + (k$y-r$y)*p
+rx <- r$x + (y$x-r$x)*p
+ry <- r$y + (y$y-r$y)*p
 
-gg <- paste0("#00", h, h, "00")
-gx <- g$x + (k$x-g$x)*p
-gy <- g$y + (k$y-g$y)*p
+gg <- paste0("#", h, h, "FF00")
+gx <- g$x + (y$x-g$x)*p
+gy <- g$y + (y$y-g$y)*p
 
 df <- data.frame(
   x=c(rx, gx), 
@@ -582,13 +590,33 @@ You can just as easily go from red to green through gray.
 
 (To be added)
 
+<div class="notes">
+
+You can choose from even more color schemes. For details, go to
+
+https://vega.github.io/vega/docs/schemes/
+
+</div>
+
 ### Gradients in R
 
 (To be added)
 
+<div class="notes">
+
+http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/
+
+</div>
+
 ### Gradients in Tableau
 
 (To be added)
+
+<div class="notes">
+
+https://help.tableau.com/current/pro/desktop/en-us/viewparts_marks_markproperties_color.htm
+
+</div>
 
 ### Colors, HSV system
 

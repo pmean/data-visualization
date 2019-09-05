@@ -96,3 +96,16 @@ ggplot(food_indx, aes(date, cpi)) + geom_point()
 ggplot(food_home, aes(date, cpi)) + geom_point()
 ggplot(food_away, aes(date, cpi)) + geom_point()
 ```
+
+The sleep data set is used in several advanced exercises
+
+```{r read-sleep}
+sleep <- read.table(
+  file="http://www.statsci.org/data/general/sleep.txt",
+  header=TRUE,
+  sep='\t',
+  as.is=TRUE)
+head(sleep)
+write.csv(sleep, file="../data/sleep.csv", row.names=FALSE)
+save(sleep, file="../data/sleep.RData")
+```

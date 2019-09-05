@@ -13,11 +13,37 @@ this data set at
 + You can download the actual data at
   + http://www.statsci.org/data/general/sleep.txt
 
-### Advanced exercise
-+ Draw a visualization that illustrates the interrelationships among
-  + bodywt, lifespan, gestation
-  + bodywt, brainwt, and totalsleep
-  + predation, exposure, and totalsleep
-  + bodywt, predation, and lifespan
-+ Divide the work among different group members
+<div class="notes">
 
+This is an interesting data set. You can download from the web, or I can provide a comma separated value format for you to use.
+
+</div>
+
+### Data dictionary
+
+![Data dictionary for sleep file](../images/external/sleep-data-dictionary.png)
+
+<div class="notes">
+
+This is the data dictionary for this file, from the website listed above.
+
+</div>
+
+### Advanced exercise
++ There are some interesting relationships among the variables. Explore whatever strikes you as interesting. Some possibiilities include
+  + bodywt and predation
+  + gestation and lifespan
+  + exposure and totalsleep
++ Draw a visualization
+  + illustrates an intersting interrelationships
+  + use a third variable for shape, size, or color
+
+### Correlations
+
+![Correlation matrix among sleep variables](../images/external/sleep-correlations.png)
+
+<div class="notes">
+
+You might find this table of correlations helpful when deciding what relationships to explore.
+
+</div>

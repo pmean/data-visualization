@@ -200,6 +200,72 @@ Tableau accomplishes mapping through a drag and drop interface. Drag a variable 
 
 </div>
 
+### Grammar, changing variable types in Python
++ Q: Quantitative
+  + Use for continuous variables
++ O: Ordinal
+  + Use for ordered categories
++ N: nominal
+  + Use for unordered categories
++ T: Temporal
+  + Use for time variables
+  
+<div class="notes">
+
+All of these graphic packages will make assumptions about what the data represents, and set certain default graphic types on the basis of these guesses. Those choices are usally good, but when they are not, then you can override these guesses.
+
+In Altair/Python, you use letter codes.
+
+The letter Q (quantitative) will tell the system that you want to treat this variable as continuous.
+
+The letter O (Ordinal) will tell the system that you want to treat this variable as ordered categories.
+
+The letter N (Nomina) will tell the system that you want to treat this variable as unordered categories.
+
+The letter T (Temporal) will tell the system that you want to treat this variable as a measure of time.
+
+</div>
+
+### Grammar, Changing variable types in R
++ as.numeric()
+  + Use for continuous variables
++ as.character(), as.factor()
+  + Use for categorical variables
++ as.Date()
+  + Use for date variables
+
+<div class="notes">
+
+There are lots of conversion functions in R, and it beyond the scope of the class to cover them. But sometimes you will find in R that you need to convert the variable type before you do certain analyses. If you want to represent a variable as continuous, the as.numeric function will often do the trick. If you want to represent a variable as categorical, then try the as.character or as.factor functions. For temporal data, try the as.Date function.
+
+</div>
+
+### Grammar, Changing variable types in Tableau
++ Dimension Discrete (blue pill)
+  + Use for categorical variables
++ Dimension Continuous (green pill)
+  + Use for continuous variables
++ Measure
+  + Use for summary measures (average, count, etc.)
+
+<div class="notes">
+
+In Tableau, use Dimension Discrete to designate catergorical data. The color of the "pill" for your variable will change to blue when you make this choice. Use Dimension Continuous for continuous data. The color of the "pill" for your variable will change to green when you make this choice.
+
+Use Measure when you want to display not the invidual values within a group but rather an aggregate or summary statistic, such as a mean or a count.
+
+</div>
+
+### Grammar, Changing variable types in Tableau
+
+![Variable pull down menu in Tableau](../images/tableau/variable-types.png)
+
+<div class="notes">
+
+This image shows the pull down menu for a variable with the choices you get.
+
+</div>
+
 ### Grammar, Summary
 + "A mapping of data to the visual aesthetics of geometries/marks" 
 + Geometries/marks

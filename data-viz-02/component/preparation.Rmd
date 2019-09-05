@@ -12,76 +12,29 @@ output: powerpoint_presentation
 
 + Follow these steps to get ready for lecture #2 in data visualization.
   + Download and import Titanic data
-  + Download and import scotus data
+  + Draw a barchart
+    + Count for pclass
+  
+<div class="notes">
 
-### Preparation, Titanic data set
-+ R code
-```
-read.csv("../../common-files/data/titanic3.csv")
-```
+The titanic data set shows mortality results (lived or died) for the 1,313 passengers onboard the Titanic. The data includes information about passenger class (third class fared poorly relative to first or second class), sex (men fared poorly compared to women), and age (children fared better than adults).
+
+Draw a simple bar chart showing the count of the number of passengers in first, second, and third class.
+
+</div>
+
+
+### Preparation, Pyhton Code
 + Python code
 ```
 import pandas as pd
 import altair as alt
-df = pd.read_csv("../../common-files/data/titanic3.csv")
-ch = alt.Chart(df).mark_bar().encode(
-    x='pclass',
-    y='count()'
-)
-ch.save("../images/python/basic-barchart.html")
-```
-
-<div class="notes">
-
-Make sure you can import the file titanic3.csv to Python, R or Tableau.
-
-</div>
-
-### Preparation, Scotus data set
-+ Python code
-```
-(To be added)
-```
-+ R code
-```
-(To be added)
-```
-
-<div class="notes">
-
-Also import the scotus (Supreme Court of the United States) data.
-
-</div>
-
-### Preparation, kaggle website
-
-![Kaggle datasets webpage](../images/external/kaggle-scotus-data.png)
-
-<div class="notes">
-
-The scotus file comes originally from the Kaggle datasets webpages. I fixed a few small typos, but you can get pretty much the same results by downloading the original file and keeping the typos in there.
-
-</div>
-
-### Preparation, Draw a simple bar chart
-
-Import the data and create a bar chart showing the frequency of opinions written by year_filed. Note that there are a few typos and a few rows that do not belong. You can remove these, but they will not affect any of the analyses we are considering.
-
-### Preparation, Code
-+ Python code
-```
-import pandas as pd
-import altair as alt
-df = pd.read_csv("../../common-files/data/titanic3.csv")
+df = pd.read_csv("data/titanic3.csv")
 ch = alt.Chart(df).mark_bar().encode(
     x='pclass:N',
     y='count()'
 )
-ch.save("../images/python/basic-barchart.html")
-```
-+ R code
-```
-(Add later)
+ch.save("images/python/basic-barchart.html")
 ```
 
 ### Preparation, Python output
@@ -99,12 +52,20 @@ ch.save("../images/python/basic-barchart.html")
 
 ![Barchart in Python](../images/python/basic-barchart.png)
 
+### Preparation, R code
++ R code
+```
+ti <- read.csv(file="data/titanic3/csv")
+ggplot(ti, aes(pclass)) +
+  geom_bar()
+```
+
 ### Preparation, R output
 
-```{r scotus-bar, message=FALSE}
+```{r basic-barchart}
 initiate_image()
-sc_cases <- read.csv(file="../data/scotus_cases.csv")
-ggplot(sc_cases, aes(year_filed)) +
+ti <- read.csv(file="../../common-files/data/titanic3.csv")
+ggplot(ti, aes(pclass)) +
   geom_bar()
 finalize_image()
 ```

@@ -26,7 +26,7 @@ Revisit your scatterplot. Draw a plot with x representing the age of the house, 
 + Here's the Python code.
 
 ```{}
-ch5 = alt.Chart(df).mark_point().encode(
+ch = alt.Chart(df).mark_point().encode(
       x='Age',y='Price', shape='Bedrooms:N')
 ```
 
@@ -46,6 +46,8 @@ Bedrooms is on a continuous scale, and you have to tell Python that you want to 
 
 This is what the plot looks like. There is a terrible mix of shapes with no obvious pattern.
 
+</div>
+
 ### Exercise, R code 
 + Here's the R code.
 
@@ -56,7 +58,7 @@ ggplot(saratoga_houses, aes(x=Age, y=Price)) +
 
 <div class="notes">
 
-Here is the R code. When the shape of a point is dependent on a variable, you need to specify that variable inside the aes function. You could have defined it inside the existing aes function in the first line of code, but you can also add an aes function to the geom_oint function.
+Here is the R code. When the shape of a point is dependent on a variable, you need to specify that variable inside the aes function. You could have defined it inside the existing aes function in the first line of code, but you can also add an aes function to the geom_point function.
 
 I like the second option because it makes the code a bit easier to read.
 
@@ -67,6 +69,7 @@ Bedrooms is numeric, and by default in R is treated as a continuous variable. Yo
 ### Exercise, R output
 
 ```{r shape-bedrooms}
+saratoga_houses <- read.csv("../../common-files/data/houses.csv")
 initiate_image()
 ggplot(saratoga_houses, aes(x=Age, y=Price)) + 
   geom_point(aes(shape=factor(Bedrooms)))
@@ -87,6 +90,6 @@ Here is what the R graph looks like. I don't particularly like this graph. It is
 
 <div class="notes">
 
-Here are the steps in Tableau. First revert to the earlier scatterplot where Age is in the Column fields and Price is in the Rows field. Then drag and drop Bedrooms on top of the Shape icon. Change from SUM(Bedrooms) to ATTR(Bedrooms). 
+Here are the steps in Tableau. First revert to the earlier scatterplot where Age is in the Column fields and Price is in the Rows field. Then drag and drop Bedrooms on top of the Shape icon. Change from SUM(Bedrooms) to Dimension Categorical. 
 
 </div>

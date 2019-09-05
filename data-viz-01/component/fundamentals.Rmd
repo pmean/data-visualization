@@ -58,6 +58,7 @@ Note that you may want to change the color or shape only for some of the data po
 
 </div>
 
+<!---Exercise, change default--->
 ```{r child="../component/change-default.Rmd"}
 ```
 
@@ -104,6 +105,7 @@ The point in the up high is an expensive house, over a half million dollars. The
 
 </div>
 
+<!---Exercise, change location--->
 ```{r child="../component/change-location.Rmd"}
 ```
 
@@ -128,6 +130,7 @@ I also want to point out that this may not be the best way to visualize the rela
 
 </div>
 
+<!---Exercise, change shape--->
 ```{r child="../component/change-shape.Rmd"}
 ```
 
@@ -148,6 +151,7 @@ You can also use the size of a point to represent a third dimension. Here is a p
 
 </div>
 
+<!---Exercise, change size--->
 ```{r child="../component/change-size.RMd"}
 ```
 
@@ -181,7 +185,7 @@ finalize_image("R graph using color to represent Living.Area")
 
 <div class="notes">
 
-Notice how the legend has changed.
+Notice how the legend has changed. All of the graphic packages use a set of discrete, easily distinguishable colors for categorical data. For continuous data, these graphic packages use a gradient.
 
 </div>
 
