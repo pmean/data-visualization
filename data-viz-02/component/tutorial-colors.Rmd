@@ -119,7 +119,7 @@ add_colors <- function(c1, c2, c3) {
     geom_segment(x=0.75, y=1.5, xend=3.25, yend=1.5, size=3) +
     theme_void() +
     theme(
-      panel.background=element_rect(fill="#888888"))
+      panel.background=element_rect(fill="#808080"))
 }
 initiate_image()
 add_colors("#FF0000", "#00FF00", "#FFFF00")
@@ -317,7 +317,7 @@ ggplot(dg, aes(x, y)) +
   expand_limits(y=c(-7, 9)) +
   theme_void() +
   theme(
-    panel.background=element_rect(fill="#888888")
+    panel.background=element_rect(fill="#808080")
   )
 finalize_image()
 ```
@@ -346,7 +346,7 @@ ggplot(dg, aes(x, y)) +
   expand_limits(y=c(-7, 9)) +
   theme_void() +
   theme(
-    panel.background=element_rect(fill="#888888")
+    panel.background=element_rect(fill="#808080")
   )
 finalize_image()
 ```
@@ -373,7 +373,7 @@ ggplot(dg, aes(x, y)) +
   expand_limits(y=c(-7, 9)) +
   theme_void() +
   theme(
-    panel.background=element_rect(fill="#888888")
+    panel.background=element_rect(fill="#808080")
   )
 finalize_image()
 ```
@@ -423,7 +423,7 @@ ggplot(dg, aes(x, y)) +
   expand_limits(y=c(-7, 9)) +
   theme_void() +
   theme(
-    panel.background=element_rect(fill="#888888")
+    panel.background=element_rect(fill="#808080")
   )
 finalize_image()
 ```
@@ -449,7 +449,7 @@ ggplot(dg, aes(x, y)) +
   expand_limits(y=c(-7, 9)) +
   theme_void() +
   theme(
-    panel.background=element_rect(fill="#888888")
+    panel.background=element_rect(fill="#808080")
   )
 finalize_image()
 ```
@@ -474,7 +474,7 @@ ggplot(dg, aes(x, y)) +
   expand_limits(y=c(-7, 9)) +
   theme_void() +
   theme(
-    panel.background=element_rect(fill="#888888")
+    panel.background=element_rect(fill="#808080")
   )
 finalize_image()
 ```
@@ -519,7 +519,7 @@ ggplot(dg, aes(x, y)) +
   expand_limits(y=c(-7, 9)) +
   theme_void() +
   theme(
-    panel.background=element_rect(fill="#888888")
+    panel.background=element_rect(fill="#808080")
   )
 finalize_image()
 ```
@@ -563,7 +563,7 @@ ggplot(dg, aes(x, y)) +
   expand_limits(y=c(-7, 9)) +
   theme_void() +
   theme(
-    panel.background=element_rect(fill="#888888")
+    panel.background=element_rect(fill="#808080")
   )
 finalize_image()
 ```
@@ -576,7 +576,25 @@ A common gradient for red to green relies on the fact that yellow is a combinati
 
 </div>
 
-### Colors, gradients of red to green through gray
+### Colors, gradients of red to green through gray, through black
+
+```{r red-other-green}
+n <- 128
+p <- seq(0, n-1)/(n-1)
+x <- c(p, 1+p)
+q <- rev(p)
+y1 <- rep(1, 2*n)
+y2 <- rep(2, 2*n)
+c1 <- c(rgb(q, 0, 0), rgb(0, p, 0))
+c2 <- c(rgb(1-p/2, p/2, p/2), rgb(q/2, 1-q/2, q/2))
+df <- data.frame(x=rep(x, 2), y=c(y1, y2), co=c(c1, c2))
+ggplot(df, aes(x, y)) + 
+  geom_point(color=df$co) +
+  theme_void() +
+  theme(
+    panel.background=element_rect(fill="#808080"))
+  
+```
 
 (To be added)
 
@@ -650,7 +668,7 @@ ggplot(dg3, aes(x, y)) +
   expand_limits(x=c(-1.2, 1.2)) + 
   theme_void() +
   theme(
-    panel.background=element_rect(fill="#888888")
+    panel.background=element_rect(fill="#808080")
   )
 finalize_image()
 ```
@@ -679,7 +697,7 @@ ggplot(dg4, aes(x, y)) +
   geom_text(x=x4[600], y=y4[600], label="hsv(0 or 1, 1, 1)", color="white") + 
   theme_void() +
   theme(
-    panel.background=element_rect(fill="#888888")
+    panel.background=element_rect(fill="#808080")
   )
 finalize_image()
 ```
@@ -711,7 +729,7 @@ ggplot(dg5, aes(x, y)) +
   geom_text(x=0,       y=0,       label="hsv(anything, 0, 1)", color="black") + 
   theme_void() +
   theme(
-    panel.background=element_rect(fill="#888888")
+    panel.background=element_rect(fill="#808080")
   )
 finalize_image()
 ```
@@ -749,8 +767,100 @@ ggplot(dg6, aes(x, y)) +
   geom_text(x=x4[600], y=y4[600]-4, label="hsv(0 or 1, 1, 0)", color="white") + 
   theme_void() +
   theme(
-    panel.background=element_rect(fill="#888888")
+    panel.background=element_rect(fill="#808080")
   )
+finalize_image()
+```
+
+`r display_image`
+
+### Colors, HCL system
++ H = hue
+  + arranged on a wheel 0-360 degrees
+  + 0 = red, 120 = green, 240 = blue
+  + 60 = yellow, 180 = cyan, 240 = magenta
++ C = chroma
+  + colorfulness relative to a gray of equal luminence
+  + not quite same as saturation
++ L = luminence
+  + brightness, lightness
++ Not all combinations of HCL work
++ Very similar systems are CIE-LUV, CIE-LAB
+  
+<div class="notes">
+
+Another color system is the HCL system. It is very similar to standards CIE-LUV and CIE-LAB.
+
+It has a hue value, just like 
+
+</div>
+
+```{r hcl-function}
+hcl_plot <- function(lum) {
+  d <- 1.75
+  twist <- 0.03
+  n2 <- 300
+  x2 <- d*(2*rep((0:(n2-1))/n2, each=n2)-1)
+  y2 <- d*(2*rep((0:(n2-1))/n2, n2)-1)
+  r2 <- sqrt(x2^2+y2^2)
+  theta <- (pi + atan2(y2, x2))/(2*pi)
+  c2 <- rep(hsv(h=0, s=0, v=0.5), n2^2)
+  c2 <- hcl(360*theta, 100*r2, 100*lum, fixup=FALSE)
+  dg2 <- data.frame(x=-x2, y=y2, co=c2)
+  dg3 <- rbind(dg2[!is.na(dg2$co), ])
+  g <- ggplot(dg3, aes(x, y)) + 
+    geom_point(col=dg3$co) +
+    expand_limits(y=c(-1.2*d, 1.2*d)) + 
+    expand_limits(x=c(-1.2*d, 1.2*d)) + 
+    geom_text(x=d*cos( 0*pi/3), y=d*sin( 0*pi/3), angle= 90, label=  "0 = Red",     color="red") + 
+    geom_text(x=d*cos(-1*pi/3), y=d*sin(-1*pi/3), angle= 30, label= "60 = Yellow",  color="yellow") + 
+    geom_text(x=d*cos(-2*pi/3), y=d*sin(-2*pi/3), angle=-30, label="120 = Green",   color="green") + 
+    geom_text(x=d*cos(-3*pi/3), y=d*sin(-3*pi/3), angle=-90, label="180 = Cyan",    color="cyan") + 
+    geom_text(x=d*cos(-4*pi/3), y=d*sin(-4*pi/3), angle= 30, label="240 = Blue",    color="blue") + 
+    geom_text(x=d*cos(-5*pi/3), y=d*sin(-5*pi/3), angle=-30, label="300 = Magenta", color="magenta") + 
+    theme_void() +
+    theme(
+      panel.background=element_rect(fill="#808080")
+    )
+  g
+}
+```
+
+### Colors, Luminance = 90%
+
+```{r hcl-90}
+initiate_image()
+hcl_plot(18/20)
+finalize_image()
+```
+
+`r display_image`
+
+### Colors, Luminance=70%
+
+```{r hcl-70}
+initiate_image()
+hcl_plot(14/20)
+finalize_image()
+```
+
+`r display_image`
+
+### Colors, Luminance=50%
+
+```{r hcl-50}
+initiate_image()
+hcl_plot(10/20)
+finalize_image()
+```
+
+`r display_image`
+
+### Colors, Luminance=30%
+
+```{r hcl-30}
+initiate_image()
+hcl_plot(6/20)
 finalize_image()
 ```
 
