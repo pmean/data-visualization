@@ -12,25 +12,7 @@ output: powerpoint_presentation
 load("../../common-files/data/titanic.RData")
 ```
 
-### Python color schemes
-
-![Listing of first few Altair color schemes](../images/python/color-schemes.png)
-
-### Python change colors
-
-```{python}
-import pandas as pd
-import altair as alt
-df = pd.read_csv("../../common-files/data/houses.csv")
-ch = alt.Chart(df).mark_point().encode(
-    alt.Color('Bathrooms', scale=alt.Scale(scheme='Inferno')),
-    x='Age',
-    y='Price'
-)
-ch.save("../images/python/change-colors.html")
-```
-
-### Barchart recommendations, similar to fashion
+### Color recommendations, lessons from the world of fashion
 
 ![Image of man wearing three bold colors](../images/external/fashion-mistake.png)
 

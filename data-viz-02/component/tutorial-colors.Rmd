@@ -616,6 +616,56 @@ https://vega.github.io/vega/docs/schemes/
 
 </div>
 
+### Python change colors
+
+```{python}
+import pandas as pd
+import altair as alt
+df = pd.read_csv("../../common-files/data/houses.csv")
+ch = alt.Chart(df).mark_point().encode(
+    alt.Color('Bathrooms', scale=alt.Scale(scheme='tableau20')),
+    x='Age',
+    y='Price'
+)
+ch.save("../images/python/change-colors.html")
+```
+
+### Python color schemes
+
+![Listing of first few Altair color schemes](../images/python/color-schemes-1.png)
+
+### Python color schemes
+
+![Listing of first few Altair color schemes](../images/python/color-schemes-1.png)
+
+### Python color schemes
+
+![Listing of first few Altair color schemes](../images/python/color-schemes-2.png)
+
+### Python color schemes
+
+![Listing of first few Altair color schemes](../images/python/color-schemes-3.png)
+
+### Python color schemes
+
+![Listing of first few Altair color schemes](../images/python/color-schemes-4.png)
+
+### Python change colors
+
+```{python}
+import pandas as pd
+import altair as alt
+df = pd.read_csv("../../common-files/data/houses.csv")
+ch = alt.Chart(df).mark_point().encode(
+    alt.Color('Bathrooms', scale=alt.Scale(scheme='Inferno')),
+    x='Age',
+    y='Price'
+)
+ch.save("../images/python/change-colors.html")
+```
+
+
+
 ### Gradients in R
 
 (To be added)
@@ -628,13 +678,25 @@ http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/
 
 ### Gradients in Tableau
 
-(To be added)
+![Gradient drop-down menu in Tableau](../images/tableau/gradient-options.png)
 
 <div class="notes">
 
 https://help.tableau.com/current/pro/desktop/en-us/viewparts_marks_markproperties_color.htm
 
 </div>
+
+### Discrete color options in Tableau
+
+![Discrete color drop-down menu in Tableau](../images/tableau/discrete-color-options.png)
+
+<div class="notes">
+
+https://help.tableau.com/current/pro/desktop/en-us/viewparts_marks_markproperties_color.htm
+
+</div>
+
+
 
 ### Colors, HSV system
 
