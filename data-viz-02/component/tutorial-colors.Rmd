@@ -616,24 +616,6 @@ https://vega.github.io/vega/docs/schemes/
 
 </div>
 
-### Python change colors
-
-```{python}
-import pandas as pd
-import altair as alt
-df = pd.read_csv("../../common-files/data/houses.csv")
-ch = alt.Chart(df).mark_point().encode(
-    alt.Color('Bathrooms', scale=alt.Scale(scheme='tableau20')),
-    x='Age',
-    y='Price'
-)
-ch.save("../images/python/change-colors.html")
-```
-
-### Python color schemes
-
-![Listing of first few Altair color schemes](../images/python/color-schemes-1.png)
-
 ### Python color schemes
 
 ![Listing of first few Altair color schemes](../images/python/color-schemes-1.png)
@@ -657,14 +639,14 @@ import pandas as pd
 import altair as alt
 df = pd.read_csv("../../common-files/data/houses.csv")
 ch = alt.Chart(df).mark_point().encode(
-    alt.Color('Bathrooms', scale=alt.Scale(scheme='Inferno')),
+    alt.Color('Bathrooms', scale=alt.Scale(scheme='reds')),
     x='Age',
     y='Price'
 )
 ch.save("../images/python/change-colors.html")
 ```
 
-
+![Python scatterplot using red gradient](../images/python/change-colors.png)
 
 ### Gradients in R
 
