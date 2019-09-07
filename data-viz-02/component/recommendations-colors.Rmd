@@ -12,7 +12,7 @@ output: powerpoint_presentation
 load("../../common-files/data/titanic.RData")
 ```
 
-### Color recommendations, lessons from the world of fashion
+### Recommendations, lessons from the world of fashion
 
 ![Image of man wearing three bold colors](../images/external/fashion-mistake.png)
 
@@ -24,7 +24,7 @@ There's a similar lesson for data visualization.
 
 </div>
 
-### Barchart recommendations, Don't overuse colors.
+### Recommendations, Don't overuse colors.
 
 ![Text with a variety of colors](../images/external/too-many-colors.png)
 
@@ -38,7 +38,7 @@ You can use a second color to add emphasis. Or maybe a gradient between two diff
 
 </div>
 
-### The power of a single color
+### Recommendations, The power of a single color
 
 ![Clip of a red umbrella in a sea of black umbrellas](../images/external/travellers-insurance.png)
 
@@ -52,7 +52,9 @@ The single red umbrella in a sea of black umbrellas stands out. Your eye can't h
 
 A small dollop of color in your visualizations can be far more effective than using a whole bunch of different colors.
 
-### Count the fives
+</div>
+
+### Recommendations, Count the fives (1/3)
 
 ```{r count-nine-colors}
 initiate_image()
@@ -80,7 +82,7 @@ Did the colors help? Well, not all that much. It is hard to pick out nine colors
 
 </div>
 
-### Count the fives
+### Recommendations, Count the fives (2/3)
 
 ```{r count-two-colors}
 initiate_image()
@@ -105,7 +107,7 @@ When you use a bit of restraint and only show two colors, you make the process o
 
 </div>
 
-### Count the fives
+### Count the fives (3/3)
 
 ```{r count-black-gray}
 initiate_image()
@@ -132,7 +134,7 @@ Now why would you want to make something fade into the background? Why not just 
 
 </div>
 
-### Problems with emphasis
+### Recommendations, Problems with emphasis
 + Don't always know what to emphasize
   + Solution: interactivity
 + Let the data speak for itself
@@ -148,147 +150,13 @@ Seriously, the effort to emphasize one group always results in the de-empahsis o
 
 There's also a common refrain, "LEt the data speak for itself." It sounds nice in theory, but in practice, data doesn't speak very well. It has a soft voice. It mumbles. It's message gets lost in the noise. You job as a data visualizer is to amplify the message. If you are afraid to do this, you are in the wrong job.
 
-The other thing to keep in mind is that if you have the power to emphasize (or de-emphasize) certain features of the data, you have the power to deceive your reader. And this happens a lot. I won't share any deceptive plots with you, but you can find them easily with a Google search.
+The other thing to keep in mind is that if you have the power to emphasize (or de-emphasize) certain features of the data, you have the power to deceive your reader. And this happens a lot. I won't share any deceptive plots with you, but you can find them easily with a Google search. Some of it is just plain stupidity, but you have to believe that some of it is malicious intent. The examples you see on the web are pretty easy to spot, but that doesn't mean that there aren't subtle ways to use graphics to deceive.
 
 </div>
 
-### Colors, Contrasting pure colors often appear too intense
+### Recommendations, Pure colors often appear too intense
 
-```{r intense}
-initiate_image()
-c3 <- c("#FF0000", "#00FF00", "#0000FF")
-l3 <- c("#FF9090", "#90FF90", "#9090FF")
-d3 <- c("#700000", "#007000", "#000070")
-df <- data.frame(
-  x=rep(1:3, each=3), 
-  y=rep(3:1, 3),
-  b=rep(c3, 3),
-  f=rep(c3, each=3)
-)
-df <- df[c(2:4, 6:8), ]
-ggplot(df, aes(x, y)) +
-  expand_limits(x=c(0, 4), y=c(0, 4)) +
-  geom_point(size=30, color=df$b, shape="square") +
-  geom_text(
-    color=df$f,
-    label=paste0("F=", df$f, "\nB=", df$b)) +
-  theme_void() +
-  theme(
-    panel.background=element_rect(fill="#888888")
-  )
-finalize_image()
-```
-
-`r display_image`
-
-<div class="notes">
-
-
-
-</div>
-
-### Colors, Lighter background, darker foreground
-
-```{r both}
-initiate_image()
-df <- data.frame(
-  x=rep(1:3, each=3), 
-  y=rep(3:1, 3),
-  b=rep(l3, 3),
-  f=rep(d3, each=3)
-)
-df <- df[c(2:4, 6:8), ]
-ggplot(df, aes(x, y)) +
-  expand_limits(x=c(0, 4), y=c(0, 4)) +
-  geom_point(size=30, color=df$b, shape="square") +
-  geom_text(
-    color=df$f,
-    label=paste0("F=", df$f, "\nB=", df$b)) +
-  theme_void() +
-  theme(
-    panel.background=element_rect(fill="#888888")
-  )
-finalize_image()
-```
-
-`r display_image`
-
-<div class="notes">
-
-
-
-</div>
-
-### Colors, or the reverse
-
-```{r reverse}
-initiate_image()
-df <- data.frame(
-  x=rep(1:3, each=3), 
-  y=rep(3:1, 3),
-  b=rep(d3, 3),
-  f=rep(l3, each=3)
-)
-df <- df[c(2:4, 6:8), ]
-ggplot(df, aes(x, y)) +
-  expand_limits(x=c(0, 4), y=c(0, 4)) +
-  geom_point(size=30, color=df$b, shape="square") +
-  geom_text(
-    color=df$f,
-    label=paste0("F=", df$f, "\nB=", df$b)) +
-  theme_void() +
-  theme(
-    panel.background=element_rect(fill="#888888")
-  )
-finalize_image()
-```
-
-`r display_image`
-
-<div class="notes">
-
-
-
-</div>
-
-### Colors, Contrasting pure colors often appear too intense
-
-```{r test-intense}
-initiate_image()
-d3 <- c("#FFCCCC", "#FF9999", "#FF6666", "#FF3333", "#FF0000", "#CC0000", "#990000", "#660000", "#330000")
-c3 <- c("#003300", "#006600", "#009900", "#00CC00", "#00FF00", "#33FF33", "#66FF66", "#99FF99", "#CCFFCC")
-t <- c(" ",  paste0("F=", c3, ", B=", d3))
-b <- rep(1,4)
-o <- c(b, 2, b, b, 3, b, b, 4, b, b, 5, b, b, 6, b, b, 7, b, b, 8, b, b, 9, b, b, 10, b)
-df <- data.frame(
-  y=rep((0:8)/2, each=9), 
-  x=rep(0:8, length(c3)),
-  b=rep(d3, each=9),
-  f=rep(c3, each=9),
-  t=t[o]
-)
-ggplot(df, aes(x, y)) +
-  expand_limits(x=c(0, 8), y=c(0, 4)) +
-  geom_point(size=30, color=df$b, shape="square") +
-  geom_text(color=df$f, label=df$t, size=12) +
-  theme_void() +
-  theme(
-    panel.background=element_rect(fill="#888888")
-  )
-finalize_image()
-```
-
-`r display_image`
-
-<div class="notes">
-
-
-
-</div>
-
-### Colors, Contrasting pure colors often appear too intense
-
-```{r test-intense2}
+```{r intense-example}
 initiate_image()
 g <- c("#FF0000", "#00FF00", "#0000FF")
 c3 <- rep(g, each=3)[-c(1, 5, 9)]
@@ -309,7 +177,7 @@ ggplot(df, aes(x, y)) +
   geom_text(color=df$f, label=df$t, size=12) +
   theme_void() +
   theme(
-    panel.background=element_rect(fill="#888888")
+    panel.background=element_rect(fill="#808080")
   )
 finalize_image()
 ```
@@ -318,11 +186,15 @@ finalize_image()
 
 <div class="notes">
 
+The pure colors: pure red, green, and blue are sometimes a bit harsh. This is especially true if they are placed in direct contrast. Here is an example. 
 
+One theory why these colors appear harsh is that they tend to produce afterimages. An afterimage is a short term distortion of vision. If you stare at an image long enough, so of the retinal cells in your eye become "tired" and stop firing as often. When your focus finally move away from that image, the opposite pattern appears temporarily in your field of vision because only the non-tired cells that transmit the opposite color can fire. It fades away as your tired cells recover.
+
+Sometimes the harshness is good. It is an attention grabber. But there are times when you want to soften the colors a bit. You can do this in two ways, making the colors a bit lighter or making the colors a bit darker.
 
 </div>
 
-### Colors, Pure color circle
+### Recommendations, Pure color circle and alternatives (1/3)
 
 ```{r hsv-pure-circle}
 initiate_image()
@@ -346,7 +218,13 @@ finalize_image()
 
 `r display_image`
 
-### Colors, Lighter color circle
+<div class="notes">
+
+This is the circle of pure colors on the hsv cylinder that you saw earlier.
+
+</div>
+
+### Recommendations, Pure color circle and alternatives (2/3)
 
 ```{r hsv-lighter-circle}
 initiate_image()
@@ -372,7 +250,13 @@ finalize_image()
 
 `r display_image`
 
-### Colors, Darker color circle
+<div class="notes">
+
+If you move the circle inward, all of the colors get lighter. They develop something of a pastel color to them. These are less harsh than the pure colors.
+
+</div>
+
+### Colors, Pure color ciircle and alternatives (3/3)
 
 ```{r hsv-darker-circle}
 initiate_image()
@@ -398,9 +282,15 @@ finalize_image()
 
 `r display_image`
 
-### Colors, Contrasting pure colors often appear too intense
+<div class="notes">
 
-```{r test-intense3}
+If you move the pure color circle down on the hsv cylinder, you get darker shades and these also are less harsh.
+
+</div>
+
+### Recommendations, Lighter and darker colors are calmer
+
+```{r lighter-and-darker}
 initiate_image()
 g <- c("#800000", "#008000", "#000080")
 h <- c("#FF8080", "#80FF80", "#8080FF")
@@ -422,7 +312,7 @@ ggplot(df, aes(x, y)) +
   geom_text(color=df$f, label=df$t, size=12) +
   theme_void() +
   theme(
-    panel.background=element_rect(fill="#888888")
+    panel.background=element_rect(fill="#808080")
   )
 finalize_image()
 ```
@@ -431,16 +321,30 @@ finalize_image()
 
 <div class="notes">
 
-
+This chart shows lighter bacgrounds and darker foregrounds. The combination has a bit less contrast. The dark green foreground on the light blue background is perhaps the worst. But the softening of colors appears calmer and less harsh.
 
 </div>
 
+### Recommendations, Avoid the rainbow gradient
 
+```{r rainbow-gradient}
+initiate_image()
+n <- 300
+t <- seq(0, 2*pi, length=n)
+x <- cos(t)
+y <- sin(t)
+x0 <- x/2
+y0 <- y/2
+co <- rainbow(n)
+ggplot(data.frame(x, y), aes(x, y)) +
+  geom_segment(xend=x0, yend=y0, color=co, size=2) +
+  theme_void() +
+  theme(
+    panel.background=element_rect(fill="#808080"))
+finalize_image()
+```
 
-
-### Avoid the rainbow gradient
-
-(To be added)
+`r display_image`
 
 ### When to use simple gradient
 
