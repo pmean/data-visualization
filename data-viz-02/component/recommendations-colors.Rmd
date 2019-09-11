@@ -369,3 +369,56 @@ finalize_image()
 ### Varying hue and saturation
 
 (To be added)
+
+```{r display_functions}
+display_linear_gradient <- function(co, n=length(co)) {
+  t <- seq(0, 2*pi, length=n)
+  x <- t
+  y <- rep(1, length=n)
+  x0 <- t
+  y0 <- y+1
+  ggplot(data.frame(x, y), aes(x, y)) +
+    geom_segment(xend=x0, yend=y0, color=co, size=2) +
+    expand_limits(y=c(0, 3)) +
+    theme_void() +
+    theme(
+      panel.background=element_rect(fill="#808080"))
+}
+display_circular_gradient <- function(co, n=length(co)) {
+  t <- seq(0, 2*pi, length=n)
+  x <- cos(t)
+  y <- sin(t)
+  x0 <- 0.5*x
+  y0 <- 0.5*y
+  ggplot(data.frame(x, y), aes(x, y)) +
+    geom_segment(xend=x0, yend=y0, color=co, size=2) +
+    theme_void() +
+    theme(
+      panel.background=element_rect(fill="#808080"))
+}
+```
+
+```{r virdis-colors}
+initiate_image()
+n <- 300
+display_linear_gradient(hcl.colors(300))
+finalize_image()
+```
+
+`r display_image`
+
+<div class="notes">
+
+http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/
+
+</div>
+
+### Gradients 
+
+```{r rainbow-gradient}
+initiate_image()
+display_circular_gradient(rainbow(300))
+finalize_image()
+```
+
+`r display_image`

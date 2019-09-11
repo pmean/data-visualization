@@ -695,6 +695,17 @@ finalize_image()
 
 `r display_image`
 
+```{r change-gradient}
+initiate_image()
+saratoga_houses <- read.csv("../../common-files/data/houses.csv")
+ggplot(saratoga_houses, aes(Age, Price)) + 
+  geom_point(aes(color=Bathrooms)) + 
+  scale_color_gradient(low="#FFFFFF", high="#FF0000")
+finalize_image()
+```
+
+`r display_image`
+
 ### Gradients in Tableau
 
 ![Gradient drop-down menu in Tableau](../images/tableau/gradient-options.png)
