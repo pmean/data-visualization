@@ -692,7 +692,7 @@ finalize_image()
 
 `r display_image`
 
-### Colors, Tableua gradient schemes
+### Colors, Tableau gradient schemes
 
 ![Gradient drop-down menu in Tableau](../images/tableau/gradient-options.png)
 
@@ -981,6 +981,80 @@ finalize_image()
 
 `r display_image`
 
+### Colors, Opacity (1/3)
+
+```{r opacity-1}
+initiate_image()
+x <- ((1:9)+0)/10
+y <- rep(0, length=length(x))
+g1 <- ggplot(data.frame(x, y), aes(x, y)) +
+  geom_point(color="red", alpha=x, size=15) +
+  expand_limits(y=c(-0.1, 2.1)) + 
+  theme(
+    panel.background = element_rect(fill = 'white'),
+    panel.grid = element_line(color='white')) +
+  scale_x_continuous(breaks=x, labels=paste0(100*x, "%")) +
+  scale_y_continuous(breaks=NULL) +
+  xlab(label="alpha") +
+  ylab(label=" ")
+g1
+finalize_image()
+```
+
+`r display_image`
+
+<div class="notes">
+
+There is one more feature of color that is important, opacity. Opacity is the extent to which you can peek through a color to see the background beheath.
+
+</div>
+
+### Colors, opacity (2/3)
+
+```{r opacity-2}
+initiate_image()
+g2 <- g1 +
+  geom_segment(x=0, y=0.3, xend=1, yend=0.3, size=13) +
+  geom_segment(x=0, y=0.5, xend=1, yend=0.5, size=13, color="green") +
+  geom_point(y=y+0.4, color="red", alpha=x, size=15)
+g2
+finalize_image()
+```
+
+`r display_image`
+
+<div class="notes">
+
+A low degree of opacity does not impy a lighter color. It's only lighter when the background is white, because more of the white is showing through. When the background is black, a low degree of opacity means a dar red. When the background is green, a low degree of opacity produces a darker green with a tint of red.
+
+</div>
+
+### Colors, Opacity (3/3)
+
+```{r opacity-3}
+initiate_image()
+g3 <- g2 +
+  geom_point(x=0.2, y=0.8, color="red", alpha=0.03, size=15) +
+  geom_point(x=0.2, y=0.9, color="red", alpha=0.03, size=15) +
+  geom_point(x=0.2, y=1.2, color="red", alpha=0.03, size=15) +
+  geom_point(x=0.2, y=1.3, color="red", alpha=0.03, size=15) +
+  geom_point(x=0.19, y=1.25, color="red", alpha=0.03, size=15) +
+  geom_point(x=0.2, y=1.6, color="red", alpha=0.03, size=15) +
+  geom_point(x=0.2, y=1.7, color="red", alpha=0.03, size=15) +
+  geom_point(x=0.19, y=1.65, color="red", alpha=0.03, size=15) +
+  geom_point(x=0.21, y=1.65, color="red", alpha=0.03, size=15)
+g3
+finalize_image()
+```
+
+`r display_image`
+
+<div class="notes">
+
+If two points with high opacity overlap, then the overlap is more opaque. It becomes even more so when three or four points overlap.
+
+</div>
+
 ### Colors, CMYK system
 
 ![Illustration of subtractive color scheme](../images/external/cymk-subtractive.png)
@@ -1013,7 +1087,7 @@ When you are printing, more of something makes things darker. This is the exact 
 
 <div class="notes">
 
-The kindergarten view of colors (red plus yellow equals orange) doesn't work on a computer screen because the screen uses mixtures of light to combine colors. We covered the RGB system including how to create gradients. The HSV system provides a more intuitive description of colors, while CMYK is used when printing, where a substractive rather than additive color system is needed.
+The kindergarten view of colors (red plus yellow equals orange) doesn't work on a computer screen because the screen uses mixtures of light to combine colors. We covered the RGB system including how to create gradients. The HSV system provides a more intuitive description of colors, while CMYK is used when printing, where a subtractive rather than additive color system is needed.
 
 </div>
 

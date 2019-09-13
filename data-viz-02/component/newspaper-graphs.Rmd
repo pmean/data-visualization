@@ -48,3 +48,15 @@ Weiyi Cai, Simone Landon. Attacks by White Extremists Are Growing. So Are Their 
 Mark Smirniotis. The Best VPN Service. Wirecutter, February 8, 2019. Retrieved August 14, 2019 from https://thewirecutter.com/reviews/best-vpn-service/.
 
 </div>
+
+
+### Graphs in the news, Debate speaking time
+
+![Bar chart showning speaking time at Democratic debate](../images/external/speaking-time.png)
+
+<div class="notes">
+
+Weiyi Cai, Jasmine C. Lee, Jugal K. Patel. Speaking Time in the Democratic Debate. The New York Times, Sept. 12, 2019. Retrieved September 12, 2019 from https://www.nytimes.com/interactive/2019/09/12/us/elections/debate-speaking-time.html. 
+
+
+</div>
