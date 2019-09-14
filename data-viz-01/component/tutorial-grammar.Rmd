@@ -98,7 +98,6 @@ It will help to see some examples.
   + Points
   + Lines
   + Bars
-  + Text
 + Aesthetics
   + Position
   + Shape
@@ -121,7 +120,6 @@ Not every geometry/mark will have every possible aesthetic. Some of these aesthe
 + mark_point
 + mark_line
 + mark_bar
-+ mark_text
 
 <div class="notes">
 
@@ -133,7 +131,6 @@ You specify the type of geometry/mark in Python using a range of mark functions.
 + geom_point
 + geom_line
 + geom_bar, geom_col
-+ geom_text, geom_lab
 
 <div class="notes">
 

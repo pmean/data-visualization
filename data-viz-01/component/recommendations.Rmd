@@ -148,8 +148,6 @@ saratoga_houses$age_plus <- saratoga_houses$Age + runif(1057)
 binary_colors <- c("red", "red", "blue", "blue", "blue", "blue", "blue", "blue")
 ggplot(saratoga_houses, aes(x=age_plus, y=Price)) +
   geom_point(aes(color=factor(Bathrooms), shape=factor(Bathrooms)), size=5) +
-  scale_x_log10() +
-  scale_y_log10() +
   scale_color_manual(values=binary_colors) + 
   scale_shape_manual(values=rep(c(1, 4), c(2, 6)))
 finalize_image("Graph using colors and shapes")
@@ -163,13 +161,37 @@ It's okay to map a single variable to more than one aesthetic. In fact, this oft
 
 </div>
 
-### Recommendations, Some restrictions
-+ Shape is only good for categories
-+ Shape and size don't mix
+### Recommendations, Use shape only for categorical variables
+
+```{r shape-revisted}
+saratoga_houses <- read.csv("../../common-files/data/houses.csv")
+initiate_image()
+ggplot(saratoga_houses, aes(x=Age, y=Price)) + 
+  geom_point(aes(shape=factor(Bedrooms)))
+finalize_image(" ")
+```
+
+`r display_image`
 
 <div class="notes">
 
-There are some practical limits to aesthetics of points. First, shape makes sense only for categorical data. If you have a large number of values, as is typical for a continuous variable, you run out of symbols before you run out of categories.
+First, shape makes sense only for categorical data. If you have a large number of values, as is typical for a continuous variable, you run out of symbols before you run out of categories.
+
+</div>
+
+### Recommendations, Shape and size don't mix
+
+```{r size-and-shape}
+saratoga_houses <- read.csv("../../common-files/data/houses.csv")
+initiate_image()
+ggplot(saratoga_houses, aes(x=Age, y=Price)) + 
+  geom_point(aes(shape=factor(Bedrooms), size=Bathrooms))
+finalize_image(" ")
+```
+
+`r display_image`
+
+<div class="notes">
 
 Also size and shape don't mix. You can really compare two diffent shapes, such as an X and an O on size. Is the size related to the diameter, the area, or the perimeter? There's no really good answer, so it's asking to much of a graph that asks you to decide which is larger among points represent different shapes. Either vary the shape or vary the size, but not both.
 
