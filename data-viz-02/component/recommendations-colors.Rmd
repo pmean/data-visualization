@@ -403,13 +403,103 @@ The middle of a divergent gradient typically has a muted color like gray that fa
 
 </div>
 
-### When to use circular gradient
+### Recommendations, When to use circular gradient
++ Mostly avoided
++ Used when two extremes are similar
+  + Wind direction (0 = 360)
+  
+<div class="notes">
 
-(To be added)
+Most visualization experts recommend against the use of circular gradients. This gradient would make values at the low end of the scale look close in color to values on the high end of the scale. This almost never happens. The one prominent exception would be a variable like wind speed, where values of 0 degrees and 360 degrees are identical.
 
-### Equal luminence
+</div>
 
-(To be added)
+
+### Recommendations, Unequal luminence causes optical illusions
+
+```{r optical-illusion}
+initiate_image()
+x <- rep(0:9, each=10)
+y <- rep(0:9, 10)
+co <- ifelse(x < 4.5, "#FF0000", "#00FF00")
+ggplot(data.frame(x, y), aes(x, y)) + 
+  geom_point(color=co, size=22, shape="square") +
+  geom_point(x=2, y=5, color="gray", size=22) +
+  geom_point(x=7, y=5, color="gray", size=22) 
+finalize_image()
+```
+
+`r display_image`
+
+### Recommendations, Minimze illusions with equalized luminance
+
+```{r equalize-luminance}
+initiate_image()
+x <- rep(0:9, each=10)
+y <- rep(0:9, 10)
+co <- ifelse(x < 4.5, "#FF0000", "#008000")
+ggplot(data.frame(x, y), aes(x, y)) + 
+  geom_point(color=co, size=22, shape="square") +
+  geom_point(x=2, y=5, color="gray", size=22) +
+  geom_point(x=7, y=5, color="gray", size=22) 
+finalize_image()
+```
+
+`r display_image`
+
+### Recommendations, same luminance, equally spaced hue
+
+```{r hcl-circle}
+hcl_circle <- function(lum, rad) {
+  theta <- seq(0, 1, length=360)
+  c2 <- hcl(360*theta, 100*rad, 100*lum, fixup=FALSE)
+  dg2 <- data.frame(x=-cos(2*pi*theta), y=-sin(2*pi*theta), co=c2)
+  m <- sum(is.na(dg2$co))
+  if (m > 0) cat(paste0(m, " missing colors."))
+  dg3 <- rbind(dg2[!is.na(dg2$co), ])
+  g <- ggplot(dg3, aes(x, y)) + 
+    geom_point(col=dg3$co) +
+    geom_point(x=dg2$x[360], y=dg2$y[360], color=c2[360], size=20) +
+    geom_point(x=dg2$x[ 72], y=dg2$y[ 72], color=c2[ 72], size=20) +
+    geom_point(x=dg2$x[144], y=dg2$y[144], color=c2[144], size=20) +
+    geom_point(x=dg2$x[216], y=dg2$y[216], color=c2[216], size=20) +
+    geom_point(x=dg2$x[288], y=dg2$y[288], color=c2[288], size=20) +
+    expand_limits(x=c(-1.1, 1.1)) +
+    expand_limits(y=c(-1.1, 1.1)) +
+    theme_void() +
+    theme(
+      panel.background=element_rect(fill="#FFFFFF")
+    )
+  g
+}
+initiate_image()
+hcl_circle(15/20, rad=0.50)
+finalize_image()
+```
+
+`r display_image`
+
+<div class="notes">
+
+
+
+</div>
+
+### Recommendations, equally spaced hue, luminance
+
+```{r darker-hcl-circle}
+initiate_image()
+hcl_circle(11/20, rad=0.40)
+finalize_image()
+```
+
+`r display_image`
+
+<div class="notes">
+
+
+
+</div>
 
 ### Avoid crosshatching
 
