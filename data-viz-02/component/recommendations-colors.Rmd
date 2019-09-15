@@ -447,23 +447,23 @@ finalize_image()
 
 `r display_image`
 
-### Recommendations, same luminance, equally spaced hue
+### Recommendations, Categories should be same luminance, equally spaced hue
 
 ```{r hcl-circle}
-hcl_circle <- function(lum, rad) {
+hcl_circle <- function(g, lum, rad, spin=1, o=0) {
   theta <- seq(0, 1, length=360)
   c2 <- hcl(360*theta, 100*rad, 100*lum, fixup=FALSE)
-  dg2 <- data.frame(x=-cos(2*pi*theta), y=-sin(2*pi*theta), co=c2)
+  dg2 <- data.frame(x=spin*cos(2*pi*theta), y=abs(spin)*sin(2*pi*theta), co=c2)
   m <- sum(is.na(dg2$co))
   if (m > 0) cat(paste0(m, " missing colors."))
   dg3 <- rbind(dg2[!is.na(dg2$co), ])
-  g <- ggplot(dg3, aes(x, y)) + 
-    geom_point(col=dg3$co) +
-    geom_point(x=dg2$x[360], y=dg2$y[360], color=c2[360], size=20) +
-    geom_point(x=dg2$x[ 72], y=dg2$y[ 72], color=c2[ 72], size=20) +
-    geom_point(x=dg2$x[144], y=dg2$y[144], color=c2[144], size=20) +
-    geom_point(x=dg2$x[216], y=dg2$y[216], color=c2[216], size=20) +
-    geom_point(x=dg2$x[288], y=dg2$y[288], color=c2[288], size=20) +
+  g <-  g + 
+    geom_point(x=dg3$x, y=dg3$y, color=dg3$co) +
+    geom_point(x=dg2$x[1+o], y=dg2$y[1+o], color=c2[1+o], size=20) +
+    geom_point(x=dg2$x[ 72+o], y=dg2$y[ 72+o], color=c2[ 72+o], size=20) +
+    geom_point(x=dg2$x[144+o], y=dg2$y[144+o], color=c2[144+o], size=20) +
+    geom_point(x=dg2$x[216+o], y=dg2$y[216+o], color=c2[216+o], size=20) +
+    geom_point(x=dg2$x[288+o], y=dg2$y[288+o], color=c2[288+o], size=20) +
     expand_limits(x=c(-1.1, 1.1)) +
     expand_limits(y=c(-1.1, 1.1)) +
     theme_void() +
@@ -473,7 +473,9 @@ hcl_circle <- function(lum, rad) {
   g
 }
 initiate_image()
-hcl_circle(15/20, rad=0.50)
+g <- ggplot(data.frame(x=rep(0, 360), y=rep(0, 360)), aes(x, y))
+g <- hcl_circle(g, 15/20, rad=0.50)
+g
 finalize_image()
 ```
 
@@ -485,11 +487,12 @@ finalize_image()
 
 </div>
 
-### Recommendations, equally spaced hue, luminance
+### Recommendations, For many categories add second level of luminance
 
 ```{r darker-hcl-circle}
 initiate_image()
-hcl_circle(11/20, rad=0.40)
+g <- hcl_circle(g, 11/20, rad=0.40, spin=0.75, o=36)
+g
 finalize_image()
 ```
 
@@ -501,63 +504,49 @@ finalize_image()
 
 </div>
 
-### Avoid crosshatching
+### Recommendations, Avoid crosshatching
 
-(To be added)
-
-### Varying hue and saturation
-
-(To be added)
-
-```{r display_functions}
-display_linear_gradient <- function(co, n=length(co)) {
-  t <- seq(0, 2*pi, length=n)
-  x <- t
-  y <- rep(1, length=n)
-  x0 <- t
-  y0 <- y+1
-  ggplot(data.frame(x, y), aes(x, y)) +
-    geom_segment(xend=x0, yend=y0, color=co, size=2) +
-    expand_limits(y=c(0, 3)) +
-    theme_void() +
-    theme(
-      panel.background=element_rect(fill="#808080"))
-}
-display_circular_gradient <- function(co, n=length(co)) {
-  t <- seq(0, 2*pi, length=n)
-  x <- cos(t)
-  y <- sin(t)
-  x0 <- 0.5*x
-  y0 <- 0.5*y
-  ggplot(data.frame(x, y), aes(x, y)) +
-    geom_segment(xend=x0, yend=y0, color=co, size=2) +
-    theme_void() +
-    theme(
-      panel.background=element_rect(fill="#808080"))
-}
-```
-
-```{r virdis-colors}
-initiate_image()
-n <- 300
-display_linear_gradient(hcl.colors(300))
-finalize_image()
-```
-
-`r display_image`
+![OPtical illusion caused by slanting lines](../images/external/see-saw-illusion.gif)
 
 <div class="notes">
 
-http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/
+In the era when color was expensive, grpahic designers would use different types of crosshatching in place of colors. This is not really needed today, so you see it less often. But crosshatching can often produce optical illusions like the one shown above.
 
 </div>
 
-### Gradients 
+### Recommendations, Consider color-blindness in your visualizations.
 
-```{r rainbow-gradient-1}
-initiate_image()
-display_circular_gradient(rainbow(300))
-finalize_image()
-```
+![Image to test for color-blindness](../images/external/color-blindness-test.png)
 
-`r display_image`
+<div class="notes">
+
+Many of the color palettes used here cause difficulty for color blind people.
+
+</div>
+
+### Recommedations, Color blindness simulator
+
+![Screenshot of color blindness simulator](../images/external/color-blindness-simulator.png)
+
+<div class="notes">
+
+This is one of many color blind simulators available on the web.
+
+</div>
+
+### Recommendations, Other steps to control for colorblindness
+
++ Use palettes described as color blind friendly
++ Use second visual cue (e.g., shape)
++ Deliberately vary luminence
+
+### Recommendationa, black and white reproduction
+
+(To be added)
+
+### Recommendations, Varying hue and saturation
+
+(To be added)
+
+### Recommendations, summary
+
