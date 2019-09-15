@@ -44,7 +44,10 @@ The plots that you have drawn tend to have difficulty with overprinting. Too man
 load("../../common-files/data/houses.RData")
 initiate_image()
 ggplot(saratoga_houses, aes(x=Age, y=Price)) +
-  geom_point(size=5, shape=1)
+  geom_point(size=5, shape=1) +
+  theme(
+    axis.text=element_text(size=16),
+    axis.title=element_text(size=20,face="bold"))
 finalize_image("R graph using open circles")
 ```
 
@@ -61,7 +64,10 @@ Open symbols have less trouble with overprinting. They use less ink and it is ea
 ```{r small-points}
 initiate_image()
 ggplot(saratoga_houses, aes(x=Age, y=Price)) +
-  geom_point(size=1)
+  geom_point(size=1) +
+  theme(
+    axis.text=element_text(size=16),
+    axis.title=element_text(size=20,face="bold"))
 finalize_image("Graph using small points")
 ```
 
@@ -79,7 +85,10 @@ Smaller data points have less trouble with overprinting.
 load("../../common-files/data/houses.RData")
 initiate_image()
 ggplot(saratoga_houses, aes(x=Age, y=Price)) +
-  geom_point(alpha=0.1, size=5)
+  geom_point(alpha=0.1, size=5) +
+  theme(
+    axis.text=element_text(size=16),
+    axis.title=element_text(size=20,face="bold"))
 finalize_image("Graph using opacity")
 ```
 
@@ -98,7 +107,10 @@ initiate_image()
 saratoga_houses$age_plus <- saratoga_houses$Age + runif(1057)
 ggplot(saratoga_houses, aes(x=age_plus, y=Price)) +
   geom_point(size=5, shape=1) +
-  scale_x_log10()
+  scale_x_log10() +
+  theme(
+    axis.text=element_text(size=16),
+    axis.title=element_text(size=20,face="bold"))
 finalize_image("Graph using log scales")
 ```
 
@@ -126,7 +138,10 @@ initiate_image()
 binary_colors <- c("red", "red", "blue", "blue", "blue", "blue", "blue", "blue")
 ggplot(saratoga_houses, aes(x=Age, y=Price)) +
   geom_point(aes(color=factor(Bathrooms)), size=5, shape=1) +
-  scale_color_manual(values=binary_colors)
+  scale_color_manual(values=binary_colors) +
+  theme(
+    axis.text=element_text(size=16),
+    axis.title=element_text(size=20,face="bold"))
 finalize_image("Graph using only two colors")
 ```
 
@@ -149,7 +164,10 @@ binary_colors <- c("red", "red", "blue", "blue", "blue", "blue", "blue", "blue")
 ggplot(saratoga_houses, aes(x=age_plus, y=Price)) +
   geom_point(aes(color=factor(Bathrooms), shape=factor(Bathrooms)), size=5) +
   scale_color_manual(values=binary_colors) + 
-  scale_shape_manual(values=rep(c(1, 4), c(2, 6)))
+  scale_shape_manual(values=rep(c(1, 4), c(2, 6))) +
+  theme(
+    axis.text=element_text(size=16),
+    axis.title=element_text(size=20,face="bold"))
 finalize_image("Graph using colors and shapes")
 ```
 
@@ -167,7 +185,10 @@ It's okay to map a single variable to more than one aesthetic. In fact, this oft
 saratoga_houses <- read.csv("../../common-files/data/houses.csv")
 initiate_image()
 ggplot(saratoga_houses, aes(x=Age, y=Price)) + 
-  geom_point(aes(shape=factor(Bedrooms)))
+  geom_point(aes(shape=factor(Bedrooms))) +
+  theme(
+    axis.text=element_text(size=16),
+    axis.title=element_text(size=20,face="bold"))
 finalize_image(" ")
 ```
 
@@ -185,7 +206,10 @@ First, shape makes sense only for categorical data. If you have a large number o
 saratoga_houses <- read.csv("../../common-files/data/houses.csv")
 initiate_image()
 ggplot(saratoga_houses, aes(x=Age, y=Price)) + 
-  geom_point(aes(shape=factor(Bedrooms), size=Bathrooms))
+  geom_point(aes(shape=factor(Bedrooms), size=Bathrooms)) +
+  theme(
+    axis.text=element_text(size=16),
+    axis.title=element_text(size=20,face="bold"))
 finalize_image(" ")
 ```
 

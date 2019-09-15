@@ -1,5 +1,5 @@
 ---
-title: "Data visaulization, scatterplots"
+title: "Data visualization, scatterplots"
 author: "Steve Simon"
 output: powerpoint_presentation
 date: "Created 2019-08-16"

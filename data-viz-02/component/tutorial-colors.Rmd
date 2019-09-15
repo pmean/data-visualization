@@ -716,6 +716,8 @@ The discrete choices (for representing categories using color) are also quite di
 
 ### Colors, Tableau output
 
+![Tableau scatterplot with red gradient](../images/tableau/red-gradient.png)
+
 <div class="notes">
 
 Here's what the Tableau output looks like.
@@ -791,12 +793,12 @@ ggplot(dg4, aes(x, y)) +
   geom_point(col=dg4$co) +
   expand_limits(y=c(-5, 1)) + 
   expand_limits(x=c(-1.2, 1.2)) + 
-  geom_text(x=x4[100], y=y4[100], label="hsv(1/6, 1, 1)", color="white", size=sz) + 
-  geom_text(x=x4[200], y=y4[200], label="hsv(1/3, 1, 1)", color="white", size=sz) + 
-  geom_text(x=x4[300], y=y4[300], label="hsv(1/2, 1, 1)", color="white", size=sz) + 
-  geom_text(x=x4[400], y=y4[400], label="hsv(2/3, 1, 1)", color="white", size=sz) + 
-  geom_text(x=x4[500], y=y4[500], label="hsv(5/6, 1, 1)", color="white", size=sz) + 
-  geom_text(x=x4[600], y=y4[600], label="hsv(0 or 1, 1, 1)", color="white", size=sz) + 
+  geom_text(x=x4[100], y=y4[100], label="hsv(1/6, 1, 1)", color="black", size=sz) + 
+  geom_text(x=x4[200], y=y4[200], label="hsv(1/3, 1, 1)", color="black", size=sz) + 
+  geom_text(x=x4[300], y=y4[300], label="hsv(1/2, 1, 1)", color="black", size=sz) + 
+  geom_text(x=x4[400], y=y4[400], label="hsv(2/3, 1, 1)", color="black", size=sz) + 
+  geom_text(x=x4[500], y=y4[500], label="hsv(5/6, 1, 1)", color="black", size=sz) + 
+  geom_text(x=x4[600], y=y4[600], label="hsv(0 or 1, 1, 1)", color="black", size=sz) + 
   theme_void() +
   theme(
     panel.background=element_rect(fill="#808080")
@@ -855,18 +857,18 @@ ggplot(dg6, aes(x, y)) +
   geom_point(col=dg6$co) +
   expand_limits(y=c(-5, 1)) + 
   expand_limits(x=c(-1.2, 1.2)) + 
-  geom_text(x=x4[100], y=y4[100], label="hsv(1/6, 1, 1)", color="white", size=sz) + 
-  geom_text(x=x4[200], y=y4[200], label="hsv(1/3, 1, 1)", color="white", size=sz) + 
-  geom_text(x=x4[300], y=y4[300], label="hsv(1/2, 1, 1)", color="white", size=sz) + 
-  geom_text(x=x4[400], y=y4[400], label="hsv(2/3, 1, 1)", color="white", size=sz) + 
-  geom_text(x=x4[500], y=y4[500], label="hsv(5/6, 1, 1)", color="white", size=sz) + 
-  geom_text(x=x4[600], y=y4[600], label="hsv(0 or 1, 1, 1)", color="white", size=sz) + 
-  geom_text(x=x4[100], y=y4[100]-4, label="hsv(1/6, 1, 0)", color="white", size=sz) + 
-  geom_text(x=x4[200], y=y4[200]-4, label="hsv(1/3, 1, 0)", color="white", size=sz) + 
-  geom_text(x=x4[300], y=y4[300]-4, label="hsv(1/2, 1, 0)", color="white", size=sz) + 
-  geom_text(x=x4[400], y=y4[400]-4, label="hsv(2/3, 1, 0)", color="white", size=sz) + 
-  geom_text(x=x4[500], y=y4[500]-4, label="hsv(5/6, 1, 0)", color="white", size=sz) + 
-  geom_text(x=x4[600], y=y4[600]-4, label="hsv(0 or 1, 1, 0)", color="white", size=sz) + 
+  geom_text(x=x4[100], y=y4[100], label="hsv(1/6, 1, 1)", color="black", size=sz) + 
+  geom_text(x=x4[200], y=y4[200], label="hsv(1/3, 1, 1)", color="black", size=sz) + 
+  geom_text(x=x4[300], y=y4[300], label="hsv(1/2, 1, 1)", color="black", size=sz) + 
+  geom_text(x=x4[400], y=y4[400], label="hsv(2/3, 1, 1)", color="black", size=sz) + 
+  geom_text(x=x4[500], y=y4[500], label="hsv(5/6, 1, 1)", color="black", size=sz) + 
+  geom_text(x=x4[600], y=y4[600], label="hsv(0 or 1, 1, 1)", color="black", size=sz) + 
+  geom_text(x=x4[100], y=y4[100]-4, label="hsv(1/6, 1, 0)", color="black", size=sz) + 
+  geom_text(x=x4[200], y=y4[200]-4, label="hsv(1/3, 1, 0)", color="black", size=sz) + 
+  geom_text(x=x4[300], y=y4[300]-4, label="hsv(1/2, 1, 0)", color="black", size=sz) + 
+  geom_text(x=x4[400], y=y4[400]-4, label="hsv(2/3, 1, 0)", color="black", size=sz) + 
+  geom_text(x=x4[500], y=y4[500]-4, label="hsv(5/6, 1, 0)", color="black", size=sz) + 
+  geom_text(x=x4[600], y=y4[600]-4, label="hsv(0 or 1, 1, 0)", color="black", size=sz) + 
   theme_void() +
   theme(
     panel.background=element_rect(fill="#808080")
@@ -882,9 +884,9 @@ finalize_image()
   + 0 = red, 120 = green, 240 = blue
   + 60 = yellow, 180 = cyan, 240 = magenta
 + C = chroma
-  + colorfulness relative to a gray of equal luminence
+  + colorfulness relative to a gray of equal luminance
   + not quite same as saturation
-+ L = luminence
++ L = luminance
   + brightness, lightness
 + Not all combinations of HCL work
 + Very similar systems are CIE-LUV, CIE-LAB
@@ -895,12 +897,22 @@ Another color system is the HCL system. It is very similar to standards CIE-LUV 
 
 It has a hue value, just like the hsl system.
 
-Chroma is a measure of how intense the color is. It is like saturation, but represents a relative amount of saturation, relative to a grey value of the same luminence.
+Chroma is a measure of how intense the color is. It is like saturation, but represents a relative amount of saturation, relative to a grey value of the same luminance.
 
-Luminence is a meausre of brightness or lightness. The luminence is similar to the V (value)
+Luminance is a meausre of brightness or lightness. The luminance is similar to the V (value)
 in the hsv system. It does a better job of matching brightness, because certain colors, such as yellow and green have a naturally higher level of brightness.
 
-For a given value of luminence, there may be restrictions in how far you can move towards the pure colors. For high values of luminence, you can't get near the pure red or pure blue colors, as they don't have enough brightness, especially compared to the yellows and greens. For values of low luminence, the opposite occurs. Pure yellow and pure green are just too bright, but you can get reasonable values for something close to pure red and pure blue.
+For a given value of luminance, there may be restrictions in how far you can move towards the pure colors. For high values of luminance, you can't get near the pure red or pure blue colors, as they don't have enough brightness, especially compared to the yellows and greens. For values of low luminance, the opposite occurs. Pure yellow and pure green are just too bright, but you can get reasonable values for something close to pure red and pure blue.
+
+</div>
+
+### Colors, Luminance of pure colors
+
+![Luminance of the color wheel](../images/external/color-wheel-luminance.gif)
+
+<div class="notes">
+
+This image, borrowed from the excellent website, workwithcolor.com, shows that the pure colors are not equally bright. Yellow is the brigthest color. At 94% luminance, it is almost white. Cyan, at 87% luminance, and green, at 80% luminance, are almost as bright. The remaining colors have much less luminance. Magenta has 70% luminance, red has 54% luminance, and blue, at 44% luminance, is closer to black than it is to white.
 
 </div>
 
@@ -947,7 +959,7 @@ finalize_image()
 
 <div class="notes">
 
-These are the color values with a luminence of 90%. It favors the green and yellow side of the color wheel.
+These are the color values with a luminance of 90%. It favors the green and yellow side of the color wheel.
 
 </div>
 
@@ -1067,15 +1079,35 @@ When you are printing, more of something makes things darker. This is the exact 
 
 ### Colors, CMYK system, combinations
 + Building blocks Cyan (C), Magenta (M), Yellow (Y), Black (K).
+  + Subtractive system
 + Cyan plus Magenta equals Blue
 + Cyan plus Yellow equals Green
 + Magenta plus Yellow equals Red
 + All three combined equals Black
 
+<div class="notes">
+
+The building blocks of the CMYK are the colors cyan, magenta, yellow and K=black. You don't want the letter B for black because it might get confused with the B for blue in an RGB system.
+
+The combination of colors in a CMYK system works in a complementary way to RGB. The combinations of cyan and magenta produces blue, cyan plus yellow produces green, and magenta plus yellow produces red.
+
+</div>
+
 ### Colors, CMYK system, Why you need black
 + Only in theory does, C+M+Y = Black
   + Too much ink
   + Dull muddy color
++ On screen versus print
+
+<div class="notes">
+
+The CYMK color system adds a fourth color, black, to the mix. In theory, you don't need black, because you can get it with cyan plus magenta plus yellow. But that wastes a lot of expensive ink, and you can also run into trouble by putting some much in a single spot, especially when the image is very dark.
+
+Also, in practice, the combination of cyan, magenta, and yeloow produces a dull muddy color that is not close enough to black. So adding a black ink helps. It also helps to mix in a bit of black ink for some of the other colors close to black on the color spectrum.
+
+The translation of colors from an additive system like RGB to a subtractive system like CMYK is complicated and it is difficult to get something on the computer screen to match perfectly with what gets printed. If you work with printed color materials, you have to do a lot of extra work to get things to look right.
+
+</div>
 
 ### Colors, review
 + Kindergarten view of colors
@@ -1083,6 +1115,9 @@ When you are printing, more of something makes things darker. This is the exact 
   + Gradients
 + HSV color system
   +  Discrete color palettes
++ HCL color system
+  + Equal luminance
++ Opacity
 + CYMK system
 
 <div class="notes">

@@ -346,13 +346,62 @@ finalize_image()
 
 `r display_image`
 
-### When to use simple gradient
+### Recommendations, Simple gradient can emphasize high values
 
-(To be added)
+```{r single-gradient}
+initiate_image()
+saratoga_houses <- read.csv("../../common-files/data/houses.csv")
+ggplot(saratoga_houses, aes(Age, Price)) + 
+  geom_point(aes(color=Bathrooms)) + 
+  scale_color_gradient(low="#FFFFFF", high="#FF0000")
+finalize_image()
+```
 
-### When to use divergent gradient
+`r display_image`
 
-(To be added)
+<div class="notes">
+
+The single gradient can move from a light color to a dark color, and on a white background, this will tend to de-empahsize the small values and put greater emphasis on the large values.
+
+</div>
+
+### Recommendations, Simple gradient can empahsize low values
+
+```{r single-gradient-reversed}
+initiate_image()
+saratoga_houses <- read.csv("../../common-files/data/houses.csv")
+ggplot(saratoga_houses, aes(Age, Price)) + 
+  geom_point(aes(color=Bathrooms)) + 
+  scale_color_gradient(low="#FF0000", high="#FFFFFF")
+finalize_image()
+```
+
+`r display_image`
+
+<div class="notes">
+
+If you reverse this, and move from a dark color to a light color, then (at least on a white background), you will tend to de-empahsize the large values and put greater emphasis on the small values.
+
+</div>
+
+### Recommendation, Divergent gradient empahsizes both extremes
+
+```{r divergent-gradient}
+initiate_image()
+saratoga_houses <- read.csv("../../common-files/data/houses.csv")
+ggplot(saratoga_houses, aes(Age, Price)) + 
+  geom_point(aes(color=Bathrooms)) + 
+  scale_color_gradient2(low="#FF0000", mid="#FFFFFF", high="#0000FF", midpoint=2.5)
+finalize_image()
+```
+
+`r display_image`
+
+<div class="notes">
+
+The middle of a divergent gradient typically has a muted color like gray that fades into the background. The two extremes in a divergent gradient are colors that contrast sharply with the background and with each other. This produece an emphasis at both extremes and a de-empahsis in the middle.
+
+</div>
 
 ### When to use circular gradient
 
@@ -415,7 +464,7 @@ http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/
 
 ### Gradients 
 
-```{r rainbow-gradient}
+```{r rainbow-gradient-1}
 initiate_image()
 display_circular_gradient(rainbow(300))
 finalize_image()

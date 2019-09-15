@@ -72,7 +72,10 @@ x_range <- range(saratoga_houses$Age)
 y_range <- range(saratoga_houses$Price)
 g <- ggplot(saratoga_houses[x, ], aes(x=Age, y=Price)) + 
   expand_limits(x=x_range) +
-  expand_limits(y=y_range)
+  expand_limits(y=y_range) +
+  theme(
+    axis.text=element_text(size=16),
+    axis.title=element_text(size=20,face="bold"))
 g + geom_text(aes(label=Age), size=6)
 finalize_image("Illustration of location aesthetics")
 ```
