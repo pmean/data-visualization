@@ -569,5 +569,9 @@ You can also ignore the previous efforts to balance luminance and deliberately v
 </div>
 
 ### Recommendations, summary
-
-(To be added)
++ Don't overuse colors
++ Pure colors are often too intense
+  + Darker/lighter combinations are better
++ Different gradients emphasize different features
++ Unequal luminance causes optical illusions
++ Consider colorblind viewers

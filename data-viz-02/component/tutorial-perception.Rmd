@@ -273,3 +273,14 @@ What city gets more snowfall, Remington, in the southwester corner of the state,
 
 </div>
 
+### Perception, summary
++ + Visual tasks
+  + Projection, Superimposition, Scanning, Anchoring
++ Hierarchy of comparisons
+  + Position, Length, Angle, Area, Volume, Color
+
+<div class="notes">
+
+Your visualization should try to facilitate the visual tasks of projection, superimposition, scanning, and anchoring. If you want to make comparisons, they rank from easiest to hardest as comparisons of position, length, angle, area, volune, and color.
+
+</div>
