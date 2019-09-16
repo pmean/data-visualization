@@ -447,7 +447,22 @@ finalize_image()
 
 `r display_image`
 
-### Recommendations, Categories should be same luminance, equally spaced hue
+### Recommendations, Disadvantages of equal luminance
++ Limited contrast
++ Poor black and white reproduction
++ Possible problems for color blind viewers
+
+<div class="notes">
+
+Equal luminance does present some disadvantages that you need to be aware of. There is less contrast among equal luminance colors that there would be among colors that have variations in luminance.
+
+Colors with equal luminance tend to produce the exact same gray shade in black and white reproductions of color graphs.
+
+Equal luminance can, in some situations, produce more problems for color blind viewers. We'll discuss in greater detail in just a bit.
+
+</div>
+
+### Recommendations, Give categories same luminance, equi-spaced hues
 
 ```{r hcl-circle}
 hcl_circle <- function(g, lum, rad, spin=1, o=0) {
@@ -553,13 +568,6 @@ You can also ignore the previous efforts to balance luminance and deliberately v
 
 </div>
 
-### Recommendationa, black and white reproduction
-
-(To be added)
-
-### Recommendations, Varying hue and saturation
-
-(To be added)
-
 ### Recommendations, summary
 
+(To be added)
