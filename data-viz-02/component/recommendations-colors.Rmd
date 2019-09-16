@@ -536,9 +536,22 @@ This is one of many color blind simulators available on the web.
 
 ### Recommendations, Other steps to control for colorblindness
 
++ Categorical palettes are most troublesome
 + Use palettes described as color blind friendly
 + Use second visual cue (e.g., shape)
-+ Deliberately vary luminence
++ Deliberately vary luminance
+
+<div class="notes">
+
+In general, equal luminance palettes for categorical data are the most likely to cause difficulty for color blind viewers. The single gradients and divergent gradients will usually have other changes in luminance that can help color blind viewers. 
+
+There are palettes that are known to be color blind friendly, meaning that the colors are easily distinguishable even for someone who is color blind.
+
+It helps all of us, but especially color blind viewers if you can find a second way to code a variable. This is fairly easy to do using shape as well as color to encode a categorical variable.
+
+You can also ignore the previous efforts to balance luminance and deliberately vary luminance, as this is easily perceived even by color blind viewers.
+
+</div>
 
 ### Recommendationa, black and white reproduction
 
