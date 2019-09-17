@@ -18,21 +18,59 @@ load("../../common-files/data/titanic.RData")
 ### Exercise, Python code
 + Here's the Python code
 ```{}
-((Python code))
+ch = alt.Chart(df).mark_bar().encode(
+    alt.Color(
+        'pclass:N',
+        scale=alt.Scale(
+            range=['gray', 'gray', 'red']
+        )
+    ), 
+    x='pclass:N',
+    y='count()'
+)
 ```
 
 ### Exercise, Python output
-((Python results))
+```{python}
+import pandas as pd
+import altair as alt
+df = pd.read_csv("../../common-files/data/titanic3.csv")
+ch = alt.Chart(df).mark_bar().encode(
+    alt.Color(
+        'pclass:N',
+        scale=alt.Scale(
+            range=['gray', 'gray', 'red']
+        )
+    ), 
+    x='pclass:N',
+    y='count()'
+)
+ch.save("../images/python/red-third-class.html")
+```
+
+![Bar chart with red accent color](../images/python/red-third-class.png)
+
 
 ### Exercise, R code
 + Here's the R code
-```{}
-((R code))
+```
+ggplot(titanic, aes(x=pclass, fill=pclass)) +
+  geom_bar() +
+  scale_fill_manual(values=c("darkgrey", "darkgrey", "red"))
 ```
 
 ### Exercise, R output
 
-((R results))
+```{r bar-color-repeat}
+initiate_image()
+ggplot(titanic, aes(x=pclass, fill=pclass)) +
+  geom_bar() +
+  scale_fill_manual(values=c("darkgrey", "darkgrey", "red"))
+finalize_image("Barchart")
+```
+
+`r display_image`
+
 
 ### Exercise, Tableau output
 
