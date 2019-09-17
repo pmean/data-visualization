@@ -49,7 +49,7 @@ ch.save("../images/python/red-third-class.html")
 ```
 
 ![Bar chart with red accent color](../images/python/red-third-class.png)
-
+  
 
 ### Exercise, R code
 + Here's the R code
