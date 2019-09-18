@@ -1,7 +1,7 @@
 ---
 title: "Barchart fundamentals"
 author: "Steve Simon"
-date: "2019-08-03"
+date: "Created 2019-08-03"
 output: powerpoint_presentation
 ---
 
@@ -89,8 +89,8 @@ This shows a simple bar chart. The x-axis is passenger class and the y-axis is c
 
 ```{r basic-barchart-again}
 initiate_image()
-ti <- read.csv(file="../../common-files/data/titanic3.csv")
-ggplot(ti, aes(pclass)) +
+load("../../common-files/data/titanic.RData")
+ggplot(titanic, aes(pclass)) +
   geom_bar()
 finalize_image()
 ```
@@ -113,6 +113,8 @@ Here is the Tableau output. Notice the columns (the x-axis) is a blue pill. That
 
 </div>
 
+<!--- Exercise --->
+
 ```{r child="exercise-gender-barchart.Rmd"}
 ```
 
@@ -120,7 +122,7 @@ Here is the Tableau output. Notice the columns (the x-axis) is a blue pill. That
 + Python code
 ```
 ch = alt.Chart(df).mark_bar(
-    color='red', 
+    color='#FF0000', 
     size=5
 ).encode(
     x='pclass:N',
@@ -130,7 +132,7 @@ ch = alt.Chart(df).mark_bar(
 + R code
 ```
 ggplot(titanic, aes(pclass)) +
-  geom_bar(fill="red", width=0.5)
+  geom_bar(fill="#FF0000", width=0.5)
 ```
 + Tableau
   + Point and click
@@ -156,7 +158,7 @@ import pandas as pd
 import altair as alt
 df = pd.read_csv("../../common-files/data/titanic3.csv")
 ch = alt.Chart(df).mark_bar(
-    color='red',
+    color='#FF0000',
     size=5
 ).encode(
     x='pclass:N',
@@ -173,7 +175,7 @@ ch.save("../images/python/red-bars.html")
 load("../../common-files/data/titanic.RData")
 initiate_image()
 ggplot(titanic, aes(pclass)) +
-  geom_bar(fill="red", width=0.5)
+  geom_bar(fill="#FF0000", width=0.5)
 finalize_image("Bar chart of passenger class count")
 ```
 
@@ -241,22 +243,38 @@ ch = alt.Chart(df).mark_bar().encode(
     alt.Color(
         'pclass:N',
         scale=alt.Scale(
-            range=['gray', 'gray', 'red']
+            range=['#00FF00', '#FFFF00', '#FF0000']
         )
-
     ),
     x='pclass:N',
     y='count()'
 )
 ```
+<div class="notes">
+
+While the default colors chosen by your software are almost always good, you should experiment with different color combinations. A common choice for a three level ordinal variable is the traffic light colors of red, yellow, and green.
+
+In Python, you add a scale argument to encode.
+
+</div>
+
+### Barchart fundamentals, Choosing your own colors
 + R code
 ```
 ggplot(titanic, aes(x=pclass)) +
-  geom_bar(aes(fill=pclass))
+  geom_bar(aes(fill=pclass)) +
+  scale_fill_manual(values=c("#00FF00", "#FFFF00", "#FF0000"))
 ```
 + Tableau
   + Point and click
 
+<div class="notes">
+
+In R, you have to add another layer to the graph with the scale_fill_manual function. 
+
+In Tableau, you click on each color in the legend, then click in the upper corner to lock in that bar only. Then click on the color button to change that bar to the desired color.
+
+</div>
 
 
 ### Barchart fundamentals, Python output for coding colors
@@ -268,37 +286,55 @@ ch = alt.Chart(df).mark_bar().encode(
     alt.Color(
         'pclass:N',
         scale=alt.Scale(
-            range=['gray', 'gray', 'red']
+            range=['#00FF00', '#FFFF00', '#FF0000']
         )
     ), 
     x='pclass:N',
     y='count()'
 )
-ch.save("../images/python/red-third-class.html")
+ch.save("../images/python/traffic-light.html")
 ```
 
-### Barchart fundamentals, Color
+![Bar chart with traffic light colors](../images/python/traffic-light.png)
+
+<div class="notes">
+
+This is what the Python bar chart looks like.
+
+</div>
+
+### Barchart fundamentals, R output for coding colors
 
 ```{r bar-color}
+load("../../common-files/data/titanic.RData")
 initiate_image()
-ggplot(titanic, aes(x=pclass, fill=pclass)) +
-  geom_bar() +
-  scale_fill_manual(values=c("darkgrey", "darkgrey", "red"))
-finalize_image("Barchart")
+ggplot(titanic, aes(x=pclass)) +
+  geom_bar(aes(fill=factor(pclass))) +
+  scale_fill_manual(values=c("#00FF00", "#FFFF00", "#FF0000"))
+finalize_image("Barchart with traffic light colors")
 ```
 
 `r display_image`
+
+<div class="notes">
+
+This is what the R graph looks like.
+
+</div>
+
+### Barchart funadamentals, Tableau output for coding colors
+
+![Barchart with traffic light colors](../images/tableau/traffic-light.png)
+
+<!--- Exercise --->
 
 ```{r child="exercise-first-class-red.Rmd"}
 ```
 
 ### Barchart fundamentals, Stack versus dodge
 + Summarize by two categories
-+ Facet
-  + Separate plots
 + Dodge
   + Side by side
-  + Similar to facet
 + Stack
   + One on top, one on bottom
 
@@ -308,62 +344,54 @@ Bar charts that represent a summary across a single categorical variable are fai
 
 </div>
 
-### Barchart fundamentals, Titanic passenger count by gender
-
-```{r count-by-gender}
-initiate_image()
-ggplot(titanic, aes(x=sex)) +
-  geom_bar()
-finalize_image("Bar chart")
+### Barchart fundamentals, code for stack
++ Python code
+```
+ch = alt.Chart(df).mark_bar().encode(
+    x='pclass:N',
+    y='count()',
+    color='sex'
+)
 ```
 
-`r display_image`
 
-<div class="notes">
-
-
-
-</div>
-
-### Barchart fundamentals, Titanic passenger count by passenger class
-
-```{r count-by-passenger-class}
-initiate_image()
-ggplot(titanic, aes(x=pclass)) +
-  geom_bar()
-finalize_image()
+### Barchart fundamentals, Python stack
+```{python}
+import pandas as pd
+import altair as alt
+df = pd.read_csv("../../common-files/data/titanic3.csv")
+ch = alt.Chart(df).mark_bar().encode(
+    x='pclass:N',
+    y='count()',
+    color='sex'
+)
+ch.save("../images/python/stack.html")
 ```
 
-`r display_image`
+![](../images/python/stack-gender.png)
 
-<div class="notes">
+### Barchart fundamentals, Python dodge
 
-
-
-</div>
-
-### Barchart fundamentals, Titanic facet
-
-```{r count-by-facet}
-initiate_image()
-titanic %>%
-  ggplot(aes(x=pclass, fill=sex)) +
-    geom_bar() + 
-    facet_grid(cols=vars(sex))
-finalize_image()
+```{python}
+import pandas as pd
+import altair as alt
+df = pd.read_csv("../../common-files/data/titanic3.csv")
+ch = alt.Chart(df).mark_bar().encode(
+    x='sex',
+    y='count()',
+    color='sex',
+    column='pclass:N'
+)
+ch.save("../images/python/dodge.html")
 ```
 
-`r display_image`
+![Grouped barchart for passenger class and gender](../images/python/dodge-gender.png)
 
-<div class="notes">
-
-
-
-</div>
 
 ### Barchart fundamentals, Titanic dodge
 
 ```{r count-by-dodge}
+load("../../common-files/data/titanic.RData")
 initiate_image()
 titanic %>%
   ggplot(aes(x=pclass, fill=sex)) +
@@ -382,6 +410,7 @@ finalize_image()
 ### Barchart fundamentals, Titanic stack
 
 ```{r count-by-stack}
+load("../../common-files/data/titanic.RData")
 initiate_image()
 titanic %>%
   ggplot(aes(x=pclass, fill=sex)) +
@@ -389,7 +418,7 @@ titanic %>%
 finalize_image()
 ```
 
-`r display_images
+`r display_image`
 
 <div class="notes">
 
