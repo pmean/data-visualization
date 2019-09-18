@@ -353,9 +353,13 @@ ch = alt.Chart(df).mark_bar().encode(
     color='sex'
 )
 ```
++ R code
+```
+ggplot(titanic, aes(x=pclass, fill=sex)) +
+  geom_bar(position="stack")
+```
 
-
-### Barchart fundamentals, Python stack
+### Barchart fundamentals, Python output for stacked bars
 ```{python}
 import pandas as pd
 import altair as alt
@@ -388,33 +392,13 @@ ch.save("../images/python/dodge.html")
 ![Grouped barchart for passenger class and gender](../images/python/dodge-gender.png)
 
 
-### Barchart fundamentals, Titanic dodge
-
-```{r count-by-dodge}
-load("../../common-files/data/titanic.RData")
-initiate_image()
-titanic %>%
-  ggplot(aes(x=pclass, fill=sex)) +
-    geom_bar(position="dodge")
-finalize_image()
-```
-
-`r display_image`
-
-<div class="notes">
-
-
-
-</div>
-
 ### Barchart fundamentals, Titanic stack
 
 ```{r count-by-stack}
 load("../../common-files/data/titanic.RData")
 initiate_image()
-titanic %>%
-  ggplot(aes(x=pclass, fill=sex)) +
-    geom_bar(position="stack")
+ggplot(titanic, aes(x=pclass, fill=sex)) +
+  geom_bar(position="stack")
 finalize_image()
 ```
 
@@ -425,6 +409,25 @@ finalize_image()
 
 
 </div>
+
+### Barchart fundamentals, Titanic dodge
+
+```{r count-by-dodge}
+load("../../common-files/data/titanic.RData")
+initiate_image()
+ggplot(titanic, aes(x=pclass, fill=sex)) +
+  geom_bar(position="dodge")
+finalize_image()
+```
+
+`r display_image`
+
+<div class="notes">
+
+
+
+</div>
+
 
 
 ```{r child="exercise-mortality-by-sex.Rmd"}
