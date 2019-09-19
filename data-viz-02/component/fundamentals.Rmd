@@ -374,7 +374,58 @@ ch.save("../images/python/stack.html")
 
 ![](../images/python/stack-gender.png)
 
-### Barchart fundamentals, Python dodge
+### Barchart fundamentals, R output for stacked bars
+
+```{r count-by-stack}
+load("../../common-files/data/titanic.RData")
+initiate_image()
+ggplot(titanic, aes(x=pclass, fill=sex)) +
+  geom_bar(position="dodge")
+finalize_image()
+```
+
+`r display_image`
+
+<div class="notes">
+
+
+
+</div>
+
+### Barchart fundamentals, Tableau output for stacked bars
+
+![](../images/tableau/stacked-bars.png)
+
+<div class="notes">
+
+Here is the stacked barchart in Tableau. Drag pclass to the x-axis, count of pclass to the y-axis, and sex to the color button.
+
+<div>
+
+### Barchart fundamentals, code for dodge
++ Python code
+```
+ch = alt.Chart(df).mark_bar().encode(
+    x='sex',
+    y='count()',
+    color='sex',
+    column='pclass:N'
+```
++ R code
+```
+ggplot(titanic, aes(x=pclass, fill=sex)) +
+  geom_bar(position="dodge")
+```
++ Tableau
+  + Point and click
+  
+<div class="notes">
+
+
+
+</div>
+
+### Barchart fundamentals, Python output for dodged bars
 
 ```{python}
 import pandas as pd
@@ -392,25 +443,7 @@ ch.save("../images/python/dodge.html")
 ![Grouped barchart for passenger class and gender](../images/python/dodge-gender.png)
 
 
-### Barchart fundamentals, Titanic stack
-
-```{r count-by-stack}
-load("../../common-files/data/titanic.RData")
-initiate_image()
-ggplot(titanic, aes(x=pclass, fill=sex)) +
-  geom_bar(position="stack")
-finalize_image()
-```
-
-`r display_image`
-
-<div class="notes">
-
-
-
-</div>
-
-### Barchart fundamentals, Titanic dodge
+### Barchart fundamentals, R output for dodged bars
 
 ```{r count-by-dodge}
 load("../../common-files/data/titanic.RData")
@@ -428,31 +461,73 @@ finalize_image()
 
 </div>
 
+#### Barchart fundamentals, Tableau output for dodged bars
 
+![](../images/tableau/dodged-bars.png)
+
+<div class="notes">
+
+This is what the Tableau output looks like.
+
++ Drag pclass to columns
+  + Set to Dimension Discrete
++ Drag pclass to columns
+  + Set to measure, count.
++ Drag sex to columns (to the right of pclass)
+  + Set to Dimension Discrete
++ Drag sex to colur button
+  + Set to Dimension Discrete
+
+</div>
+
+<!--- Exercise --->
 
 ```{r child="exercise-mortality-by-sex.Rmd"}
 ```
 
-### Barchart fundamentals, Summarizations
-+ One number summary (mean or percentage)
-+ Two number summary (error bars)
-+ Five number summary (boxplots)
-+ All the data
-  + Jittering
-  + Opacity
-  
-<div class="notes">
-
-All of the examples, so far, have used counts in the bar chart. There are many other statistics that you can choose from, and 
-
-((note to myself: maybe this goes better in the talk about lines.))
-
-</div>
-  
 ### Barchart fundamentals, Switching from count to percent
+
+```
+ ggplot(mtcars, aes(x = factor(hp))) +  
+        geom_bar(aes(y = (..count..)/sum(..count..))) + 
+        scale_y_continuous(labels = percent) ## version 3.0.0
+```
 
 ((Show the code in Python, R, and Tableau. Explain why you might want counts versus percents.))
 
+<div class="notes">
+
+All of the examples, so far, have used counts in the bar chart. There are many other statistics that you can choose from, and the trickiest, surprisingly, is percentage.
+
+</div>
+
+### Barchar fundamentals, Python output
+
+```{python}
+import pandas as pd
+import altair as alt
+df = pd.read_csv("../../common-files/data/titanic3.csv")
+ch = alt.Chart(df).mark_bar().encode(
+    x='sex',
+    y=alt.Y('count()', stack='normalize'),
+    color='sex',
+    column='pclass:N'
+)
+ch.save("../images/python/normalize.html")
+```
+
+### Barchart fundamentals, R output
+
+```{r mortality-percent}
+initiate_image()
+load("../../common-files/data/titanic.RData")
+ggplot(titanic, aes(survived)) +
+  geom_bar(aes(fill=sex), position="fill")
+finalize_image("Barchart of percentage survived")
+```
+
+`r display_image`
+  
 ### Barchart fundamentals, Example with means
 
 ((Need to find the right data set to illustrate this. Maybe the Saratoga house prices?))

@@ -13,7 +13,7 @@ load("../../common-files/data/titanic.RData")
 ```
 
 ### Exercise, Mortality by gender
-+ Draw a bar chart showing counts involving both mortality and gender. Use a panel, then stacking, then dodging. Which do you like best?
++ Draw a bar chart showing counts involving both mortality and gender. Use stacked bars, then dodged bars. Which do you like best?
 
 <div class="notes">
 
@@ -22,7 +22,6 @@ Mortality on the Titanic reflects the fact that this was an era when people real
 Anyway, examine how mortality is related to gender. It's a spoiler alert, but on the Titanic, Kate survives, but Leonardo, I am so sad to say this, didn't make it.
 
 </div>
-
 
 ### Exercise,Python code
 + Python code
@@ -36,25 +35,76 @@ Anyway, examine how mortality is related to gender. It's a spoiler alert, but on
 
 ### Exercise, R code
 + R code
-```{}
-titanic %>%
-  ggplot(aes(x=sex, fill=survived)) +
-    geom_bar() +
-    facet_grid(cols=vars(survived))
+```
 ```
 
 ### Exercise, R output
 
-```{r mortality-by-gender-panel}
+```{r stack-1}
 initiate_image()
-titanic %>%
-  ggplot(aes(x=sex, fill=survived)) +
-    geom_bar() +
-    facet_grid(cols=vars(survived))
+ggplot(titanic, aes(x=survived, fill=sex)) +
+  geom_bar(position="stack")
 finalize_image()
 ```
 
 `r display_image`
+
+<div class="notes">
+
+
+
+</div>
+
+### Exercise, R output
+
+```{r stack-2}
+initiate_image()
+ggplot(titanic, aes(x=sex, fill=survived)) +
+  geom_bar(position="stack")
+finalize_image()
+```
+
+`r display_image`
+
+<div class="notes">
+
+
+
+</div>
+
+### Exercise, R output
+
+```{r dodge-1}
+initiate_image()
+ggplot(titanic, aes(x=survived, fill=sex)) +
+  geom_bar(position="dodge")
+finalize_image()
+```
+
+`r display_image`
+
+<div class="notes">
+
+
+
+</div>
+
+### Exercise, R output
+
+```{r dodge-2}
+initiate_image()
+ggplot(titanic, aes(x=sex, fill=survived)) +
+  geom_bar(position="dodge")
+finalize_image()
+```
+
+`r display_image`
+
+<div class="notes">
+
+
+
+</div>
 
 ### Exercise, Tableau output
 
