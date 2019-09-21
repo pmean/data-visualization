@@ -469,7 +469,7 @@ This is what the dodged bar chart looks like in R.
 
 </div>
 
-#### Barchart fundamentals, Tableau output for dodged bars
+### Barchart fundamentals, Tableau output for dodged bars
 
 ![](../images/tableau/dodged-bars.png)
 
@@ -578,23 +578,7 @@ This is what the visualization looks like in Tableau.
 ```{r child="exercise-mortality-by-sex.Rmd"}
 ```
 
-### Barchart fundamentals, Switching from count to percent
-
-```
- ggplot(mtcars, aes(x = factor(hp))) +  
-        geom_bar(aes(y = (..count..)/sum(..count..))) + 
-        scale_y_continuous(labels = percent) ## version 3.0.0
-```
-
-((Show the code in Python, R, and Tableau. Explain why you might want counts versus percents.))
-
-<div class="notes">
-
-All of the examples, so far, have used counts in the bar chart. There are many other statistics that you can choose from, and the trickiest, surprisingly, is percentage.
-
-</div>
-
-### Barchar fundamentals, Python output
+### Barchart fundamentals, Python output for mean bars
 
 ```{python}
 import pandas as pd
@@ -602,52 +586,51 @@ import altair as alt
 df = pd.read_csv("../../common-files/data/titanic3.csv")
 ch = alt.Chart(df).mark_bar().encode(
     x='sex',
-    y=alt.Y('count()', stack='normalize'),
-    color='pclass:N'
+    y='mean(age)'
 )
-ch.save("../images/python/normalize.html")
+ch.save("../images/python/mean-barchart.html")
 ```
 
-### Barchart fundamentals, R output
+![Barchart of mean ages by sex](../images/python/mean-barchart.png)
 
-```{r mortality-percent}
-initiate_image()
+### Barchart fundamentals, Example with means
+
+```{r mean-barchart}
 load("../../common-files/data/titanic.RData")
-ggplot(titanic, aes(survived)) +
-  geom_bar(aes(fill=sex), position="fill")
-finalize_image("Barchart of percentage survived")
+initiate_image()
+complete_cases <- titanic[!is.na(titanic$age), ]
+ggplot(complete_cases, aes(x=sex, y=age)) +
+  stat_summary(fun.y=mean, geom="bar")
+finalize_image("Barchart of mean ages by sex")
 ```
 
 `r display_image`
-  
-### Barchart fundamentals, Example with means
 
-((Need to find the right data set to illustrate this. Maybe the Saratoga house prices?))
+<div class="notes">
 
-### Barchart fundamentals, Example with totals
 
-((Same data. What means tell you versus totals.))
 
-### Barchart fundamentals, Boxplots example
+</div>
 
-((Include an explanation of what a boxplot is))
+### Barchart fundamentals, Tableau output of mean barchart
 
-### Barchart fundamentals, Jittering example
-
-((Include an explanation on when it doesn't work.))
-
-### Barchart fundamentals, Opacity example
-
-((Note the computational expense.))
+![Barchart of mean ages by sex](../images/tableau/mean-barchart.png)
 
 ### Barchart fundamentals, Summary
 + "A mapping of data to the visual aesthetics of geometries/marks" 
   + Bars are a type of geometry/mark
   + Aesthetics for bars include location, size, color
-  + Stack versus dodge
-+ Basic tips
-  + Place comparators close
-  + Use axis ticks, light grid lines
+  + Stack versus dodge versus normalize
+  
+<div class="notes">
+
+Recall the definition of data visualization, the mapping of data ro the visual aesthetics of geometries/marks. Bars are a type of geometry or mark and you can vary the location, size, and color, though size (meaning width) is usually held constant.
+
+You can control the placement of different color bars using dodge, stack, or normalize. Note that the terminology here is not standardized across the different packages.
+
+(Note to myself) If I have time, it might be nice to include error bars and boxplots at the end of this section.
+
+</div>
 
 ```{r save-everything}
 save.image("../data/barcharts-fundamentals.RData")
