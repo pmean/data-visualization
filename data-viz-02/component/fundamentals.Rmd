@@ -331,16 +331,24 @@ This is what the R graph looks like.
 ```{r child="exercise-first-class-red.Rmd"}
 ```
 
-### Barchart fundamentals, Stack versus dodge
+### Barchart fundamentals, Stack, Dodge, Normalize
 + Summarize by two categories
 + Dodge
   + Side by side
 + Stack
   + One on top, one on bottom
++ Normalize
+  + Stack and set full bar to 100%
 
 <div class="notes">
 
 Bar charts that represent a summary across a single categorical variable are fairly simple and easy to handle. But when you want to summarize by two categories simultaneously, things get interesting. Interesting in a good way.
+
+You can present the extra category in side by side comparisons. This is called "dodge" in R, but is handled indirectly in Python and Tableau.
+
+The stack option, where one category level is placed above another category level above another, is the default in all three packages, though you should take the trouble of specifying stack if you are using R.
+
+The normalize option creates stacked bars, but then forces each stack to have a height of 1 (or 100%).
 
 </div>
 
@@ -400,7 +408,7 @@ finalize_image()
 
 Here is the stacked barchart in Tableau. Drag pclass to the x-axis, count of pclass to the y-axis, and sex to the color button.
 
-<div>
+</div>
 
 ### Barchart fundamentals, code for dodge
 + Python code
@@ -457,7 +465,7 @@ finalize_image()
 
 <div class="notes">
 
-
+This is what the dodged bar chart looks like in R.
 
 </div>
 
@@ -477,6 +485,91 @@ This is what the Tableau output looks like.
   + Set to Dimension Discrete
 + Drag sex to colur button
   + Set to Dimension Discrete
+
+</div>
+
+### Barchart fundamentals, Code for normalize
++ Python code
+```
+ch = alt.Chart(df).mark_bar().encode(
+    x='sex',
+    y=alt.Y('count()', stack='normalize'),
+    color='pclass:N'
+)
+```
++ R code
+```
+ggplot(titanic, aes(survived)) +
+  geom_bar(aes(fill=sex), position="fill")
+```
++ Tableau
+  + Drag and drop
+
+<div class="notes">
+
+If you want a stacked barchart in Altair/Python, you need to use the alt.Y function with the stack='normalize' argument.
+
+In R, you use the position='fill' argument in the geom_bar function. Note that this argument falls outside of the aes function.
+
+In Tableau, you right click on the count summary, and pick Add Table Calculation from the drop down menu. In the dialog box, select Percent of Total and Compute Using Cell.
+
+</div>
+
+### Barchart fundamentals, Python output for normalized bars
+
+```{python}
+import pandas as pd
+import altair as alt
+df = pd.read_csv("../../common-files/data/titanic3.csv")
+ch = alt.Chart(df).mark_bar().encode(
+    x='sex',
+    y=alt.Y('count()', stack='normalize'),
+    color='pclass:N'
+)
+ch.save("../images/python/normalize.html")
+```
+
+<div class="notes">
+
+This is what the Python normalized barchart looks like.
+
+</div>
+
+### Barchart fundamentals, R output for normalized bars
+
+```{r count-by-normalize}
+load("../../common-files/data/titanic.RData")
+initiate_image()
+ggplot(titanic, aes(x=pclass, fill=sex)) +
+  geom_bar(position="fill")
+finalize_image()
+```
+
+`r display_image`
+
+<div class="notes">
+
+This is what the normalized bar chart looks like in R.
+
+</div>
+
+### Barchart fundamentals, Tableau output for normalized bars
+
+![](../images/tableau/table-calculation.png)
+
+<div class="notes">
+
+In Tableau, you right click on the count summary, and pick Add Table Calculation from the drop down menu. In the dialog box, select Percent of Total and Compute Using Cell.
+
+</div>
+
+### Barchart fundamentals, Tableau output for normalized bars
+
+![](../images/tableau/normalized-bars.png)
+
+<div class="notes">
+
+This is what the visualization looks like in Tableau.
 
 </div>
 
@@ -510,8 +603,7 @@ df = pd.read_csv("../../common-files/data/titanic3.csv")
 ch = alt.Chart(df).mark_bar().encode(
     x='sex',
     y=alt.Y('count()', stack='normalize'),
-    color='sex',
-    column='pclass:N'
+    color='pclass:N'
 )
 ch.save("../images/python/normalize.html")
 ```
