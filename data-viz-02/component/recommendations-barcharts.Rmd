@@ -140,3 +140,59 @@ finalize_image()
 Here's a barchart with 44 bars. I drew the image as 480 pixels by 480 pixels. After allowing for margins, it looks like there are about 340 pixels for the 66 bars. 44 does not divide evenly into 340. You get something like 7.73. If you allocate 7 pixels per bar, that uses up 308 pixels, leaving you with 32 pixels to divide among the 43 gaps between the 44 bars. So some of the gaps will be one pixel wide and some will be zero pixels wide. 
 
 </div>
+
+### Barchart recommendations, sort your bars by size
+
+```{r sorted-barchart}
+n <- c(124, 55, 49, 26)
+mar <- c("Married", "Single/Never married", "Divorced/Separated", "Widowed")
+p <- n/sum(n)
+st <- factor(1:4, labels=mar)
+marital_status <- data.frame(st, n, p)
+initiate_image()
+ggplot(marital_status, aes(x=st, y=p)) +
+  geom_col()
+finalize_image("Sorted Bar chart")
+```
+
+`r display_image`
+
+<div class="notes">
+
+If you sort the bars by size, then comparisons between bars of approximately the same size are comparisons that are side by side. This shortens the distance that you have to project.
+
+</div>
+
+### Which percentage
+
+![](../images/external/happiness-counts.gif)
+
+
+### Data
+
+```{r happiness-counts}
+income <- rep(c("Rich", "Poor"), each=2)
+outlook <- rep(c("Happy", "Miserable"), 2)
+n <- c(30, 10, 90, 70)
+```
+
+### Which percentage
+
+![](../images/external/happiness-row-percents.gif)
+
+```{r}
+row_percents <- c(75, 25, 56, 44)
+```
+
+### Which percentage
+
+![](../images/external/happiness-column-percents.gif)
+
+```{r}
+column_percents <- c(25, 12, 75, 88)
+```
+
+### Which percentage
+
+![](../images/external/happiness-cell-percents.gif)
+
