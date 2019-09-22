@@ -306,16 +306,21 @@ finalize_image("Barchart with sex stacked")
 
 <div class="notes">
 
+You can switch things so that gender is stacked for each passenger class. This barchart shows that setting up a co-ed volleyball team would be a lot easier in first or second class, which have a roughly equal distribution of mean and women compared to third class.
 
 </div>
-
-
-
 
 ### Which percentage
 
 ![](../images/external/happiness-counts.gif)
 
+<div class="notes">
+
+When you are computing percentages, you need to decide what particular percentage you want. The data set shown above is totally fictional, but it helps you understand what your options are.
+
+This represents a sample of 200 people who are classified by income (rich or poor) and by outlook (happy or miserable). 
+
+</div>
 
 ### Data
 
@@ -329,9 +334,30 @@ n <- c(30, 10, 90, 70)
 
 ![](../images/external/happiness-row-percents.gif)
 
-```{r}
-row_percents <- c(75, 25, 56, 44)
+<div class="notes">
+
+You can compute row percentages which divide the entry in each row by the row total. Row percents add up to 100% within each row.
+
+
+```{r outlook-stack}
+n <- c(30, 10, 90, 70)
+happy <- data.frame(
+  income=rep(rep(c("Rich", "Poor"), each=2), each=n),
+  outlook=rep(rep(c("Happy", "Miserable"), 2), each=n)
+)
+initiate_image()
+ggplot(happy, aes(x=income, fill=outlook)) +
+  geom_bar(position="fill")
+finalize_image()
 ```
+
+`r display_image`
+
+<div class="notes">
+
+
+
+</div>
 
 ### Which percentage
 
