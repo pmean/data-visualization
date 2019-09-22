@@ -315,4 +315,6 @@ What city gets more snowfall, Remington, in the southwester corner of the state,
 
 Your visualization should try to facilitate the visual tasks of projection, superimposition, scanning, and anchoring. If you want to make comparisons, they rank from easiest to hardest as comparisons of position, length, angle, area, volune, and color.
 
+(NOte to myself) Another important visual task is "look up" or the ability to rapidly identify a particular component of a visualization. A table is the best tool for look up, but moving a legend to a more prominent location or replacing it with labels placed directly on the graphs can often help. Alphabetical lists in legends and in bar placements can also improve the speed and accuracy of lookup. The use of an accent color helps, if you know in advance what component your viewers are going to want to look up.
+
 </div>

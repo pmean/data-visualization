@@ -205,4 +205,6 @@ Notice how the legend has changed. All of the graphic packages use a set of disc
 
 Pat yourself on the back because you've alredy learned a lot. You know how to assign variables to the x and y positions of a graph. You can change the appears of the points on that graph. You can include a third variable in your graph, represented by shape, size, or color.
 
+(Note to myself) The use of panels is an important aspect of visualization, and it is unclear to me where best to introduce it. Possibly it could be another dimension of location. You have your x position and your y position, but you also have a position within one of several panels.
+
 </div>
