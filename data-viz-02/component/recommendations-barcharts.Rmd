@@ -322,14 +322,6 @@ This represents a sample of 200 people who are classified by income (rich or poo
 
 </div>
 
-### Data
-
-```{r happiness-counts}
-income <- rep(c("Rich", "Poor"), each=2)
-outlook <- rep(c("Happy", "Miserable"), 2)
-n <- c(30, 10, 90, 70)
-```
-
 ### Which percentage
 
 ![](../images/external/happiness-row-percents.gif)
@@ -338,17 +330,20 @@ n <- c(30, 10, 90, 70)
 
 You can compute row percentages which divide the entry in each row by the row total. Row percents add up to 100% within each row.
 
+</div>
 
 ```{r outlook-stack}
 n <- c(30, 10, 90, 70)
 happy <- data.frame(
-  income=rep(rep(c("Rich", "Poor"), each=2), each=n),
-  outlook=rep(rep(c("Happy", "Miserable"), 2), each=n)
+  income=rep(rep(c("Rich", "Poor"), each=2), n),
+  outlook=rep(rep(c("Happy", "Miserable"), 2), n)
 )
 initiate_image()
 ggplot(happy, aes(x=income, fill=outlook)) +
-  geom_bar(position="fill")
+  geom_bar(position="fill") +
+  scale_fill_manual(values=c("#FFFF00", "#0000FF"))
 finalize_image()
+# table(happy$income, happy$outlook)
 ```
 
 `r display_image`
@@ -363,11 +358,39 @@ finalize_image()
 
 ![](../images/external/happiness-column-percents.gif)
 
-```{r}
-column_percents <- c(25, 12, 75, 88)
+```{r income-stack}
+initiate_image()
+ggplot(happy, aes(x=outlook, fill=income)) +
+  geom_bar(position="fill") +
+  scale_fill_manual(values=c("#FF0000", "#00FF00"))
+finalize_image()
 ```
+
+`r display_image`
+
+<div class="notes">
+
+
+
+</div>
 
 ### Which percentage
 
 ![](../images/external/happiness-cell-percents.gif)
+
+```{r cell-stack}
+happy$cell <- paste(happy$outlook, happy$income)
+initiate_image()
+ggplot(happy, aes(x=cell)) +
+  geom_bar(aes(y=(..count..)/sum(..count..)))
+finalize_image()
+```
+
+`r display_image`
+
+<div class="notes">
+
+
+
+</div>
 
