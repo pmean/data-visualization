@@ -171,6 +171,30 @@ I chose 480 by 480 pixels for most of the graphs in this talk because it is, for
 
 </div>
 
+### Don't cut your barchart off at the knees
+
+```{r truncated-barchart}
+n <- c(124, 55, 49, 26) - 20
+mar <- c("Married", "Single/Never married", "Divorced/Separated", "Widowed")
+y_ticks <- (1:6)*20
+marital_status <- data.frame(mar, n)
+initiate_image()
+ggplot(marital_status, aes(x=mar, y=n)) +
+  geom_col() + 
+  scale_y_continuous(breaks=y_ticks-20, labels=y_ticks)
+finalize_image("Truncated Barchart")
+```
+
+`r display_image`
+
+<div class="notes">
+
+Bar charts almost always start at zero. If you start it at a higer value, you are cutting the barchart off at the knees. This makes it impossible to make relative assessments. So in the original bar chart, it was fairly easy to tell the the Single and the Divorced/Separated columns were a bit less than half of the Married column, but on this truncated bar chart, you might briefly gain an impression that these two bars were less than a third of the married column. It's even worse for the widowed column, which looks in this graph to be less than a quarter of the single and divorced/separated columns.
+
+There are times where the zero value is so far away that you lose a lot of resolution by starting the bars at zero.
+
+</div>
+
 ### Barchart recommendations, sort your bars by size
 
 ```{r sorted-barchart}
@@ -310,7 +334,7 @@ You can switch things so that gender is stacked for each passenger class. This b
 
 </div>
 
-### Which percentage
+### Which percentage (1/8)
 
 ![](../images/external/happiness-counts.gif)
 
@@ -318,11 +342,13 @@ You can switch things so that gender is stacked for each passenger class. This b
 
 When you are computing percentages, you need to decide what particular percentage you want. The data set shown above is totally fictional, but it helps you understand what your options are.
 
-This represents a sample of 200 people who are classified by income (rich or poor) and by outlook (happy or miserable). 
+This represents a sample of 200 people who are classified by income (rich or poor) and by outlook (happy or miserable). There are only 40 rich people in our sample, because there's only so much money in the world, and it is distributed unevenly. There's a more even split between happy and miserable people, but happy people, thankfully, are in the majority.
+
+When you start calculating percentages for a table like this with two categorical variables, it gets a bit tricky.
 
 </div>
 
-### Which percentage
+### Which percentage (2/8)
 
 ![](../images/external/happiness-row-percents.gif)
 
@@ -330,7 +356,12 @@ This represents a sample of 200 people who are classified by income (rich or poo
 
 You can compute row percentages which divide the entry in each row by the row total. Row percents add up to 100% within each row.
 
+The 75% in the upper left corner is a conditional probability. The probability of being happy given that you are rich is 75%. Money can buy happiness, so it seems. But the probability below it, 56%, provides a different picture. That's the probability of being happy given that you are poor. It seems that poor people can be happy also because there are other things, like family and friends that can also buy happiness.
+
 </div>
+
+### Which percentage (3/8)
+
 
 ```{r outlook-stack}
 n <- c(30, 10, 90, 70)
@@ -350,13 +381,21 @@ finalize_image()
 
 <div class="notes">
 
-
+This arrangement of a stacked bar chart shows that the yellow regions, the regions associated with a happy outlook, are dominant in both the rich bar and the poor bar.
 
 </div>
 
-### Which percentage
+### Which percentage (4/8)
 
 ![](../images/external/happiness-column-percents.gif)
+
+<div class="notes">
+
+You get a different percentage and a different picture, though, with the column percents. You get a column percent by dividing each entry by the corresponding column total. Column percents add up to 100% within a column, This is a very different probability. The probability in the upper left corner is the probability of being rich given that you are happy. It is only 25%. The percentage next to it, 12%, is the probability of being rich given that you are miserable. That's also quite small.
+
+</div>
+
+### Which percentage (5/8)
 
 ```{r income-stack}
 initiate_image()
@@ -370,19 +409,30 @@ finalize_image()
 
 <div class="notes">
 
-
+This is a bar chart that illustrates these conditional probabilities. Notice the color coding. Green is for rich people, because green is the color of money. Red is for poor people because red is the color of indebtedness. Notice that red dominates this barchart. So if you find someone who is happy, don't presume that they are happy because they have money. It is far more likely 75% versus 25% that they are happy for a reason other than money.
 
 </div>
 
-### Which percentage
+### Which percentage (6/8)
 
 ![](../images/external/happiness-cell-percents.gif)
 
+<div class="notes">
+
+There's a third percentage that you can compute, the cell percentage. That is the percentage that you get when you divided by the grand total. The cell percentages add up to 100% only when you add together all the percentages within the table.
+
+It is unusual that you would want cell percentages in any visualization. It tells you haw frequently you see each possible cross classification. If you just randomly encountered someone, your best guess would be that they are poor but happy. That's almost half of the total. Your next best guess would be poor and miserable.
+
+</div>
+
+### Which percentage (7/8)
+
 ```{r cell-stack}
-happy$cell <- paste(happy$outlook, happy$income)
+happy$cell <- paste(happy$income, happy$outlook)
 initiate_image()
-ggplot(happy, aes(x=cell)) +
-  geom_bar(aes(y=(..count..)/sum(..count..)))
+ggplot(happy, aes(x="Everyone", fill=cell)) +
+  geom_bar(aes(y=(..count..)/sum(..count..)), position="stack") +
+  scale_fill_manual(values=c("#FF0000", "#990000", "#00FF00", "#009900"))
 finalize_image()
 ```
 
@@ -390,7 +440,53 @@ finalize_image()
 
 <div class="notes">
 
+This graph shows the relative percentages for poor happy, poor miserable, rich happy, and rich miserable people. I used the coding of red for poor, and green for rich, but made the happy outlooks a bright color and the miserable outlooks a dark color.
 
+Now this is a rather artificial example, but it shows how different percentages and different barchart orientations provide different messages.
 
 </div>
 
+### Which percentage (8/8)
++ No hard and fast rules
++ Classify your categorical variables
+  + What is the treatment, what is the outcome?
+  + What is cause, what is effect?
+  + What is precedent, what is antecedent?
++ Stack the outcome, effect, or antecedent.
+  + Probability of outcome given the treatment
+  
+<div class="notes">
+
+There are no absolute rules about how to stack the barchart, but here's some general guidance. There is usually a hierarchy to the categorical variables. One can usually be considered a treatment (a variable that you manipulate) and the other would be the outcome or the result of that treatment. Similarly, you could label one variable the cause and the other the effect or one the precedent (the categorical variable that comes first in time) and the antecedent (the variable that comes afterward). The second in the list, the outcome, the effect, or the antecedent is what you would normally consider placing in the stack.
+
+This produces a conditional probability that makes sense from a pragmatic perspective, such as the probability of an outcome given a treatment.
+
+Demographic variables are almost always treatments, causes, or precedents. You were a male or a female for your whole life, so it has to preceed what class ticket you bought or whether you lived or died.
+
+</div>
+
+### Summary
++ Don't make the gaps the same size as the bars
++ Labels often fit better on a horizontal barchart
++ With many bars, watch for rounding artefacts
++ Sort your bars by size
++ With two categorical variables, you have lots of options
+  + Minimize distance between the most important comparisons
+  + The bottom category in a stacked barchart is easiest to read
+  + Stack outcomes/effects/antecedents
+
+<div class="notes">
+
+When you're designing a bar chart, make sure the gaps are smaller than the bars. If they are equal, you end up with a visually unpleasant effect or with potential confusion between what's a bar and what's a gap. With a lot of bars and long labels, you might try a horizontal bar chart, as the labels fit much easier. Also with many bars, watch out for rounding artefacts.
+
+If your bars do not already have a natural ordering, sort them by size to make comparisons easy.
+
+You have lots of options at your disposal when you are providing information about two categorical variables in a bar chart. Think about what comparisons are important and facilitate them by making them close.
+
+The bottom category in a stacked barchart can be readily compared across stacks through projection, so it represents the easiest comparison.
+
+It's not always clear what variable should be stack, but often it is the variable that could be considered the outcome, the effect, or the antecedent.
+
+Always experiment with different arrangements and layouts. You should pick the chart that most clearly emphasizes the main message in the data set.
+
+</div>
