@@ -58,6 +58,12 @@ ch.save("../images/python/basic-lineplot.html")
 
 ![Line plot in Python](../images/python/basic-lineplot.png)
 
+<div class="notes">
+
+This is what the graph would look like.
+
+</div>
+
 ### Preparation, R code
 + Here's the code in R
 ```
@@ -107,3 +113,8 @@ Here are the steps in creating a line graph in Tableau.
 
 ![Line graph in Tableau](../images/tableau/basic-linegraph.png)
 
+<div class="notes">
+
+This is what the Tableau graph looks like.
+
+</div>
