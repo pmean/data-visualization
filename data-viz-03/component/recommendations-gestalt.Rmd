@@ -82,6 +82,12 @@ finalize_image()
 
 `r display_image`
 
+<div class="notes">
+
+Here are the shape choices available in R. It should not be too hard to choose three shapes that are markedly distinct from one another.
+
+</div>
+
 ### Gestalt recommendations, Better contrasting shapes
 
 ```{r contrasting-shapes}
@@ -97,7 +103,7 @@ finalize_image()
 
 <div class="notes">
 
-You are relying on the principle of similarity, and there needs to be sufficient dissimilarity in the different symbols to make this work. A closed circle, a closed square, and a closed triangle all loop pretty much alike. How can you get more contrast?
+Here is one possible choice. You can more clearly see differences when you use the solid square, open circle, and plus sign. It gets more difficult if you have a fourth or fifth symbol in the mix.
 
 </div>
 
@@ -107,7 +113,7 @@ You are relying on the principle of similarity, and there needs to be sufficient
 initiate_image()
 ggplot(fiction, aes(exam, score, color=name)) +
   geom_point(size=5) +
-  scale_color_manual(values=c("Darkred", "Darkgreen", "Darkblue"))
+  scale_color_manual(values=c("Red", "Darkgreen", "Blue"))
 finalize_image()
 
 ```
@@ -116,7 +122,7 @@ finalize_image()
 
 <div class="notes">
 
-You are relying on the principle of similarity, and there needs to be sufficient dissimilarity in the different symbols to make this work. A closed circle, a closed square, and a closed triangle all loop pretty much alike. How can you get more contrast?
+You can use color to emphasize the groupings. Here the colors are red, dark green, and blue. There is some contrast here, but there is not a lot of variation in the brightness.
 
 </div>
 
@@ -126,7 +132,7 @@ You are relying on the principle of similarity, and there needs to be sufficient
 initiate_image()
 ggplot(fiction, aes(exam, score, color=name)) +
   geom_point(size=5) +
-  scale_color_manual(values=c("Red", "Green", "Blue"))
+  scale_color_manual(values=c("Red", "Green", "Yellow"))
 finalize_image()
 
 ```
@@ -135,7 +141,7 @@ finalize_image()
 
 <div class="notes">
 
-You are relying on the principle of similarity, and there needs to be sufficient dissimilarity in the different symbols to make this work. A closed circle, a closed square, and a closed triangle all loop pretty much alike. How can you get more contrast?
+These colors differ in brightness, and provide more of a contrast. There are times when you want this extra contrast, but there are times when you don't. In particular, the yellow is so bright that it tends to get lost against a light gray background.
 
 </div>
 
@@ -156,7 +162,7 @@ finalize_image()
 
 <div class="notes">
 
-Connectedness provides a much stronger sense of gestalt than similarity.
+Connectedness is a very powerful Gestalt principle. This graph shows much more than the others that there are three distinct sets of points corresponding to the three subjects.
 
 
 </div>
@@ -164,9 +170,24 @@ Connectedness provides a much stronger sense of gestalt than similarity.
 ### Gestalt, Text versus legend
 + Legends
   + Violates the rule of proximity
-  + Use color cues, if possible
++ Alternatives to a legend
+  + Use obvious letter codes
+    + M for male, F for female
+    + T for treatment, C for control
+  + Use obvious color codes
+    + Blue for boy, pink for girl
+    + Green for go, yellow for caution, red for stop
   + Replace with text labels on the graph
-  + Use letter codes
+
+<div class="notes">
+
+Legends are very common in visualization, but they violate the rule of proximity. A legend forces your eye to go back and forth between the graph and a location far outside the graph.
+
+It takes some work, but if you can identify groups properly without a legend, you are much better off. There are several strategies that could help here.
+
+Certain letter codes are expected and almost second-nature for visualizations. The letters M and F are commonly understood to represent male and female, at least among your English speaking audience. 
+
+</div>
 
 ### Gestalt, Color cues
 

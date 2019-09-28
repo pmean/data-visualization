@@ -213,3 +213,18 @@ A consistent trend or pattern between two elements of a graph will encourage you
 In this graph there are two solid lines representing the present trend in two (fictional) time series. There are two dashed lines that represent future projected trends. Your eye tends to associate the upward solid line with the upward dashed line rather than the downward dashed line. This is in spite of the fact that the distance is less between the upward solid line and the downward dashed line. There are no color or shape clues to help you. The reason you associate the solid upward trend with the dashed upward trend is that you eye wants to fill in any missing information with the simplest form possible.
 
 </div>
+
+### Gestalt, Summary
++ Perceptual principles to develop groupings
+  + Shape
+  + Color
+  + Connectedness
+  + Proximity
+  + Enclosure
+  + Continuity, common fate
+  
+<div class="notes">
+
+Gestalt is a set of perceptual principles that you can use to develop groupings in your visualizations. You tend to perceive groups that have similar shape or color, that are connected, or that are close to one another. You can use enclosure to define groupings. your eye also tends to group items to preserve continuity or items that share a common fate.
+
+</div>
