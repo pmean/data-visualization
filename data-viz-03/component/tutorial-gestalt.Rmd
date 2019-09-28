@@ -64,6 +64,7 @@ What you see in this graph is 20 individual points. When you design a graph, you
 ```{r block-shape}
 initiate_image()
 f <- rep(c("triangle", "square", "triangle", "square", "triangle"), 4)
+f <- rep(c(4, 1, 4, 1, 4), 4)
 g + geom_point(shape=f, size=5)
 finalize_image()
 ```
@@ -82,7 +83,7 @@ The use of common shapes causes you to see five columns rather than twenty indiv
 
 ```{r block-color}
 initiate_image()
-f <- rep(c("red", "green", "red", "green"), each=5)
+f <- rep(c("red", "darkgreen", "red", "darkgreen"), each=5)
 g + geom_point(color=f, size=5)
 finalize_image()
 ```
@@ -102,8 +103,9 @@ The effect of color is a lot stronger than the effect of shape.
 
 ```{r block-double-up}
 initiate_image()
-f1 <- rep(c("red", "green", "red", "green"), each=5)
+f1 <- rep(c("red", "darkgreen", "red", "darkgreen"), each=5)
 f2 <- rep(c("triangle", "square", "triangle", "square"), each=5)
+f2 <- rep(c(4, 1, 4, 1), each=5)
 g + geom_point(color=f1, shape=f2, size=5)
 finalize_image()
 ```
@@ -177,24 +179,37 @@ An enclosure is a strong way to emphasize grouping. Here the box provides an emp
 
 ### Gestalt, contrast
 
-(Show image of contrasts)
+![Red fives contrasted against all other colors](../../data-viz-02/images/r/count-two-colors.png)
 
 <div class="notes">
 
-The one pattern that deviates from the others tends to draw your eye toards it.
+The one pattern that deviates from the others tends to draw your eye toards it. There are nine different groups here, 1 through 9, but because of the contrast, you tend to view it as 5 versus all the other numbers.
 
 </div>
 
-### Gestalt, Continuity
+### Gestalt, Continuity and common fate
 
-(Show example of sloping text)
+```{r common-fate}
+initiate_image()
+t <- c(1, 5, 6, 7)
+x <- rep(t, 2)
+y <- c(5*t, 55-5*t)
+g <- rep(1:2, each=4)
+ggplot(data.frame(x, y, g), aes(x, y)) + 
+  geom_point() +
+  geom_segment(x=x[1], xend=x[2], y=y[1], yend=y[2]) +
+  geom_segment(x=x[3], xend=x[4], y=y[3], yend=y[4], linetype="longdash") +
+  geom_segment(x=x[5], xend=x[6], y=y[5], yend=y[6]) +
+  geom_segment(x=x[7], xend=x[8], y=y[7], yend=y[8], linetype="longdash")
+finalize_image("Line graph showing present and future trends")
+```
+
+`r display_image`
 
 <div class="notes">
 
 A consistent trend or pattern between two elements of a graph will encourage you to group those elements together.
 
+In this graph there are two solid lines representing the present trend in two (fictional) time series. There are two dashed lines that represent future projected trends. Your eye tends to associate the upward solid line with the upward dashed line rather than the downward dashed line. This is in spite of the fact that the distance is less between the upward solid line and the downward dashed line. There are no color or shape clues to help you. The reason you associate the solid upward trend with the dashed upward trend is that you eye wants to fill in any missing information with the simplest form possible.
+
 </div>
-
-### Gestalt, Common fate
-
-(Show an image of five upward trends with two downward trends)

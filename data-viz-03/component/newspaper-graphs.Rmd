@@ -6,7 +6,7 @@ output: powerpoint_presentation
 ---
 
 ### Group exercise
-+ Review one of these graphs/newspaper articles
++ These bar charts come from recent newspaper articles.
   + [More Strikeouts Than Hits? Welcome to Baseball’s Latest Crisis.](https://www.nytimes.com/2018/08/16/sports/baseball-mlb-strikeouts.html)
   + [Record shares of Americans now own smartphones, have home broadband.](https://www.pewresearch.org/fact-tank/2017/01/12/evolution-of-technology/)
   + [F.D.A. Seeks Restrictions on Teens’ Access to Flavored E-Cigarettes and a Ban on Menthol Cigarettes.](http://nytimes.com/2018/11/15/health/ecigarettes-fda-flavors-ban.html)
@@ -15,8 +15,6 @@ output: powerpoint_presentation
 <div class="notes">
 
 The following images are taken from various newspaper articles or press releases. Look at the graph and read/skim the article.
-
-What message do you think the journalist is trying to convey with this graph. Summarize this message in 25 words or less.
 
 </div>
 

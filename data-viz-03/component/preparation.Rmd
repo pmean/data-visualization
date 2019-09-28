@@ -48,15 +48,16 @@ Here is the Python code to read in the data and produce a simple line graph.
 ```{python}
 import pandas as pd
 import altair as alt
-df = pd.read_csv("../../common-files/data/cpi.csv")
+df = pd.read_csv("../../common-files/data/cpi-food.csv")
 ch = alt.Chart(df).mark_line().encode(
     x='t',
-    y='CPI'
+    y='cpi',
+    color='index'
 )
-ch.save("../images/python/basic-lineplot.html")
+ch.save("../images/python/cpi-food-linegraph.html")
 ```
 
-![Line plot in Python](../images/python/basic-lineplot.png)
+![Line plot in Python](../images/python/cpi-food-linegraph.png)
 
 <div class="notes">
 
@@ -67,9 +68,9 @@ This is what the graph would look like.
 ### Preparation, R code
 + Here's the code in R
 ```
-cpi <- read.csv("../data/cpi.csv")
+cpi <- read.csv("../data/cpi-food.csv")
 ggplot(cpi, aes(x=t, y=CPI)) +
-  geom_line()
+  geom_line(aes(color=index))
 ```
 
 <div class="notes">
@@ -82,8 +83,9 @@ Here is the R code to read in the data and produce a simple line graph.
 
 ```{r cpi-graph}
 initiate_image()
-ggplot(cpi, aes(x=t, y=CPI)) +
-  geom_line()
+cpi <- read.csv("../../common-files/data/cpi-food.csv")
+ggplot(cpi, aes(x=t, y=cpi)) +
+  geom_line(aes(color=index))
 finalize_image("Line graph showing increase over time of the consumer price index")
 ```
 
