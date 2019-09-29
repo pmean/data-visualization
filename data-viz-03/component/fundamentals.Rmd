@@ -38,16 +38,24 @@ alt.Y(scale=alt.Scale(zero=False))
 ```
 or
 ```
-alt.Y(scale=alt.Scale(domain=(200, 250)))
+alt.Y(scale=alt.Scale(domain=(100, 200)))
 ```
 + R code
 ```
 expand_limits(y=0)
 ```
+or
+```
+ylim(100, 200)
+```
 + Tableau steps
- + (Add details)
+  + Double click on axis
  
-<div class="notes
+<div class="notes">
+
+This example is the first one where you can see a big difference between the default options. Python wants to include zero on the y-axis, no matter what. It may make sense for a barchart to always include zero, but it is less obvious for a line graph.
+
+</div>
 
 ### Fundamentals, Aesthetics for lines
 + Location
@@ -63,7 +71,11 @@ You can vary the size, shape, and color of a line. Shape is not what you think i
 
 </div>
 
-### Fundamentals, Show different types and locations of lines
+### Fundamentals, Location
++ Sequence of x,y pairs
+  + sorted by x
+  + Connected in order
+
 
 ((Show a curved line, a straight line, a line segment, a series of line segments, and a polygon. Show the code to create these.))
 
