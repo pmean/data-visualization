@@ -164,20 +164,39 @@ The shape of a line is not whether it is curved or straight. The shape of a line
 ### Fundamentals, Shape
 
 ```{r dots-and-dashes}
-p <- c("12", "14", "31", "71", "33", "77")
+p <- c("13", "16", "19", "33", "63", "93", "99", "9333", "9939")
+p <- rev(p)
 n <- length(p)
 tx <- paste0('linetype="', p, '"')
 initiate_image()
-g <- ggplot(data.frame(x=c(0, 2), y=c(0, 9)), aes(x, y)) + geom_point(color="white")
+g <- ggplot(data.frame(x=c(0, 2), y=c(0, n+1)), aes(x, y)) + 
+  geom_point(color="white") +
+    theme_void() 
 for (i in 1:n) {
   g <- g + geom_segment(x=1, y=i, xend=2, yend=i, linetype=p[i])
-  g <- g + geom_text(x=0.5, y=i, label=tx[i], adj=1)
+  g <- g + geom_text(x=0.1, y=i, label=tx[i], adj=0, size=8)
 }
 g
 finalize_image()
 ```
 
 `r display_image`
+
+<div class="notes">
+
+There is a code for dotted and dashed line patterns that works pretty much the same way for both Python and R. You specify a sequence of two (sometimes four) numbers. The odd numbered values (first, third, etc.) represent an "on" number of pixels which specifies the length of the dash. The even numbered values (second, fourth, etc.) represent an "off" number of pixels. This is the gap or space between the marks.
+
+The code "13" is a tight dotted line. One pixel on represents the dot and three pixels off represents the tight space between the dots. Note that anything tighter that 3 for a space is hard to distinguish from a solid line.
+
+The code "16" puts a moderate amount of space between the dots and "19" puts a large space between the dots.
+
+The codes "33" and "63" and "93" create short medium and long dashes with just a small space between the dashes. The code "99" creates long dashes with large spaces between them.
+
+A set of four numbers usually produces an alternating pattern. The pattern "9333" produces a dash-dot pattern. The "9" produces a long dash. The first "3" produces a small space. The second "3" produces a short dash and the last "3" produces a short space. The pattern "9939" produces a similar dash-dot pattern, but the "9"'s in the second a fourth position widens the spaces between the dashes and dots quite a bit.
+
+There are an infinite number of possibilities here.
+
+</div>
 
 ### Fundamentals, Shape
 + Tableau code
@@ -193,9 +212,23 @@ geom_line(linetype="5222")
   
 <div class="notes">
 
-In Python, set the strokeDash argument to create various dotted and dashed lines. In R, use the linetype argument. Tableau allows you a lot of freedom in choosing between dotted and dashed lines when you have two or more lines on a single graph, but it is surprisingly hard to deviate from the formal default of a solid line when you only have a single line on your graph. This is annoying, but quite honestly, there is little reason to deviate from a solid line when you only have one line on your graph.
+In Python, set the strokeDash argument to create various dotted and dashed lines. In R, use the linetype argument.
+
+Tableau allows you a lot of freedom in choosing between dotted and dashed lines when you have two or more lines on a single graph, but it is surprisingly hard to deviate from the formal default of a solid line when you only have a single line on your graph. This is annoying, but quite honestly, there is little reason to deviate from a solid line when you only have one line on your graph.
 
 </div>
+
+### Fundamentals, Color
++ Tableau code
+```
+mark_line(color="red")
+```
++ R code
+```
+geom_line(color="red")
+```
++ Tableau
+  + CLick on color button
 
 ```{r child="../component/change-defaults.Rmd"}
 ```
