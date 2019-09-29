@@ -214,6 +214,19 @@ In this graph there are two solid lines representing the present trend in two (f
 
 </div>
 
+### Gestalt, Continuity and common fate
+
+![Device that looks like an arrow going through your head](../images/external/arrow-through-head.jpg)
+
+<div class="notes">
+
+The reason this works is that your brain is trained to think that when part of an object is hidden by another object, you realize that this is one object rather than two.
+
+This image of an gag toy looks almost like it is real, but for the band that goes up an over the head.
+
+</div>
+
+
 ### Gestalt, Summary
 + Perceptual principles to develop groupings
   + Shape

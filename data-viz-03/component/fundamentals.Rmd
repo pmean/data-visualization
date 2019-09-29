@@ -55,6 +55,12 @@ ylim(100, 200)
 
 This example is the first one where you can see a big difference between the default options. Python wants to include zero on the y-axis, no matter what. It may make sense for a barchart to always include zero, but it is less obvious for a line graph.
 
+To override the default Python option of showing zero on the Y axis, include the zero=False statement in the Scale function. Or you can specify a particular set of limits using the domain option in the Scale function.
+
+R does not always include zero, but if you want, you can force R to include zero with the expand_limits function. Or you can specify a lower and upper limit with the ylim function.
+
+Tableau also does not always include zero. To modify the limits of an axis in Tableau, you double click on it to get a dialog box.
+
 </div>
 
 ### Fundamentals, Aesthetics for lines
@@ -74,10 +80,34 @@ You can vary the size, shape, and color of a line. Shape is not what you think i
 ### Fundamentals, Location
 + Sequence of x,y pairs
   + sorted by x
-  + Connected in order
+  + Connected in order (cannot double back)
++ Alternatives to lines
+  + Paths
+  + Polygons
 
+<div class="notes">
 
-((Show a curved line, a straight line, a line segment, a series of line segments, and a polygon. Show the code to create these.))
+A line could mean a straight line or a curved line. You get a curve by connecting small straight line segments. If the segments are small enough, you don't even notice. One requirement of a line is that the X values are sorted from low to high and are connected in order. This means that the line cannot double back on itself.
+
+An alternative to a line is a path, which is allowed to meander in any direction including reversing course in the X direction one or more times. A polygon is a path that does not intersect itself and which returns at the end to the point at which it started. Paths and polygons will not be a major focus in this presentation, but the principles that apply to lines generally apply equally well to paths and polygons.
+
+</div>
+
+### Fundamentals, Size
+
+```{python}
+import pandas as pd
+import altair as alt
+df = pd.read_csv("../../common-files/data/cpi.csv")
+ch = alt.Chart(df).mark_line(strokeDash=[5, 2]).encode(
+    x='t',
+    y='CPI'
+)
+ch.save("../images/python/thicker-line.html")
+```
+
+![Line graph with thick line](../images/python/thicker-line.png)
+
 
 ### Fundamentals, Size
 
@@ -92,7 +122,25 @@ finalize_image()
 
 <div class="notes">
 
-Lines can change size, but some systems refer to this as line width rather than size.
+Lines can change size, but some systems refer to this as line width rather than size. You might use a thick line at times to create a greater emphasis, but it does tend to obscure small sudden changes in this current graph.
+
+</div>
+
+### Fundamentals, Size
++ Python code
+```
+mark_line(size=8)
+```
++ R code
+```
+geom_line(size=8)
+```
++ Tableau
+  + Click on size button
+  
+<div class="notes">
+
+To change the line thickeness in R, use the size= option inside the geom_line function.
 
 </div>
 
@@ -110,6 +158,42 @@ finalize_image()
 <div class="notes">
 
 The shape of a line is not whether it is curved or straight. The shape of a line is whether it is represented using solid, dashed, or dotted lines. Most visualizations call this a line type rather than a line shape.
+
+</div>
+
+### Fundamentals, Shape
+
+```{r dots-and-dashes}
+p <- c("12", "14", "31", "71", "33", "77")
+n <- length(p)
+tx <- paste0('linetype="', p, '"')
+initiate_image()
+g <- ggplot(data.frame(x=c(0, 2), y=c(0, 9)), aes(x, y)) + geom_point(color="white")
+for (i in 1:n) {
+  g <- g + geom_segment(x=1, y=i, xend=2, yend=i, linetype=p[i])
+  g <- g + geom_text(x=0.5, y=i, label=tx[i], adj=1)
+}
+g
+finalize_image()
+```
+
+`r display_image`
+
+### Fundamentals, Shape
++ Tableau code
+```
+mark_line(strokeDash=[5, 2, 2, 2])
+```
++ R code
+```
+geom_line(linetype="5222")
+```
++ Tableau
+  + NO easy solution
+  
+<div class="notes">
+
+In Python, set the strokeDash argument to create various dotted and dashed lines. In R, use the linetype argument. Tableau allows you a lot of freedom in choosing between dotted and dashed lines when you have two or more lines on a single graph, but it is surprisingly hard to deviate from the formal default of a solid line when you only have a single line on your graph. This is annoying, but quite honestly, there is little reason to deviate from a solid line when you only have one line on your graph.
 
 </div>
 
