@@ -228,10 +228,49 @@ mark_line(color="red")
 geom_line(color="red")
 ```
 + Tableau
-  + CLick on color button
-
+  + Click on color button
+  
+<!---HOmework--->
 ```{r child="../component/change-defaults.Rmd"}
 ```
+
+### Fundamentals, Multiple lines
++ New data set, consumer price index for food
+  + Food consumed at home
+  + Food consumed away from home
+  + Pet food
++ Set January 2002 as 100.
+
+<div class="notes">
+
+There is a similar data set that I want to switch to. It provides the consumer price index for food. It has a separate series for food consumed at home. That includes things you buy at the store like Pop Tarts for eating at home. There is a second series for food consumed away from home, such as the 1300 calorie Monster Thickburger that you got at Hardee's.  There is a third series for pet food. 
+
+There's a bad joke about this. I took my dog shopping and he was unhappy with the price of Alpo. It was 99 cents, but you have to realize that this is almost seven dollars in dog money.
+
+The index variable distinguishes which index is which.
+
+</div>
+
+### Fundamentals, Coding for multiple lines
++ Python code
+```
+```
+
+### Fundamentals, Python output
+
+```{python}
+import pandas as pd
+import altair as alt
+df = pd.read_csv("../../common-files/data/cpi-food.csv")
+ch = alt.Chart(df).mark_line().encode(
+    x='t',
+    y='cpi',
+    color='index'
+)
+ch.save("../images/python/cpi-food-linegraph.html")
+```
+
+
 
 ### Fundamentals, Adding lines to a scatterplot
 

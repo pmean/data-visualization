@@ -18,9 +18,9 @@ load("../../common-files/data/houses.RData")
   + x=t
   + y=CPI
 + Change the defaults for the line
-  + Use a dashed rather than a solid lineline to a dashed line.
   + Make the width equal to 3
   + Make the color green
+  + Make the Y-axis start at 200 and end at 260
 
 <div class="notes">
 
@@ -38,10 +38,12 @@ df = pd.read_csv("../../common-files/data/cpi.csv")
 
 ```{python, echo=TRUE}
 ch = alt.Chart(df).mark_line(
-    strokeDash=[5, 5, 2, 5]
+    color='green',
+    size=3
 ).encode(
     alt.X('t'),
-    alt.Y('CPI', scale=alt.Scale(domain=(200, 400)))
+    alt.Y('CPI', 
+        scale=alt.Scale(domain=(200, 260)))
 )
 ```
 
@@ -49,21 +51,36 @@ ch = alt.Chart(df).mark_line(
 ch.save("../images/python/dotted-line.html")
 ```
 
+<div class="notes">
+
+HEre is the Python code. Notice that the color and width are changed inside the mark_line function.
+
+</div>
+
 ### Exercise, Python output
+
+![Line graph with green dashed line](../images/python/green-line.png)
 
 ### Exercise, R code
 + Here's the R code
 ```
 ggplot(cpi, aes(x=t, y=CPI)) +
-  geom_line(size=3, linetype="dashed", color="green")
+  geom_line(size=3, color="green")
 ```
+
+<div class="notes">
+
+Here is the R code. Notice that you change the size and color inside the geom_line function.
+
+</div>
 
 ### Exercise, R output
 
 ```{r width-shape-color}
 initiate_image()
 ggplot(cpi, aes(x=t, y=CPI)) +
-  geom_line(size=3, linetype="dashed", color="green")
+  ylim(c(200, 260)) +
+  geom_line(size=3, color="green")
 finalize_image()
 ```
 
@@ -71,13 +88,32 @@ finalize_image()
 
 <div class="notes">
 
-
+Here is the R output.
 
 </div>
 
-
 ### Exercise, Tableau steps
++ Drag T to coumns, CPI to rows
+  + Set both as Dimension, Continuous (Green pill)
++ Change Marks pull-down to Line
++ Click on the color button, select green
++ Click on size button, move slider to the right
++ Double click on Y axis
+  + Select Range, Fixed
+  + Enter 200, 260 as fixed start, fixed end
+  
+<div class="notes">
+
+Here are the Tableau steps.
+
+</div>
 
 ### Exercise, Tableau output
 
+![Line graph with thick green line](../images/tableau/green-line.png)
 
+<div class="notes">
+
+Here is the Tableau output.
+
+</div>
