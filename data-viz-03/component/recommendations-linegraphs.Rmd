@@ -12,9 +12,66 @@ output: powerpoint_presentation
 + High frequenct events
   + Avoid think lines, long dashes.
   
+### Recommendation, Avoid thick dashed lines for high frequency data
+
+```{r thick-versus-thin}
+load("../../common-files/data/cpi.RData")
+initiate_image()
+ggplot(cpi, aes(t, CPI)) +
+  geom_line(size=3, linetype="33", color="black") +
+  geom_line(size=1, linetype="solid", color="red")
+finalize_image()
+```
+
+`r display_image`
+
 <div class="notes">
 
 High frequency events are sudden surges and dips in a line over a narrow range. If your data has high frequency events (think stock market prices), then avoid thick lines or long dashes. These can hide some of the high frequency events.
+
+</div>
+
+### Recommendations, Avoid error bars (1/3)
+
+```{r average-with-standard-deviation}
+load("../../common-files/data/houses.RData")
+saratoga_houses %>%
+  group_by(Bedrooms) %>%
+  summarize(avg_price=mean(Price), sd_price=sd(Price), n=n()) -> aggregated_prices
+initiate_image()
+ggplot(aggregated_prices, aes(Bedrooms, avg_price)) +
+  geom_line() +
+  geom_errorbar(aes(ymin=avg_price-sd_price, ymax=avg_price+sd_price), width=0.1)
+finalize_image("Average price shown with error bar equal to one standard deviaiton")
+```
+
+`r display_image`
+
+<div class="notes">
+
+There is a clear and consistent trend in the average price. As the number of bedrooms increase, the average price increases.
+
+</div>
+
+### R output
+
+```{r average-with-standard-error}
+load("../../common-files/data/houses.RData")
+saratoga_houses %>%
+  group_by(Bedrooms) %>%
+  summarize(avg_price=mean(Price), sd_price=sd(Price), n=n()) -> aggregated_prices
+initiate_image()
+ggplot(aggregated_prices, aes(Bedrooms, avg_price)) +
+  geom_line() +
+  geom_errorbar(aes(ymin=avg_price-sd_price/sqrt(n), ymax=avg_price+sd_price/sqrt(n)), width=0.1)
+finalize_image("Average price shown with error bar equal to one standard error")
+```
+
+`r display_image`
+
+<div class="notes">
+
+There is a clear and consistent trend in the average price. As the number of bedrooms increase, the average price increases.
 
 </div>
 
@@ -27,3 +84,11 @@ High frequency events are sudden surges and dips in a line over a narrow range. 
 ### Recommendations, when to start at zero
 
 ### Recommendations, differentiating lines
+
+### Recommendations, lines imply continuity, bars don't
+
+### Recommendations, aspect ratio
+
+### Recommendations, square graphs
+
+### Recommendations, sort your data or hope that your software does

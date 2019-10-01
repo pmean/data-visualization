@@ -21,7 +21,7 @@ load("../../common-files/data/houses.RData")
 
 <div class="notes">
 
-On your own, draw a similar plot. Put the number of bathrooms on the X axis and the age of the house on the Y-axis. Add a line conencting the individual averages.
+On your own, draw a scatterplot. Put the number of bathrooms on the X axis and the age of the house on the Y-axis. Add a line conencting the individual averages.
 
 </div>
 
@@ -100,7 +100,7 @@ There is a clear and consistent trend in the average age. The average age declin
 
 <div class="notes">
 
-
+Here is the Tableau graph.
 
 </div>
 

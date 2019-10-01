@@ -10,6 +10,7 @@ output: powerpoint_presentation
 
 ```{r}
 load("../../common-files/data/cpi.RData")
+load("../../common-files/data/cpi-food.RData")
 load("../../common-files/data/houses.RData")
 ```
 
@@ -435,10 +436,25 @@ There is a clear and consistnet trend in the average price. As the number of bed
 
 ![Tableau plot with lines at individual averages](../images/tableau/individual-averages.png)
 
+<!---Exercise--->
 ```{r child="../component/connect-averages.Rmd"}
 ```
 
-### Families of lines
+### Summary
++ Lines have the same aesthetics as points and bars
+  + Location
+  + Size (width)
+  + Shape (solid, dashed, dotted)
+  + Color
++ Use mark_line (Python), geom_line (R) or a drop down menu (Tableau)
++ Lines added to a scatterplot can emphasize trends and patterns
 
-(Add three or four slides plus an exercise)
+<div class="notes">
 
+The same aesthetics that you learned about for points and bars also apply to lines. The have an x and y location, a size (meaning width of the line), a shape (solid, dashed, dotted, and various combinations), and color.
+
+In Python, use the mark_line function to draw a line graph. In R, use the geom_line function. In Tableau, there is a pull-down menu.
+
+Linegraphs can show a single relationship or compare multiple relationships. You can add a line to a scatterplot to emphasize a trend or pattern. 
+
+</div>
