@@ -23,3 +23,7 @@ High frequency events are sudden surges and dips in a line over a narrow range. 
 + Error bars
 + Confidence bands
 + Boxplots
+
+### Recommendations, when to start at zero
+
+### Recommendations, differentiating lines

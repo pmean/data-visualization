@@ -254,7 +254,25 @@ The index variable distinguishes which index is which.
 ### Fundamentals, Coding for multiple lines
 + Python code
 ```
+ch = alt.Chart(df).mark_line().encode(
+    x='t',
+    y='cpi',
+    color='index'
+)
 ```
++ R code
+```
+ggplot(cpi, aes(x=t, y=cpi)) +
+  geom_line(aes(color=index))
+```
++ Tableau
+  + Drag index onto the color button
+
+<div class="notes">
+
+When you want to have a different line for each consumer price index series, you specify a different color for each line. Notice how this goes inside the encode function in Python and inside the aes function in R because you are encoding a third variable, index, to an aesthetic.
+
+</div>
 
 ### Fundamentals, Python output
 
@@ -270,7 +288,45 @@ ch = alt.Chart(df).mark_line().encode(
 ch.save("../images/python/cpi-food-linegraph.html")
 ```
 
+![Line graph of three price indices](../images/python/cpi-food-linegraph.png)
 
+<div class="notes">
+
+This is what the Python output looks like.
+
+</div>
+
+### Fundamentals, R output
+
+```{r cpi-food-linegraph}
+initiate_image()
+cpi <- read.csv("../../common-files/data/cpi-food.csv")
+ggplot(cpi, aes(x=t, y=cpi)) +
+  geom_line(aes(color=index))
+finalize_image("Line graph showing increase over time of the consumer price index")
+```
+
+`r display_image`
+
+<div class="notes">
+
+Here is what the graph looks like in R.
+
+</div>
+
+### Fundamentals, Python output
+
+![Line graph in Tableau](../images/tableau/cpi-food-linegraph.png)
+
+<div class="notes">
+
+This is what the Tableau graph looks like.
+
+</div>
+
+<!---HOmework--->
+```{r child="../component/modify-colors.Rmd"}
+```
 
 ### Fundamentals, Adding lines to a scatterplot
 

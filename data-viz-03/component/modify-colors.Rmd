@@ -1,7 +1,7 @@
 ---
-title: "Exercise, change line defaults"
+title: "Exercise, modify line colors"
 author: "Steve Simon"
-date: "Created: 2019-08-19"
+date: "Created: 2019-09-30"
 output: powerpoint_presentation
 ---
 
@@ -14,17 +14,19 @@ load("../../common-files/data/houses.RData")
 ```
 
 ### Exercise, change defaults
-+ Draw a line graph with the cpi data
++ Draw a line graph with the cpi-food data
   + x=t
-  + y=CPI
-+ Change the defaults for the line
-  + Make the width equal to 3
-  + Make the color green
-  + Make the Y-axis start at 200 and end at 260
+  + y=cpi
+  + color=index
++ Change the default line colors
+  + food-home=darkgreen
+  + food-away=red
+  + food-pets=blue
+  + Make the Y-axis start at 100 and end at 200
 
 <div class="notes">
 
-Take the CPI line graph and modify some of the default options. Make the line green and increase the thickness to three pixels.
+Take the cpi-food linegraph and modify some of the default options. Highlight the food-home in darkgreen, food-away in red, and food-pets in blue. Modify the y-axis to start at 100 and end at 200.
 
 </div>
 
@@ -33,22 +35,25 @@ Take the CPI line graph and modify some of the default options. Make the line gr
 ```{python}
 import pandas as pd
 import altair as alt
-df = pd.read_csv("../../common-files/data/cpi.csv")
+df = pd.read_csv("../../common-files/data/cpi-food.csv")
 ```
 
 ```{python, echo=TRUE}
-ch = alt.Chart(df).mark_line(
-    color='green',
-    size=3
-).encode(
+ch = alt.Chart(df).mark_line().encode(
+    alt.Color('index',
+        scale=alt.Scale(
+            range=['#FF0000', '#00CC00', '#0000FF']
+        )
+    ),
     alt.X('t'),
-    alt.Y('CPI', 
-        scale=alt.Scale(domain=(200, 260)))
+    alt.Y('cpi', 
+        scale=alt.Scale(domain=(100, 200))),
+    
 )
 ```
 
 ```{python}
-ch.save("../images/python/dotted-line.html")
+ch.save("../images/python/modify-colors.html")
 ```
 
 <div class="notes">
@@ -59,13 +64,15 @@ HEre is the Python code. Notice that the color and width are changed inside the 
 
 ### Exercise, Python output
 
-![Line graph with green dashed line](../images/python/green-line.png)
+![Line graph with thick green line](../images/python/modify-colors.png)
 
 ### Exercise, R code
 + Here's the R code
 ```
-ggplot(cpi, aes(x=t, y=CPI)) +
-  geom_line(size=3, color="green")
+ggplot(cpi-food, aes(x=t, y=CPI)) +
+  geom_line(aes(color=index)) +
+  scale_color_manual(values=c("#FF0000", "#00CC00", "#0000FF")) +
+  ylim(100, 200)
 ```
 
 <div class="notes">
@@ -76,11 +83,13 @@ Here is the R code. Notice that you change the size and color inside the geom_li
 
 ### Exercise, R output
 
-```{r width-shape-color}
+```{r modify-colors}
+cpi_food <- read.csv("../../common-files/data/cpi-food.csv")
 initiate_image()
-ggplot(cpi, aes(x=t, y=CPI)) +
-  ylim(c(200, 260)) +
-  geom_line(size=3, color="green")
+ggplot(cpi_food, aes(x=t, y=cpi)) +
+  geom_line(aes(color=index)) +
+  scale_color_manual(values=c("#FF0000", "#00CC00", "#0000FF")) +
+  ylim(100, 200)
 finalize_image()
 ```
 
@@ -96,11 +105,12 @@ Here is the R output.
 + Drag T to coumns, CPI to rows
   + Set both as Dimension, Continuous (Green pill)
 + Change Marks pull-down to Line
-+ Click on the color button, select green
++ Drag index to colors button
++ Click on boxes in legend
 + Click on size button, move slider to the right
 + Double click on Y axis
   + Select Range, Fixed
-  + Enter 200, 260 as fixed start, fixed end
+  + Enter 100, 200 as fixed start, fixed end
   
 <div class="notes">
 
