@@ -1,5 +1,5 @@
 ---
-title: "Recommendations for line graphss"
+title: "Recommendations for line graphs"
 author: "Steve Simon"
 date: "Created: 2019-08-19"
 output: powerpoint_presentation
@@ -8,11 +8,7 @@ output: powerpoint_presentation
 ```{r child="../../common-files/src/component-header.Rmd"}
 ```
 
-### Recomendations, line graphs
-+ High frequenct events
-  + Avoid think lines, long dashes.
-  
-### Recommendation, Avoid thick dashed lines for high frequency data
+### Recommendation, Avoid dashed lines for high frequency data
 
 ```{r thick-versus-thin}
 load("../../common-files/data/cpi.RData")
@@ -49,11 +45,11 @@ finalize_image("Average price shown with error bar equal to one standard deviait
 
 <div class="notes">
 
-There is a clear and consistent trend in the average price. As the number of bedrooms increase, the average price increases.
+This graph shows error bars for the average price of a house given a fixed number of bedrooms. There is indeed an upward trend in prices. The more bedrooms you have, the higher the average price. But these error bars, equal to plus or minus one standard deviation, emphasize that there is a lot of overlap in individual prices.
 
 </div>
 
-### R output
+### Recommendations, Avoid error bars (2/3)
 
 ```{r average-with-standard-error}
 load("../../common-files/data/houses.RData")
@@ -71,24 +67,36 @@ finalize_image("Average price shown with error bar equal to one standard error")
 
 <div class="notes">
 
-There is a clear and consistent trend in the average price. As the number of bedrooms increase, the average price increases.
+Here is the same graph, but with the error bar representing plus or minus one standard error. The standard error is the standard deviation divided by the square root of the sample size. It shows how variable the mean is rather than how variable an individual observation is. This picture is quite different, and implies a much stronger trend. Which graph is better? Well, neither in my opinion.
 
 </div>
 
-### Recommendations, show variation
+### Recommendations, Avoid error bars (3/3)
++ No agreed upon definition for error bars
+  + One standard deviation?
+  + One standard error?
+  + Confidence interval?
+  + Range?
++ Error bars may hide asymmetric distributions
++ What does an overlap, non-overlap mean?
+
+<div class="notes">
+
+The first problem with error bars is that they do not have a commonly agreed upon definition. Is it plus or minus one standard deviation or plus or minus one standard error?
+
+</div>
+
+### Recommendations, Alternatives to error bars (1/2)
 + Original data
 + Error bars
 + Confidence bands
 + Boxplots
 
-### Recommendations, when to start at zero
+### Remaining work
 
-### Recommendations, differentiating lines
-
-### Recommendations, lines imply continuity, bars don't
-
-### Recommendations, aspect ratio
-
-### Recommendations, square graphs
-
-### Recommendations, sort your data or hope that your software does
++ Recommendations, when to start at zero
++ Recommendations, differentiating lines
++ Recommendations, lines imply continuity, bars don't
++ Recommendations, aspect ratio
++ Recommendations, square graphs
++ Recommendations, sort your data or hope that your software does
