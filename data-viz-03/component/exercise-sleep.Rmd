@@ -23,7 +23,7 @@ Continue your work on this data set. Review the description of each variable on 
 
 ```{r corr}
 load("../../common-files/data/sleep.RData")
-cor(sleep[-1, ])
+round(cor(sleep[ , -1], use="pairwise"), 2)
 ```
 
 ### Advanced exercise
