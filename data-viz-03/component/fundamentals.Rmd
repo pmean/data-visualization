@@ -15,7 +15,7 @@ load("../../common-files/data/houses.RData")
 ```
 
 ### Fundamentals, how to produce a line graph
-+The key step in Python
++ The key step in Python
 ```
 mark_line()
 ```
@@ -209,7 +209,7 @@ mark_line(strokeDash=[5, 2, 2, 2])
 geom_line(linetype="5222")
 ```
 + Tableau
-  + NO easy solution
+  + No easy solution
   
 <div class="notes">
 
@@ -231,6 +231,12 @@ geom_line(color="red")
 + Tableau
   + Click on color button
   
+<div class="notes">
+
+To change the default color of a single line, use the color argument in mark_line (Python) or geom_line (R). In Tableau, you change the default color by clicking on the color button.
+
+</div>
+  
 <!---HOmework--->
 ```{r child="../component/change-defaults.Rmd"}
 ```
@@ -244,11 +250,9 @@ geom_line(color="red")
 
 <div class="notes">
 
-There is a similar data set that I want to switch to. It provides the consumer price index for food. It has a separate series for food consumed at home. That includes things you buy at the store like Pop Tarts for eating at home. There is a second series for food consumed away from home, such as the 1300 calorie Monster Thickburger that you got at Hardee's.  There is a third series for pet food. 
+There is a similar data set that I want to switch to. It provides the consumer price index for food, separated into three series. The first series is a price index for food consumed at home. That includes things you buy at the store like Pop Tarts, assuming that you don't try to eat them in the store. There is a second series for food consumed away from home, such as the 1300 calorie Monster Thickburger that you got at Hardee's.  There is a third series for pet food. 
 
-There's a bad joke about this. I took my dog shopping and he was unhappy with the price of Alpo. It was 99 cents, but you have to realize that this is almost seven dollars in dog money.
-
-The index variable distinguishes which index is which.
+There's a bad joke about this. I took my dog shopping and he was unhappy with how much the price of Alpo has risen. It was 99 cents. That may not seem like a lot to you, but you have to realize that this is almost seven dollars in dog money.
 
 </div>
 

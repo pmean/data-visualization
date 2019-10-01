@@ -17,6 +17,8 @@ output: powerpoint_presentation
   
 <div class="notes">
 
+I am borrowing heavily from https://github.com/WSU-DataScience/SDSS19-dataviz-workshop.
+
 The Gestalt school of Psychology developed several principles that are very useful in helping to make an effective visualization. A simple definition of Gestalt is that the whole is more than just the individual items. There is a lot to Gestalt psychology, but the portion that is relevant to you is the ability to draw someone's eye not to individual components of a graph, but to a group of related components that allow the viewer to see patterns or associations.
 
 </div>

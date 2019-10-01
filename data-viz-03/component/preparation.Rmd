@@ -69,7 +69,7 @@ This is what the graph would look like.
 ```
 cpi <- read.csv("../data/cpi-food.csv")
 ggplot(cpi, aes(x=t, y=CPI)) +
-  geom_line(aes(color=index))
+  geom_line()
 ```
 
 <div class="notes">

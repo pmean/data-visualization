@@ -5,10 +5,10 @@ suppressMessages(suppressWarnings(library(magrittr)))
 suppressMessages(suppressWarnings(library(readr)))
 suppressMessages(suppressWarnings(library(reticulate)))
 pd_text <- "This image was produced by Steve Simon and is placed in the public domain. You are welcome to use this image any way you see fit. An acknowledgement would be appreciated, but is not required."
-initiate_image <- function() {
+initiate_image <- function(w=480, h=480) {
   if (redraw_graphs==FALSE) return
   fn <- opts_current$get("label")
-  png(filename=paste0("../images/r/", fn, ".png"))
+  png(filename=paste0("../images/r/", fn, ".png"), width=w, height=h)
   return(invisible(fn))
 }
 narrow_image <- function() {

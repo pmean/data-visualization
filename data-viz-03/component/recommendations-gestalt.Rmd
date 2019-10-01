@@ -9,8 +9,14 @@ output: powerpoint_presentation
 ```
 
 ### Gestalt, Experiment with perceptual principles
-+ Some features are stronger than others
++ Some Gestalt principlies are stronger than others
 + Different groupings lead to different messages
+
+<div class="notes">
+
+The Gestalt principles covered earlier help you to create the appropriate areas of emphasis in your graph. First, you need to recognize that some Gestalt features are stronger than others. Second, you can use Gestalt to create groupings that lead to different messages.
+
+</div>
 
 ### Gestalt, Fictional data set
 + Ficitonal data on three individuals
@@ -83,7 +89,7 @@ finalize_image()
 
 <div class="notes">
 
-Here are the shape choices available in R. It should not be too hard to choose three shapes that are markedly distinct from one another.
+Here are the shape choices available in R. You can get similar shapes in Python and Tableau. It should not be too hard to choose three shapes that are markedly distinct from one another.
 
 </div>
 
@@ -184,7 +190,13 @@ Legends are very common in visualization, but they violate the rule of proximity
 
 It takes some work, but if you can identify groups properly without a legend, you are much better off. There are several strategies that could help here.
 
-Certain letter codes are expected and almost second-nature for visualizations. The letters M and F are commonly understood to represent male and female, at least among your English speaking audience. 
+Certain letter codes are expected and almost second-nature for visualizations. The letters M and F are commonly understood to represent male and female, at least among your English speaking audience. The colors blue and pink also evoke a similar recognition. You could also use the commonly recognized symbols for male and female. These are 2642 and 2640 in the Unicode font.
+
+For something other than gender, you might be able to find well understood associations. The - and plus symbols are generally recognized as negative and positive. The colors associated with a traffic light (green, yellow, and red) are commonly associated with go, caution, and stop.
+
+Treatment and Control groups are also readily recognized with the letters T and C.
+
+With well recognized codes, you might be able to dispense with a legend and just point out the obvious association in a footnote to your graph.
 
 </div>
 
@@ -314,7 +326,7 @@ finalize_image()
 
 <div class="notes">
 
-Using enclosure to emphasize the similarity of exam 3 and exam 4. NOtice how the emphasis on individual subjects is lessened by keeping them the same color and removing the text labels.
+Using enclosure to emphasize the similarity of exam 3 and exam 4. Notice how the emphasis on individual subjects is lessened by keeping them the same color and removing the text labels.
 
 </div>
 

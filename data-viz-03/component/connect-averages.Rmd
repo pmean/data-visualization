@@ -50,7 +50,7 @@ ch.save("../images/python/average-age.html")
 ```
 
 
-### Exercise, Pyhton output
+### Exercise, Python output
 
 ![Python plot showing trend of age versus bathrooms](../images/python/average-age.png)
 
@@ -87,10 +87,20 @@ There is a clear and consistent trend in the average age. The average age declin
 
 
 ### Exercise, Tableau steps
++ (Assuming you have a nice scatterplot already, and just need to add the line.)
++ Drag Age to the far right side of the graph
++ Change Age to Measure (Average)
++ Right click on the far right axis
+  + Select Synchronize Axis
++ Click the pull down menu for Age
+  + Convert back to Shape (Points)
+
 
 <div class="notes">
 
+The process in Tableau is a bit tricky. You need to drag age to the far right side of the graph to create a second axis. Then you need to change Age from Measure (Sum) to Measure (Average). Then you need to synchornize the left and right axes, by right clicking on the right axis.
 
+Finally, change the line graph for Age back to points by selecting Shape from the pull-down menu.
 
 </div>
 

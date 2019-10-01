@@ -10,7 +10,6 @@ output: powerpoint_presentation
   + [More Strikeouts Than Hits? Welcome to Baseball’s Latest Crisis.](https://www.nytimes.com/2018/08/16/sports/baseball-mlb-strikeouts.html)
   + [Record shares of Americans now own smartphones, have home broadband.](https://www.pewresearch.org/fact-tank/2017/01/12/evolution-of-technology/)
   + [F.D.A. Seeks Restrictions on Teens’ Access to Flavored E-Cigarettes and a Ban on Menthol Cigarettes.](http://nytimes.com/2018/11/15/health/ecigarettes-fda-flavors-ban.html)
-+ What is the message? Summarize in 25 words or less.
 
 <div class="notes">
 

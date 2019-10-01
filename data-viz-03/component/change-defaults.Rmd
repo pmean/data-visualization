@@ -24,7 +24,7 @@ load("../../common-files/data/houses.RData")
 
 <div class="notes">
 
-Take the CPI line graph and modify some of the default options. Make the line green and increase the thickness to three pixels.
+Take the CPI line graph and modify some of the default options. Make the line green and increase the thickness to three pixels. Modify the y-axis to start at 200 and end at 260.
 
 </div>
 
