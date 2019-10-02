@@ -5,53 +5,57 @@ output: powerpoint_presentation
 ---
 
 ### Quick quiz (1 of 4)
-Data visualization is a mapping of data to the visual aesthetics of geometries/marks. Some examples of visual aesthetics include (choose all that apply)
+Which Gestalt principles help the viewer to perceive objects as groups rather than individuals? (choose all that apply)
 
-1. Size
-2. Points
-3. Shapes
+1. Similarity,
+2. Proximity,
+3. Connectedness,
+4. Enclosure
 
 <div class="notes">
 
-Answer: 1 and 3 (size and shapes)
+Answer: All of the above
 
 </div>
 
 ### Quick quiz (2 of 4)
-The log transformation works by (choose the best answer)
+Which aesthetics do lines have (choose the best answer)
 
-1. Stretching all data values equally.
-2. Stretching the small values and squeezing the large values.
-3. Stretching the large values and squeezing the small values.
+1. Size
+2. Shape
+3. Color
+4. All of the above
+5. None of the above
 
 <div class="notes">
 
-Answer: 2 (strethcing the small values and squeezing the large values)
+Answer: 4 (all of the above)
 
 </div>
 
 ### Quick quiz (3 of 4)
-Strategies that can sometimes help when you have a lot of problems with overprinting include (choose all that apply)
+If you see an overlap of any size between two pairs of error bars, it means (choose the best answer)
 
-1. Using open circles
-2. Using large size points
-3. Using translucent points
+1. the two means are statistically different
+2. the two means are statistically the same
+3. it depends
 
 <div class="notes">
 
-Answer: 1 and 3 (using open circles and translucent points)
+Answer: 3 (it depends)
 
 </div>
 
 ### Quick quiz (4 of 4)
-The two visual aesthetics that doen't work well together are (choose the best answer)
+Labels work better than a legend for a graph because of the Gestalt principle of (choose the best answer)
 
-1. color and size
-2. color and shape
-3. size and shape
+1. similarity
+2. connectedness
+3. enclosure
+4. proximity
 
 <div class="notes">
 
-Answer: 3 (size and shape)
+Answer: 4 (proximity)
 
 </div>

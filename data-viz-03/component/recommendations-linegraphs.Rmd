@@ -370,3 +370,39 @@ This graph has an aspect ratio of 1 to 2. It is twice as tall as it is wide. Whi
   + New lab method versus gold standard method
 
 ### Recommendations, sort your data or hope that your software does
+
+```{r ragged-path}
+x <- -10:10
+y <- x^2
+o <- order(runif(length(x)))
+df <- data.frame(x, y, xa=x[o], ya=y[o])
+tmp <- write.csv(df, file="../../common-files/data/ragged-path.csv", row.names=FALSE)
+initiate_image()
+ggplot(df, aes(xa, ya)) +
+  # geom_line(linetype="dashed") +
+  geom_path() +
+  geom_text(label=1:length(x), size=8)
+finalize_image()
+```
+
+`r display_image`
+
+<div class="notes">
+
+Another warning, that is not really relevant to these three graphics packages, but which you should look out for is whether a system plots a line in the order in which the data points appear or in the order in which the 
+X-values occur. If you are not careful, you could end up with a graph like the one shown here.
+
+</div>
+
+### Recommendations, summary
++ Avoid dashed lines for high frequency data
++ Avoid error bars
++ Think about when your axis should start at zero
++ Dashed and dotted lines are easy to confuse
++ Avoid an aspect ratio that flattens out most of your slopes or places them  close to plus or minus 90 degrees.
+
+<div class="notes">
+
+Here are the main recommendations. High frequency events can sometimes be missed by the gaps between dashes in a dashed line. Error bars are ambiguous and confusing. Sometimes it makes sense to start your y-axis at zero, and sometimes it doesn't. A lot of different dashed and dotted lines just makes things chaotic and confusing. The aspect ratio of your graph should aim for slopes of roughly plus or minus 45 degrees. If your slopes are mostly flat or if they are nearly vertical (close to plus or minus 90 degrees) then your graph will be hard to interpret.
+
+</div>
