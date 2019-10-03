@@ -95,3 +95,9 @@ This is the R output. Try other options if you have time.
 ### Exercise, Tableau output
 
 ![Tableau scatterplot with green squares](../images/tableau/change-default.png)
+
+<div class="notes">
+
+Here is the Tableau output.
+
+</div>

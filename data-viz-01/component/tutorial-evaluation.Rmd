@@ -81,7 +81,7 @@ There's one more obvious choice. You can display the counts in a pie chart.
 
 The answer really depends on what question you are asking. There are a variety of questions that you might ask.
 
-You can run an experiment (people have done this) where randomize and show half of them a bar chart and half of them a pie chart. Then you ask a question. Then you note the speed and accuracy of the response. Depending on the question, sometimes pie charts give faster and more accurate answers. Sometimes bar charts give faster and more accurate answers. It turns out that the results match up nicely with what we know about the psychology of perception.
+You can run an experiment (people have done this) where you randomize and show half of them a bar chart and half of them a pie chart. Then you ask a question. Then you note the speed and accuracy of the response. Depending on the question, sometimes pie charts give faster and more accurate answers. Sometimes bar charts give faster and more accurate answers. It turns out that the results match up nicely with what we know about the psychology of perception.
 
 </div>
 

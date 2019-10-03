@@ -27,7 +27,10 @@ Revisit your scatterplot. Draw a plot with x representing the age of the house, 
 
 ```{}
 ch = alt.Chart(df).mark_point().encode(
-      x='Age',y='Price', shape='Bedrooms:N')
+    x='Age',
+    y='Price', 
+    shape='Bedrooms:N'
+)
 ```
 
 <div class="notes">

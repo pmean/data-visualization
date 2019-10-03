@@ -23,7 +23,9 @@ Go back to the plot you just drew. Modify it so that the x location is Bedrooms 
 + Here's the Python code.
 ```
 ch = alt.Chart(df).mark_point().encode(
-    x='Bedrooms',y='Price')
+    x='Bedrooms',
+    y='Price'
+)
 ```
 
 <div class="notes">
@@ -75,12 +77,25 @@ This is the plot in R. It shows a general upward trend.
 
 </div>
 
+### Exercise, Tableau steps
++ (Take your existing scatterplot of age and price)
++ Click on the Age pill
+  + Choose the remove option
++ Drag Bedrooms to the Columns field
+  + Change to Dimension, Continuus
+  
+<div class="notes">
+
+In Tableau, click on Age in the Columns field and choose the remove option. The graph looks a bit weird with no columns, but ignore it. Drag Bedrooms over to the Columns field. Tableau wants to use a sum, but you want individual data points. So click on SUM(Bedrooms) and change it to a Dimension.
+
+</div>
+
 ### Exercise, Tableau output
 
 ![Tableau scatterplot of Bedrooms and Price](../images/tableau/bedrooms-vs-price.png)
 
 <div class="notes">
 
-In Tableau, click on Age in the Columns field and choose the remove option. The graph looks a bit weird with no columns, but ignore it. Drag Bedrooms over to the Columns field. Tableau wants to use a sum, but you want individual data points. So click on SUM(Bedrooms) and change it to a Dimension.
+Here is the Tableau output.
 
 </div>

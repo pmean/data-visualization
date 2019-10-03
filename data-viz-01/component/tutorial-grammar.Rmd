@@ -106,11 +106,9 @@ It will help to see some examples.
 
 <div class="notes">
 
-Think of geometries/marks are ink placed on a sheet of paper. They could represent points, lines, bars, or text, among other things. 
+Think of geometries/marks are ink placed on a sheet of paper. They could represent points, lines, or bars, among other things. 
 
-There are four (more or less) major visual properties of points, lines, bars, and text.
-
-The aesthetics fall into five major classes: position, shape, size, and color.
+Geometries/marks have several major visual properties, known as aesthetics. The aesthetics include position, shape, size, and color.
 
 Not every geometry/mark will have every possible aesthetic. Some of these aesthetics can be combined to great effect, but sometimes they work antagonistically. Do consider every possible aesthetic in your graph, but intentionally ignoring an aesthetic can sometimes work to your advantage. Some aesthetics map very nicely to continuous data, but others only work well with categorical data.
 
@@ -130,7 +128,7 @@ You specify the type of geometry/mark in Python using a range of mark functions.
 ### Grammar, Geometries/marks in R
 + geom_point
 + geom_line
-+ geom_bar, geom_col
++ geom_bar
 
 <div class="notes">
 
@@ -144,7 +142,9 @@ You specify the type of geometry/marks in R using a range of geom functions.
   
 <div class="notes">
 
-Tableau will try to guess what type of marks to use, but if it guesses wrong, you can correct things with the Marks pull down menu. This menu gives you options for (among other things) Bar, Line, Shape (scatterplot), and Text.
+Tableau will try to guess what type of marks to use, but if it guesses wrong, you can correct things with the Marks pull down menu. This menu gives you options for (among other things) Bar, Line, and Shape (points).
+
+Note that square and circle are special cases of points. This makes things a bit confusing, unfortunately. Always choose Shape because it gives you more latitude to change things.
 
 </div>
 
@@ -164,8 +164,6 @@ Tableau will try to guess what type of marks to use, but if it guesses wrong, yo
 
 In Python, the mapping is done with the encode function. The location is represented by x= and y= arguments. Size, shape, and color are mapped using the size=, shape=, and color= arguments.
 
-Here's an example. The age and price of the home are mapped to the x and y locations. The acreage of the land maps to the size. The number of bedrooms maps to the shape, and the number of bathrooms maps to the color.
-
 </div>
 
 ### Grammar, Mapping to aesthetics in R
@@ -182,8 +180,6 @@ Here's an example. The age and price of the home are mapped to the x and y locat
 <div class=notes>
 
 In R, the mapping is done with the aes (short for aesthetics) function. The location is represented by x= and y= arguments. Size, shape, and color are mapped using the size=, shape=, and color= arguments.
-
-Here's an example. The age and price of the home are mapped to the x and y locations. The acreage of the land maps to the size. The number of bedrooms maps to the shape, and the number of bathrooms maps to the color. 
 
 </div>
 
@@ -281,6 +277,6 @@ Data visualization is a mapping of data.
 
 Geometries/marks include points, bars, and lines. Aesthetics include location, size, shape, and color.
 
-These ideas are implemented in R (ggplot2), Python (Altair), and Tableau.
+These ideas are implemented in Python (Altair), R (ggplot2), and Tableau.
 
 </div>

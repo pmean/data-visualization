@@ -21,11 +21,14 @@ Revisit your scatterplot. Draw a plot with x representing the age of the house, 
 
 </div>
 
-### Erercise, Python code
+### Exercise, Python code
 + Here's the Python code
 ```{}
 ch = alt.Chart(df).mark_point().encode(
-      x='Age',y='Price', size='Living.Area')
+    x='Age',
+    y='Price',
+    size='Living.Area'
+)
 ```
 
 <div class="notes">
@@ -72,6 +75,17 @@ finalize_image("R graph using size to represent Living Area")
 <div class="notes">
 
 This plot shows the same pattern as earlier. The spacious houses tend to be clustered near the top of the graph, the expensive part of the graph.
+
+</div>
+
+### Exercise, Tableau steps
++ Drag Age to the Columns field, Price to Rows field
+  + Change to Dimension, Continous (green pill)
++ Drag Living.Area to the Shape button
+
+<div class="notes">
+
+Here are the steps to create a scatterplot in Tableau where the size of the data points varies.
 
 </div>
 

@@ -30,6 +30,8 @@ There are two files actually, that look very similar. You want the "Saratoga Hou
 
 This is the file that you want to download and run a scatterplot.
 
+Actually, you can just use the CSV file that I thoughtfully provide.
+
 </div>
 
 ### Preparation, Advice if things don't work
@@ -178,7 +180,7 @@ Your screen should look something like this if you imported the data correctly. 
 
 <div class="notes">
 
-Tableau will try to classify your data as measures or dimensions and will also try to decide whether they are categorical (designated by blue tags) or continuous (designated by green tags). Don't worry too much about this now, other than to note that changing the designations that Tableau makes will change how you visualize things.
+Tableau will try to classify your data as measures or dimensions and will also try to decide whether they are categorical (designated by blue pills) or continuous (designated by green pills). Don't worry too much about this now, other than to note that changing the designations that Tableau makes will change how you visualize things.
 
 Drag the variable Age into the Columns field and drag Price into the Rows field
 

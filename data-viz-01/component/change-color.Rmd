@@ -24,8 +24,10 @@ Revisit your scatterplot. Draw a plot with x representing the age of the house, 
 ### Exercise, Python code
 + Here's the Python code.
 ```
-ch2 = alt.Chart(df).mark_point().encode(
-  x="Age", y="Price", color="Baths")
+ch = alt.Chart(df).mark_point().encode(
+    x="Age", 
+    y="Price", 
+    color="Baths")
 ```
 
 <div class="notes">
@@ -73,7 +75,7 @@ finalize_image("R scatterplot mapping bathrooms to color")
 
 <div class="notes">
 
-I deliberately defined Baths as categorical with the factor function, and notice the use of discrete colors again rather than a gradient.
+I deliberately defined Baths as categorical with the factor function, and notice the use of discrete colors rather than a gradient.
 
 </div>
 

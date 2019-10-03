@@ -124,13 +124,6 @@ It doesn't work perfectly, and sometimes the log scale is like jumping from the 
 
 </div>
 
-### Recommendations, Some tips
-+ Don't try to squeeze in too much
-+ Double up to emphasize
-+ Shape is only good for categories
-+ Size is only good for continuous variables
-+ Shape and size don't mix
-
 ### Recommendations, Don't try to squeeze in too much.
 
 ```{r point-aesthetics-color-3}
@@ -198,6 +191,8 @@ finalize_image(" ")
 
 First, shape makes sense only for categorical data. If you have a large number of values, as is typical for a continuous variable, you run out of symbols before you run out of categories.
 
+Even if your continuous variable only has a small number of values (e.g., Bedrooms which can equal 1, 2, 3, or 4 in our data set), don't use shape. Shape has no natural order.
+
 </div>
 
 ### Recommendations, Shape and size don't mix
@@ -217,7 +212,7 @@ finalize_image(" ")
 
 <div class="notes">
 
-Also size and shape don't mix. You can really compare two diffent shapes, such as an X and an O on size. Is the size related to the diameter, the area, or the perimeter? There's no really good answer, so it's asking to much of a graph that asks you to decide which is larger among points represent different shapes. Either vary the shape or vary the size, but not both.
+Also size and shape don't mix. You can really compare two diffent shapes, such as an X and an O on size. Is the size related to the diameter, the area, or the perimeter? There's no really good answer, so it's asking too much of a graph that asks you to decide which is larger among points represent different shapes. Either vary the shape or vary the size, but not both.
 
 </div>
 
@@ -231,3 +226,4 @@ Also size and shape don't mix. You can really compare two diffent shapes, such a
 + Double up to emphasize
 + Shape is for categorical variables
 + Size is for continuous variables
++ Size and shape don't mix
