@@ -39,6 +39,12 @@ ch = alt.Chart(df).mark_bar().encode(
 )
 ```
 
+<div class="notes">
+
+Here is the Python code. You modify the colors with the Scale function.
+
+</div>
+
 ### Exercise, Python output
 ```{python}
 import pandas as pd
@@ -58,6 +64,12 @@ ch.save("../images/python/red-first-class.html")
 ```
 
 ![Bar chart with red accent color](../images/python/red-first-class.png)
+
+<div class="notes">
+
+Here is the Python output.
+
+</div>
   
 
 ### Exercise, R code
@@ -70,7 +82,7 @@ ggplot(titanic, aes(x=pclass)) +
 
 <div class="notes">
 
-Here is the graph in Python.
+Here is the R code. The scale_fill_manual function allows you to specify your colors.
 
 </div>
 
@@ -93,6 +105,29 @@ Here is the graph in R.
 
 </div>
 
+### Exercise, Tableau steps
++ Drag PClass to  Columns and Rows
+  + Change the PClass in Columns to Dimension, Discrete (blue pill)
+  + Change the PClass in Rows to Summary, Count
++ Drag PClass to the Color button
++ Click on PClass 1
+  + Then click on the upper right pen icon
+  + Click on the color button
+  + Choose a different color
++ Repeat for PClass 2 and PClass 3
+
+<div class="notes">
+
+Here are the steps in Tableau. The tricky part is selecting just a single passenger class. It use the pen icon in the upper right corner.
+
+</div>
+
 ### Exercise, Tableau output
 
 ![Barchart with red highlight](../images/tableau/red-first-class.png)
+
+<div class="notes">
+
+Here is the Tableau output.
+
+</div>

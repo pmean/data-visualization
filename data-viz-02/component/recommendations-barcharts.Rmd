@@ -12,7 +12,7 @@ output: powerpoint_presentation
 load("../../common-files/data/titanic.RData")
 ```
 
-### Barchart recommendations, Don't make gaps equal to widths (1/2)
+### Recommendations, Don't make gaps equal to widths (1/2)
 
 ![Alternate white and black lines showing a Moire effect](../images/r/alternate-white-and-black.png)
 
@@ -24,7 +24,7 @@ If the space between the bars is equal to the width of the bars themselves, you 
 
 </div>
 
-### Barchart recommendations, Don't make gaps equal to widths (2/2)
+### Recommendations, Don't make gaps equal to widths (2/2)
 
 ![Optical illusion showing two bars becoming three](../images/r/optical-illusion-bars.png)
 
@@ -53,7 +53,7 @@ Remember the fault of default principle. Always try different ways of displaying
 
 </div>
 
-### Barchart recommendations, Labels on a barchart (1/3)
+### Recommendations, Labels on a barchart (1/3)
 
 ```{r location-vertical-1}
 load("../../common-files/data/titanic.RData")
@@ -87,7 +87,7 @@ Labels will sometimes clash on a vertical bar chart.
 
 </div>
 
-### Barchart recommendations, Labels on a barchart (2/3)
+### Recommendations, Labels on a barchart (2/3)
 
 ```{r location-vertical-2}
 initiate_image()
@@ -106,7 +106,7 @@ You can turn the x-axis text by 90 degrees to make it fit better. But it is hard
 
 </div>
 
-### Barchart recommendations, Labels on a barchart (3/3)
+### Recommendations, Labels on a barchart (3/3)
 
 ```{r location-horizontal}
 initiate_image()
@@ -125,7 +125,7 @@ A better solution is to turn the bars sideways. The labels fit better on a horiz
 
 </div>
 
-### Barchart recommendations, Watch for rounding artefacts
+### Recommendations, Watch for rounding artefacts
 
 ```{r rounding-artefacts}
 complete_cases <- titanic[!is.na(titanic$age), ]
@@ -152,7 +152,7 @@ I drew the image as 480 pixels by 480 pixels. After allowing for margins, it loo
 
 </div>
 
-### Barchart recommendations, Solutions to rounding artefacts
+### Recommendations, Solutions to rounding artefacts
 + Combine categories to reduce the number of bars.
 + Increase the resolution of your plot
 + Switch to a line graph
@@ -195,7 +195,7 @@ There are times where the zero value is so far away that you lose a lot of resol
 
 </div>
 
-### Barchart recommendations, sort your bars by size
+### Recommendations, sort your bars by size
 
 ```{r sorted-barchart}
 n <- c(124, 55, 49, 26)
@@ -221,7 +221,7 @@ Some people like a nice orderly alphabetical order to their bars. It helps a lit
 
 </div>
 
-### Multiple categories
+### Recommendations, Multiple categories
 + Which bars get to snuggle?
   + Minimize distance between important comparisons
 + When should you stack?
@@ -236,7 +236,7 @@ When you have two different categories, like gender and passenger class in the T
 
 </div>
 
-### Which bars get to snuggle? (1/2)
+### Recommendations, Which bars get to snuggle? (1/2)
 
 ```{r passenger-class-adjacent}
 initiate_image()
@@ -255,7 +255,7 @@ When you place the passenger classes next to one another, it both emphasizes and
 
 </div>
 
-### Which bars get to snuggle? (2/2)
+### Recommendations, Which bars get to snuggle? (2/2)
 
 ```{r sex-adjacent}
 initiate_image()
@@ -274,7 +274,7 @@ The emphasis changes when you place the men and women next to each other. Now th
 
 </div>
 
-### When should you stack? (1/3)
+### Recommendations, When should you stack? (1/3)
 
 ```{r passenger-class-stacked}
 initiate_image()
@@ -295,7 +295,7 @@ With the stacked chart, you also bring the third class females close to the thir
 
 </div>
 
-### When should you stack? (2/3)
+### Recommendations, When should you stack? (2/3)
 
 ```{r passenger-class-reverse-stacked}
 initiate_image()
@@ -315,7 +315,7 @@ Notice how the comparison of first class females and first class males is so muc
 
 </div>
 
-### When should you stack? (3/3)
+### Recommendations, When should you stack? (3/3)
 
 ```{r sex-stacked}
 initiate_image()
@@ -334,7 +334,7 @@ You can switch things so that gender is stacked for each passenger class. This b
 
 </div>
 
-### Which percentage (1/8)
+### Recommendations, Which percentage (1/8)
 
 ![](../images/external/happiness-counts.gif)
 
@@ -348,7 +348,7 @@ When you start calculating percentages for a table like this with two categorica
 
 </div>
 
-### Which percentage (2/8)
+### Recommendations, Which percentage (2/8)
 
 ![](../images/external/happiness-row-percents.gif)
 
@@ -360,7 +360,7 @@ The 75% in the upper left corner is a conditional probability. The probability o
 
 </div>
 
-### Which percentage (3/8)
+### Recommendations, Which percentage (3/8)
 
 
 ```{r outlook-stack}
@@ -385,7 +385,7 @@ This arrangement of a stacked bar chart shows that the yellow regions, the regio
 
 </div>
 
-### Which percentage (4/8)
+### Recommendations, Which percentage (4/8)
 
 ![](../images/external/happiness-column-percents.gif)
 
@@ -395,7 +395,7 @@ You get a different percentage and a different picture, though, with the column 
 
 </div>
 
-### Which percentage (5/8)
+### Recommendations, Which percentage (5/8)
 
 ```{r income-stack}
 initiate_image()
@@ -413,7 +413,7 @@ This is a bar chart that illustrates these conditional probabilities. Notice the
 
 </div>
 
-### Which percentage (6/8)
+### Recommendations, Which percentage (6/8)
 
 ![](../images/external/happiness-cell-percents.gif)
 
@@ -425,7 +425,7 @@ It is unusual that you would want cell percentages in any visualization. It tell
 
 </div>
 
-### Which percentage (7/8)
+### Recommendations, Which percentage (7/8)
 
 ```{r cell-stack}
 happy$cell <- paste(happy$income, happy$outlook)
@@ -446,7 +446,7 @@ Now this is a rather artificial example, but it shows how different percentages 
 
 </div>
 
-### Which percentage (8/8)
+### Recommendations, Which percentage (8/8)
 + No hard and fast rules
 + Classify your categorical variables
   + What is the treatment, what is the outcome?
@@ -465,7 +465,7 @@ Demographic variables are almost always treatments, causes, or precedents. You w
 
 </div>
 
-### Summary
+### Recommendations, Summary
 + Don't make the gaps the same size as the bars
 + Labels often fit better on a horizontal barchart
 + With many bars, watch for rounding artefacts

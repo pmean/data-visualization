@@ -36,6 +36,11 @@ ch = alt.Chart(df).mark_bar().encode(
 )
 ch.save("images/python/basic-barchart.html")
 ```
+<div class="notes">
+
+Here is the Python code to read in the data and produce a bar chart showing the number of passengers in each passenger class.
+
+</div>
 
 ### Preparation, Python output
 
@@ -52,6 +57,12 @@ ch.save("../images/python/basic-barchart.html")
 
 ![Barchart in Python](../images/python/basic-barchart.png)
 
+<div class="notes">
+
+Here is the Python output.
+
+</div>
+
 ### Preparation, R code
 + R code
 ```
@@ -59,6 +70,12 @@ ti <- read.csv(file="data/titanic3/csv")
 ggplot(ti, aes(pclass)) +
   geom_bar()
 ```
+
+<div class="notes">
+
+Here is the R code to read in the data and produce a bar chart showing the number of passengers in each passenger class.
+
+</div>
 
 ### Preparation, R output
 
@@ -72,6 +89,12 @@ finalize_image()
 
 `r display_image`
 
+<div class="notes">
+
+Here is the R output.
+
+</div>
+
 ### Preparation, Tableau steps
 + Import titanic3.csv
 + Drag pclass to columns
@@ -80,6 +103,18 @@ finalize_image()
   + Change to Measure(Count)
 + If needed, change Marks to Bar
 
+<div class="notes">
+
+Here are the steps in Tableau to create a barchart.
+
+</div>
+
 ### Preparation, Tableau output
 
 ![Barchart in Tableau](../images/tableau/basic-barchart.png)
+
+<div class="notes">
+
+Here is the Tableau output.
+
+</div>

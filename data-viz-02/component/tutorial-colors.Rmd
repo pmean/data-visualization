@@ -14,11 +14,12 @@ output: powerpoint_presentation
 + Color systems
   + RGB
   + HSV
+  + HCL
   + CMYK
   
 <div class="notes">
 
-There are three major color systems used on computers, RGB, HSV, and CYMK. I'll discuss RGB in detail, and touch briefly on the other systems. But you need to realize that how colors work on a computer was not the way you learned in Kindergarten. A solid understanding of the RGB color system also requires you to work comfortably with hexadecimal codes, so I have a brief review of that as well.
+There are four major color systems used on computers, RGB, HSV, HCL, and CYMK. I'll discuss RGB in detail, and touch briefly on the other systems. But you need to realize that how colors work on a computer was not the way you learned in Kindergarten. A solid understanding of the RGB color system also requires you to work comfortably with hexadecimal codes, so I have a brief review of that as well.
 
 </div>
 
@@ -28,7 +29,7 @@ There are three major color systems used on computers, RGB, HSV, and CYMK. I'll 
 
 <div class="notes">
 
-It was probably in Kindergarten where you learned the basic way to combine primary colors. Yellow plus red equals orange, Yellow plus blue equals green. Red plus blue equals purple/violoet.
+It was probably in Kindergarten where you learned the basic way to combine primary colors. Yellow plus red equals orange, Yellow plus blue equals green. Red plus blue equals purple/violet.
 
 It doesn't work that way on a computer screen because screens use light to create colors and lights blend in different ways than paints or crayons.
 
@@ -67,13 +68,13 @@ Binary numbers use powers of two: 1, 2, 4, 8, 16, etc. Eight binary digits can r
 
 Binary representations get unwieldy very quickly, and the hexadecimal format provides a much tighter representation that still has the spirit of binary. It is fairly easy to switch back and forth between binary and hexadecimal.
 
-Hexadecimal means powers of 16 and you can represent numbers up to (but not including) 16 using four binary digits. The ehxadecimal digits start out like normal digits, 0, 1, 2, etc. but once you get up to nine you run out of single digits. So the value of 10 is represented by the letter A, the value of 11 by B, etc. through the letter F which represents 15. At sixten, you roll over to the next place.
+Hexadecimal means powers of 16 and you can represent numbers up to (but not including) 16 using four binary digits. The hexadecimal digits start out like normal digits, 0, 1, 2, etc. but once you get up to nine you run out of single digits. So the value of 10 is represented by the letter A, the value of 11 by B, etc. through the letter F which represents 15. At sixteen, you roll over to the next place.
 
 So you count in hexadecimal like 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A, B, C, D, E, F, 10, 11, ...
 
 Split the eight digit binary number 1001 1100 into groups of four binary digits. The binary 1001 is equal to 9 and the binary 1100 is equal to 12 or C. So the hexadecimal equivalent is 9C. You can represent this using powers of 16, 9 times 16 to the first power plus twelve times 16 to the zeroth power. That works out to 156.
 
-Tow hexadecimal digits just like eight binary digits can represent the numbers 0 to 255, with 00 hexadecimal equaling 0 and FF hexadecimal equaling 255 (15*16+15).
+Two hexadecimal digits, just like eight binary digits, can represent the numbers 0 to 255, with 00 hexadecimal equaling 0 and FF hexadecimal equaling 255 (15*16+15).
 
 Use the prefix of a pound sign (hash tag) to tell the computer that you are speaking to it in hexadecimal.
 
@@ -87,7 +88,7 @@ Use the prefix of a pound sign (hash tag) to tell the computer that you are spea
   + #00FF00 is pure green
   + #0000FF is pure blue
 + You can mix and match to get 16,777,216 colors
-  + #800080 is purple, #FF69B4 is pink, #40e0d0 is turquoise
+  + #800080 is purple, #FF69B4 is pink, #40E0D0 is turquoise
   
 <div class="notes">
 
@@ -778,6 +779,14 @@ finalize_image()
 
 `r display_image`
 
+<div class="notes">
+
+This image shows a cylinder. It is a geometric representation of the HSV color system.
+
+The advantage of the cylindrical HSV system over the RGB cube is that you can more readily visualize gradients, gradual transitions from one color to another.
+
+</div>
+
 ### Colors, HSV system, hue only
 
 ```{r hsv-2}
@@ -807,6 +816,12 @@ finalize_image()
 ```
 
 `r display_image`
+
+<div class="notes">
+
+The outside ring at the top of the cylinder gives the hue. The hue is arranged in a circle from 0 to 1. The colors cycle between red on the far right, and (moving clockwise) yellow, green, cyan, blue, magenta, and back to red again.
+
+</div>
 
 ### Colors, HSV system, saturation only
 
@@ -839,6 +854,12 @@ finalize_image()
 ```
 
 `r display_image`
+
+<div class="notes">
+
+As you move into the center of the cylinder, the color gradually gets sucked away. The degree to which a color is present or not is the saturation. At the very center of the cylinder, you get white...but only at the top of the cylinder. With darker colors, reducing saturation produces various shades of gray. At the very bottom, everything is black.
+
+</div>
 
 ### Colors, HSV system, value only
 
@@ -878,6 +899,12 @@ finalize_image()
 
 `r display_image`
 
+<div class="notes">
+
+The darkness of a color is known as its value, which is the V in the HSV acronym. The top of the cylinder shows the pure colors, and heading straight down provides a continuous gradient from that pure color to pure black.
+
+</div>
+
 ### Colors, HCL system
 + H = hue
   + arranged on a wheel 0-360 degrees
@@ -889,11 +916,10 @@ finalize_image()
 + L = luminance
   + brightness, lightness
 + Not all combinations of HCL work
-+ Very similar systems are CIE-LUV, CIE-LAB
-  
+
 <div class="notes">
 
-Another color system is the HCL system. It is very similar to standards CIE-LUV and CIE-LAB.
+Another color system is the HCL system. 
 
 It has a hue value, just like the hsl system.
 
@@ -973,6 +999,12 @@ finalize_image()
 
 `r display_image`
 
+<div class="notes">
+
+A lower value of luminance, like 70% shown here, will allow you to extend to some of the less bright dark colors like red and blue. 
+
+</div>
+
 ### Colors, Luminance=50%
 
 ```{r hcl-50}
@@ -983,6 +1015,12 @@ finalize_image()
 
 `r display_image`
 
+<div class="notes">
+
+At a luminance value of 50%, you can no longer get very many shades of yellow or green, as they are too bright.
+
+</div>
+
 ### Colors, Luminance=30%
 
 ```{r hcl-30}
@@ -992,6 +1030,12 @@ finalize_image()
 ```
 
 `r display_image`
+
+<div class="notes">
+
+At 30% luminance, you are pretty dark and are left mostly on the blue-magenta-red hues.
+
+</div>
 
 ### Colors, Opacity (1/3)
 
@@ -1037,7 +1081,7 @@ finalize_image()
 
 <div class="notes">
 
-A low degree of opacity does not impy a lighter color. It's only lighter when the background is white, because more of the white is showing through. When the background is black, a low degree of opacity means a dar red. When the background is green, a low degree of opacity produces a darker green with a tint of red.
+A low degree of opacity does not impy a lighter color. It's only lighter when the background is white, because more of the white is showing through. When the background is black, a low degree of opacity means a dark red. When the background is green, a low degree of opacity produces a darker green with a tint of red.
 
 </div>
 

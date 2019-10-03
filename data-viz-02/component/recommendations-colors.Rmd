@@ -256,7 +256,7 @@ If you move the circle inward, all of the colors get lighter. They develop somet
 
 </div>
 
-### Colors, Pure color ciircle and alternatives (3/3)
+### Colors, Pure color circle and alternatives (3/3)
 
 ```{r hsv-darker-circle}
 initiate_image()
@@ -346,6 +346,12 @@ finalize_image()
 
 `r display_image`
 
+<div class="notes">
+
+Most visualization experts recommend against the use of circular gradients. This gradient would make values at the low end of the scale look close in color to values on the high end of the scale. This almost never happens. The one prominent exception would be a variable like wind speed, where values of 0 degrees and 360 degrees are identical.
+
+</div>
+
 ### Recommendations, Simple gradient can emphasize high values
 
 ```{r single-gradient}
@@ -402,18 +408,6 @@ finalize_image()
 The middle of a divergent gradient typically has a muted color like gray that fades into the background. The two extremes in a divergent gradient are colors that contrast sharply with the background and with each other. This produece an emphasis at both extremes and a de-empahsis in the middle.
 
 </div>
-
-### Recommendations, When to use circular gradient
-+ Mostly avoided
-+ Used when two extremes are similar
-  + Wind direction (0 = 360)
-  
-<div class="notes">
-
-Most visualization experts recommend against the use of circular gradients. This gradient would make values at the low end of the scale look close in color to values on the high end of the scale. This almost never happens. The one prominent exception would be a variable like wind speed, where values of 0 degrees and 360 degrees are identical.
-
-</div>
-
 
 ### Recommendations, Unequal luminence causes optical illusions
 

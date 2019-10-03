@@ -8,7 +8,7 @@ output: powerpoint_presentation
 ```{r child="../../common-files/src/component-header.Rmd"}
 ```
 
-### Barchart fundamentals
+### Fundamentals
 + Fewer in numbers than points
 + Usually a summary statistic
   + Count
@@ -25,7 +25,7 @@ There is a technical distinction between a bar chart and a histogram. Histograms
 
 </div>
 
-### Barchart fundamentals, Aesthetics for bars
+### Fundamentals, Aesthetics for bars
 + Review
   + Location
   + Size
@@ -48,7 +48,7 @@ You cannot vary the shape of a bar. A bar is a bar.
 
 </div>
 
-### Barchart fundamentals, Basic barchart
+### Fundamentals, Basic barchart
 + Python code
 ```
 ch = alt.Chart(df).mark_bar().encode(
@@ -71,7 +71,7 @@ The code in R uses the geom_bar function. You can get away with specifying only 
 
 </div>
 
-### Barchart fundamentals, Python output for basic barchart
+### Fundamentals, Python output for basic barchart
 
 ![Barchart in Python](../images/python/basic-barchart.png)
 
@@ -85,7 +85,7 @@ This shows a simple bar chart. The x-axis is passenger class and the y-axis is c
 
 </div>
 
-### Barchart fundamentals, R output for basic barchart
+### Fundamentals, R output for basic barchart
 
 ```{r basic-barchart-again}
 initiate_image()
@@ -103,7 +103,7 @@ This is the R version of the barchart.
 
 </div>
 
-### Barchart fundamentals, Tableau output for basic barchart
+### Fundamentals, Tableau output for basic barchart
 
 ![Barchart in Tableau](../images/tableau/basic-barchart.png)
 
@@ -118,7 +118,7 @@ Here is the Tableau output. Notice the columns (the x-axis) is a blue pill. That
 ```{r child="exercise-gender-barchart.Rmd"}
 ```
 
-### Barchart fundamentals, changing the default
+### Fundamentals, changing the default
 + Python code
 ```
 ch = alt.Chart(df).mark_bar(
@@ -151,7 +151,7 @@ In Tableau, you click on the color button to change the color for every bar. You
 
 </div>
 
-### Barchart fundamentals, Python output for changing the default
+### Fundamentals, Python output for changing the default
 
 ```{python}
 import pandas as pd
@@ -169,7 +169,7 @@ ch.save("../images/python/red-bars.html")
 
 ![Bar chart with red bars](../images/python/red-bars.png)
 
-### Barchart fundamentals, R output for changing the default
+### Fundamentals, R output for changing the default
 
 ```{r red-bars}
 load("../../common-files/data/titanic.RData")
@@ -187,7 +187,7 @@ Here is the output in R. Notice that the gaps between the bars are equal to the 
 
 </div>
 
-### Barchart fundamentals, Tableau output for changing the default
+### Fundamentals, Tableau output for changing the default
 
 ![Barchart with red bars](../images/tableau/red-bars.png)
 
@@ -197,7 +197,7 @@ This is what Tableau produces. I am showing the slider bar that appears when you
 
 </div>
 
-### Barchart fundamentals, Color
+### Fundamentals, Color
 + Use for emphasis in simple bar charts
 + Very important for stacked or side-by-side bar charts
 
@@ -209,7 +209,7 @@ Color becomes very important in just a minute when we add another layer of compl
 
 </div>
 
-### Barchart fundamentals, Coding colors
+### Fundamentals, Coding colors
 + Python code
 ```
 ch = alt.Chart(df).mark_bar().encode(
@@ -236,7 +236,7 @@ In Tableau, you have to drag and drop the variable on top of the color button.
 
 </div>
 
-### Barchart fundamentals, Choosing your own colors
+### Fundamentals, Choosing your own colors
 + Python code
 ```
 ch = alt.Chart(df).mark_bar().encode(
@@ -258,7 +258,7 @@ In Python, you add a scale argument to encode.
 
 </div>
 
-### Barchart fundamentals, Choosing your own colors
+### Fundamentals, Choosing your own colors
 + R code
 ```
 ggplot(titanic, aes(x=pclass)) +
@@ -277,7 +277,7 @@ In Tableau, you click on each color in the legend, then click in the upper corne
 </div>
 
 
-### Barchart fundamentals, Python output for coding colors
+### Fundamentals, Python output for coding colors
 ```{python}
 import pandas as pd
 import altair as alt
@@ -303,7 +303,7 @@ This is what the Python bar chart looks like.
 
 </div>
 
-### Barchart fundamentals, R output for coding colors
+### Fundamentals, R output for coding colors
 
 ```{r bar-color}
 load("../../common-files/data/titanic.RData")
@@ -322,16 +322,22 @@ This is what the R graph looks like.
 
 </div>
 
-### Barchart funadamentals, Tableau output for coding colors
+### Funadamentals, Tableau output for coding colors
 
 ![Barchart with traffic light colors](../images/tableau/traffic-light.png)
+
+<div class="notes">
+
+Here is the Tableau output.
+
+</div>
 
 <!--- Exercise --->
 
 ```{r child="exercise-first-class-red.Rmd"}
 ```
 
-### Barchart fundamentals, Stack, Dodge, Normalize
+### Fundamentals, Stack, Dodge, Normalize
 + Summarize by two categories
 + Dodge
   + Side by side
@@ -352,7 +358,7 @@ The normalize option creates stacked bars, but then forces each stack to have a 
 
 </div>
 
-### Barchart fundamentals, code for stack
+### Fundamentals, code for stack
 + Python code
 ```
 ch = alt.Chart(df).mark_bar().encode(
@@ -366,8 +372,16 @@ ch = alt.Chart(df).mark_bar().encode(
 ggplot(titanic, aes(x=pclass, fill=sex)) +
   geom_bar(position="stack")
 ```
++ Tableau steps
+  + Point and click
 
-### Barchart fundamentals, Python output for stacked bars
+<div class="notes">
+
+if you specify a third variable in the color argument, Python will, by default, create a stacked chart. In R, you have to specify position="stack" inside the geom_bar function.
+
+</div>
+
+### Fundamentals, Python output for stacked bars
 ```{python}
 import pandas as pd
 import altair as alt
@@ -382,13 +396,19 @@ ch.save("../images/python/stack.html")
 
 ![](../images/python/stack-gender.png)
 
-### Barchart fundamentals, R output for stacked bars
+<div class="notes">
+
+This is the Python output.
+
+</div>
+
+### Fundamentals, R output for stacked bars
 
 ```{r count-by-stack}
 load("../../common-files/data/titanic.RData")
 initiate_image()
 ggplot(titanic, aes(x=pclass, fill=sex)) +
-  geom_bar(position="dodge")
+  geom_bar(position="stack")
 finalize_image()
 ```
 
@@ -396,11 +416,11 @@ finalize_image()
 
 <div class="notes">
 
-
+This is the R output.
 
 </div>
 
-### Barchart fundamentals, Tableau output for stacked bars
+### Fundamentals, Tableau output for stacked bars
 
 ![](../images/tableau/stacked-bars.png)
 
@@ -410,7 +430,7 @@ Here is the stacked barchart in Tableau. Drag pclass to the x-axis, count of pcl
 
 </div>
 
-### Barchart fundamentals, code for dodge
+### Fundamentals, code for dodge
 + Python code
 ```
 ch = alt.Chart(df).mark_bar().encode(
@@ -429,11 +449,15 @@ ggplot(titanic, aes(x=pclass, fill=sex)) +
   
 <div class="notes">
 
+Here is the code in Python for dodged bars. You code sex as you x location and your color. Then you code the column argment as pclass.
 
+In R, you change the argument inside the geom_bar function to position="dodge".
+
+Tableau uses point and click, which I will describe below.
 
 </div>
 
-### Barchart fundamentals, Python output for dodged bars
+### Fundamentals, Python output for dodged bars
 
 ```{python}
 import pandas as pd
@@ -450,8 +474,13 @@ ch.save("../images/python/dodge.html")
 
 ![Grouped barchart for passenger class and gender](../images/python/dodge-gender.png)
 
+<div class="notes">
 
-### Barchart fundamentals, R output for dodged bars
+Here is the dodged bar chart in Python.
+
+</div>
+
+### Fundamentals, R output for dodged bars
 
 ```{r count-by-dodge}
 load("../../common-files/data/titanic.RData")
@@ -469,13 +498,7 @@ This is what the dodged bar chart looks like in R.
 
 </div>
 
-### Barchart fundamentals, Tableau output for dodged bars
-
-![](../images/tableau/dodged-bars.png)
-
-<div class="notes">
-
-This is what the Tableau output looks like.
+### Fundamentals, Tableau steps for dodged bars
 
 + Drag pclass to columns
   + Set to Dimension Discrete
@@ -483,12 +506,26 @@ This is what the Tableau output looks like.
   + Set to measure, count.
 + Drag sex to columns (to the right of pclass)
   + Set to Dimension Discrete
-+ Drag sex to colur button
++ Drag sex to color button
   + Set to Dimension Discrete
+
+<div class="notes">
+
+Here are the steps in Tableau for a dodged bar chart. You have to double up on the columns field. 
 
 </div>
 
-### Barchart fundamentals, Code for normalize
+### Fundamentals, Tableau output for dodged bars
+
+![](../images/tableau/dodged-bars.png)
+
+<div class="notes">
+
+This is what the Tableau output looks like.
+
+</div>
+
+### Fundamentals, Code for normalize
 + Python code
 ```
 ch = alt.Chart(df).mark_bar().encode(
@@ -515,7 +552,7 @@ In Tableau, you right click on the count summary, and pick Add Table Calculation
 
 </div>
 
-### Barchart fundamentals, Python output for normalized bars
+### Fundamentals, Python output for normalized bars
 
 ```{python}
 import pandas as pd
@@ -529,13 +566,15 @@ ch = alt.Chart(df).mark_bar().encode(
 ch.save("../images/python/normalize.html")
 ```
 
+![Normalized barchart in Python](../images/python/normalize.png)
+
 <div class="notes">
 
 This is what the Python normalized barchart looks like.
 
 </div>
 
-### Barchart fundamentals, R output for normalized bars
+### Fundamentals, R output for normalized bars
 
 ```{r count-by-normalize}
 load("../../common-files/data/titanic.RData")
@@ -553,7 +592,7 @@ This is what the normalized bar chart looks like in R.
 
 </div>
 
-### Barchart fundamentals, Tableau output for normalized bars
+### Fundamentals, Tableau output for normalized bars
 
 ![](../images/tableau/table-calculation.png)
 
@@ -563,7 +602,7 @@ In Tableau, you right click on the count summary, and pick Add Table Calculation
 
 </div>
 
-### Barchart fundamentals, Tableau output for normalized bars
+### Fundamentals, Tableau output for normalized bars
 
 ![](../images/tableau/normalized-bars.png)
 
@@ -578,7 +617,43 @@ This is what the visualization looks like in Tableau.
 ```{r child="exercise-mortality-by-sex.Rmd"}
 ```
 
-### Barchart fundamentals, Python output for mean bars
+### Fundamentals, Summaries other than count
++ Summaries vary by package
++ All three include
+  + Mean
+  + Sum
+  + Minimum
+  + Maximum
+  
+<div class="notes">
+
+There are more summaries that you can create bar charts for. The summary functions vary by package, but all of them allow you to compute a mean, sum, minimum value, and maximum value.
+
+</div>
+
+### Fundamentals, Code for mean summary
++ Python code
+```
+ch = alt.Chart(df).mark_bar().encode(
+    x='sex',
+    y='mean(age)'
+)
+```
++ R code
+```
+  stat_summary(fun.y=mean, geom="bar")
+```
++ Tableau
+  + Choose Summary, Mean
+  
+<div class="notes">
+
+In Python, you change the count function to the mean function. In R, you replace the geom_bar function with the stat_summary function. In Tableau, you change the variable from Measure, Count to Measure, Average.
+
+</div>
+
+
+### Fundamentals, Python output for mean bars
 
 ```{python}
 import pandas as pd
@@ -593,7 +668,13 @@ ch.save("../images/python/mean-barchart.html")
 
 ![Barchart of mean ages by sex](../images/python/mean-barchart.png)
 
-### Barchart fundamentals, Example with means
+<div class="notes">
+
+Here is the Python output.
+
+</div>
+
+### Fundamentals, Example with means
 
 ```{r mean-barchart}
 load("../../common-files/data/titanic.RData")
@@ -608,15 +689,21 @@ finalize_image("Barchart of mean ages by sex")
 
 <div class="notes">
 
-
+Here is the R output.
 
 </div>
 
-### Barchart fundamentals, Tableau output of mean barchart
+### Fundamentals, Tableau output of mean barchart
 
 ![Barchart of mean ages by sex](../images/tableau/mean-barchart.png)
 
-### Barchart fundamentals, Summary
+<div class="notes">
+
+Here is the Tableau output.
+
+</div>
+
+### Fundamentals, Summary
 + "A mapping of data to the visual aesthetics of geometries/marks" 
   + Bars are a type of geometry/mark
   + Aesthetics for bars include location, size, color
