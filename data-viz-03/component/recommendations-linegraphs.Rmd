@@ -219,7 +219,7 @@ finalize_image("Linegraph distinguished by point shape")
 
 I deliberately added points to the lines because it gives you an extra chance to differentiate the lines. In this graph, the square, circle, and triangle allow you to tell which subject is which.
 
-you'd be a bit better off if you compared an open symbol with a closed symbol versus an "X" or a "+" that is neither open nor closed. Even so, the use of symbols, by itself, is not very helpful in allowing you to distinguish which line is associated with which subject.
+You'd be a bit better off if you compared an open symbol with a closed symbol versus an "X" or a "+" that is neither open nor closed. Even so, the use of symbols, by itself, is not very helpful in allowing you to distinguish which line is associated with which subject.
 
 </div>
 
@@ -321,6 +321,18 @@ The line connecting the one bedroom house mean to the two bedroom house mean to 
   + Older televisions have 4:3 aspect ratio
   + Newer televisions have 16:9 ratio
 + You can vary the aspect ratio of your graphs as well
+
+<div class="notes">
+
+The aspect ratio is the ratio of the length of a rectangle to its height. An aspect ratio of 1 to 1 is a square.
+
+If you remember when televisions switched from a big tube to a flat panel, you will also remember that the rectangular shape of the screen changed as well. The older tube televisions had an almost square 4 to 3 ratio. They were just a little bit wider than they were tall. This was the standard from all the way back in the 1950's.
+
+The newer televisions were much wider, like a movie screen and had an aspect ratio of 16 to 9.
+
+You can choose a variety of different aspect ratios for your graphs as well.
+
+</div>
 
 ### Recommendations, Which is better?
 

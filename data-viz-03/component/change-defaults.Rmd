@@ -61,6 +61,12 @@ HEre is the Python code. Notice that the color and width are changed inside the 
 
 ![Line graph with green dashed line](../images/python/green-line.png)
 
+<div class="notes">
+
+Here is the Python output.
+
+</div>
+
 ### Exercise, R code
 + Here's the R code
 ```

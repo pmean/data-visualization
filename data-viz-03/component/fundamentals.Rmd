@@ -67,14 +67,14 @@ Tableau also does not always include zero. To modify the limits of an axis in Ta
 ### Fundamentals, Aesthetics for lines
 + Location
 + Size
-+ Shape (not what you think it is!)
++ Shape (linetype)
 + Color
 
 <div class="notes">
 
 A line could mean a straight line or a curved line, a single line segment, a connected series of line segments or a polygon. It's a pretty complex thing, but generally a line represents a two dimensional relationship.
 
-You can vary the size, shape, and color of a line. Shape is not what you think it is.
+You can vary the size, shape, and color of a line. Shape is not what you think it is. It is a linetype, which can be solid, dotted, or dashed. Among the dotted lines, you have a choice of whether the dots are very close or somewhat distant. Among the dashed lines, you have a choice of the size of the dash and the size of the gap between the dashes. You can also mix dots and dashes together.
 
 </div>
 

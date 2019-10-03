@@ -18,7 +18,7 @@ load("../../common-files/data/cpi.RData")
 
 <div class="notes">
 
-ONe of the data sets that I will use in this moldule on line graphs is monthly values of the Consumer Price Index from 2007 through 2016. I have to make some minor modifications to the data, adding a continuous variable for time and deleting four rows of data.
+One of the data sets that I will use in this moldule on line graphs is monthly values of the Consumer Price Index from 2007 through 2016. I have to make some minor modifications to the data, adding a continuous variable for time and deleting four rows of data.
 
 You can find information about this data set on the DASL website, but use the csv file that I created instead of the one from the DASL website.
 

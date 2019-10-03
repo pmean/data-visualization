@@ -49,10 +49,21 @@ ch = pts+avg
 ch.save("../images/python/average-age.html")
 ```
 
+<div class="notes">
+
+Here is the Python code. Notice how you "add" the points graph and the average line graph.
+
+</div>
 
 ### Exercise, Python output
 
 ![Python plot showing trend of age versus bathrooms](../images/python/average-age.png)
+
+<div class="notes">
+
+Here is the Python output.
+
+</div>
 
 ### Exercise, R code
 + Here's the R code
